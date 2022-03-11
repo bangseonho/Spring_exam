@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- push test -->
-	<%
+	<%-- <%
 	   ResultSet rs = (ResultSet)request.getAttribute("dto");
 	   while(rs.next()){
 		   out.println(rs.getString("id"));
@@ -27,6 +27,6 @@
 		   out.println(rs.getString("sex") + "<br/>");
 	   }
 	   
-	%>
+	%> --%>
 </body>
 </html>
