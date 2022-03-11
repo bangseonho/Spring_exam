@@ -42,5 +42,11 @@ public class SurveyController {
 		}
 		return "SurveyForm";
 	}
+	
+	@RequestMapping("/login")
+	String func01() {
+		System.out.println("로그인 페이지로 이동");
+		return "Login";	// TigerView.jsp 를 찾는다
+	}
 }
 
