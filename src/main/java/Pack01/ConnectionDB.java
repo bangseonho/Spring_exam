@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import User.UserDTO;
+
 public class ConnectionDB {
 
 	public static Connection getConnection() {
