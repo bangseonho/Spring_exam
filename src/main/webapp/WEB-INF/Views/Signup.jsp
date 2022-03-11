@@ -15,7 +15,7 @@
 			<span> 회원가입 </span>
 		</p>
 		<div style="padding-bottom: 50px; margin-top: 30px;">
-			<form method="post" action="t10" style="text-align: -webkit-center;">
+			<form method="post" action="signup" style="text-align: -webkit-center;">
 				<fieldset id="regbox" style="text-align: center; border: none;">
 					<input class="input" type="name" name="name" required="true"
 						maxlength="10" title="공백 제외한 10자 미만으로 작성해주세요." pattern="^[\S]+$"

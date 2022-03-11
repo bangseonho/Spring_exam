@@ -19,6 +19,7 @@
 				<input type="text" id="user_code" required="true" placeholder="수험번호 입력">
 			</fieldset>
         </form>
+        <button onclick="location.href='ResultView'">ResultView</button>
     </div>
 </div>
 </body>

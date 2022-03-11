@@ -14,7 +14,7 @@
 		margin-left: 34%; text-align: center; padding-top: 5%; 
 		border-radius: 30px;">
 		<button>Login</button>
-		<button onclick="location='Signup.jsp'">Signup</button>
+		<button onclick="location.href='Signup'">Signup</button>
 	</div>
 
 </body>
