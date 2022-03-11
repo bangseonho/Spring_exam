@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,23 +48,26 @@ public class AuthController {
 		return "QuestionFormView";
 	}
 
-	@RequestMapping("/login")
-	String func01() {
-		return "LoginView";
-	}
-
-	@RequestMapping("/Signup")
-	String func0132123() {
-		return "SignupView";
-	}
-
 	@RequestMapping("/main")
-	String main(Model model, UserDTO user) {
-//		System.out.println(user.getName());
-//		System.out.println(user.getCode());
+	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
+			HttpServletRequest response) {
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
-		return "MainView";
+
+		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
+		if (a) {
+			// 세션값 저장하기
+			session.setAttribute("user_name", user.getName());
+			session.setAttribute("user_code", user.getCode());
+			// 세션시간 설정(초단위)
+			session.setMaxInactiveInterval(30 * 60);
+		}
+		return a ? "MainView" : "LoginView";
+	}
+
+	@RequestMapping("/PageMove")
+	String pageMove(@RequestParam(value = "page") String page) {
+		return page;
 	}
 
 }

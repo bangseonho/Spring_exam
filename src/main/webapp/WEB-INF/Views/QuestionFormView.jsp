@@ -7,8 +7,8 @@
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +16,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- push test -->
-	<%-- <%
-	   ResultSet rs = (ResultSet)request.getAttribute("dto");
-	   while(rs.next()){
-		   out.println(rs.getString("id"));
-		   out.println(rs.getString("password"));
-		   out.println(rs.getString("name"));
-		   out.println(rs.getString("age"));
-		   out.println(rs.getString("sex") + "<br/>");
-	   }
+	<%
+	ResultSet rs = (ResultSet) request.getAttribute("dto");
+	while (rs.next()) {
+		out.println(rs.getString("id"));
+		out.println(rs.getString("password"));
+		out.println(rs.getString("name"));
+		out.println(rs.getString("age"));
+		out.println(rs.getString("sex") + "<br/>");
+	}
 	%>
- --%>
-	<a href="login"><h3>로그인 페이지로 이동</h3></a>
+
 </body>
 </html>

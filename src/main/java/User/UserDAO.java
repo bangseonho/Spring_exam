@@ -40,6 +40,25 @@ public class UserDAO {
 		}
 		return isCheck;
 	}
+	
+	public Boolean loginCheck(String name, String code) {
+		Boolean existName = null;
+		String sql = "select exists (select * from user where name=? and code=?);";
+		try {
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, code);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				existName = rs.getBoolean(1);
+			}
+		} catch(Exception e) {System.out.println("error");}
+		return existName;
+	}
 
 	public boolean join(UserDTO dto) throws Exception {
 
@@ -63,7 +82,7 @@ public class UserDAO {
 				throw new Exception("join fail");
 			}
 		} else {
-			System.out.println("이름, 생년월일 중복!!");
+			System.out.println("�씠由�, �깮�뀈�썡�씪 以묐났!!");
 			return false;
 		}
 
