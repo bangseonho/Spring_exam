@@ -19,7 +19,7 @@ public class ResultController {
 	
 	@RequestMapping("/result")
 	public String form(Model model, ResultDTO result) {
-<<<<<<< HEAD
+
 		
 		JSONObject obj1 = new JSONObject();
 		JSONArray jArray = new JSONArray();
@@ -45,8 +45,7 @@ public class ResultController {
 			System.out.println("find failed _ controller");
 		}
 		
-=======
->>>>>>> 546c9e2aa8f6d440ce48d7431218610c868ffe2b
+
 		ResultDTO dto = new ResultDTO(result.getCode(), result.getAnswered());
 		return "ResultView";
 	}
