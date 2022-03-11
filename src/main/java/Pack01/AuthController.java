@@ -49,18 +49,13 @@ public class AuthController {
 
 	@RequestMapping("/login")
 	String func01() {
-<<<<<<< HEAD:src/main/java/Pack01/SurveyController.java
-		System.out.println("·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿");
-		return "Login";
-=======
 		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
-		return "Login"; // TigerView.jsp ï¿½ï¿½ Ã£ï¿½Â´ï¿½
+		return "Login";
 	}
 	@RequestMapping("/Signup")
 	String func0132123() {
 		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
 		return "Signup"; // TigerView.jsp ï¿½ï¿½ Ã£ï¿½Â´ï¿½
->>>>>>> cho:src/main/java/Pack01/AuthController.java
 	}
 	
 	@RequestMapping("/main")
