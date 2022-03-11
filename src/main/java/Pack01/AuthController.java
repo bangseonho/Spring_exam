@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,31 +21,50 @@ import User.UserDAO;
 import User.UserDTO;
 
 @Controller
-public class SurveyController {
-	
-	@RequestMapping("/t10")
+public class AuthController {
+	@Autowired
+	UserDAO userDAO;
+
+	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user) {
-		
 		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode());
-		UserDAO userDAO = new UserDAO();
-		try{
-			userDAO.join(dto);
-		}catch(Exception e){
+		try {
+
+			if (userDAO.join(dto)) {
+				return "Login";
+			} else {
+				return "Signup";
+			}
+		} catch (Exception e) {
 			System.out.println("join failed _ controller");
 		}
-		
+
 		try {
 			model.addAttribute("dto", userDAO.findUser(dto));
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("find failed _ controller");
 		}
-		return "SurveyForm";
+		return "QuestionForm";
 	}
-	
+
 	@RequestMapping("/login")
 	String func01() {
-		System.out.println("·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿");
-		return "Login";	// TigerView.jsp ¸¦ Ã£´Â´Ù
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
+		return "Login";
 	}
+	@RequestMapping("/Signup")
+	String func0132123() {
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½");
+		return "Signup"; // TigerView.jsp ï¿½ï¿½ Ã£ï¿½Â´ï¿½
+	}
+	
+	@RequestMapping("/main")
+	String main(Model model, UserDTO user) {
+//		System.out.println(user.getName());
+//		System.out.println(user.getCode());
+		model.addAttribute("name", user.getName());
+		model.addAttribute("code", user.getCode());
+		return "Main";
+	}
+	
 }
-

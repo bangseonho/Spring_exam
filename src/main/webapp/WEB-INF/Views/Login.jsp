@@ -1,24 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>ทฮฑืภฮ</title>
+	<title>๋ก๊ทธ์ธ</title>
 </head>
 <body>
 <div style="width: 30%; height: 400px; margin-top: 40px; margin-left: 34%; 
 	text-align: center; padding-top: 5%; border-radius: 30px;">
 	<p style="font-size: 30px; color: #ffffff; margin: 0px;">
-	   <span> ทฮฑืภฮ </span>
+	   <span> ๋ก๊ทธ์ธ </span>
 	</p>
 	<div style="padding-bottom: 50px; margin-top: 30px;">
-		<form method="post" action="" style="text-align: -webkit-center;">
+		<form method="post" action="main" style="text-align: -webkit-center;">
 			<fieldset id="regbox" style="text-align: center; border: none;">
-				<input type="text" id="user_id" required="true" placeholder="ภฬธง ภิทย">
-				<input type="text" id="user_code" required="true" placeholder="ผ๖ว่น๘ศฃ ภิทย">
+				<input type="text" name="name" required placeholder="์ด๋ฆ ์…๋ ฅ">
+				<input type="text" name="code" required placeholder="์ํ—๋ฒํธ ์…๋ ฅ">
+				<button class="inputBtn" type="submit" value="๋ก๊ทธ์ธ">๋ก๊ทธ์ธ</button>
 			</fieldset>
         </form>
+        <button onclick="location.href='ResultView'">ResultView</button>
     </div>
 </div>
 </body>
