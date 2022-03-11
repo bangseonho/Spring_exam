@@ -15,6 +15,7 @@
 		border-radius: 30px;">
 		<button onclick="location='PageMove?page=LoginView'">Login</button>
 		<button onclick="location='PageMove?page=SignupView'">Signup</button>
+		<a href="ResultController" >결과</a>
 	</div>
 </body>
 </html>
