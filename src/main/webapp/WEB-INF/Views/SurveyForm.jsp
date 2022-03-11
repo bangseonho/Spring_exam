@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- Çª½¬ Å×½ºÆ® -->
+<!-- push test -->
 	<%
 	   ResultSet rs = (ResultSet)request.getAttribute("dto");
 	   while(rs.next()){
