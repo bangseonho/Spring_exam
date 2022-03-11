@@ -47,23 +47,22 @@ public class AuthController {
 		return "QuestionFormView";
 	}
 
-	@RequestMapping("/login")
-	String func01() {
-		return "LoginView";
-	}
-
-	@RequestMapping("/Signup")
-	String func0132123() {
-		return "SignupView";
-	}
-
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user) {
 //		System.out.println(user.getName());
 //		System.out.println(user.getCode());
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
-		return "MainView";
+		
+		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
+		
+		return a ? "MainView": "LoginView";
 	}
+	
+	@RequestMapping("/PageMove")
+	String pageMove(@RequestParam(value = "page") String page) {
+		return page;
+	}
+		
 
 }
