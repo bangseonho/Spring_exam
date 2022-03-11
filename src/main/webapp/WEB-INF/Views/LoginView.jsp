@@ -20,7 +20,8 @@
 				<button class="inputBtn" type="submit" value="로그인">로그인</button>
 			</fieldset>
         </form>
-        <button onclick="location.href='ResultView'">ResultView</button>
+        <button onclick="location.href='result'">ResultView</button>
+        <button onclick="location.href='PageMove?page=MainView'">ResultView</button>
     </div>
 </div>
 </body>

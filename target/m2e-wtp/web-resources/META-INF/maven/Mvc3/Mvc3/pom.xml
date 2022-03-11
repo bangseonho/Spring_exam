@@ -41,7 +41,6 @@
 		<version>1.2</version>
 	</dependency>
 	
-<<<<<<< HEAD
 	<dependency>
 		<groupId>org.json</groupId>
 		<artifactId>json</artifactId>
@@ -54,9 +53,6 @@
 		<version>1.1.1</version>
 	</dependency>
 		</dependencies>
-=======
-  </dependencies>
->>>>>>> b21068c10836ec6bcb1c4f1bb6cc08a503060965
 
 	<build>
 		<plugins>
