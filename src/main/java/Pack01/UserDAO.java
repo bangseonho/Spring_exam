@@ -8,49 +8,48 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 public class UserDAO {
-//	@Autowired
-//	ConnectionDB conn;
+	@Autowired
+	ConnectionDB conn1;
 
 	PreparedStatement psmt;
 	int cnt;
-	
+
 	public void join(UserDTO dto) throws Exception {
-		
+
 		try {
-			Connection conn = ConnectionDB.getConnection();
-			
-			String sql = "insert into vote_user values(?,?,?,?,?);";
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
+
+			String sql = "insert into user values(null, ?, ?, ?);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("join db 시작");
-			
-			psmt.setString(1, dto.getId());
-			psmt.setString(2, dto.getPwd());
-			psmt.setString(3, dto.getName());
-			psmt.setInt(4, dto.getAge());
-			psmt.setString(5, dto.getGender());
-			
+			System.out.println("join db success");
+
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getBirth());
+			psmt.setString(3, dto.getBirth());
+
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			throw new Exception("join 실패임 ㅇㅇ");
+			throw new Exception("join fail");
 		}
 
 	}
 
 	public ResultSet findUser(UserDTO dto) throws Exception {
-		Connection conn = ConnectionDB.getConnection();
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
 		try {
-			String sql = "select * from vote_user";
+			String sql = "select * from user";
 			psmt = conn.prepareStatement(sql);
 
 			ResultSet rs = psmt.executeQuery();
-			
+
 			return rs;
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			throw new Exception("find user 실패임 ㅇㅇ");
-		} 
-	}	
+			throw new Exception("find user failed");
+		}
+	}
 }

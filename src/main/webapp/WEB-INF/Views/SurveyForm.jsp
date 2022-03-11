@@ -16,7 +16,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+<!-- push test -->
+	<%-- <%
 	   ResultSet rs = (ResultSet)request.getAttribute("dto");
 	   while(rs.next()){
 		   out.println(rs.getString("id"));
@@ -26,7 +27,9 @@
 		   out.println(rs.getString("sex") + "<br/>");
 	   }
 	   
+
 	%>
+ --%>
 	<a href="login"><h3>로그인 페이지로 이동</h3></a>
 </body>
 </html>

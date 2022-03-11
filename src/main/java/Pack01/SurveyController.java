@@ -21,24 +21,19 @@ public class SurveyController {
 	
 	@RequestMapping("/t10")
 	public String form(Model model, UserDTO user) {
-		System.out.println(user.getId());
-		System.out.println(user.getPwd());
-		System.out.println(user.getName());
-		System.out.println(user.getAge());
-		System.out.println(user.getGender());
 		
-		UserDTO dto = new UserDTO(user.getId(), user.getPwd(), user.getPwdc(), user.getName(), user.getAge(), user.getGender());
+		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode());
 		UserDAO userDAO = new UserDAO();
 		try{
 			userDAO.join(dto);
 		}catch(Exception e){
-			System.out.println("회원가입 실패");
+			System.out.println("join failed _ controller");
 		}
 		
 		try {
 			model.addAttribute("dto", userDAO.findUser(dto));
 		}catch(Exception e) {
-			System.out.println("정보 가져오기 실패!!");
+			System.out.println("find failed _ controller");
 		}
 		return "SurveyForm";
 	}
