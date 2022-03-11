@@ -21,6 +21,7 @@
 			</fieldset>
         </form>
         <button onclick="location.href='result'">ResultView</button>
+        <button onclick="location.href='PageMove?page=MainView'">ResultView</button>
     </div>
 </div>
 </body>
