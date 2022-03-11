@@ -8,5 +8,10 @@
 </head>
 <body>
 <h1>result view</h1>
+	<%
+		String s = (String)request.getAttribute("dto");
+	   	System.out.println(s);
+	
+	%>
 </body>
 </html>
