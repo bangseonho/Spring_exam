@@ -21,6 +21,6 @@ public class ResultController {
 		ResultDTO dto = new ResultDTO(result.getCode(), result.getAnswered());
 		
 		
-		return "QuestionForm";
+		return "ResultView";
 	}
 }

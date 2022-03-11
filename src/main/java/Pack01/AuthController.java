@@ -31,9 +31,9 @@ public class AuthController {
 		try {
 
 			if (userDAO.join(dto)) {
-				return "Login";
+				return "LoginView";
 			} else {
-				return "Signup";
+				return "SignupView";
 			}
 		} catch (Exception e) {
 			System.out.println("join failed _ controller");
@@ -44,17 +44,17 @@ public class AuthController {
 		} catch (Exception e) {
 			System.out.println("find failed _ controller");
 		}
-		return "QuestionForm";
+		return "QuestionFormView";
 	}
 
 	@RequestMapping("/login")
 	String func01() {
-		return "Login";
+		return "LoginView";
 	}
 
 	@RequestMapping("/Signup")
 	String func0132123() {
-		return "Signup";
+		return "SignupView";
 	}
 
 	@RequestMapping("/main")
@@ -63,7 +63,7 @@ public class AuthController {
 //		System.out.println(user.getCode());
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
-		return "Main";
+		return "MainView";
 	}
 
 }
