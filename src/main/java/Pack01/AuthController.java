@@ -56,10 +56,10 @@ public class AuthController {
 
 		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
 		if (a) {
-			// 세션값 저장하기
+			// �꽭�뀡媛� ���옣�븯湲�
 			session.setAttribute("user_name", user.getName());
 			session.setAttribute("user_code", user.getCode());
-			// 세션시간 설정(초단위)
+			// �꽭�뀡�떆媛� �꽕�젙(珥덈떒�쐞)
 			session.setMaxInactiveInterval(30 * 60);
 		}
 		return a ? "MainView" : "LoginView";
@@ -68,6 +68,11 @@ public class AuthController {
 	@RequestMapping("/PageMove")
 	String pageMove(@RequestParam(value = "page") String page) {
 		return page;
+	}
+	
+	@RequestMapping("/ManagerPageMove")
+	String managerPageMove(@RequestParam(value = "page") String page) {
+		return "Manager/"+page;
 	}
 
 }
