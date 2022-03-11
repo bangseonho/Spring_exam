@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-//   @Bean
-//   ConnectionDB connectiondb() {
-//      return new ConnectionDB();
-//   }
+   @Bean
+   ConnectionDB connectiondb() {
+      return new ConnectionDB();
+   }
    @Bean
    UserDAO UserDAO() {
       return new UserDAO();
