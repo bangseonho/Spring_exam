@@ -17,10 +17,7 @@ public class ResultController {
 	
 	@RequestMapping("/result")
 	public String form(Model model, ResultDTO result) {
-		
 		ResultDTO dto = new ResultDTO(result.getCode(), result.getAnswered());
-		
-		
 		return "ResultView";
 	}
 }
