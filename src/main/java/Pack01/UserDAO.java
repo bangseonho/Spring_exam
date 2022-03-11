@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class UserDAO {
-//	@Autowired
-//	ConnectionDB conn;
+	@Autowired
+	ConnectionDB conn1;
 
 	PreparedStatement psmt;
 	int cnt;
@@ -19,7 +19,8 @@ public class UserDAO {
 	public void join(UserDTO dto) throws Exception {
 		
 		try {
-			Connection conn = ConnectionDB.getConnection();
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
 			
 			String sql = "insert into vote_user values(?,?,?,?,?);";
 			psmt = conn.prepareStatement(sql);
@@ -40,7 +41,8 @@ public class UserDAO {
 	}
 
 	public ResultSet findUser(UserDTO dto) throws Exception {
-		Connection conn = ConnectionDB.getConnection();
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
 		try {
 			String sql = "select * from vote_user";
 			psmt = conn.prepareStatement(sql);
