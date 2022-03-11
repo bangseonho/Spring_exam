@@ -52,4 +52,12 @@ public class UserDAO {
 			throw new Exception("find user failed");
 		}
 	}
+
+	
+	
+	
+	
+	
+	
+	
 }

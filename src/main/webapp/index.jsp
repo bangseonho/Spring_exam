@@ -13,7 +13,7 @@
 		style="width: 30%; height: 400px; margin-top: 40px; 
 		margin-left: 34%; text-align: center; padding-top: 5%; 
 		border-radius: 30px;">
-		<button>Login</button>
+		<button onclick="location='login'">Login</button>
 		<button onclick="location='Signup.jsp'">Signup</button>
 	</div>
 

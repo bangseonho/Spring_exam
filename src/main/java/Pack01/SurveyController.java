@@ -41,7 +41,17 @@ public class SurveyController {
 	@RequestMapping("/login")
 	String func01() {
 		System.out.println("로그인 페이지로 이동");
-		return "Login";	// TigerView.jsp 를 찾는다
+		return "Login";
 	}
+	
+	@RequestMapping("/main")
+	String main(Model model, UserDTO user) {
+//		System.out.println(user.getName());
+//		System.out.println(user.getCode());
+		model.addAttribute("name", user.getName());
+		model.addAttribute("code", user.getCode());
+		return "Main";
+	}
+	
 }
 
