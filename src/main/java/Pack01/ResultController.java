@@ -14,12 +14,45 @@ import User.UserDTO;
 
 @Controller
 public class ResultController {
-	@Autowired
+	
+	@RequestMapping("/ResultController")
+	public String form(Model model, ResultDTO result) {
+		System.out.println(123123);
+
+		ResultDAO resultDAO = new ResultDAO(); //select 결과쿼리
+		
+		try {
+			model.addAttribute("rs", resultDAO.resultAnswer());
+		}catch(Exception e){
+			System.out.println("ȸ������ ����");
+		}
+		
+		
+		return "ResultView";
+	}
+	
+	/*public String form(Model model, ResultDTO result) {
+		System.out.println(123123);
+
+		ResultDAO resultDAO = new ResultDAO(); //select 결과쿼리
+		
+		try {
+			model.addAttribute("rs", resultDAO.resultAnswer());
+		}catch(Exception e){
+			System.out.println("ȸ������ ����");
+		}
+		
+		
+		return "ResultView";
+	}*/
+	
+	
+	/*@Autowired
 	ResultDAO resultDAO;
 	
 	@RequestMapping("/result")
 	public String form(Model model, ResultDTO result) {
-
+	
 		
 		JSONObject obj1 = new JSONObject();
 		JSONArray jArray = new JSONArray();
@@ -31,7 +64,7 @@ public class ResultController {
 			obj2.put("name",i);
 			
 			jArray.put(obj2);
-
+	
 		}
 		
 		
@@ -45,8 +78,8 @@ public class ResultController {
 			System.out.println("find failed _ controller");
 		}
 		
-
+	
 		ResultDTO dto = new ResultDTO(result.getCode(), result.getAnswered());
 		return "ResultView";
-	}
+	}*/
 }
