@@ -49,15 +49,14 @@ public class AuthController {
 
 	@RequestMapping("/login")
 	String func01() {
-		System.out.println("�α��� �������� �̵�");
 		return "Login";
 	}
+
 	@RequestMapping("/Signup")
 	String func0132123() {
-		System.out.println("�α��� �������� �̵�");
-		return "Signup"; // TigerView.jsp �� ã�´�
+		return "Signup";
 	}
-	
+
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user) {
 //		System.out.println(user.getName());
@@ -66,5 +65,5 @@ public class AuthController {
 		model.addAttribute("code", user.getCode());
 		return "Main";
 	}
-	
+
 }
