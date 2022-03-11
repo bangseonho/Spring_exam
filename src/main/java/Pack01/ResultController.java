@@ -1,5 +1,7 @@
 package Pack01;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,30 @@ public class ResultController {
 	
 	@RequestMapping("/result")
 	public String form(Model model, ResultDTO result) {
+		
+		JSONObject obj1 = new JSONObject();
+		JSONArray jArray = new JSONArray();
+		
+		for(int i=0; i<5; i++){
+		
+			JSONObject obj2 = new JSONObject();
+			
+			obj2.put("name",i);
+			
+			jArray.put(obj2);
+
+		}
+		
+		
+		obj1.put("data", jArray);
+		
+		String resp = obj1.toString();
+		
+		try {
+			model.addAttribute("dto", resp);
+		} catch (Exception e) {
+			System.out.println("find failed _ controller");
+		}
 		
 		ResultDTO dto = new ResultDTO(result.getCode(), result.getAnswered());
 		

@@ -1,12 +1,12 @@
 package Result;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class ResultDTO {
 	private String code;
-	private JSONObject answered;
+	private JSONArray answered;
 
-	public ResultDTO(String code, JSONObject answered) {
+	public ResultDTO(String code, JSONArray answered) {
 		this.code = code;
 		this.answered = answered;
 	}
@@ -19,11 +19,11 @@ public class ResultDTO {
 		this.code = code;
 	}
 
-	public JSONObject getAnswered() {
+	public JSONArray getAnswered() {
 		return answered;
 	}
 
-	public void setAnswered(JSONObject answered) {
+	public void setAnswered(JSONArray answered) {
 		this.answered = answered;
 	}
 }
