@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import User.UserDAO;
+import Result.ResultDAO;
 
 @Configuration
 public class AppConfig {
@@ -14,5 +15,9 @@ public class AppConfig {
    @Bean
    UserDAO UserDAO() {
       return new UserDAO();
+   }
+   @Bean
+   ResultDAO ResultDAO() {
+      return new ResultDAO();
    }
 }
