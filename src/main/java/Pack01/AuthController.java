@@ -31,9 +31,9 @@ public class AuthController {
 		try {
 
 			if (userDAO.join(dto)) {
-				return "Login";
+				return "LoginView";
 			} else {
-				return "Signup";
+				return "SignupView";
 			}
 		} catch (Exception e) {
 			System.out.println("join failed _ controller");
@@ -44,27 +44,26 @@ public class AuthController {
 		} catch (Exception e) {
 			System.out.println("find failed _ controller");
 		}
-		return "QuestionForm";
+		return "QuestionFormView";
 	}
 
 	@RequestMapping("/login")
 	String func01() {
-		System.out.println("�α��� �������� �̵�");
-		return "Login";
+		return "LoginView";
 	}
+
 	@RequestMapping("/Signup")
 	String func0132123() {
-		System.out.println("�α��� �������� �̵�");
-		return "Signup"; // TigerView.jsp �� ã�´�
+		return "SignupView";
 	}
-	
+
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user) {
 //		System.out.println(user.getName());
 //		System.out.println(user.getCode());
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
-		return "Main";
+		return "MainView";
 	}
-	
+
 }
