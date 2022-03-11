@@ -27,6 +27,9 @@
 		   out.println(rs.getString("sex") + "<br/>");
 	   }
 	   
-	%> --%>
+
+	%>
+ --%>
+	<a href="login"><h3>로그인 페이지로 이동</h3></a>
 </body>
 </html>
