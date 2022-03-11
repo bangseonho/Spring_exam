@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import User.UserDTO;
+
 public class ConnectionDB {
 
 	public static Connection getConnection() {
@@ -14,8 +16,8 @@ public class ConnectionDB {
 		UserDTO user = null;
 
 		String driver = "com.mysql.cj.jdbc.Driver";
-		String db_url = "jdbc:mysql://localhost:3306/db01";
-		String db_id = "root";
+		String db_url = "jdbc:mysql://13.125.97.130:3307/db01";
+		String db_id = "lion";
 		String db_pw = "1234";
 		try {
 			Class.forName(driver);
@@ -41,7 +43,7 @@ public class ConnectionDB {
 			System.out.println("connection close");
 		} catch (SQLException e) {
 			//e.printStackTrace();
-			System.out.println("close ½ÇÆÐ");;
+			System.out.println("close");;
 		}
 
 	}
