@@ -23,7 +23,6 @@ public class QuestionController implements HttpSessionBindingListener {
 
 //	@RequestMapping("/getQuestion")
 //	public String f1(Model model, ResultSet rs) {
-//
 //		return "QuestionFormView";
 //	}
 

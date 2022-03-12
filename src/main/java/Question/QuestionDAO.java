@@ -13,9 +13,9 @@ public class QuestionDAO {
    @Autowired
    static
    ConnectionDB conn1;
-
-   @Autowired
-   QuestionDTO questionDTO;
+	/*
+	   @Autowired
+	   QuestionDTO questionDTO;*/
 
    @SuppressWarnings("null")
    public static ResultSet getQuestion() throws Exception {
