@@ -3,6 +3,7 @@ package Pack01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import Question.QuestionDAO;
 import User.UserDAO;
 import Result.ResultDAO;
 
@@ -17,7 +18,11 @@ public class AppConfig {
       return new UserDAO();
    }
    @Bean
-   ResultDAO ResultDAO() {
+   ResultDAO resultDAO() {
       return new ResultDAO();
+   }
+   @Bean
+   QuestionDAO questionDAO() {
+	   return new QuestionDAO();
    }
 }

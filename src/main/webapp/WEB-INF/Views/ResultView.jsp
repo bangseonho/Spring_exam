@@ -17,21 +17,49 @@
 </head>
 <body>
 <h1>result view</h1>
-<h1>00님의 점수 결과</h1>
+
 
 	<% 
 	   ResultSet rs = (ResultSet)request.getAttribute("rs");
 	   while(rs.next()){
-		   out.println(rs.getString("id"));
-		   out.println(rs.getString("code")+ "<br/>");
-		   out.println(rs.getString("answered")+ "<br/>");		   
-	   }   
+		   
+		   String code = rs.getString("code");  // 사용자 번호
+		   int id = rs.getInt("id"); // 문제 번호
+		   String phrase = rs.getString("phrase");
+		   String one = rs.getString("one");
+		   String two = rs.getString("two");
+		   String three = rs.getString("three");
+		   String four = rs.getString("four");
+		   int choice = rs.getInt("choice");
+		   boolean correct = rs.getBoolean("correct");
+		   
+		   
+	     
   
 	 %>
-	<%-- <%
-		String s = (String)request.getAttribute("dto");
-	   	System.out.println(s);
+	 
+	 <h1><%=code%>님의 점수 결과</h1>
+	 <h3><%=id%>. <%=phrase%> </h3>
 	
-	%> --%>
+	
+	<%
+
+	   if(correct){
+		   out.println("맞았습니다.");
+	   }
+	   else{
+		   out.println("틀렸습니다.");
+	   }
+	%>
+	
+	<h3>1. <%=one%> 2.<%=two%> 3.<%=three%> 4.<%=four%></h3>
+	<h3>입력한 답 : <%=choice%></h3>
+	<h3>정답 : <%=correct%></h3>
+	
+
+	<%
+	   }
+	%>
+	
 </body>
 </html>
