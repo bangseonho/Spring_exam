@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,6 +30,7 @@
 		   String two = rs.getString("two");
 		   String three = rs.getString("three");
 		   String four = rs.getString("four");
+		   String answer = rs.getString("answer");
 		   int choice = rs.getInt("choice");
 		   boolean correct = rs.getBoolean("correct");
 		   
@@ -54,7 +55,7 @@
 	
 	<h3>1. <%=one%> 2.<%=two%> 3.<%=three%> 4.<%=four%></h3>
 	<h3>입력한 답 : <%=choice%></h3>
-	<h3>정답 : <%=correct%></h3>
+	<h3>정답 : <%=answer%></h3>
 	
 
 	<%
