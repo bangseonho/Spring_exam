@@ -1,3 +1,7 @@
+<%@page import="java.util.Arrays"%>
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="User.UserDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
@@ -17,15 +21,38 @@
 </head>
 <body>
 	<%
-	ResultSet rs = (ResultSet) request.getAttribute("dto");
+	/* // session에 문제 저장
+	ResultSet rs = (ResultSet) request.getAttribute("questionsList");
+	int no = 0;
 	while (rs.next()) {
-		out.println(rs.getString("id"));
-		out.println(rs.getString("password"));
-		out.println(rs.getString("name"));
-		out.println(rs.getString("age"));
-		out.println(rs.getString("sex") + "<br/>");
+		ArrayList<String> lst2 = new ArrayList<String>();
+		lst2.add(rs.getString("id"));
+		lst2.add(rs.getString("phrase"));
+		lst2.add(rs.getString("one"));
+		lst2.add(rs.getString("two"));
+		lst2.add(rs.getString("three"));
+		lst2.add(rs.getString("four"));
+		lst2.add(rs.getString("answer"));
+		lst2.add(rs.getString("who"));
+		session.setAttribute(Integer.toString(no), lst2);
+		no++;
 	}
-	%>
 
+	int cnt = 0;
+	out.println(session.getAttribute(Integer.toString(cnt))); */
+	%>
+	<div>
+		<label><input type="radio" value="1" />1 </label> <label> <input
+			type="radio" value="2" />2
+		</label> <label> <input type="radio" value="3" />3
+		</label> <label> <input type="radio" value="4" />4
+		</label>
+	</div>
+	<!-- <form method="GET" action="nextQuestion">
+		<input type="submit" value="BACK" />
+	</form>
+	<form method="GET" action="nextQuestion">
+		<input type="submit" value="NEXT" />
+	</form> -->
 </body>
 </html>

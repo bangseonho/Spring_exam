@@ -12,7 +12,6 @@
 	<button onclick="location='ManagerPageMove?page=ManagerUserView'"	>	회원관리			</button>
 	<button onclick="location='ManagerPageMove?page=ManagerDBView'"	>		데이터베이스관리		</button>
 	<button onclick="location='ManagerPageMove?page=ManagerResultView'">	조사현황			</button>
-	<!-- 첫 화면으로 가는 법 찾기 -->
 	<button onclick="location='index.jsp'">로그인화면으로 이동</button>          
 </body>	
 </html>

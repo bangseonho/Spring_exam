@@ -1,0 +1,504 @@
+[33mcommit f5a3c4d4eb76d6f100d6138e96bd9f8cd2a705f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 21:38:31 2022 +0900
+
+    변경없음
+
+[33mcommit 49816e35a8a0627669a8d4a8426f8ca0badc98fb[m
+Merge: 79ee10e fd06833
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 21:36:28 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into develop
+
+[33mcommit fd06833a3f582be5d7a7adb9584d646aeab31450[m
+Merge: df16f92 0f0e83a
+Author: JiYeon <42603254+LimJiYeonn@users.noreply.github.com>
+Date:   Fri Mar 11 21:33:58 2022 +0900
+
+    Merge pull request #13 from ChoYeongwoo0322/jiyeon
+    
+    Result Page
+
+[33mcommit 0f0e83a8f60499e0b910141e60a25e2f4a6e8851[m
+Author: 지연 <jiueon6@gmail.com>
+Date:   Fri Mar 11 21:31:47 2022 +0900
+
+    resultPage
+
+[33mcommit 79ee10e807c8ea3444494aa1b92ced3345f0afac[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 21:22:11 2022 +0900
+
+    signup & login alert
+
+[33mcommit 715a784312712c66d1be6040400ff1395a4f3f8c[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 20:36:32 2022 +0900
+
+    ?
+
+[33mcommit 00a7cb44d28e44693f64f871fb0f2fbffcaf9f25[m
+Merge: c7748de df16f92
+Author: 지연 <jiueon6@gmail.com>
+Date:   Fri Mar 11 20:31:39 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into jiyeon
+
+[33mcommit df16f921adbef42c00d6aa1a8b121763c25cc656[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 19:44:31 2022 +0900
+
+    create manage folder
+
+[33mcommit bafb3a940cc9c34462cc213b9744a2c8a9411a65[m
+Merge: f485876 c1184bb
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 19:21:10 2022 +0900
+
+    Merge branch 'develop' into seonho
+
+[33mcommit f48587632b44a1238f3bc7ec9ccb25e248ef53f5[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 19:20:07 2022 +0900
+
+    없음
+
+[33mcommit c1184bb747a15508ffaeeb06565d1da0eb444f11[m
+Author: soswa <sksaaa00@daum.net>
+Date:   Fri Mar 11 19:18:54 2022 +0900
+
+    페이지 이동 컨트롤러 삭제 (중복됨)
+
+[33mcommit f312e3e9fd5d3abdbbb9a55e52545908915db90f[m
+Merge: a0e6b9e 2aaff02
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 19:08:08 2022 +0900
+
+    Merge branch 'develop' into seonho
+    
+    # Conflicts:
+    #       target/m2e-wtp/web-resources/META-INF/maven/Mvc3/Mvc3/pom.properties
+
+[33mcommit a0e6b9e32bd6af7c0cd581805976abcd45cb75f8[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 19:07:06 2022 +0900
+
+    없음
+
+[33mcommit 2aaff0200692f5365951438bbe39e8c09d9ab49d[m
+Author: soswa <sksaaa00@daum.net>
+Date:   Fri Mar 11 19:06:32 2022 +0900
+
+    관리자 페이지 만듬
+
+[33mcommit 68cbb8a933086786168e13c704e219914a6973f9[m
+Merge: 4e7bf39 546c9e2
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 17:52:56 2022 +0900
+
+    merge
+
+[33mcommit 4e7bf39b853b4ccbc07e29af49fe6fa229f6d6ea[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 17:51:42 2022 +0900
+
+    ResultController
+
+[33mcommit 546c9e2aa8f6d440ce48d7431218610c868ffe2b[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 17:50:51 2022 +0900
+
+    session get set
+
+[33mcommit 1af742038790327154d0eb48cb8e936e43b347c3[m
+Merge: 1444706 b08f155
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 17:35:42 2022 +0900
+
+    Merge branch 'develop' into cho
+    
+    # Conflicts:
+    #       target/classes/.gitignore
+
+[33mcommit b08f155b7fc89ab57a437ef47edc14f5fc1d6fd0[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 17:34:35 2022 +0900
+
+    login check
+
+[33mcommit 14447064a793b5bf4b3ec2f8d6cd0936ba3ccaa8[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 17:33:27 2022 +0900
+
+    QuestionDTO, QuestionDAO  추가했는데 작동은안됨 ..;ㅁ;
+
+[33mcommit ea9211a8c146547b5e93d60e76b04bde8e5c32d4[m
+Merge: 359bed6 aa81a95
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 16:42:36 2022 +0900
+
+    Merge branch 'develop' into seonho
+    
+    # Conflicts:
+    #       target/classes/.gitignore
+
+[33mcommit 359bed6cd9ebbda60b69513fad3948f8f725c747[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 16:41:31 2022 +0900
+
+    logincheck
+
+[33mcommit aa81a95bb2b0d3d38f2d1657d50609c9c6d01b95[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 16:40:42 2022 +0900
+
+    Views 폴더안에있는  파일들 뒤에 view명시, resultview로 연결해서 확인가능할듯
+
+[33mcommit 5bb06d9b7f97860d871c3f93ff49ccd8c09e66b9[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 16:35:07 2022 +0900
+
+    ResultDto => ResultDao 로 변경
+
+[33mcommit 2865ce3034ae6e43288bec6f7201672135526157[m
+Merge: 8fe580f b21068c
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 16:25:55 2022 +0900
+
+    merge
+
+[33mcommit 8fe580fa91dff1ba1a9d36c3979ec271423b1ef3[m
+Merge: 3b1986a 4adc446
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 16:19:11 2022 +0900
+
+    Merge branch 'yein' into develop
+
+[33mcommit 4adc44631b46da14a6b6bc9dc56efad4f8e097f4[m
+Merge: 9e4ec1f 3b1986a
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 16:18:56 2022 +0900
+
+    Merge branch 'develop' into yein
+
+[33mcommit b21068c10836ec6bcb1c4f1bb6cc08a503060965[m[33m ([m[1;31morigin/seonho[m[33m, [m[1;31morigin/cho[m[33m)[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 16:13:30 2022 +0900
+
+    충돌 정리
+
+[33mcommit 9e4ec1f6a6f23564eaf6a4737062202ebc867951[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 16:13:10 2022 +0900
+
+    Result DTO DAO Controller
+
+[33mcommit cad68212186eab1737c1155a006be1f7a38bfb24[m
+Merge: 936a412 4b833bd
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 16:10:19 2022 +0900
+
+    Merge branch 'cho' into develop
+    
+    # Conflicts:
+    #       src/main/java/Pack01/AuthController.java
+    #       src/main/webapp/index.jsp
+    #       target/classes/Pack01/SurveyController.class
+
+[33mcommit 936a4120039cd8fcbbd2dc82747216dbebc8ae88[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 16:09:07 2022 +0900
+
+    한게없는게 뭔가의 설정변경...
+
+[33mcommit 5b6d141364420373b2a14b40fcdf8e12b98f4def[m
+Merge: 7d39c82 9a99412
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 16:07:40 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into develop
+    
+    # Conflicts:
+    #       target/classes/Pack01/SurveyController.class
+
+[33mcommit 7d39c822e73a5ce80c9f161ad9afadf3c137b6a4[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 16:06:39 2022 +0900
+
+    .
+
+[33mcommit 4b833bd48f3e8e1277b0bb5355a737980d4adf9e[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 16:03:56 2022 +0900
+
+    계정 중복확인
+
+[33mcommit 9bc00e1db13d71c3a3db8db343a7d09801ecf99e[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 15:03:00 2022 +0900
+
+    surveyclass
+
+[33mcommit 17a8b7e94c42d68b6160b95a8330fb67f706cd78[m
+Merge: 61cd102 9a99412
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 15:02:21 2022 +0900
+
+    Merge branch 'develop' into cho
+    
+    # Conflicts:
+    #       target/classes/Pack01/SurveyController.class
+
+[33mcommit 9a9941268c1095264ded3024358c55ea882926b6[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 15:01:20 2022 +0900
+
+    class가 많이 생김
+
+[33mcommit 76134c949a771e09f5b21b17f65e632bca98bed9[m
+Merge: 2c52739 05229fe
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 15:00:56 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into yein
+
+[33mcommit 05229fe6de93552b8c2cb2aaeee7eb75d9ebb737[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 14:59:17 2022 +0900
+
+    user pack
+
+[33mcommit 315ca82a3e9271ba5c1aae44ae62d90196d9b473[m
+Merge: 1982838 0337509
+Author: yeinheo <41954336+YeinHeo@users.noreply.github.com>
+Date:   Fri Mar 11 14:54:20 2022 +0900
+
+    Merge pull request #10 from ChoYeongwoo0322/yein
+    
+    create DAO DTO
+
+[33mcommit 2c527390e8c308693a0c7add46f9a9e64c7dffac[m
+Merge: 0337509 1982838
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 14:53:49 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into yein
+
+[33mcommit 3b1986aee06fdce12f8eaff0413f5bfc0801f293[m
+Merge: 5ba31c6 1982838
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 14:53:35 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into develop
+
+[33mcommit 61cd10253ae003a12f9ea26577e98b89575dce9f[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 14:53:33 2022 +0900
+
+    ？？
+
+[33mcommit 0337509afea6196988afde6e6752d4b84177144a[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 14:53:11 2022 +0900
+
+    create DAO DTO
+
+[33mcommit 198283845f5125f5497c84a9b2bdddf82309e94d[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 14:47:21 2022 +0900
+
+    ??
+
+[33mcommit 637c9dee016d928d86c72e873da3b3b834ab42cc[m
+Merge: d8bbeb4 7c0d987
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 14:46:39 2022 +0900
+
+    Merge branch 'develop' into seonho
+
+[33mcommit 7c0d98709ef2845e669a43c5591ed0975add6e13[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 14:33:59 2022 +0900
+
+    signup.jsp
+
+[33mcommit d8bbeb48435b87eaa2d0356bab4b8889b61569dd[m
+Merge: 66cc513 0892c62
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 14:29:42 2022 +0900
+
+    test
+
+[33mcommit 5ba31c6ba60cb0e0e9dca910967aa5677386025d[m
+Merge: b7585bf 0892c62
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 14:24:12 2022 +0900
+
+    Merge branch 'develop' of https://github.com/ChoYeongwoo0322/bit_MVC into develop
+
+[33mcommit 66cc5133ecb4862be5cbe8e4bc22bea23f796a33[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 14:20:12 2022 +0900
+
+    login page
+
+[33mcommit 0892c6218b68058111382faa513d62f48b19bfa3[m
+Merge: 0bd3ee6 a076100
+Author: Yeongwoo <77479615+ChoYeongwoo0322@users.noreply.github.com>
+Date:   Fri Mar 11 14:18:02 2022 +0900
+
+    Merge pull request #8 from ChoYeongwoo0322/cho
+    
+    Cho
+
+[33mcommit a0761001ad8c4c8f334b87581479b53f606dda7a[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 14:17:03 2022 +0900
+
+    db연결
+
+[33mcommit 823401bceb55c81c2aaf437fe127b47dba911d78[m
+Merge: fb6c890 0bd3ee6
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 11:20:00 2022 +0900
+
+    Merge branch 'develop' into cho
+
+[33mcommit b7585bf37fd68983bd318c480b922f414805f005[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: b3917c4 0bd3ee6
+Author: yeinheo <41954336+YeinHeo@users.noreply.github.com>
+Date:   Fri Mar 11 11:18:38 2022 +0900
+
+    Merge pull request #5 from ChoYeongwoo0322/develop
+    
+    Develop
+
+[33mcommit 0bd3ee685e430a69b4df72d7ca9f6fb93039b93a[m
+Merge: f064482 0e9e453
+Author: yeinheo <41954336+YeinHeo@users.noreply.github.com>
+Date:   Fri Mar 11 11:18:23 2022 +0900
+
+    Merge pull request #4 from ChoYeongwoo0322/yein
+    
+    connctionDB Autowired
+
+[33mcommit 0e9e4535a445195a7a311a2e720430510d70ddd8[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 11:17:49 2022 +0900
+
+    connctionDB Autowired
+
+[33mcommit 9279a1eeadbe5d601b061f4eccc5e286b5987591[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 11:11:14 2022 +0900
+
+    reset
+
+[33mcommit fb6c89087b0cc516d2a0ff28cfef58793105a369[m
+Merge: 54d5776 f064482
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 11:11:02 2022 +0900
+
+    Merge branch 'develop' into cho
+
+[33mcommit 54d5776054bf8552611a617e7d1dded9b79cee0c[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 11:09:42 2022 +0900
+
+    connection DB
+
+[33mcommit b3917c4aa7b2982aaebb321c79931d15aa1dd4b8[m
+Author: yeinheo <41954336+YeinHeo@users.noreply.github.com>
+Date:   Fri Mar 11 11:08:32 2022 +0900
+
+    Update .gitignore
+
+[33mcommit c7748de87c9e4fbd2f12a87a430aae6dbd909947[m[33m ([m[1;31morigin/jiyeon[m[33m)[m
+Merge: da521fd f064482
+Author: 지연 <jiueon6@gmail.com>
+Date:   Fri Mar 11 11:06:56 2022 +0900
+
+    Merge branch 'develop' into jiyeon
+
+[33mcommit f0644822858389e3fd17b090f85581b6a21fc2e8[m
+Merge: 7e58290 e55c004
+Author: soswa <33311535+soswa@users.noreply.github.com>
+Date:   Fri Mar 11 10:54:29 2022 +0900
+
+    Merge pull request #3 from ChoYeongwoo0322/donghyun
+    
+    git push test
+
+[33mcommit e55c00434a626123efd284c63d287eb73640376c[m[33m ([m[1;31morigin/donghyun[m[33m)[m
+Merge: f888bbc 7e58290
+Author: soswa <33311535+soswa@users.noreply.github.com>
+Date:   Fri Mar 11 10:54:18 2022 +0900
+
+    Merge branch 'develop' into donghyun
+
+[33mcommit 2242cc04b162156433dddf80d40518523214d14c[m
+Author: bangseonho <roomseonho@gmail.com>
+Date:   Fri Mar 11 10:53:18 2022 +0900
+
+    update xml
+
+[33mcommit f888bbcae22c736a3ab74e406dd89f5477061ab1[m
+Author: soswa <sksaaa00@daum.net>
+Date:   Fri Mar 11 10:49:44 2022 +0900
+
+    git push test
+
+[33mcommit 7e582909260173f18d6f90df4d8fe9ce95f927d5[m
+Merge: 6bffcf6 da521fd
+Author: JiYeon <42603254+LimJiYeonn@users.noreply.github.com>
+Date:   Fri Mar 11 10:48:01 2022 +0900
+
+    Merge pull request #2 from ChoYeongwoo0322/jiyeon
+    
+    git test
+
+[33mcommit da521fde156cf4c06f704b0913be7fc5e6271eb5[m
+Author: 지연 <jiueon6@gmail.com>
+Date:   Fri Mar 11 10:46:59 2022 +0900
+
+    git test
+
+[33mcommit be54979ddc00beed80aee7d9ce6bc505e8040ee3[m
+Author: YeongwooCho <choyeongwoo.s@gmail.com>
+Date:   Fri Mar 11 10:42:44 2022 +0900
+
+    초기설정
+
+[33mcommit 6bffcf6de5a66e789f3ad5660ad21a6c9c749392[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 10:34:08 2022 +0900
+
+    add all
+
+[33mcommit 52647dff3ceb89e71378a4e32648c8a49dd39e74[m
+Merge: 3e8e89a c64fd6f
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 10:23:51 2022 +0900
+
+    Merge branch 'master' of https://github.com/ChoYeongwoo0322/bit_MVC
+
+[33mcommit 3e8e89a8ef2ec9e313374327fb23f0cbaf2092ea[m
+Author: YeinHeo <yeinheo95@gmail.com>
+Date:   Fri Mar 11 10:19:32 2022 +0900
+
+    db connection
+
+[33mcommit c64fd6f905ccd20c673c736a1f9d5c3011afead2[m
+Author: bangseonho <37283474+bangseonho@users.noreply.github.com>
+Date:   Fri Mar 11 10:02:43 2022 +0900
+
+    Update README.md
+    
+    first
+
+[33mcommit ec25735330080f51190e37740ea1195af2dec85c[m
+Author: Yeongwoo <77479615+ChoYeongwoo0322@users.noreply.github.com>
+Date:   Fri Mar 11 09:48:24 2022 +0900
+
+    Initial commit
