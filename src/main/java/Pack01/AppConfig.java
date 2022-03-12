@@ -21,8 +21,8 @@ public class AppConfig {
    ResultDAO resultDAO() {
       return new ResultDAO();
    }
-   @Bean
-   QuestionDAO questionDAO() {
-	   return new QuestionDAO();
-   }
+//   @Bean
+//   QuestionDAO questionDAO() {
+//	   return new QuestionDAO();
+//   }
 }
