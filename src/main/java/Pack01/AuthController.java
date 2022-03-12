@@ -68,10 +68,8 @@ public class AuthController {
 
 		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
 		if (a) {
-			// �꽭�뀡媛� ���옣�븯湲�
 			session.setAttribute("user_name", user.getName());
 			session.setAttribute("user_code", user.getCode());
-			// �꽭�뀡�떆媛� �꽕�젙(珥덈떒�쐞)
 			session.setMaxInactiveInterval(30 * 60);
 		}else {
 			try {
