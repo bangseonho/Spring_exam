@@ -3,6 +3,7 @@ package Pack01;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import Manager.ManagerDAO;
 import Question.QuestionDAO;
 import User.UserDAO;
 import Result.ResultDAO;
@@ -25,4 +26,9 @@ public class AppConfig {
    QuestionDAO questionDAO() {
 	   return new QuestionDAO();
    }
+   @Bean
+   ManagerDAO managerDAO() {
+	   return new ManagerDAO();
+   }
+   
 }

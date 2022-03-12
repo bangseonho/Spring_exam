@@ -1,5 +1,8 @@
+<%@page import="java.util.LinkedList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="Manager.ManagerController"%>
+<%@ page import="User.UserDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,7 @@ body {
 	
 }
 
-.title-group{
+.title-group {
 	text-align: center;
 }
 
@@ -22,6 +25,7 @@ body {
 }
 
 .left-side {
+	
 }
 
 #user-list {
@@ -60,9 +64,14 @@ footer {
 
 </head>
 <body>
-	<div class="title-group"><label>회원 관리</label></div>
+	<div class="title-group">
+		<label>회원 관리</label>
+	</div>
 	<div class="total-group">
-
+		<%
+		@SuppressWarnings("unchecked")
+		LinkedList<UserDTO> listUser = (LinkedList<UserDTO>)request.getAttribute("listUser");
+		 %>
 		<!-- 좌측. 문제 목록 -->
 		<div class="left-side">
 			<table id="user-list">
@@ -71,18 +80,16 @@ footer {
 						<td>번호</td>
 						<td>이름</td>
 						<td>생년월일</td>
-						<td>점수</td>
-						<td>참여일</td>
+						<td>수험번호</td>
 						<td></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>홍길동</td>
-						<td>929292</td>
-						<td>50</td>
-						<td>2022-03-11</td>
+						<td><% out.println(listUser.get(1).getName()); %></td>
+						<td><% out.println(listUser.get(1).getBirth()); %></td>
+						<td><% out.println(listUser.get(1).getCode()); %></td>
 						<td><a href="">삭제</a></td>
 					</tr>
 					<tr>
@@ -90,7 +97,6 @@ footer {
 						<td>홍길동</td>
 						<td>929292</td>
 						<td>50</td>
-						<td>2022-03-11</td>
 						<td><a href="">삭제</a></td>
 					</tr>
 					<tr>
@@ -98,109 +104,20 @@ footer {
 						<td>홍길동</td>
 						<td>929292</td>
 						<td>50</td>
-						<td>2022-03-11</td>
 						<td><a href="">삭제</a></td>
 					</tr>
 				</tbody>
 			</table>
 			<script>
-			
-			
+				
 			</script>
 		</div>
-
-		<!-- 우측. 문제 내용 -->
-		<div class="right-side">
-			<div class="survey-group">
-				<div>
-					<label class="content-title">문제</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>보기1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>보기2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>보기3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>보기4</label>
-					</div>
-				</div>
-			</div>
-
-
-
-			<!-- 예시용 코드 -->
-
-			<div class="survey-group">
-				<div>
-					<label class="content-title">문제</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>보기1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>보기2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>보기3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>보기4</label>
-					</div>
-				</div>
-			</div>
-
-
-
-
-			<div class="survey-group">
-				<div>
-					<label class="content-title">문제</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>보기1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>보기2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>보기3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>보기4</label>
-					</div>
-				</div>
-			</div>
-			<!-- 예시용 코드 -->
-
-
-
-		</div>
-
-
 	</div>
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">메인으로 이동</button>
-	</div>	
+		<button onclick="location='PageMove?page=ManagerMainView'">메인으로
+			이동</button>
+	</div>
 </footer>
 </html>
