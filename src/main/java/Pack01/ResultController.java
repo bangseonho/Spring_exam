@@ -20,8 +20,10 @@ public class ResultController {
 
 		ResultDAO resultDAO = new ResultDAO(); //select 결과쿼리
 		
-		try {
-			model.addAttribute("rs", resultDAO.resultAnswer());
+		try {			
+			model.addAttribute("rs2", resultDAO.resultAllCount());
+			model.addAttribute("rs3", resultDAO.resultCollectCount());
+			model.addAttribute("rs1", resultDAO.resultAnswer());
 		}catch(Exception e){
 			System.out.println("ȸ������ ����");
 		}
