@@ -12,7 +12,7 @@
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
 
 body{
-  background: #4d4d4d;
+  background: hsl(220, 10%, 12%);
   margin:0;
 }
 
@@ -169,7 +169,7 @@ input{
 	<div class="container">
 		<div class="welcome">
 			<h4 class="bold welcome-text">아무도 물어보지 않은 TMI</h4>
-			<p>풀어줘요 냉큼</p>
+			<p>가입해줘유 냉큼</p>
 		</div>
 		<div class="form">
 			<h4 class="bold title">Create Account</h4>
