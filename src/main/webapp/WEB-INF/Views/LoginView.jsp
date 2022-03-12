@@ -178,8 +178,9 @@ input{
 				<button onclick="location.href='result'">ResultView</button>
 				<br />
 				<button onclick="location.href='PageMove?page=MainView'">ResultView</button>
-				<br />
-				<button onclick="location.href='PageMove?page=ManagerMainView'">manager Page</button>
+
+				<button onclick="location.href='ManagerController'">Manager</button>
+			
 			</form>
 		</div>
 	</div>
