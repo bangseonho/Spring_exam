@@ -7,6 +7,8 @@
 <head>
 <title>메인 페이지</title>
 <style>
+
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */

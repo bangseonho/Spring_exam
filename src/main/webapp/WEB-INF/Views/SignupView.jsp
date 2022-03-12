@@ -4,7 +4,7 @@
 <%@ page import="java.util.*, java.text.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<head>
+
 <meta charset="UTF-8">
 <title>메인 페이지</title>
 <style>
@@ -163,6 +163,7 @@ input{
 	margin-top:20px;
 }
 </style>
+
 </head>
 
 <body>
