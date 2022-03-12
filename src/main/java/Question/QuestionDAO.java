@@ -10,24 +10,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import Pack01.ConnectionDB;
 
 public class QuestionDAO {
-	@Autowired
-	ConnectionDB conn1;
+   @Autowired
+   static
+   ConnectionDB conn1;
 
+<<<<<<< HEAD
 //	@Autowired
 //	QuestionDTO questionDTO;
+=======
+   @Autowired
+   QuestionDTO questionDTO;
+>>>>>>> f795fcb14c30e440c71911bdf029fda2934b2b74
 
-	@SuppressWarnings("null")
-	public ResultSet getQuestion() throws Exception {
-		String sql = "SELECT * from question order by rand() limit 5;";
-		try {
-			@SuppressWarnings("static-access")
-			Connection conn = conn1.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			return rs;
+   @SuppressWarnings("null")
+   public static ResultSet getQuestion() throws Exception {
+      String sql = "SELECT * from question order by rand() limit 5;";
+      try {
+         @SuppressWarnings("static-access")
+         Connection conn = conn1.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery();
+         return rs;
 
-		} catch (Exception e) {
-			throw new Exception("QuestionDAO.java occured error");
-		}
-	}
+      } catch (Exception e) {
+         throw new Exception("QuestionDAO.java occured error");
+      }
+   }
 }
