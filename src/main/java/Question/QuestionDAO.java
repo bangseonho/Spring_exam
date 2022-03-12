@@ -13,8 +13,8 @@ public class QuestionDAO {
 	@Autowired
 	ConnectionDB conn1;
 
-	@Autowired
-	QuestionDTO questionDTO;
+//	@Autowired
+//	QuestionDTO questionDTO;
 
 	@SuppressWarnings("null")
 	public ResultSet getQuestion() throws Exception {
