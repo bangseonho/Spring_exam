@@ -21,9 +21,12 @@
 </head>
 <body>
 	<div>
-		<label><input type="radio" value="1" />1 </label> <label> <input
-			type="radio" value="2" />2
-		</label> <label> <input type="radio" value="3" />3
+		<label>
+		<input type="radio" value="1" />1</label>
+		<label>
+		<input type="radio" value="2" />2
+		</label>
+		<label><input type="radio" value="3" />3
 		</label> <label> <input type="radio" value="4" />4
 		</label>
 	</div>
