@@ -1,3 +1,5 @@
+<%@page import="Question.QuestionDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -59,6 +61,11 @@ footer{
 
 </head>
 <body>
+	<%
+	ArrayList<QuestionDTO> questionList = 
+		(ArrayList<QuestionDTO>)request.getAttribute("questionList");
+	
+	%>
 	<div class="title-group"><label>문제 관리</label></div>
 	<div class="total-group">
 	
