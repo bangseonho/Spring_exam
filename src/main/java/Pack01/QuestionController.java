@@ -18,11 +18,10 @@ import Question.QuestionDTO;
 @Controller
 public class QuestionController implements HttpSessionBindingListener {
 	@Autowired
-	QuestionDTO questionDTO;
+	QuestionDAO questionDAO;
 
 	@RequestMapping("/getQuestion")
 	public String f1(Model model, ResultSet rs) {
-
 		return "QuestionFormView";
 	}
 
@@ -44,9 +43,7 @@ public class QuestionController implements HttpSessionBindingListener {
 			no++;
 			System.out.println(session.getAttribute(Integer.toString(no)));
 		}
-
 		int cnt = 0;
-
 		return "QuestionFormView";
 	}
 
