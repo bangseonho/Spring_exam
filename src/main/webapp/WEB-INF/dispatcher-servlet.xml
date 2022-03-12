@@ -13,9 +13,10 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 		<!-- 컨트롤러 위치 설정 : 자바코드가 있는 위치-->
 		<context:component-scan base-package="Pack01" />
+		<context:component-scan base-package="Manager" />
 		<mvc:annotation-driven />
 		<mvc:default-servlet-handler />
-
+		
 		<!-- 뷰 위치 설정 : JSP가 있는 위치-->
 		<mvc:view-resolvers>
 				<mvc:jsp prefix="/WEB-INF/Views/" />
