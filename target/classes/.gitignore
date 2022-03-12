@@ -1,12 +1,34 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Result/
+=======
+<<<<<<< HEAD
+/User/
+=======
+/Pack01/
+/Manager/
+<<<<<<< HEAD
+>>>>>>> develop
+/Result/
+=======
+/Result/
+/Question/
+>>>>>>> develop
+>>>>>>> develop
 =======
 /Manager/
 /Pack01/
 /Question/
+<<<<<<< HEAD
+/User/
+=======
 /Result/
 /User/
 .gitignore
 .classpath
 .project
+<<<<<<< HEAD
+=======
+>>>>>>> e1fbb840e485e7b9d50941414057753d51d90e90
+>>>>>>> develop
 >>>>>>> develop

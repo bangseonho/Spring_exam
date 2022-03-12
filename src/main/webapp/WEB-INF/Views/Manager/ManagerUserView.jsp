@@ -1,16 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="java.util.LinkedList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="Manager.ManagerController"%>
+<%@ page import="User.UserDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Âü¿©ÀÚ °ü¸® ÆäÀÌÁö</title>
+<meta charset="utf-8">
+<title>ì°¸ì—¬ìž ê´€ë¦¬ íŽ˜ì´ì§€</title>
 <style>
 body {
 	
 }
 
-.title-group{
+.title-group {
 	text-align: center;
 }
 
@@ -22,6 +25,7 @@ body {
 }
 
 .left-side {
+	
 }
 
 #user-list {
@@ -60,147 +64,60 @@ footer {
 
 </head>
 <body>
-	<div class="title-group"><label>È¸¿ø °ü¸®</label></div>
+	<div class="title-group">
+		<label>íšŒì› ê´€ë¦¬</label>
+	</div>
 	<div class="total-group">
-
-		<!-- ÁÂÃø. ¹®Á¦ ¸ñ·Ï -->
+		<%
+		@SuppressWarnings("unchecked")
+		LinkedList<UserDTO> listUser = (LinkedList<UserDTO>)request.getAttribute("listUser");
+		 %>
+		<!-- ì¢Œì¸¡. ë¬¸ì œ ëª©ë¡ -->
 		<div class="left-side">
 			<table id="user-list">
 				<thead>
 					<tr>
-						<td>¹øÈ£</td>
-						<td>ÀÌ¸§</td>
-						<td>»ý³â¿ùÀÏ</td>
-						<td>Á¡¼ö</td>
-						<td>Âü¿©ÀÏ</td>
+						<td>ë²ˆí˜¸</td>
+						<td>ì´ë¦„</td>
+						<td>ìƒë…„ì›”ì¼</td>
+						<td>ìˆ˜í—˜ë²ˆí˜¸</td>
 						<td></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>È«±æµ¿</td>
-						<td>929292</td>
-						<td>50</td>
-						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><% out.println(listUser.get(1).getName()); %></td>
+						<td><% out.println(listUser.get(1).getBirth()); %></td>
+						<td><% out.println(listUser.get(1).getCode()); %></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 					<tr>
 						<td>2</td>
-						<td>È«±æµ¿</td>
+						<td>í™ê¸¸ë™</td>
 						<td>929292</td>
 						<td>50</td>
-						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 					<tr>
 						<td>3</td>
-						<td>È«±æµ¿</td>
+						<td>í™ê¸¸ë™</td>
 						<td>929292</td>
 						<td>50</td>
-						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 				</tbody>
 			</table>
 			<script>
-			
-			
+				
 			</script>
 		</div>
-
-		<!-- ¿ìÃø. ¹®Á¦ ³»¿ë -->
-		<div class="right-side">
-			<div class="survey-group">
-				<div>
-					<label class="content-title">¹®Á¦</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
-					</div>
-				</div>
-			</div>
-
-
-
-			<!-- ¿¹½Ã¿ë ÄÚµå -->
-
-			<div class="survey-group">
-				<div>
-					<label class="content-title">¹®Á¦</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
-					</div>
-				</div>
-			</div>
-
-
-
-
-			<div class="survey-group">
-				<div>
-					<label class="content-title">¹®Á¦</label>
-				</div>
-				<div>
-					<div>
-						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
-					</div>
-
-					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
-					</div>
-				</div>
-			</div>
-			<!-- ¿¹½Ã¿ë ÄÚµå -->
-
-
-
-		</div>
-
-
 	</div>
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">¸ÞÀÎÀ¸·Î ÀÌµ¿</button>
-	</div>	
+		<button onclick="location='PageMove?page=ManagerMainView'">ë©”ì¸ìœ¼ë¡œ
+			ì´ë™</button>
+	</div>
 </footer>
 </html>
