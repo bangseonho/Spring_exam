@@ -104,11 +104,22 @@ public class UserDAO {
 		}
 	}
 
+	public void allUser() {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		
+		try {
+			String sql = "select * from user;";
+			psmt = conn.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			while(rs.next()) {
+				
+			}
+		} catch(Exception e) {System.out.println("error");}
+		
 	
+	}
 	
-	
-	
-	
-	
+		
 	
 }
