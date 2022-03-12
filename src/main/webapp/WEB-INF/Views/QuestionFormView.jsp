@@ -229,15 +229,16 @@ button:hover .button-text {
 			}
 			System.out.println();
 		}
+		int no=0;
 	%>
 	<div class="container1">
-		<form method="POST" action="submitQuestion21">
-			<div><span><%= lst.get(0).get(1)%></span></div>
-			<div><span>About <%= lst.get(0).get(0)%></span></div>
-			<label><input type="radio" name="radio" checked  value="1"/> <span><%= lst.get(0).get(2)%></span>
-			</label> <label><input type="radio" name="radio" value="2"/> <span><%= lst.get(0).get(3)%></span>
-			</label> <label><input type="radio" name="radio" value="3"/> <span><%= lst.get(0).get(4)%></span>
-			</label> <label><input type="radio" name="radio" value="4"/> <span><%= lst.get(0).get(5)%></span>
+		<form method="POST" action="reviewQuestion?no={no}}">
+			<div><span><%= lst.get(no).get(1)%></span></div>
+			<div><span>About <%= lst.get(no).get(6)%></span></div>
+			<label><input type="radio" name="radio" checked  value="1"/> <span><%= lst.get(no).get(2)%></span>
+			</label> <label><input type="radio" name="radio" value="2"/> <span><%= lst.get(no).get(3)%></span>
+			</label> <label><input type="radio" name="radio" value="3"/> <span><%= lst.get(no).get(4)%></span>
+			</label> <label><input type="radio" name="radio" value="4"/> <span><%= lst.get(no).get(5)%></span>
 			</label>
 
 			<div class="btns">

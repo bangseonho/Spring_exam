@@ -50,5 +50,9 @@ public class QuestionController implements HttpSessionBindingListener {
 //		int cnt = 0;
 		return "QuestionFormView";
 	}
-
+	@RequestMapping("/reviewQuestion")
+	public String f3() {
+		
+		return "QuestionFormView";
+	}
 }
