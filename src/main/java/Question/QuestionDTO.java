@@ -8,6 +8,18 @@ public class QuestionDTO {
 	String four;
 	String answer;
 	String who;
+	
+	public QuestionDTO() {};
+	
+	public QuestionDTO(String phrase, String one, String two, String three, String four, String answer, String who) {
+		this.phrase = phrase;
+		this.one    = one;   
+		this.two	= two;
+		this.three	= three;
+		this.four   = four;
+		this.answer = answer;
+		this.who    = who;
+	}
 
 	public String getPhrase() {
 		return phrase;
@@ -65,4 +77,10 @@ public class QuestionDTO {
 		this.who = who;
 	}
 
+	@Override
+	public String toString() {
+		return "QuestionDTO [phrase=" + phrase + ", one=" + one + ", two=" + two + ", three=" + three + ", four=" + four
+				+ ", answer=" + answer + ", who=" + who + "]";
+	}
+	
 }

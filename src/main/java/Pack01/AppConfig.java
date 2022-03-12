@@ -27,8 +27,7 @@ public class AppConfig {
 	   return new QuestionDAO();
    }
    @Bean
-   ManagerDAO managerDAO() {
+   ManagerDAO mangerDAO() {
 	   return new ManagerDAO();
    }
-   
 }

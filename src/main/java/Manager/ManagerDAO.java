@@ -26,4 +26,15 @@ public class ManagerDAO {
 		ResultSet rs = psmt.executeQuery();
 		return rs;
 	}
+
+	@SuppressWarnings("null")
+	public ResultSet getQuestions() throws Exception {
+		String sql = "SELECT * from question;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		return rs;
+	}
+
 }
