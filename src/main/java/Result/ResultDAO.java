@@ -19,7 +19,7 @@ public class ResultDAO {
 		
 			// String sql = "select * from result2 where code = "+ userCode;	
 			// String sql = "select id from question q";	 // id 1~8
-			String sql = "select r.code, q.id, q.phrase, q.one, q.two, q.three, q.four, r.choice, r.correct from question as q, result2 as r where q.id = r.question";		
+			String sql = "select r.code, q.id, q.phrase, q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct from question as q, result2 as r where q.id = r.question";		
 				
 
 			psmt = conn.prepareStatement(sql);
