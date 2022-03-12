@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Âü¿©ÀÚ °ü¸® ÆäÀÌÁö</title>
+<meta charset="utf-8">
+<title>ì°¸ì—¬ìž ê´€ë¦¬ íŽ˜ì´ì§€</title>
 <style>
 body {
 	
@@ -60,46 +60,46 @@ footer {
 
 </head>
 <body>
-	<div class="title-group"><label>È¸¿ø °ü¸®</label></div>
+	<div class="title-group"><label>íšŒì› ê´€ë¦¬</label></div>
 	<div class="total-group">
 
-		<!-- ÁÂÃø. ¹®Á¦ ¸ñ·Ï -->
+		<!-- ì¢Œì¸¡. ë¬¸ì œ ëª©ë¡ -->
 		<div class="left-side">
 			<table id="user-list">
 				<thead>
 					<tr>
-						<td>¹øÈ£</td>
-						<td>ÀÌ¸§</td>
-						<td>»ý³â¿ùÀÏ</td>
-						<td>Á¡¼ö</td>
-						<td>Âü¿©ÀÏ</td>
+						<td>ë²ˆí˜¸</td>
+						<td>ì´ë¦„</td>
+						<td>ìƒë…„ì›”ì¼</td>
+						<td>ì ìˆ˜</td>
+						<td>ì°¸ì—¬ì¼</td>
 						<td></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>1</td>
-						<td>È«±æµ¿</td>
+						<td>í™ê¸¸ë™</td>
 						<td>929292</td>
 						<td>50</td>
 						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 					<tr>
 						<td>2</td>
-						<td>È«±æµ¿</td>
+						<td>í™ê¸¸ë™</td>
 						<td>929292</td>
 						<td>50</td>
 						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 					<tr>
 						<td>3</td>
-						<td>È«±æµ¿</td>
+						<td>í™ê¸¸ë™</td>
 						<td>929292</td>
 						<td>50</td>
 						<td>2022-03-11</td>
-						<td><a href="">»èÁ¦</a></td>
+						<td><a href="">ì‚­ì œ</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -109,56 +109,56 @@ footer {
 			</script>
 		</div>
 
-		<!-- ¿ìÃø. ¹®Á¦ ³»¿ë -->
+		<!-- ìš°ì¸¡. ë¬¸ì œ ë‚´ìš© -->
 		<div class="right-side">
 			<div class="survey-group">
 				<div>
-					<label class="content-title">¹®Á¦</label>
+					<label class="content-title">ë¬¸ì œ</label>
 				</div>
 				<div>
 					<div>
 						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
+						<label>ë³´ê¸°1</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
+						<input type="radio" name="answer" value="2" disabled> <label>ë³´ê¸°2</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
+						<input type="radio" name="answer" value="3" disabled> <label>ë³´ê¸°3</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
+						<input type="radio" name="answer" value="4" disabled> <label>ë³´ê¸°4</label>
 					</div>
 				</div>
 			</div>
 
 
 
-			<!-- ¿¹½Ã¿ë ÄÚµå -->
+			<!-- ì˜ˆì‹œìš© ì½”ë“œ -->
 
 			<div class="survey-group">
 				<div>
-					<label class="content-title">¹®Á¦</label>
+					<label class="content-title">ë¬¸ì œ</label>
 				</div>
 				<div>
 					<div>
 						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
+						<label>ë³´ê¸°1</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
+						<input type="radio" name="answer" value="2" disabled> <label>ë³´ê¸°2</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
+						<input type="radio" name="answer" value="3" disabled> <label>ë³´ê¸°3</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
+						<input type="radio" name="answer" value="4" disabled> <label>ë³´ê¸°4</label>
 					</div>
 				</div>
 			</div>
@@ -168,28 +168,28 @@ footer {
 
 			<div class="survey-group">
 				<div>
-					<label class="content-title">¹®Á¦</label>
+					<label class="content-title">ë¬¸ì œ</label>
 				</div>
 				<div>
 					<div>
 						<input type="radio" name="answer" value="1" disabled checked>
-						<label>º¸±â1</label>
+						<label>ë³´ê¸°1</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="2" disabled> <label>º¸±â2</label>
+						<input type="radio" name="answer" value="2" disabled> <label>ë³´ê¸°2</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="3" disabled> <label>º¸±â3</label>
+						<input type="radio" name="answer" value="3" disabled> <label>ë³´ê¸°3</label>
 					</div>
 
 					<div>
-						<input type="radio" name="answer" value="4" disabled> <label>º¸±â4</label>
+						<input type="radio" name="answer" value="4" disabled> <label>ë³´ê¸°4</label>
 					</div>
 				</div>
 			</div>
-			<!-- ¿¹½Ã¿ë ÄÚµå -->
+			<!-- ì˜ˆì‹œìš© ì½”ë“œ -->
 
 
 
@@ -200,7 +200,7 @@ footer {
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">¸ÞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='PageMove?page=ManagerMainView'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>	
 </footer>
 </html>
