@@ -7,13 +7,6 @@
 <head>
 <title>메인 페이지</title>
 <style>
-/* 
-    ================================
-        Best Viewed In Full Page
-    ================================
-*/
-
-/* Hover over a card to flip, can tab too. */
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
