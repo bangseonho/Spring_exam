@@ -19,14 +19,13 @@ public class QuestionController implements HttpSessionBindingListener {
 	@Autowired
 	QuestionDAO questionDAO;
 
-//	@RequestMapping("/getQuestion")
-//	public String f1(Model model, ResultSet rs) {
-//
-//		return "QuestionFormView";
-//	}
+	//	@RequestMapping("/getQuestion")
+	//	public String f1(Model model, ResultSet rs) {
+	//		return "QuestionFormView";
+	//	}
 
 	@RequestMapping("/questionform")
-	public String f2(HttpSession session) throws Exception {
+	public String f2(Model model, HttpSession session) throws Exception {
 		ResultSet rs = questionDAO.getQuestion();
 		int no = 0;
 		while (rs.next()) {
@@ -43,9 +42,8 @@ public class QuestionController implements HttpSessionBindingListener {
 			no++;
 			System.out.println(session.getAttribute(Integer.toString(no)));
 		}
-		
-		int cnt = 0;
 
+		int cnt = 0;
 		return "QuestionFormView";
 	}
 
