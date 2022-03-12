@@ -10,8 +10,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -217,13 +217,6 @@ button:hover .button-text {
 	margin-top: 30px;
 }
 /*  */
-/* 
-    ================================
-        Best Viewed In Full Page
-    ================================
-*/
-
-/* Hover over a card to flip, can tab too. */
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
@@ -239,10 +232,9 @@ button:hover .button-text {
 /* body */
 body {
   min-height: 100vh;
-  padding: 40px;
-
+  padding: 20px;
   display: flex;
-  flex-wrap: wrap;
+/*   flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -286,18 +278,15 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 24px;
-
-  background: var(--dark);
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
-
   backface-visibility: hidden;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align:center;
 }
 
 /* .card-front */
@@ -347,18 +336,16 @@ figcaption {
   letter-spacing: 2px;
   word-spacing: 6px;
   text-align: right;
-
   position: absolute;
   top: 0;
   right: 12px;
-
   color: var(--white-1);
   background: hsla(var(--hue), 25%, 10%, .5);
 }
 
 /* .img-bg */
 .img-bg {
-  background: hsla(var(--hue), 25%, 10%, .5);
+ /*  background: hsla(var(--hue), 25%, 10%, .5); */
 }
 
 .card-front .img-bg {
@@ -375,7 +362,7 @@ figcaption {
 
   width: 100%;
   height: 6px;
-  border: 1px solid var(--primary);
+  /* border: 1px solid var(--primary); */
   border-left-color: transparent;
   border-right-color: transparent;
 
@@ -438,150 +425,6 @@ li:not(:last-child)::after {
   background: currentColor;
   opacity: .2;
 }
-
-/* button */
-button {
-  font-family: inherit;
-  font-weight: bold;
-  color: var(--white-1);
-
-  letter-spacing: 2px;
-
-  padding: 9px 20px;
-  border: 1px solid var(--grey);
-  border-radius: 1000px;
-  background: transparent;
-  transition: .3s;
-
-  cursor: pointer;
-}
-
-button:hover,
-button:focus {
-  color: var(--primary);
-  background: hsla(var(--hue), 25%, 10%, .2);
-  border-color: currentColor;
-}
-
-button:active {
-  transform: translate(2px);
-}
-
-/* .design-container */
-.design-container {
-  --tr: 90;
-  --op: .5;
-
-  width: 100%;
-  height: 100%;
-
-  background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  pointer-events: none;
-}
-
-/* .design */
-.design {
-  display: block;
-
-  background: var(--grey);
-  position: absolute;
-
-  opacity: var(--op);
-  transition: .3s;
-}
-
-.design--1,
-.design--2,
-.design--3,
-.design--4 {
-  width: 1px;
-  height: 100%;
-}
-
-.design--1,
-.design--2 {
-  top: 0;
-  transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%))
-}
-
-.design--1 {
-  left: 20%;
-}
-
-.design--2 {
-  left: 80%;
-}
-
-.design--3,
-.design--4 {
-  bottom: 0;
-  transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
-}
-
-.design--3 {
-  left: 24%;
-}
-
-.design--4 {
-  left: 76%;
-}
-
-.design--5,
-.design--6,
-.design--7,
-.design--8 {
-  width: 100%;
-  height: 1px;
-}
-
-.design--5,
-.design--6 {
-  left: 0;
-  transform: translateX(calc((var(--tr) - (var(--tr) * 2)) * 1%));
-}
-
-.design--5 {
-  top: 41%;
-}
-
-.design--6 {
-  top: 59%;
-}
-
-.design--7,
-.design--8 {
-  right: 0;
-  transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
-}
-
-.design--7 {
-  top: 44%;
-}
-
-.design--8 {
-  top: 56%;
-}
-
-/* states */
-button:hover+.design-container,
-button:active+.design-container,
-button:focus+.design-container {
-  --tr: 20;
-  --op: .7;
-}
-
-.abs-site-link {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  color: hsla(0, 0%, 100%, .6);
-  font-size: 16px;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-}
 /*  */
 </style>
 </head>
@@ -596,81 +439,61 @@ button:focus+.design-container {
 	}
 	int no = 3;
 	%>
-	<div class="container1">
-		<form method="POST" action="reviewQuestion?no=${no}">
-			<div>
-				<span><%=lst.get(no).get(1)%></span>
-			</div>
-			<div>
-				<span>About <%=lst.get(no).get(7)%></span>
-			</div>
-			<label><input type="radio" name="radio" checked value="1" />
-				<span><%=lst.get(no).get(2)%></span> </label> <label><input
-				type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
-			</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
-			</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
-			</label>
-			<div class="btns">
-				<button class="learn-more">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Back</span>
-				</button>
-				<button class="learn-more">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Next</span>
-				</button>
-			</div>
-		</form>
-	</div>
-	<hr>
-	<!-- flip-card-container -->
-	<!-- <div class="flip-card-container" style="-hue: 220">
+	<%
+		for(int i = 0; i < lst.size(); i++){
+	%>
+	<div class="flip-card-container" style="-hue: 220">
 		<div class="flip-card">
 
 			<div class="card-front">
 				<figure>
 					<div class="img-bg"></div>
 					<img
-						src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+						src="https://www.sciencetimes.co.kr/wp-content/uploads/2018/10/fc08a3_ecc89ba4706a4199a9a51be9500037d0mv2_d_1754_2480_s_2.jpg"
 						alt="Brohm Lake">
 					<figcaption>Brohm Lake</figcaption>
 				</figure>
 
-				<ul>
-					<li>Detail 1</li>
-					<li>Detail 2</li>
-					<li>Detail 3</li>
-					<li>Detail 4</li>
-					<li>Detail 5</li>
-				</ul>
 			</div>
 
 			<div class="card-back">
 				<figure>
 					<div class="img-bg"></div>
-					<img
-						src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-						alt="Brohm Lake">
+				
 				</figure>
 
-				<button>Book</button>
-
-				<div class="design-container">
-					<span class="design design--1"></span> <span
-						class="design design--2"></span> <span class="design design--3"></span>
-					<span class="design design--4"></span> <span
-						class="design design--5"></span> <span class="design design--6"></span>
-					<span class="design design--7"></span> <span
-						class="design design--8"></span>
-				</div>
+				<form method="POST" action="reviewQuestion?no=${no}">
+					<div>
+						<span><%=lst.get(i).get(1)%></span>
+					</div>
+					<div>
+						<span>About <%=lst.get(i).get(7)%></span>
+					</div>
+					<label><input type="radio" name="radio" checked value="1" />
+						<span><%=lst.get(i).get(2)%></span> </label> <label><input
+						type="radio" name="radio" value="2" /> <span><%=lst.get(i).get(3)%></span>
+					</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(i).get(4)%></span>
+					</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(i).get(5)%></span>
+					</label>
+					<div class="btns">
+<!-- 						<button class="learn-more">
+							<span class="circle" aria-hidden="true"> <span
+								class="icon arrow"></span>
+							</span> <span class="button-text">Back</span>
+						</button> -->
+						<button class="learn-more">
+							<span class="circle" aria-hidden="true"> <span
+								class="icon arrow"></span>
+							</span> <span class="button-text">저장하기</span>
+						</button>
+					</div>
+				</form>
 			</div>
-
 		</div>
-	</div> -->
-	<!-- /flip-card-container -->
-	
+	</div>
+	<%
+		}
+	%>
    <script type="text/javascript"> 
 
    </script> 
