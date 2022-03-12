@@ -28,6 +28,7 @@ public class QuestionController implements HttpSessionBindingListener {
 	public String f2(Model model, HttpSession session) throws Exception {
 		ResultSet rs = questionDAO.getQuestion();
 		int no = 0;
+		ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
 		while (rs.next()) {
 			ArrayList<String> lst2 = new ArrayList<String>();
 			lst2.add(rs.getString("id"));
@@ -38,12 +39,15 @@ public class QuestionController implements HttpSessionBindingListener {
 			lst2.add(rs.getString("four"));
 			lst2.add(rs.getString("answer"));
 			lst2.add(rs.getString("who"));
-			session.setAttribute(Integer.toString(no), lst2);
-			no++;
-			System.out.println(session.getAttribute(Integer.toString(no)));
+			lst1.add(lst2);
+			model.addAttribute("questionList", lst1);
+//			model.addAttribute(Integer.toString(no), lst2);
+//			session.setAttribute(Integer.toString(no), lst2);
+//			no++;
+//			System.out.println(session.getAttribute(Integer.toString(no)));
 		}
-
-		int cnt = 0;
+		
+//		int cnt = 0;
 		return "QuestionFormView";
 	}
 

@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 /Result/
+=======
+/Manager/
+/Pack01/
+/Question/
+/Result/
+/User/
+.gitignore
+.classpath
+.project
+>>>>>>> develop
