@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import Question.QuestionDAO;
 import Question.QuestionDTO;
 
 @Controller
@@ -27,7 +28,7 @@ public class QuestionController implements HttpSessionBindingListener {
 
 	@RequestMapping("/questionform")
 	public String f2(HttpSession session) throws Exception {
-		ResultSet rs = QuestionController.getQuestion();
+		ResultSet rs = QuestionDAO.getQuestion();
 		int no = 0;
 		while (rs.next()) {
 			ArrayList<String> lst2 = new ArrayList<String>();
@@ -47,11 +48,6 @@ public class QuestionController implements HttpSessionBindingListener {
 		int cnt = 0;
 
 		return "QuestionFormView";
-	}
-
-	private static ResultSet getQuestion() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

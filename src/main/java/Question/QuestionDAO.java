@@ -11,13 +11,14 @@ import Pack01.ConnectionDB;
 
 public class QuestionDAO {
 	@Autowired
+	static
 	ConnectionDB conn1;
 
 	@Autowired
 	QuestionDTO questionDTO;
 
 	@SuppressWarnings("null")
-	public ResultSet getQuestion() throws Exception {
+	public static ResultSet getQuestion() throws Exception {
 		String sql = "SELECT * from question order by rand() limit 5;";
 		try {
 			@SuppressWarnings("static-access")
