@@ -18,41 +18,228 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+body {
+	
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+label {
+	display: flex;
+	cursor: pointer;
+	font-weight: 500;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 0.375em;
+}
+
+label input {
+	position: absolute;
+	left: -9999px;
+}
+
+label input:checked+span {
+	background-color: #d6d6e5;
+}
+
+label input:checked+span:before {
+	box-shadow: inset 0 0 0 0.4375em #00005c;
+}
+
+label span {
+	display: flex;
+	align-items: center;
+	padding: 0.375em 0.75em 0.375em 0.375em;
+	border-radius: 99em;
+	transition: 0.25s ease;
+}
+
+label span:hover {
+	background-color: #d6d6e5;
+}
+
+label span:before {
+	display: flex;
+	flex-shrink: 0;
+	content: "";
+	background-color: #fff;
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+	margin-right: 0.375em;
+	transition: 0.25s ease;
+	box-shadow: inset 0 0 0 0.125em #00005c;
+}
+
+.container1 {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	margin-top: 100px;
+}
+
+.container2 {
+	position: relative;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+
+* {
+	box-sizing: border-box;
+}
+
+*::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Mukta", sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	min-height: 100vh;
+	background: #f3f8fa;
+}
+
+button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	background: transparent;
+	padding: 0;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button.learn-more {
+	width: 12rem;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+button.learn-more .circle {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: relative;
+	display: block;
+	margin: 0;
+	width: 3rem;
+	height: 3rem;
+	background: #282936;
+	border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	left: 0.625rem;
+	width: 1.125rem;
+	height: 0.125rem;
+	background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+	position: absolute;
+	content: "";
+	top: -0.25rem;
+	right: 0.0625rem;
+	width: 0.625rem;
+	height: 0.625rem;
+	border-top: 0.125rem solid #fff;
+	border-right: 0.125rem solid #fff;
+	transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0.75rem 0;
+	margin: 0 0 0 1.85rem;
+	color: #282936;
+	font-weight: 700;
+	line-height: 1.6;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+button:hover .circle {
+	width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+	background: #fff;
+	transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+	color: #fff;
+}
+
+.btns {
+	margin-top: 30px;
+}
+</style>
 </head>
 <body>
-	<%
-	/* // session에 문제 저장
-	ResultSet rs = (ResultSet) request.getAttribute("questionsList");
-	int no = 0;
-	while (rs.next()) {
-		ArrayList<String> lst2 = new ArrayList<String>();
-		lst2.add(rs.getString("id"));
-		lst2.add(rs.getString("phrase"));
-		lst2.add(rs.getString("one"));
-		lst2.add(rs.getString("two"));
-		lst2.add(rs.getString("three"));
-		lst2.add(rs.getString("four"));
-		lst2.add(rs.getString("answer"));
-		lst2.add(rs.getString("who"));
-		session.setAttribute(Integer.toString(no), lst2);
-		no++;
-	}
-
-	int cnt = 0;
-	out.println(session.getAttribute(Integer.toString(cnt))); */
-	%>
-	<div>
-		<label><input type="radio" value="1" />1 </label> <label> <input
-			type="radio" value="2" />2
-		</label> <label> <input type="radio" value="3" />3
-		</label> <label> <input type="radio" value="4" />4
-		</label>
+	<div class="container1">
+		<form method="POST" action="submitQuestion21">
+			<label><input type="radio" name="radio" checked  value="1"/> <span>아침부터 에러를 만나서 화딱지가 난다</span>
+			</label> <label> <input type="radio" name="radio" value="2"/> <span>지금 당장 밖에 나가서 맛난거 먹고싶다</span>
+			</label> <label><input type="radio" name="radio" value="3"/> <span>금요일에 프로젝트를 주는 강사님이 원망스럽다</span>
+			</label> <label><input type="radio" name="radio" value="4"/> <span>주말도 못쉬게하는 비트...</span>
+			</label> <label><input type="radio" name="radio" value="5"/> <span>나도 쉴줄 아는데!!!!!</span>
+			</label>
+			<div class="btns">
+				<button class="learn-more">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Back</span>
+				</button>
+				<button class="learn-more">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Next</span>
+				</button>
+			</div>
+		</form>
 	</div>
-	<!-- <form method="GET" action="nextQuestion">
-		<input type="submit" value="BACK" />
-	</form>
-	<form method="GET" action="nextQuestion">
-		<input type="submit" value="NEXT" />
-	</form> -->
 </body>
 </html>

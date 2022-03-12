@@ -15,9 +15,8 @@ import User.UserDTO;
 @Controller
 public class ResultController {
 	
-	@RequestMapping("/ResultController")
+	@RequestMapping("/result")
 	public String form(Model model, ResultDTO result) {
-		System.out.println(123123);
 
 		ResultDAO resultDAO = new ResultDAO(); //select 결과쿼리
 		
