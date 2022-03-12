@@ -14,13 +14,9 @@ public class QuestionDAO {
    static
    ConnectionDB conn1;
 
-<<<<<<< HEAD
-//	@Autowired
-//	QuestionDTO questionDTO;
-=======
-   @Autowired
-   QuestionDTO questionDTO;
->>>>>>> f795fcb14c30e440c71911bdf029fda2934b2b74
+	/*   @Autowired
+	   QuestionDTO questionDTO;*/
+
 
    @SuppressWarnings("null")
    public static ResultSet getQuestion() throws Exception {
