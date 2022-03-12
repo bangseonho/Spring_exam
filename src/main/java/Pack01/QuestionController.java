@@ -20,10 +20,18 @@ public class QuestionController implements HttpSessionBindingListener {
 	@Autowired
 	QuestionDAO questionDAO;
 
+<<<<<<< HEAD
 	@RequestMapping("/getQuestion")
 	public String f1(Model model, ResultSet rs) {
 		return "QuestionFormView";
 	}
+=======
+//	@RequestMapping("/getQuestion")
+//	public String f1(Model model, ResultSet rs) {
+//
+//		return "QuestionFormView";
+//	}
+>>>>>>> develop
 
 	@RequestMapping("/questionform")
 	public String f2(HttpSession session) throws Exception {

@@ -7,6 +7,7 @@ public class QuestionDTO {
 	String three;
 	String four;
 	String answer;
+	String who;
 
 	public String getPhrase() {
 		return phrase;
@@ -54,6 +55,14 @@ public class QuestionDTO {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	public String getWho() {
+		return who;
+	}
+
+	public void setWho(String who) {
+		this.who = who;
 	}
 
 }
