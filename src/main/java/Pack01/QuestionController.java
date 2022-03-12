@@ -19,11 +19,11 @@ public class QuestionController implements HttpSessionBindingListener {
 	@Autowired
 	QuestionDAO questionDAO;
 
-	@RequestMapping("/getQuestion")
-	public String f1(Model model, ResultSet rs) {
-
-		return "QuestionFormView";
-	}
+//	@RequestMapping("/getQuestion")
+//	public String f1(Model model, ResultSet rs) {
+//
+//		return "QuestionFormView";
+//	}
 
 	@RequestMapping("/questionform")
 	public String f2(HttpSession session) throws Exception {
