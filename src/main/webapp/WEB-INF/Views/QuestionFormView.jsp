@@ -219,14 +219,27 @@ button:hover .button-text {
 </style>
 </head>
 <body>
+
+	<%
+		
+		ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>)request.getAttribute("questionList");
+		for(int i=0; i<lst.size(); i++){
+			for(int j=0; j<lst.get(i).size(); j++){
+				System.out.print(lst.get(i).get(j) + " ");
+			}
+			System.out.println();
+		}
+	%>
 	<div class="container1">
 		<form method="POST" action="submitQuestion21">
-			<label><input type="radio" name="radio" checked  value="1"/> <span>아침부터 에러를 만나서 화딱지가 난다</span>
-			</label> <label> <input type="radio" name="radio" value="2"/> <span>지금 당장 밖에 나가서 맛난거 먹고싶다</span>
-			</label> <label><input type="radio" name="radio" value="3"/> <span>금요일에 프로젝트를 주는 강사님이 원망스럽다</span>
-			</label> <label><input type="radio" name="radio" value="4"/> <span>주말도 못쉬게하는 비트...</span>
-			</label> <label><input type="radio" name="radio" value="5"/> <span>나도 쉴줄 아는데!!!!!</span>
+			<div><span><%= lst.get(0).get(1)%></span></div>
+			<div><span>About <%= lst.get(0).get(0)%></span></div>
+			<label><input type="radio" name="radio" checked  value="1"/> <span><%= lst.get(0).get(2)%></span>
+			</label> <label><input type="radio" name="radio" value="2"/> <span><%= lst.get(0).get(3)%></span>
+			</label> <label><input type="radio" name="radio" value="3"/> <span><%= lst.get(0).get(4)%></span>
+			</label> <label><input type="radio" name="radio" value="4"/> <span><%= lst.get(0).get(5)%></span>
 			</label>
+
 			<div class="btns">
 				<button class="learn-more">
 					<span class="circle" aria-hidden="true"> <span
