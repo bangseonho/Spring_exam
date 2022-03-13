@@ -25,12 +25,16 @@ public class QuestionController implements HttpSessionBindingListener {
 	//		return "QuestionFormView";
 	//	}
 
+	//@RequestParam(value="no", required=false) int no,
+	// 문제 불러오는중
 	@RequestMapping("/questionform")
-	public String f2(@RequestParam(value="no") int no, Model model, HttpSession session) throws Exception {
+	public String f2(Model model, HttpSession session) throws Exception {
 		ResultSet rs = questionDAO.getQuestion();
-		int newNo = no+1;
-		model.addAttribute("newNo", newNo);
-		System.out.println("여기는들어오나?");
+
+		//model.addAttribute("newNo", newNo);
+		// 데이터저장
+		
+		//
 		ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
 		while (rs.next()) {
 			ArrayList<String> lst2 = new ArrayList<String>();
@@ -48,9 +52,8 @@ public class QuestionController implements HttpSessionBindingListener {
 
 		return "QuestionFormView";
 	}
-	@RequestMapping("/reviewQuestion")
-	public String f3() {
-		
+	@RequestMapping("/nextQuestion")
+	public String f3(Model model) {
 		return "QuestionFormView";
 	}
 }

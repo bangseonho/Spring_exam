@@ -437,37 +437,43 @@ li:not(:last-child)::after {
 		}
 		System.out.println();
 	}
-	 int no = (int)request.getAttribute("newNo");
+	int no = 0;
 	%>
-	<form method="POST" action="reviewQuestion?no=0">
+	<%
+	if (no >= 5) {
+	%>
+	<div>종료</div>
+	<%
+	} else {
+	%>
+	<form method=get action="nextQuestion">
 		<div>
-			<span>${no}번 문제</span>
+			<span><%=no%> 번 문제</span>
 		</div>
-		 <div>
+		<div>
 			<span>About <%=lst.get(no).get(7)%></span>
-		</div>D
+		</div>
 		<br>
-		<label><input type="radio" name="radio" checked value="1" />
-			<span><%=lst.get(no).get(2)%></span> </label> <label><input
-			type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
-		</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
-		</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
-		</label>
+		<label><input type="radio" name="radio" checked value="1" /> <span><%=lst.get(no).get(2)%></span></label>
+		<label><input type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span></label>
+		<label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span></label>
+		<label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span></label>
 		<div class="btns">
-			<button class="learn-more">
-				<span class="circle" aria-hidden="true"> <span
-					class="icon arrow"></span>
-				</span> <span class="button-text">Back</span>
-			</button>
-			<button class="learn-more">
+			<button class="learn-more" id="nextBtn">
 				<span class="circle" aria-hidden="true"> <span
 					class="icon arrow"></span>
 				</span> <span class="button-text">Next</span>
 			</button>
 		</div>
 	</form>
-	<script type="text/javascript"> 
-
-   </script> 
+	<%
+	}
+	%>
+	<script>
+		document.getElementById("nextBtn").onclick=function(){
+			var test = "${no1}";
+			window.alert(${no1});
+		}
+	</script>
 </body>
 </html>
