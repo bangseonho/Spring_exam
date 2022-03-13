@@ -437,10 +437,9 @@ li:not(:last-child)::after {
 		}
 		System.out.println();
 	}
-	 int no = (int)request.getAttribute("no");
-	System.out.println(no);
+	 int no = (int)request.getAttribute("newNo");
 	%>
-	<form method="POST" action="reviewQuestion?no=${no+1}">
+	<form method="POST" action="reviewQuestion?no=0">
 		<div>
 			<span>${no}번 문제</span>
 		</div>
@@ -463,7 +462,7 @@ li:not(:last-child)::after {
 			<button class="learn-more">
 				<span class="circle" aria-hidden="true"> <span
 					class="icon arrow"></span>
-				</span> <span class="button-text">저장하기</span>
+				</span> <span class="button-text">Next</span>
 			</button>
 		</div>
 	</form>

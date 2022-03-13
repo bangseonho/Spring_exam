@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Question.QuestionDAO;
 
@@ -25,10 +26,10 @@ public class QuestionController implements HttpSessionBindingListener {
 	//	}
 
 	@RequestMapping("/questionform")
-	public String f2(Model model, HttpSession session) throws Exception {
+	public String f2(@RequestParam(value="no") int no, Model model, HttpSession session) throws Exception {
 		ResultSet rs = questionDAO.getQuestion();
-		int no = 0;
-		model.addAttribute("no", no);
+		int newNo = no+1;
+		model.addAttribute("newNo", newNo);
 		System.out.println("여기는들어오나?");
 		ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
 		while (rs.next()) {
