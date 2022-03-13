@@ -74,9 +74,9 @@
 	%>
 
 	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CollectCnt%> 개 맞았습니다!</h1><br/>
-	<!-- <h1> -->
+	<h1>
 		<%
-		like = (CollectCnt * 100) / allCnt;
+		like = (CollectCnt*100)/allCnt;
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
 		} else if (like <= 50) {
@@ -87,7 +87,7 @@
 			out.println("⎝﻿⍢﻿⎠  짝짝짝~ 축하드려요!! 우리 조원과 더벤티의 신메뉴인 자바칩파르페를 먹기 위해 지난주부터 약속할 수 있는 사이! (~ᵒ̌▾ᵒ̌)~♫•*¨*•.¸¸♪");
 		}
 		%>
-	<!-- </h1> -->
+	</h1>
 
 
 
@@ -118,11 +118,10 @@
 			}
 			%>
 			<h3>
-				1.&nbsp;&nbsp;<%=one%>
-				&emsp; 2.&nbsp;&nbsp;<%=two%>
-				&emsp; 3.&nbsp;&nbsp;<%=three%>
-				&emsp; 4.&nbsp;&nbsp;<%=four%>
-				&emsp;
+				1.&nbsp;&nbsp;<%=one%>&emsp; 
+				2.&nbsp;&nbsp;<%=two%>&emsp; 
+				3.&nbsp;&nbsp;<%=three%>&emsp; 
+				4.&nbsp;&nbsp;<%=four%>&emsp;
 			</h3>
 			<h3>
 				입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
