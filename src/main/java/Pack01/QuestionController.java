@@ -40,13 +40,12 @@ public class QuestionController implements HttpSessionBindingListener {
 			lst2.add(rs.getString("answer"));
 			lst2.add(rs.getString("who"));
 			lst1.add(lst2);
-			model.addAttribute("questionList", lst1);
 //			model.addAttribute(Integer.toString(no), lst2);
 //			session.setAttribute(Integer.toString(no), lst2);
 //			no++;
 //			System.out.println(session.getAttribute(Integer.toString(no)));
 		}
-		
+		model.addAttribute("questionList", lst1);
 //		int cnt = 0;
 		return "QuestionFormView";
 	}

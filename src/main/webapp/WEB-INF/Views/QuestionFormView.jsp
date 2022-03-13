@@ -10,6 +10,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Random" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -221,38 +222,60 @@ button:hover .button-text {
 <body>
 
 	<%
-		
-		ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>)request.getAttribute("questionList");
-		for(int i=0; i<lst.size(); i++){
-			for(int j=0; j<lst.get(i).size(); j++){
-				System.out.print(lst.get(i).get(j) + " ");
-			}
-			System.out.println();
+	
+	ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>) request.getAttribute("questionList");
+	
+	for (int i = 0; i < lst.size(); i++) {
+		for (int j = 0; j < lst.get(i).size(); j++) {
+			System.out.print(lst.get(i).get(j) + " ");
 		}
+		System.out.println();
+	}
+	int i = 0;
+	/* session.setAttribute("page", 0);
+	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
-	<div class="container1">
-		<form method="POST" action="submitQuestion21">
-			<div><span><%= lst.get(0).get(1)%></span></div>
-			<div><span>About <%= lst.get(0).get(0)%></span></div>
-			<label><input type="radio" name="radio" checked  value="1"/> <span><%= lst.get(0).get(2)%></span>
-			</label> <label><input type="radio" name="radio" value="2"/> <span><%= lst.get(0).get(3)%></span>
-			</label> <label><input type="radio" name="radio" value="3"/> <span><%= lst.get(0).get(4)%></span>
-			</label> <label><input type="radio" name="radio" value="4"/> <span><%= lst.get(0).get(5)%></span>
-			</label>
+	<script type="text/javascript">
 
+		function showQuestion(a) {
+			console.log(a);
+			this.i++;
+			document.getElementById("questionSurvey");
+			const headingEl = document.querySelector("span#title");
+			headingEl.textContent = "æ»≥Á«œººø‰!";
+		}
+	
+	</script>
+	<div class="container1" id ="questionSurvey">
+		
+		<form method="POST"> <!-- action="submitQuestion21" -->
+			<div> 	
+				<span id="title"><%=lst.get(i).get(1)%></span>
+			</div>	
+			<div>
+				<span>About<%=lst.get(i).get(0)%></span>
+			</div>
+			<h2 id="iddd"></h2>
+			<label><input type="radio" name="radio" checked value="1" />
+				<span><%=lst.get(i).get(2)%></span> </label> <label><input
+				type="radio" name="radio" value="2" /> <span><%=lst.get(i).get(3)%></span>
+			</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(i).get(4)%></span>
+			</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(i).get(5)%></span>
+			</label>
+			
 			<div class="btns">
-				<button class="learn-more">
+				<button class="learn-more" type="button">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Back</span>
 				</button>
-				<button class="learn-more">
+				<button class="learn-more" type="button" onclick="showQuestion(<%=i%>)">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
 				</button>
 			</div>
-		</form>
+
 	</div>
 </body>
 </html>
