@@ -7,15 +7,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+<meta charset="utf-8">
 <title>문제 관리 페이지</title>
 <style>
 
-body{
+html {
+	
+}
+body {
+	
 }
 
-.title-group{
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.title-group {
+	font-family: 'Gamja Flower', cursive;
 	text-align: center;
+	font-size: 40px;
+	padding-bottom: 20px;
 }
 
 .total-group {
@@ -25,19 +61,66 @@ body{
 	align-items: center;
 }
 
-#question-list{
+.left-side {
+	width: 60%;
+	text-align: center;
+}
+
+#user-list {
 	border-collapse: collapse;
+	width: 100%;
 }
 
-#question-list tbody tr:hover{
-	background-color: red;
+#user-list thead td{
+	font-family: 'Gamja Flower', cursive;
 }
 
+#user-list tbody tr:hover {
+	background-color: #555555;
+	color: white;
+}
 
-footer{
+td {
+	font-family: 'Gamja Flower', cursive;
+	letter-spacing: 2px;
+	padding: 5px;
+}
+
+thead td {
+	border-collapse: separate;
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
+.right-side {
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+
+.content-title {
+	
+}
+
+.button-group {
+	display: flex;
+	justify-content: right;
+}
+
+.survey-group {
+	
+}
+
+footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-top: 30px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
 }
 
 </style>
@@ -49,7 +132,7 @@ footer{
 	<div class="title-group"><label>문제 관리</label></div>
 	<div class="total-group">
 		<!-- question list -->
-		<table id="question-list">
+		<table style="text-align: center;" id="question-list">
 			<thead>
 				<%
 				String[] questionColNameList =
@@ -82,8 +165,8 @@ footer{
 					out.println("<td>"+ dto.getFour() 	+"</td>");
 					out.println("<td>"+ dto.getAnswer() +"</td>");
 					out.println("<td>"+ dto.getWho() 	+"</td>");
-					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionGet?id="+ dto.getId() +"'\">수정</button>" +"</td>");
-					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">삭제</button>" +"</td>");
+					out.println("<td>"+ "<button class='button5' onclick=\"location='ManagerQuestionGet?id="+ dto.getId() +"'\">수정</button>" +"</td>");
+					out.println("<td>"+ "<button class='button5' onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">삭제</button>" +"</td>");
 					out.println("</tr>");
 				}
 				%>
@@ -93,9 +176,9 @@ footer{
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerPageMove?page=ManagerQuestionCreateView'">질문추가</button>
-		<button onclick="location='ManagerQuestionDeleteAll'">질문전체삭제</button>
-		<button onclick="location='ManagerController'">메인으로 이동</button>
+		<button class="button button5" onclick="location='ManagerPageMove?page=ManagerQuestionCreateView'">질문추가</button>
+		<button class="button button5" onclick="location='ManagerQuestionDeleteAll'">질문전체삭제</button>
+		<button class="button button5" onclick="location='ManagerController'">메인으로 이동</button>
 	</div>
 </footer>
 </html>
