@@ -104,6 +104,7 @@ footer {
 				<input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/>
 			</div>
 			<div>
+				<input type="reset"  value="초기화"/> 
 				<input type="submit" value="<%= btnStr%>"/> 
 			</div>
 		</form>	
