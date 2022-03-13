@@ -10,8 +10,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -216,43 +216,259 @@ button:hover .button-text {
 .btns {
 	margin-top: 30px;
 }
+/*  */
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+/* default */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+body {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+/*   flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* .flip-card-container */
+.flip-card-container {
+  --hue: 150;
+  --primary: hsl(var(--hue), 50%, 50%);
+  --white-1: hsl(0, 0%, 90%);
+  --white-2: hsl(0, 0%, 80%);
+  --dark: hsl(var(--hue), 25%, 10%);
+  --grey: hsl(0, 0%, 50%);
+
+  width: 310px;
+  height: 500px;
+  margin: 40px;
+
+  perspective: 1000px;
+}
+
+/* .flip-card */
+.flip-card {
+  width: inherit;
+  height: inherit;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transition: .6s .1s;
+}
+
+/* hover and focus-within states */
+.flip-card-container:hover .flip-card,
+.flip-card-container:focus-within .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* .card-... */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+}
+
+/* .card-front */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* .card-back */
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* figure */
+figure {
+  z-index: -1;
+}
+
+/* figure, .img-bg */
+figure,
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* img */
+img {
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* figcaption */
+figcaption {
+  display: block;
+
+  width: auto;
+  margin-top: 12%;
+  padding: 8px 22px;
+
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  word-spacing: 6px;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 12px;
+  color: var(--white-1);
+  background: hsla(var(--hue), 25%, 10%, .5);
+}
+
+/* .img-bg */
+.img-bg {
+ /*  background: hsla(var(--hue), 25%, 10%, .5); */
+}
+
+.card-front .img-bg {
+  clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+}
+
+.card-front .img-bg::before {
+  content: "";
+
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(18deg);
+
+  width: 100%;
+  height: 6px;
+  /* border: 1px solid var(--primary); */
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  transition: .1s;
+}
+
+.card-back .img-bg {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+}
+
+/* hover state */
+.flip-card-container:hover .card-front .img-bg::before {
+  width: 6px;
+  border-left-color: var(--primary);
+  border-right-color: var(--primary);
+}
+
+/* ul */
+ul {
+  padding-top: 50%;
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+
+  list-style: none;
+  color: var(--white-1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* li */
+li {
+  width: 100%;
+  margin-top: 12px;
+  padding-bottom: 12px;
+
+  font-size: 14px;
+  text-align: center;
+
+  position: relative;
+}
+
+li:nth-child(2n) {
+  color: var(--white-2);
+}
+
+li:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: currentColor;
+  opacity: .2;
+}
+/*  */
 </style>
 </head>
 <body>
-
-	<%
-		
-		ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>)request.getAttribute("questionList");
-		for(int i=0; i<lst.size(); i++){
-			for(int j=0; j<lst.get(i).size(); j++){
-				System.out.print(lst.get(i).get(j) + " ");
-			}
-			System.out.println();
+ <%
+	ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>) request.getAttribute("questionList");
+	for (int i = 0; i < lst.size(); i++) {
+		for (int j = 0; j < lst.get(i).size(); j++) {
+			System.out.print(lst.get(i).get(j) + " ");
 		}
+		System.out.println();
+	}
+	 int no = (int)request.getAttribute("no");
+	System.out.println(no);
 	%>
-	<div class="container1">
-		<form method="POST" action="submitQuestion21">
-			<div><span><%= lst.get(0).get(1)%></span></div>
-			<div><span>About <%= lst.get(0).get(0)%></span></div>
-			<label><input type="radio" name="radio" checked  value="1"/> <span><%= lst.get(0).get(2)%></span>
-			</label> <label><input type="radio" name="radio" value="2"/> <span><%= lst.get(0).get(3)%></span>
-			</label> <label><input type="radio" name="radio" value="3"/> <span><%= lst.get(0).get(4)%></span>
-			</label> <label><input type="radio" name="radio" value="4"/> <span><%= lst.get(0).get(5)%></span>
-			</label>
+	<form method="POST" action="reviewQuestion?no=${no+1}">
+		<div>
+			<span>${no}번 문제</span>
+		</div>
+		 <div>
+			<span>About <%=lst.get(no).get(7)%></span>
+		</div>D
+		<br>
+		<label><input type="radio" name="radio" checked value="1" />
+			<span><%=lst.get(no).get(2)%></span> </label> <label><input
+			type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
+		</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
+		</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
+		</label>
+		<div class="btns">
+			<button class="learn-more">
+				<span class="circle" aria-hidden="true"> <span
+					class="icon arrow"></span>
+				</span> <span class="button-text">Back</span>
+			</button>
+			<button class="learn-more">
+				<span class="circle" aria-hidden="true"> <span
+					class="icon arrow"></span>
+				</span> <span class="button-text">저장하기</span>
+			</button>
+		</div>
+	</form>
+	<script type="text/javascript"> 
 
-			<div class="btns">
-				<button class="learn-more">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Back</span>
-				</button>
-				<button class="learn-more">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Next</span>
-				</button>
-			</div>
-		</form>
-	</div>
+   </script> 
 </body>
 </html>
