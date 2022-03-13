@@ -3,13 +3,16 @@ package Pack01;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,10 +28,9 @@ public class QuestionController implements HttpSessionBindingListener {
 	//		return "QuestionFormView";
 	//	}
 
-	//@RequestParam(value="no", required=false) int no,
 	// 문제 불러오는중
 	@RequestMapping("/questionform")
-	   public String f2(Model model, HttpSession session) throws Exception {
+	   public String f2(Model model, HttpSession session, @RequestParam(value="page") int page) throws Exception {
 	      ResultSet rs = questionDAO.getQuestion();
 	      int no = 0;
 	      ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
@@ -43,18 +45,16 @@ public class QuestionController implements HttpSessionBindingListener {
 	         lst2.add(rs.getString("answer"));
 	         lst2.add(rs.getString("who"));
 	         lst1.add(lst2);
-//	         model.addAttribute(Integer.toString(no), lst2);
-//	         session.setAttribute(Integer.toString(no), lst2);
-//	         no++;
-//	         System.out.println(session.getAttribute(Integer.toString(no)));
 	      }
 	      model.addAttribute("questionList", lst1);
 	      System.out.println(lst1.toString());
-//	      int cnt = 0;
 	      return "QuestionFormView";
 	   }
-	@RequestMapping("/nextQuestion")
-	public String f3(Model model) {
+	@RequestMapping(value="/nextQuestion", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public String f3(Model model, HttpServletRequest request, @RequestBody ArrayList<ArrayList<String>> lst) {
+		model.addAttribute("questionList", lst);
+	      System.out.println(lst.toString());
+	      System.out.println("여기까지오는가");
 		return "QuestionFormView";
 	}
 }
