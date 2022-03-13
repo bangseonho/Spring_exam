@@ -7,6 +7,7 @@ import Manager.ManagerDAO;
 import Question.QuestionDAO;
 import User.UserDAO;
 import Result.ResultDAO;
+import Setting.SettingDAO;
 
 @Configuration
 public class AppConfig {
@@ -29,5 +30,9 @@ public class AppConfig {
    @Bean
    ManagerDAO mangerDAO() {
 	   return new ManagerDAO();
+   }
+   @Bean
+   SettingDAO settingDAO() {
+	   return new SettingDAO();
    }
 }

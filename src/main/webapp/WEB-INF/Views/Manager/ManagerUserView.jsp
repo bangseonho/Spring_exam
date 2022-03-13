@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>참여자 관리 페이지</title>
+<title>참여자 관리</title>
 <style>
 body {
 	

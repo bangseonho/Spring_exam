@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>문제 관리 페이지</title>
+<title>질문 관리</title>
 <style>
 body {
 	display: flex;
@@ -61,6 +61,14 @@ body {
 	border-radius: 25px;
 	margin: 5px;
 }
+
+.b2-button {
+	background-color: #24a4ee;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 10px;
+}
+
 #question-list{
 	width: 100%;
 }
@@ -72,7 +80,7 @@ body {
 </head>
 <body>
 	<div class="welcome">
-		<label class="bold">문제 관리</label>
+		<label class="bold">질문 관리</label>
 	</div>
 		<div class="form">
 			<div class="form-element">
@@ -80,7 +88,8 @@ body {
 				<table id="question-list">
 					<thead>
 						<%
-						String[] questionColNameList = (String[]) request.getAttribute("questionColNameList");
+						String[] questionColNameList
+							= (String[]) request.getAttribute("questionColNameList");
 						out.println("<tr>");
 						out.println("<td>" + "번호" + "</td>");
 						for (int i = 1; i < questionColNameList.length; i++) {
@@ -94,7 +103,8 @@ body {
 					</thead>
 					<tbody>
 						<%
-						ArrayList<QuestionDTO> questionList = (ArrayList<QuestionDTO>) request.getAttribute("questionList");
+						ArrayList<QuestionDTO> questionList
+							= (ArrayList<QuestionDTO>) request.getAttribute("questionList");
 						QuestionDTO dto = null;
 						for (int i = 0; i < questionList.size(); i++) {
 							dto = questionList.get(i);
@@ -108,8 +118,8 @@ body {
 							out.println("<td>" + dto.getFour() + "</td>");
 							out.println("<td>" + dto.getAnswer() + "</td>");
 							out.println("<td>" + dto.getWho() + "</td>");
-							out.println("<td>" + "<button onclick=\"location='ManagerQuestionGet?id=" + dto.getId() + "'\">수정</button>" + "</td>");
-							out.println("<td>" + "<button onclick=\"location='ManagerQuestionDeleteOne?id=" + dto.getId() + "'\">삭제</button>" + "</td>");
+							out.println("<td>" + "<button class=\"b2-button\" onclick=\"location='ManagerQuestionGet?id=" + dto.getId() + "'\">수정</button>" + "</td>");
+							out.println("<td>" + "<button class=\"b2-button\" onclick=\"location='ManagerQuestionDeleteOne?id=" + dto.getId() + "'\">삭제</button>" + "</td>");
 							out.println("</tr>");
 						}
 						%>
@@ -117,12 +127,12 @@ body {
 				</table>
 			</div>
 			<div class="button-group">
-				<button class="b-button bold"
+				<button class="b-button bold" 
 					onclick="location='ManagerPageMove?page=ManagerQuestionCreateView'">질문추가</button>
-				<button class="b-button bold"
+				<button class="b-button bold" 
 					onclick="location='ManagerQuestionDeleteAll'">질문전체삭제</button>
-				<button class="b-button bold" onclick="location='ManagerController'">메인으로
-					이동</button>
+				<button class="b-button bold" 
+					onclick="location='ManagerController'">메인으로 이동</button>
 			</div>
 		</div>
 
