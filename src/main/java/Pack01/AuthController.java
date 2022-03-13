@@ -32,7 +32,6 @@ public class AuthController {
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
 		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode());
 		try {
-
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
 					PrintWriter out = response.getWriter();
@@ -51,13 +50,12 @@ public class AuthController {
 		} catch (Exception e) {
 			System.out.println("join failed _ controller");
 		}
-
 		try {
 			model.addAttribute("dto", userDAO.findUser(dto));
 		} catch (Exception e) {
 			System.out.println("find failed _ controller");
 		}
-		return "QuestionFormView";
+		return null;
 	}
 
 	@RequestMapping("/main")
