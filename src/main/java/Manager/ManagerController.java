@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
@@ -69,11 +71,25 @@ public class ManagerController {
 	}
 	
 	@RequestMapping("/ManagerQuestionCreate")
-	String managerQuestionCreate(Model model) {
-		System.out.println("ManagerQuestionCreateView∑Œ ¿Ãµø");
+	String managerQuestionCreate(Model model, QuestionDTO dto) {
+		System.out.println("Question create");
+		System.out.println(dto.toString());
 		
-		model.addAttribute("sqlType", "create");
-		return "Manager/ManagerQuestionCreateView";
+		int cnt = 0;
+		// Create table row
+		try {
+			cnt = managerDAO.insertQuestion(
+					dto.getPhrase(),
+					dto.getOne(),
+					dto.getTwo(),
+					dto.getThree(),
+					dto.getFour(),
+					dto.getAnswer(),
+					dto.getWho()
+					);
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		return "redirect:/ManagerQuestion";
 	}
 	
 	@RequestMapping("/ManagerQuestionUpdateOne")
@@ -85,6 +101,7 @@ public class ManagerController {
 		} catch (Exception e) { e.printStackTrace(); }
 
 		model.addAttribute("sqlType", "update");
+		
 		return "Manager/ManagerQuestionCreateView";
 	}
 	

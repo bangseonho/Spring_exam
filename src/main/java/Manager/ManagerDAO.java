@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Pack01.ConnectionDB;
+import Question.QuestionDTO;
 import User.UserDTO;
 
 public class ManagerDAO {
@@ -42,6 +43,35 @@ public class ManagerDAO {
 		return rs;
 	}
 
+	/**
+	 * 
+	 * @param dto
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertQuestion(String phrase, String one, String two, String three, String four, String answer, String who) throws Exception {
+
+		String sql = "insert into question(phrase, one, two, three, four, answer, who) " 
+					+ "values( ?,?,?,?,?,?,?)";
+		int cnt = 0;
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, phrase);
+		pstmt.setString(2, one);
+		pstmt.setString(3, two);
+		pstmt.setString(4, three);
+		pstmt.setString(5, four);
+		pstmt.setString(6, answer);
+		pstmt.setString(7, who);
+
+		cnt = pstmt.executeUpdate();
+
+		return cnt;
+
+	}
+	
 	/**
 	 * Update row from question table.
 	 * @param  pk : id field
