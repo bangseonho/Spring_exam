@@ -11,8 +11,8 @@
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -222,10 +222,10 @@ button:hover .button-text {
 <body>
 
 	<%
-	/* µ¥ÀÌÅÍ : phrase; one; two; three; four; answer; who; */
+	/* ë°ì´í„° : phrase; one; two; three; four; answer; who; */
 	ArrayList<ArrayList<String>> lst = 
 		(ArrayList<ArrayList<String>>) request.getAttribute("questionList");
-	int cnt = 5; // ¹®Á¦ °³¼ö
+	int cnt = 5; // ë¬¸ì œ ê°œìˆ˜
 	String[] strArr = new String[cnt];
 	for(int i = 0; i < cnt; i++){
 		strArr[i] = "[";
@@ -236,7 +236,7 @@ button:hover .button-text {
 		System.out.println(strArr[i]);
 	}
 	
-	/* Ãâ·Â */
+	/* ì¶œë ¥ */
 	for (int i = 0; i < lst.size(); i++) {
 		for (int j = 0; j < lst.get(i).size(); j++) {
 			System.out.print(lst.get(i).get(j) + " ");
@@ -287,21 +287,21 @@ button:hover .button-text {
 	arr[3]  = <%=strArr[3]%>;
 	arr[4]  = <%=strArr[4]%>;
 	
-	// Ã¹ ÆäÀÌÁö ½ÃÀÛ ½Ã ºÒ·¯¿È
+	// ì²« í˜ì´ì§€ ì‹œì‘ ì‹œ ë¶ˆëŸ¬ì˜´
 	showQuestion();
 	
 	function showQuestion() {
 		
 		if(i >= cnt){
-			console.log("³¡");
-			// ÄÁÆ®·Ñ·¯·Î °ª Àü´Ş (¾î¶»°Ô?)
-			location.href="index.jsp"; // ÀÏ´Ü ¸ŞÀÎÀ¸·Î °¡°Ô ÇØ³ùÀ½
+			console.log("ë");
+			// ì»¨íŠ¸ë¡¤ëŸ¬ë¡œ ê°’ ì „ë‹¬ (ì–´ë–»ê²Œ?)
+			location.href="index.jsp"; // ì¼ë‹¨ ë©”ì¸ìœ¼ë¡œ ê°€ê²Œ í•´ë†¨ìŒ
 			return;
 		}
 		
 		/* document.getElementById("questionSurvey");
 		const headingEl = document.querySelector("span#title");
-		headingEl.textContent = "¾È³çÇÏ¼¼¿ä!"; */
+		headingEl.textContent = "ì•ˆë…•í•˜ì„¸ìš”!"; */
 		
 		document.getElementById("title").innerHTML   = arr[i][1];
 		document.getElementById("select1").innerHTML = arr[i][2];
@@ -314,12 +314,19 @@ button:hover .button-text {
 		i++;
 	}
 	
-	// ½Ã°£ ÃÊ°ú
+	// ì‹œê°„ ì´ˆê³¼
 	setTimeout(() => {
-		console.log("5ÃÊ °æ°ú");
-		// ½Ã°£ Áö³¯ ½Ã ÄÚµå
-		
+		// ì‹œê°„ ì§€ë‚  ì‹œ ì½”ë“œ
+		alert("5ì´ˆ ê²½ê³¼");
 	}, 5000); // ms, 1000ms == 1s
+	
+	// ë‚˜ê°€ê¸° ê²½ê³ ì°½
+	window.addEventListener("beforeunload", function (event) {
+		  event.returnValue = "ë‚˜ê°€ì‹œê² ìŠµë‹ˆê¹Œ?"; // ìµìŠ¤í”Œë¡œëŸ¬ì—ì„œë§Œ ëœ¸
+		});
+
+
+
 	</script>
 	
 </body>
