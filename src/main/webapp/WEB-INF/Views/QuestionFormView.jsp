@@ -247,43 +247,7 @@ button:hover .button-text {
 	/* session.setAttribute("page", 0);
 	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
-	<script type="text/javascript">
-	var i   = 0;
-	var cnt = <%=cnt%>
-	var arr = [];
-	arr[0]  = <%=strArr[0]%>;
-	arr[1]  = <%=strArr[1]%>;
-	arr[2]  = <%=strArr[2]%>;
-	arr[3]  = <%=strArr[3]%>;
-	arr[4]  = <%=strArr[4]%>;
 	
-	showQuestion();
-	
-	function showQuestion() {
-		
-		if(i >= cnt){
-			console.log("끝");
-			// 컨트롤러로 값 전달 (어떻게?)
-			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
-			return;
-		}
-		
-		document.getElementById("questionSurvey");
-		const headingEl = document.querySelector("span#title");
-		headingEl.textContent = "안녕하세요!";
-		
-		document.getElementById("title").innerHTML   = arr[i][1];
-		document.getElementById("select1").innerHTML = arr[i][2];
-		document.getElementById("select2").innerHTML = arr[i][3];
-		document.getElementById("select3").innerHTML = arr[i][4];
-		document.getElementById("select4").innerHTML = arr[i][5];
-		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
-		
-		console.log(arr[i]);
-		i++;
-	}
-	
-	</script>
 	<div class="container1" id ="questionSurvey">
 			
 		<form method="POST"> <!-- action="submitQuestion21" -->
@@ -312,5 +276,51 @@ button:hover .button-text {
 			</div>
 
 	</div>
+	
+	<script type="text/javascript">
+	var i   = 0;
+	var cnt = <%=cnt%>
+	var arr = [];
+	arr[0]  = <%=strArr[0]%>;
+	arr[1]  = <%=strArr[1]%>;
+	arr[2]  = <%=strArr[2]%>;
+	arr[3]  = <%=strArr[3]%>;
+	arr[4]  = <%=strArr[4]%>;
+	
+	// 첫 페이지 시작 시 불러옴
+	showQuestion();
+	
+	function showQuestion() {
+		
+		if(i >= cnt){
+			console.log("끝");
+			// 컨트롤러로 값 전달 (어떻게?)
+			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
+			return;
+		}
+		
+		/* document.getElementById("questionSurvey");
+		const headingEl = document.querySelector("span#title");
+		headingEl.textContent = "안녕하세요!"; */
+		
+		document.getElementById("title").innerHTML   = arr[i][1];
+		document.getElementById("select1").innerHTML = arr[i][2];
+		document.getElementById("select2").innerHTML = arr[i][3];
+		document.getElementById("select3").innerHTML = arr[i][4];
+		document.getElementById("select4").innerHTML = arr[i][5];
+		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+		
+		console.log(arr[i]);
+		i++;
+	}
+	
+	// 시간 초과
+	setTimeout(() => {
+		console.log("5초 경과");
+		// 시간 지날 시 코드
+		
+	}, 5000); // ms, 1000ms == 1s
+	</script>
+	
 </body>
 </html>
