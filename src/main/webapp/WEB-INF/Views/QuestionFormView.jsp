@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Survey Question</title>
 <style>
 *, *:after, *:before {
 	box-sizing: border-box;
@@ -222,9 +222,21 @@ button:hover .button-text {
 <body>
 
 	<%
+	/* 데이터 : phrase; one; two; three; four; answer; who; */
+	ArrayList<ArrayList<String>> lst = 
+		(ArrayList<ArrayList<String>>) request.getAttribute("questionList");
+	int cnt = 5; // 문제 개수
+	String[] strArr = new String[cnt];
+	for(int i = 0; i < cnt; i++){
+		strArr[i] = "[";
+		for(int j = 0; j < lst.get(0).size(); j++){
+			strArr[i] += "'" + lst.get(i).get(j)+ "', ";
+		}
+		strArr[i] += "]";
+		System.out.println(strArr[i]);
+	}
 	
-	ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>) request.getAttribute("questionList");
-	
+	/* 출력 */
 	for (int i = 0; i < lst.size(); i++) {
 		for (int j = 0; j < lst.get(i).size(); j++) {
 			System.out.print(lst.get(i).get(j) + " ");
@@ -236,40 +248,63 @@ button:hover .button-text {
 	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
 	<script type="text/javascript">
-
-		function showQuestion(a) {
-			console.log(a);
-			this.i++;
-			document.getElementById("questionSurvey");
-			const headingEl = document.querySelector("span#title");
-			headingEl.textContent = "안녕하세요!";
+	var i   = 0;
+	var cnt = <%=cnt%>
+	var arr = [];
+	arr[0]  = <%=strArr[0]%>;
+	arr[1]  = <%=strArr[1]%>;
+	arr[2]  = <%=strArr[2]%>;
+	arr[3]  = <%=strArr[3]%>;
+	arr[4]  = <%=strArr[4]%>;
+	
+	showQuestion();
+	
+	function showQuestion() {
+		
+		if(i >= cnt){
+			console.log("끝");
+			// 컨트롤러로 값 전달 (어떻게?)
+			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
+			return;
 		}
+		
+		document.getElementById("questionSurvey");
+		const headingEl = document.querySelector("span#title");
+		headingEl.textContent = "안녕하세요!";
+		
+		document.getElementById("title").innerHTML   = arr[i][1];
+		document.getElementById("select1").innerHTML = arr[i][2];
+		document.getElementById("select2").innerHTML = arr[i][3];
+		document.getElementById("select3").innerHTML = arr[i][4];
+		document.getElementById("select4").innerHTML = arr[i][5];
+		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+		
+		console.log(arr[i]);
+		i++;
+	}
 	
 	</script>
 	<div class="container1" id ="questionSurvey">
-		
+			
 		<form method="POST"> <!-- action="submitQuestion21" -->
 			<div> 	
-				<span id="title"><%=lst.get(i).get(1)%></span>
+				<span id="title"></span>
 			</div>	
 			<div>
-				<span>About<%=lst.get(i).get(0)%></span>
+				<span id="who">About<%=lst.get(i).get(0)%></span>
 			</div>
 			<h2 id="iddd"></h2>
-			<label><input type="radio" name="radio" checked value="1" />
-				<span><%=lst.get(i).get(2)%></span> </label> <label><input
-				type="radio" name="radio" value="2" /> <span><%=lst.get(i).get(3)%></span>
-			</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(i).get(4)%></span>
-			</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(i).get(5)%></span>
-			</label>
-			
+			<label><input type="radio" name="radio" value="1" checked /> <span id="select1"><%=lst.get(i).get(2)%></span></label> 
+			<label><input type="radio" name="radio" value="2" /> <span  id="select2"><%=lst.get(i).get(3)%></span> </label> 
+			<label><input type="radio" name="radio" value="3" /> <span  id="select3"><%=lst.get(i).get(4)%></span> </label>
+			<label><input type="radio" name="radio" value="4" /> <span  id="select4"><%=lst.get(i).get(5)%></span> </label>
 			<div class="btns">
 				<button class="learn-more" type="button">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Back</span>
 				</button>
-				<button class="learn-more" type="button" onclick="showQuestion(<%=i%>)">
+				<button class="learn-more" type="button" onclick="showQuestion()">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
