@@ -1,6 +1,7 @@
 package Question;
 
 public class QuestionDTO {
+	String id;
 	String phrase;
 	String one;
 	String two;
@@ -11,7 +12,8 @@ public class QuestionDTO {
 	
 	public QuestionDTO() {};
 	
-	public QuestionDTO(String phrase, String one, String two, String three, String four, String answer, String who) {
+	public QuestionDTO(String id, String phrase, String one, String two, String three, String four, String answer, String who) {
+		this.id 	= id;
 		this.phrase = phrase;
 		this.one    = one;   
 		this.two	= two;
@@ -19,6 +21,14 @@ public class QuestionDTO {
 		this.four   = four;
 		this.answer = answer;
 		this.who    = who;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getPhrase() {
