@@ -85,7 +85,7 @@ h4 {
 		<div class="form">
 			<h4 class="bold title">Manager</h4>
 			<div class="button-group">
-				<button class="b-button bold" onclick="location='ManagerQuestion'">문제관리</button>
+				<button class="b-button bold" onclick="location='ManagerQuestion'">질문관리</button>
 				<button class="b-button bold" onclick="location='ManagerUserView'">회원관리</button>
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
 				<button class="b-button bold" onclick="location='ManagerPageMove?page=ManagerResultView'">조사현황</button>
