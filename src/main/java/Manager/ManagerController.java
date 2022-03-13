@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Pack01.ConnectionDB;
 import User.UserDTO;
@@ -74,5 +76,15 @@ public class ManagerController {
 
 		return rs != null? "Manager/ManagerSurveyView" : "ManagerMainView";
 		
+	}
+	
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+	String deleteUser(@RequestParam String code) {
+		System.out.println("usercode = " + code);
+		try{
+			managerDAO.deleteUsers(code);
+			
+		}catch(Exception e){}
+		return "redirect:ManagerUserView";
 	}
 }
