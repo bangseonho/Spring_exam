@@ -1,3 +1,4 @@
+<%@page import="Question.QuestionDTO"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -40,21 +41,34 @@ footer {
 </head>
 <body>
 	<%
+	String[] questionColNameList =
+		(String[]) request.getAttribute("questionColNameList");
+	
 	String sqlType = (String)request.getAttribute("sqlType");
+
+	Object object = request.getAttribute("questDTO");
+	QuestionDTO questionDTO = null;
+	if(object != null){
+		questionDTO = (QuestionDTO)object;
+	}
+	else {
+		/* questionDTO = new QuestionDTO("1"); */
+	}
+	
 	%>
 	<div class="title-group">
 		<label>질문 <%= sqlType %></label>
 	</div>
 	<div class="total-group">
 		<form method="post" action="ManagerQuestionCreate">
-			<!-- DB에서 칼럼 가져오는 식으로 바꾸기 -->
-			<input type="text" name="phrase" value="질문 insert Test"/>
-			<input type="text" name="one" value="보기1"/>
-			<input type="text" name="two" value="보기2"/>
-			<input type="text" name="three" value="보기3"/>
-			<input type="text" name="four" value="보기4"/>
-			<input type="text" name="answer" value="답"/>
-			<input type="text" name="who" value="대상"/>
+		
+			<input type="text" name="phrase" value="<%= questionDTO.getPhrase() %>"/>
+			<input type="text" name="one" 	 value="<%= questionDTO.getOne() 	%>"/>
+			<input type="text" name="two" 	 value="<%= questionDTO.getTwo() 	%>"/>
+			<input type="text" name="three"  value="<%= questionDTO.getThree() 	%>"/>
+			<input type="text" name="four" 	 value="<%= questionDTO.getFour() 	%>"/>
+			<input type="text" name="answer" value="<%= questionDTO.getAnswer() %>"/>
+			<input type="text" name="who" 	 value="<%= questionDTO.getWho() 	%>"/>
 			<input type="submit" value="추가"/>
 		</form>	
 	
