@@ -71,14 +71,42 @@ footer {
 	<div class="total-group">
 		<form method="post" action="<%= targetController %>">
 			<input type="hidden" name="id"	 	value="<%= questionDTO.getId()%>"/>
-			<input type="text"   name="phrase" 	value="<%= questionDTO.getPhrase()%>"/>
-			<input type="text"   name="one" 	value="<%= questionDTO.getOne()%>"/>
-			<input type="text"   name="two" 	value="<%= questionDTO.getTwo()%>"/>
-			<input type="text"   name="three"  	value="<%= questionDTO.getThree()%>"/>
-			<input type="text"   name="four" 	value="<%= questionDTO.getFour() %>"/>
-			<input type="text"   name="answer" 	value="<%= questionDTO.getAnswer()%>"/>
-			<input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/>
-			<input type="submit" value="<%= btnStr%>"/> 
+			
+			<div>
+				<label>질문</label>
+				<input type="text"   name="phrase" 	value="<%= questionDTO.getPhrase()%>"/>
+			</div>			
+
+			<div>
+				<label>보기1</label>
+				<input type="text"   name="one" 	value="<%= questionDTO.getOne()%>"/>
+			</div>		
+			
+			<div>
+				<label>보기2</label>
+				<input type="text"   name="two" 	value="<%= questionDTO.getTwo()%>"/>
+			</div>	
+
+			<div>
+				<label>보기3</label>
+				<input type="text"   name="three"  	value="<%= questionDTO.getThree()%>"/>
+			</div>			
+			<div>
+				<label>보기4</label>
+				<input type="text"   name="four" 	value="<%= questionDTO.getFour() %>"/>
+			</div>
+			<div>
+				<label>답</label>
+				<input type="text"   name="answer" 	value="<%= questionDTO.getAnswer()%>"/>
+			</div>
+			<div>
+				<label>대상</label>
+				<input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/>
+			</div>
+			<div>
+				<input type="reset"  value="초기화"/> 
+				<input type="submit" value="<%= btnStr%>"/> 
+			</div>
 		</form>	
 	
 	</div>
