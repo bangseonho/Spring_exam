@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import Pack01.ConnectionDB;
+import Question.QuestionDTO;
 import User.UserDTO;
 
 public class ManagerDAO {
@@ -27,6 +28,11 @@ public class ManagerDAO {
 		return rs;
 	}
 
+	/**
+	 * Get all question table's row
+	 * @return ResultSet
+	 * @throws Exception
+	 */
 	@SuppressWarnings("null")
 	public ResultSet getQuestions() throws Exception {
 		String sql = "SELECT * from question;";
@@ -46,6 +52,88 @@ public class ManagerDAO {
 		psmt.setString(1, code);
 		int rs = psmt.executeUpdate();
 		return rs;
+	}
+
+	/**
+	 * 
+	 * @param dto
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertQuestion(String phrase, String one, String two, String three, String four, String answer, String who) throws Exception {
+
+		String sql = "insert into question(phrase, one, two, three, four, answer, who) " 
+					+ "values( ?,?,?,?,?,?,?)";
+		int cnt = 0;
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, phrase);
+		pstmt.setString(2, one);
+		pstmt.setString(3, two);
+		pstmt.setString(4, three);
+		pstmt.setString(5, four);
+		pstmt.setString(6, answer);
+		pstmt.setString(7, who);
+
+		cnt = pstmt.executeUpdate();
+
+		return cnt;
+
+	}
+	
+	/**
+	 * Update row from question table.
+	 * @param  pk : id field
+	 * @return success count
+	 * @throws Exception
+	 */
+	public int updateQuestion(String pk) throws Exception {
+		String sql = "update question set phrase=?, one=?, two=?, three=?, four=?, answer=?, who=? where id=?";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pk);
+		pstmt.setString(2, pk);
+		pstmt.setString(3, pk);
+		pstmt.setString(4, pk);
+		pstmt.setString(5, pk);
+		pstmt.setString(6, pk);
+		pstmt.setString(7, pk);
+		pstmt.setString(8, pk);
+		int cnt = pstmt.executeUpdate();
+		return cnt;
+	}
+	
+	/**
+	 * Delete row from question table.
+	 * @param  pk : id field
+	 * @return success count
+	 * @throws Exception
+	 */
+	public int deleteQuestion(String pk) throws Exception {
+		String sql = "delete from question where id=?;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pk);
+		int cnt = pstmt.executeUpdate();
+		return cnt;
+	}
+
+	/**
+	 * Delete all rows from question table.
+	 * @return success count
+	 * @throws Exception
+	 */
+	public int deleteAllQuestions() throws Exception {
+		String sql = "delete from question;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		int cnt = pstmt.executeUpdate();
+		return cnt;
 	}
 
 }
