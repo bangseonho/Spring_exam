@@ -2,13 +2,13 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="Question.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¹®Á¦ °ü¸® ÆäÀÌÁö</title>
+<title>ë¬¸ì œ ê´€ë¦¬ í˜ì´ì§€</title>
 <style>
 
 body{
@@ -41,12 +41,12 @@ footer{
 }
 
 </style>
-<!-- Å×½ºÆ®¿ë -->
+<!-- í…ŒìŠ¤íŠ¸ìš© -->
 <%= new Date() %>
 </head>
 <body>
 	
-	<div class="title-group"><label>¹®Á¦ °ü¸®</label></div>
+	<div class="title-group"><label>ë¬¸ì œ ê´€ë¦¬</label></div>
 	<div class="total-group">
 		<!-- question list -->
 		<table id="question-list">
@@ -55,13 +55,13 @@ footer{
 				String[] questionColNameList =
 					(String[]) request.getAttribute("questionColNameList");
 				out.println("<tr>");
-				out.println("<td>" + "¹øÈ£" + "</td>");
+				out.println("<td>" + "ë²ˆí˜¸" + "</td>");
 				for(int i = 1; i < questionColNameList.length; i++){
 					String name = questionColNameList[i];
 					out.println("<td>" + name + "</td>");
 				}
-				out.println("<td>" + "¼öÁ¤" + "</td>");
-				out.println("<td>" + "»èÁ¦" + "</td>");
+				out.println("<td>" + "ìˆ˜ì •" + "</td>");
+				out.println("<td>" + "ì‚­ì œ" + "</td>");
 				out.println("</tr>");
 				%>
 			</thead>
@@ -82,8 +82,8 @@ footer{
 					out.println("<td>"+ dto.getFour() 	+"</td>");
 					out.println("<td>"+ dto.getAnswer() +"</td>");
 					out.println("<td>"+ dto.getWho() 	+"</td>");
-					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionUpdateOne?id="+ dto.getId() +"'\">¼öÁ¤</button>" +"</td>");
-					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">»èÁ¦</button>" +"</td>");
+					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionGet?id="+ dto.getId() +"'\">ìˆ˜ì •</button>" +"</td>");
+					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">ì‚­ì œ</button>" +"</td>");
 					out.println("</tr>");
 				}
 				%>
@@ -93,9 +93,9 @@ footer{
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerQuestionCreate'">¹®Á¦Ãß°¡</button>
-		<button onclick="location='ManagerQuestionDeleteAll'">¹®Á¦ÀüÃ¼»èÁ¦</button>
-		<button onclick="location='ManagerController'">¸ŞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='ManagerPageMove?page=ManagerQuestionCreateView'">ì§ˆë¬¸ì¶”ê°€</button>
+		<button onclick="location='ManagerQuestionDeleteAll'">ì§ˆë¬¸ì „ì²´ì‚­ì œ</button>
+		<button onclick="location='ManagerController'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>
 </footer>
 </html>

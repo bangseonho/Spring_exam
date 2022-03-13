@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
@@ -11,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Pack01.ConnectionDB;
@@ -52,11 +56,14 @@ public class ManagerController {
 			rs = managerDAO.getQuestions();
 
 			// Get Column Names
-			String[] questionColNameList = getColNames(rs);
-		    model.addAttribute("questionColNameList", questionColNameList);
+			String[] colNames = getColNames(rs);
+		    model.addAttribute("questionColNameList", colNames);
 			
 			// Get Row Field Data
-		    ArrayList<QuestionDTO> questionList = getQuestionList(rs);
+		    ArrayList<QuestionDTO> questionList = new ArrayList<QuestionDTO>();
+		    while(rs.next()) {
+		    	questionList.add(getQuestionDTO(rs));
+		    }
 			
 			System.out.println("설문 목록 1번쨰 내용");
 			System.out.println(questionList.get(0).toString());
@@ -68,24 +75,81 @@ public class ManagerController {
 		
 	}
 	
+
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+	String deleteUser(@RequestParam String code) {
+		System.out.println("usercode = " + code);
+		try{
+			managerDAO.deleteUsers(code);
+			
+		}catch(Exception e){}
+		return "redirect:ManagerUserView";
+	}
+
 	@RequestMapping("/ManagerQuestionCreate")
-	String managerQuestionCreate(Model model) {
-		System.out.println("ManagerQuestionCreateView로 이동");
+	String managerQuestionCreate(Model model, QuestionDTO dto) {
+		System.out.println("Question create");
+		System.out.println(dto.toString());
 		
-		model.addAttribute("sqlType", "create");
+		int cnt = 0;
+		// Create table row
+		try {
+			cnt = managerDAO.insertQuestion(
+					dto.getPhrase(),
+					dto.getOne(),
+					dto.getTwo(),
+					dto.getThree(),
+					dto.getFour(),
+					dto.getAnswer(),
+					dto.getWho()
+					);
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		return "redirect:/ManagerQuestion";
+	}
+	
+	/**
+	 * Get column names and row data about specific row.
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/ManagerQuestionGet")
+	String managerQuestionGet(Model model, @RequestParam(value = "id") String id) {
+		
+		ResultSet rs = null;
+		
+		try {
+			rs = managerDAO.getQuestion(id);
+			// Get column names
+			String[] colNames = getColNames(rs);
+			model.addAttribute("questionColNameList", colNames);
+
+			// Get row data
+			rs.next();
+			model.addAttribute("questionDTO", getQuestionDTO(rs));
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		model.addAttribute("sqlType", "update");
+		
 		return "Manager/ManagerQuestionCreateView";
 	}
 	
+	/**
+	 * Update 
+	 * @param model
+	 * @param dto
+	 * @return
+	 */
 	@RequestMapping("/ManagerQuestionUpdateOne")
-	String managerQuestionUpdate(Model model, @RequestParam(value = "id") String id) {
+	String managerQuestionUpdate(Model model, QuestionDTO dto) {
 		
 		int cnt = 0;
 		try {
-			cnt = managerDAO.updateQuestion(id);
+			cnt = managerDAO.updateQuestion(dto);
 		} catch (Exception e) { e.printStackTrace(); }
 
-		model.addAttribute("sqlType", "update");
-		return "Manager/ManagerQuestionCreateView";
+		return "redirect:/ManagerQuestion";
 	}
 	
 	@RequestMapping("/ManagerQuestionDeleteOne")
@@ -136,11 +200,8 @@ public class ManagerController {
 	 * @return
 	 * @throws Exception
 	 */
-	ArrayList<QuestionDTO> getQuestionList(ResultSet rs) throws Exception{
-    	ArrayList<QuestionDTO> questionList = new ArrayList<QuestionDTO>();
-    	while(rs.next()) {
-    		questionList.add(
-				new QuestionDTO(
+	QuestionDTO getQuestionDTO(ResultSet rs) throws Exception{
+		return new QuestionDTO(
 					rs.getString("id"),
 					rs.getString("phrase"), 
 					rs.getString("one"), 
@@ -149,9 +210,6 @@ public class ManagerController {
 					rs.getString("four"), 
 					rs.getString("answer"), 
 					rs.getString("who")
-					)
-				);
-    	}
-    	return questionList;
+			);
     }
 }
