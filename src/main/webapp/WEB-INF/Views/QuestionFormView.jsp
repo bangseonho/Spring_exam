@@ -429,7 +429,7 @@ li:not(:last-child)::after {
 </style>
 </head>
 <body>
-	<%
+ <%
 	ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>) request.getAttribute("questionList");
 	for (int i = 0; i < lst.size(); i++) {
 		for (int j = 0; j < lst.get(i).size(); j++) {
@@ -437,64 +437,37 @@ li:not(:last-child)::after {
 		}
 		System.out.println();
 	}
-	int no = 3;
+	 int no = (int)request.getAttribute("no");
+	System.out.println(no);
 	%>
-	<%
-		for(int i = 0; i < lst.size(); i++){
-	%>
-	<div class="flip-card-container" style="-hue: 220">
-		<div class="flip-card">
-
-			<div class="card-front">
-				<figure>
-					<div class="img-bg"></div>
-					<img
-						src="https://www.sciencetimes.co.kr/wp-content/uploads/2018/10/fc08a3_ecc89ba4706a4199a9a51be9500037d0mv2_d_1754_2480_s_2.jpg"
-						alt="Brohm Lake">
-					<figcaption>Brohm Lake</figcaption>
-				</figure>
-
-			</div>
-
-			<div class="card-back">
-				<figure>
-					<div class="img-bg"></div>
-				
-				</figure>
-
-				<form method="POST" action="reviewQuestion?no=${no}">
-					<div>
-						<span><%=lst.get(i).get(1)%></span>
-					</div>
-					<div>
-						<span>About <%=lst.get(i).get(7)%></span>
-					</div>
-					<label><input type="radio" name="radio" checked value="1" />
-						<span><%=lst.get(i).get(2)%></span> </label> <label><input
-						type="radio" name="radio" value="2" /> <span><%=lst.get(i).get(3)%></span>
-					</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(i).get(4)%></span>
-					</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(i).get(5)%></span>
-					</label>
-					<div class="btns">
-<!-- 						<button class="learn-more">
-							<span class="circle" aria-hidden="true"> <span
-								class="icon arrow"></span>
-							</span> <span class="button-text">Back</span>
-						</button> -->
-						<button class="learn-more">
-							<span class="circle" aria-hidden="true"> <span
-								class="icon arrow"></span>
-							</span> <span class="button-text">저장하기</span>
-						</button>
-					</div>
-				</form>
-			</div>
+	<form method="POST" action="reviewQuestion?no=${no+1}">
+		<div>
+			<span>${no}번 문제</span>
 		</div>
-	</div>
-	<%
-		}
-	%>
-   <script type="text/javascript"> 
+		 <div>
+			<span>About <%=lst.get(no).get(7)%></span>
+		</div>D
+		<br>
+		<label><input type="radio" name="radio" checked value="1" />
+			<span><%=lst.get(no).get(2)%></span> </label> <label><input
+			type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
+		</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
+		</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
+		</label>
+		<div class="btns">
+			<button class="learn-more">
+				<span class="circle" aria-hidden="true"> <span
+					class="icon arrow"></span>
+				</span> <span class="button-text">Back</span>
+			</button>
+			<button class="learn-more">
+				<span class="circle" aria-hidden="true"> <span
+					class="icon arrow"></span>
+				</span> <span class="button-text">저장하기</span>
+			</button>
+		</div>
+	</form>
+	<script type="text/javascript"> 
 
    </script> 
 </body>
