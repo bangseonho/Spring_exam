@@ -153,14 +153,7 @@ button{
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<h3>메인 페이지</h3>
-	<h3>${ name }의 수험 번호 ${ code }</h3>
-	<button onclick="location.href='questionform'">QuestionForm</button>
-	<button onclick="location.href='result'">ResultView</button>
-=======
 	<%-- <h3>${ name }의 수험 번호 ${ code }</h3> --%>
->>>>>>> cho2
 	<%
 		String a = (String)session.getAttribute("user_code");
 		String b = (String)session.getAttribute("user_name");
