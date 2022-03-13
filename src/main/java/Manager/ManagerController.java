@@ -3,6 +3,7 @@ package Manager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
@@ -49,8 +50,20 @@ public class ManagerController {
 		try {
 			// Get Data from DB
 			rs = managerDAO.getQuestions();
+
+			// Get Column Names
+			String[] questionColNameList = null;
+		    ResultSetMetaData rsmd = rs.getMetaData();
+		    int columnCount = rsmd.getColumnCount(); 
+		    questionColNameList = new String[columnCount]; 
 			
-			// Create Array
+		    for(int i=1; i<=columnCount; i++) {
+		        // Put column name into array
+		    	questionColNameList[i-1] = rsmd.getColumnName(i); 
+		    }
+		    model.addAttribute("questionColNameList", questionColNameList);
+			
+			// Get Row Field Data
 			ArrayList<QuestionDTO> questionList = new ArrayList<QuestionDTO>();
 			while(rs.next()) {
 				questionList.add(
@@ -65,8 +78,11 @@ public class ManagerController {
 						)
 				);
 			}
+			
+			System.out.println("설문 목록 1번쨰 내용");
 			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
