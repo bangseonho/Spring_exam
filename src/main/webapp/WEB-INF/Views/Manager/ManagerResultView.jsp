@@ -39,16 +39,39 @@ footer {
 <%= new Date() %>
 </head>
 <body>
+	<p id="time"></p>
 	<div class="title-group"><label>조사현황</label></div>
 	<div class="total-group">
 
 	조사현황 넣기
 
 	</div>
+	<script>
+		
+		var timeDisplay = document.getElementById("time");
+	
+		function refreshTime() {
+		  var dateString = new Date();
+		  timeDisplay.innerHTML = dateString.toString();
+		}
+	
+		setInterval(refreshTime, 1000);
+		
+		/* var timeDisplay = document.getElementById("time");
+
+
+		function refreshTime() {
+		  var dateString = new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"});
+		  var formattedString = dateString.replace(", ", " - ");
+		  timeDisplay.innerHTML = formattedString;
+		}
+
+		setInterval(refreshTime, 1000); */
+	</script>
 </body>
 <footer>
 	<div>
-		<button onclick="location=''">메인으로 이동</button>
+		<button onclick="location='ManagerController'">메인으로 이동</button>
 	</div>
 </footer>
 </html>

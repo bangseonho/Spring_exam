@@ -72,6 +72,13 @@ public class ManagerController {
 		
 	}
 	
+	@RequestMapping(value = "/deleteAllUser")
+	String deleteUser() {
+		try{
+			managerDAO.deleteAllUser();
+		}catch(Exception e){}
+		return "redirect:ManagerUserView";
+	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
 	String deleteUser(@RequestParam String code) {

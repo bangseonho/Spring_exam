@@ -25,15 +25,21 @@ body {
 }
 
 .left-side {
-	
+	width: 60%;
+	text-align: center;
 }
 
 #user-list {
 	border-collapse: collapse;
+	width: 100%;
 }
 
 #user-list tbody tr:hover {
 	background-color: red;
+}
+
+#user-list tbody td {
+	border: 1px solid #444444;
 }
 
 .right-side {
@@ -60,6 +66,11 @@ footer {
 	justify-content: center;
 	align-items: center;
 }
+
+a{
+	text-decoration: none;
+}
+
 </style>
 
 </head>
@@ -80,7 +91,7 @@ footer {
 						<td>이름</td>
 						<td>생년월일</td>
 						<td>수험번호</td>
-						<td></td>
+						<td><button onclick="func_confirm ()">회원 전체 삭제</button></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -102,13 +113,25 @@ footer {
 							<a href="deleteUser?code=<%= listUser.get(i).getCode() %>">삭제</a>
 							<%
 							out.println("</td>");
+							out.println("<td>");
+							%>
+							<a href="">문제 확인</a>
+							<%
+							out.println("</td>");
 							out.println("</tr>");
 						}
 					%>
 				</tbody>
 			</table>
 			<script>
-				
+				function func_confirm () {
+	        		if(confirm('회원 정보를 정말 모두 삭제 하시겠습니까? ')){
+	        			alert("삭제");
+	        			window.location.href = "deleteAllUser";
+	        		} else {
+	        			alert("취소");
+	        		}
+	        	}
 			</script>
 		</div>
 	</div>
