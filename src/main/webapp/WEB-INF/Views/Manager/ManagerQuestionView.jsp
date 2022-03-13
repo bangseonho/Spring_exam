@@ -82,7 +82,7 @@ footer{
 					out.println("<td>"+ dto.getFour() 	+"</td>");
 					out.println("<td>"+ dto.getAnswer() +"</td>");
 					out.println("<td>"+ dto.getWho() 	+"</td>");
-					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionUpdateOne?id="+ dto.getId() +"'\">수정</button>" +"</td>");
+					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionGet?id="+ dto.getId() +"'\">수정</button>" +"</td>");
 					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">삭제</button>" +"</td>");
 					out.println("</tr>");
 				}
