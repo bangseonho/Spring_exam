@@ -1,11 +1,11 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>µ¥ÀÌÅÍº£ÀÌ½º °ü¸® ÆäÀÌÁö</title>
+<title>ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬ íŽ˜ì´ì§€</title>
 <style>
 body {
 	
@@ -35,33 +35,42 @@ footer {
 	align-items: center;
 }
 </style>
-<!-- Å×½ºÆ®¿ë -->
+<!-- í…ŒìŠ¤íŠ¸ìš© -->
 <%= new Date() %>
 </head>
 <body>
-	<div class="title-group"><label>µ¥ÀÌÅÍº£ÀÌ½º °ü¸®</label></div>
+	<div class="title-group"><label>ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬</label></div>
 	<div class="total-group">
 
-		<div class="option-group">
-			<div>
-				<label>¼³¹®Á¶»ç ½Ã°£ : </label>
-				<input type="text" value="5">
-				<label> ºÐ</label>
+		<form method="post" action="">
+			<div class="option-group">
+				<div>
+					<label>ì„¤ë¬¸ì¡°ì‚¬ ì‹œê°„ : </label>
+					<input type="text" value="5">
+					<label> ë¶„</label>
+				</div>
+				<div>
+					<label>ì„¤ë¬¸ì¡°ì‚¬ë‹¹ ë¬¸ì œ ìˆ˜ : </label>
+					<input type="text" value="5">
+					<label> ê°œ</label>
+				</div>
+				<div>
+					<label>ì‘ì‹œê°€ëŠ¥ íšŸìˆ˜ : </label>
+					<input type="text" value="1">
+					<label> íšŒ</label>
+				</div>
 			</div>
 			<div>
-				<button>Âü¿©ÀÚ ÀüÃ¼ »èÁ¦</button>
+				<input type="reset" value="ì´ˆê¸°í™”"></input>
+				<input type="submit" value="ì ìš©"></input>
 			</div>
-		</div>
-		<div>
-			<button>°ª ÃÊ±âÈ­</button>
-			<button>Àû¿ë</button>
-		</div>
+		</form>
 
 	</div>
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerController'">¸ÞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='ManagerController'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>
 </footer>
 </html>
