@@ -28,30 +28,31 @@ public class QuestionController implements HttpSessionBindingListener {
 	//@RequestParam(value="no", required=false) int no,
 	// 문제 불러오는중
 	@RequestMapping("/questionform")
-	public String f2(Model model, HttpSession session) throws Exception {
-		ResultSet rs = questionDAO.getQuestion();
-
-		//model.addAttribute("newNo", newNo);
-		// 데이터저장
-		
-		//
-		ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
-		while (rs.next()) {
-			ArrayList<String> lst2 = new ArrayList<String>();
-			lst2.add(rs.getString("id"));
-			lst2.add(rs.getString("phrase"));
-			lst2.add(rs.getString("one"));
-			lst2.add(rs.getString("two"));
-			lst2.add(rs.getString("three"));
-			lst2.add(rs.getString("four"));
-			lst2.add(rs.getString("answer"));
-			lst2.add(rs.getString("who"));
-			lst1.add(lst2);
-			model.addAttribute("questionList", lst1);
-		}
-
-		return "QuestionFormView";
-	}
+	   public String f2(Model model, HttpSession session) throws Exception {
+	      ResultSet rs = questionDAO.getQuestion();
+	      int no = 0;
+	      ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
+	      while (rs.next()) {
+	         ArrayList<String> lst2 = new ArrayList<String>();
+	         lst2.add(rs.getString("id"));
+	         lst2.add(rs.getString("phrase"));
+	         lst2.add(rs.getString("one"));
+	         lst2.add(rs.getString("two"));
+	         lst2.add(rs.getString("three"));
+	         lst2.add(rs.getString("four"));
+	         lst2.add(rs.getString("answer"));
+	         lst2.add(rs.getString("who"));
+	         lst1.add(lst2);
+//	         model.addAttribute(Integer.toString(no), lst2);
+//	         session.setAttribute(Integer.toString(no), lst2);
+//	         no++;
+//	         System.out.println(session.getAttribute(Integer.toString(no)));
+	      }
+	      model.addAttribute("questionList", lst1);
+	      System.out.println(lst1.toString());
+//	      int cnt = 0;
+	      return "QuestionFormView";
+	   }
 	@RequestMapping("/nextQuestion")
 	public String f3(Model model) {
 		return "QuestionFormView";
