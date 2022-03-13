@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="Question.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -24,11 +25,11 @@ body{
 	align-items: center;
 }
 
-#survey-list{
+#question-list{
 	border-collapse: collapse;
 }
 
-#survey-list tbody tr:hover{
+#question-list tbody tr:hover{
 	background-color: red;
 }
 
@@ -40,14 +41,15 @@ footer{
 }
 
 </style>
-
+<!-- 테스트용 -->
+<%= new Date() %>
 </head>
 <body>
 	
 	<div class="title-group"><label>문제 관리</label></div>
 	<div class="total-group">
-		<!-- survey list -->
-		<table id="survey-list">
+		<!-- question list -->
+		<table id="question-list">
 			<thead>
 				<%
 				String[] questionColNameList =
@@ -71,7 +73,8 @@ footer{
 				for(int i = 0; i < questionList.size(); i++) {
 					dto = questionList.get(i);
 					out.println("<tr>");
-					out.println("<td>"+ (i + 1) 		+"</td>");
+					/* out.println("<td>"+ (i + 1) 		+"</td>"); */
+					out.println("<td>"+ dto.getId() 	+"</td>");
 					out.println("<td>"+ dto.getPhrase() +"</td>");
 					out.println("<td>"+ dto.getOne() 	+"</td>");
 					out.println("<td>"+ dto.getTwo() 	+"</td>");
@@ -79,8 +82,8 @@ footer{
 					out.println("<td>"+ dto.getFour() 	+"</td>");
 					out.println("<td>"+ dto.getAnswer() +"</td>");
 					out.println("<td>"+ dto.getWho() 	+"</td>");
-					out.println("<td>"+ "<button onclick=\"\">수정</button>" +"</td>");
-					out.println("<td>"+ "<button onclick=\"\">삭제</button>" +"</td>");
+					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionUpdateOne?id="+ dto.getId() +"'\">수정</button>" +"</td>");
+					out.println("<td>"+ "<button onclick=\"location='ManagerQuestionDeleteOne?id="+ dto.getId() +"'\">삭제</button>" +"</td>");
 					out.println("</tr>");
 				}
 				%>
@@ -90,7 +93,9 @@ footer{
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">메인으로 이동</button>
+		<button onclick="location='ManagerQuestionCreate'">문제추가</button>
+		<button onclick="location='ManagerQuestionDeleteAll'">문제전체삭제</button>
+		<button onclick="location='ManagerController'">메인으로 이동</button>
 	</div>
 </footer>
 </html>

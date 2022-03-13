@@ -116,8 +116,7 @@ footer {
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">메인으로
-			이동</button>
+		<button onclick="location='ManagerController'">메인으로 이동</button>
 	</div>
 </footer>
 </html>

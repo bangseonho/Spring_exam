@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -34,7 +35,8 @@ footer {
 	align-items: center;
 }
 </style>
-
+<!-- 테스트용 -->
+<%= new Date() %>
 </head>
 <body>
 	<div class="title-group"><label>조사현황</label></div>
@@ -46,7 +48,7 @@ footer {
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">메인으로 이동</button>
+		<button onclick="location=''">메인으로 이동</button>
 	</div>
 </footer>
 </html>
