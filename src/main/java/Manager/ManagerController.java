@@ -108,17 +108,24 @@ public class ManagerController {
 		return "redirect:/ManagerQuestion";
 	}
 	
+	/**
+	 * Get column names and row data about specific row.
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/ManagerQuestionGet")
 	String managerQuestionGet(Model model, @RequestParam(value = "id") String id) {
 		
 		ResultSet rs = null;
 		
 		try {
-			// Get Column Names
-			String[] colNames = getColNames(rs);
-		    model.addAttribute("questionColNameList", colNames);
-			
 			rs = managerDAO.getQuestion(id);
+			// Get column names
+			String[] colNames = getColNames(rs);
+			model.addAttribute("questionColNameList", colNames);
+
+			// Get row data
 			rs.next();
 			model.addAttribute("questionDTO", getQuestionDTO(rs));
 		} catch (Exception e) { e.printStackTrace(); }
@@ -127,6 +134,13 @@ public class ManagerController {
 		
 		return "Manager/ManagerQuestionCreateView";
 	}
+	
+	/**
+	 * Update 
+	 * @param model
+	 * @param dto
+	 * @return
+	 */
 	@RequestMapping("/ManagerQuestionUpdateOne")
 	String managerQuestionUpdate(Model model, QuestionDTO dto) {
 		
@@ -135,7 +149,7 @@ public class ManagerController {
 			cnt = managerDAO.updateQuestion(dto);
 		} catch (Exception e) { e.printStackTrace(); }
 
-		return "Manager/ManagerQuestionCreateView";
+		return "redirect:/ManagerQuestion";
 	}
 	
 	@RequestMapping("/ManagerQuestionDeleteOne")

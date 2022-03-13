@@ -41,18 +41,27 @@ footer {
 </head>
 <body>
 	<%
+	String sqlType = (String)request.getAttribute("sqlType");
+	if(sqlType == null){
+		sqlType = "create";
+	}
+	
+	Object object = request.getAttribute("questionDTO");
 	String[] questionColNameList =
 		(String[]) request.getAttribute("questionColNameList");
 	
-	String sqlType = (String)request.getAttribute("sqlType");
-
-	Object object = request.getAttribute("questDTO");
 	QuestionDTO questionDTO = null;
-	if(object != null){
+	String targetController;
+	String btnStr;
+	if(sqlType.equals("update") && object != null){
 		questionDTO = (QuestionDTO)object;
+		targetController = "ManagerQuestionUpdateOne";
+		btnStr = "수정";
 	}
 	else {
-		/* questionDTO = new QuestionDTO("1"); */
+		questionDTO = new QuestionDTO("id", "질문", "보기1", "보기2", "보기3", "보기4", "답", "대상");
+		targetController = "ManagerQuestionCreate";
+		btnStr = "추가";
 	}
 	
 	%>
@@ -60,16 +69,16 @@ footer {
 		<label>질문 <%= sqlType %></label>
 	</div>
 	<div class="total-group">
-		<form method="post" action="ManagerQuestionCreate">
-		
-			<input type="text" name="phrase" value="<%= questionDTO.getPhrase() %>"/>
-			<input type="text" name="one" 	 value="<%= questionDTO.getOne() 	%>"/>
-			<input type="text" name="two" 	 value="<%= questionDTO.getTwo() 	%>"/>
-			<input type="text" name="three"  value="<%= questionDTO.getThree() 	%>"/>
-			<input type="text" name="four" 	 value="<%= questionDTO.getFour() 	%>"/>
-			<input type="text" name="answer" value="<%= questionDTO.getAnswer() %>"/>
-			<input type="text" name="who" 	 value="<%= questionDTO.getWho() 	%>"/>
-			<input type="submit" value="추가"/>
+		<form method="post" action="<%= targetController %>">
+			<input type="hidden" name="id"	 	value="<%= questionDTO.getId()%>"/>
+			<input type="text"   name="phrase" 	value="<%= questionDTO.getPhrase()%>"/>
+			<input type="text"   name="one" 	value="<%= questionDTO.getOne()%>"/>
+			<input type="text"   name="two" 	value="<%= questionDTO.getTwo()%>"/>
+			<input type="text"   name="three"  	value="<%= questionDTO.getThree()%>"/>
+			<input type="text"   name="four" 	value="<%= questionDTO.getFour() %>"/>
+			<input type="text"   name="answer" 	value="<%= questionDTO.getAnswer()%>"/>
+			<input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/>
+			<input type="submit" value="<%= btnStr%>"/> 
 		</form>	
 	
 	</div>
