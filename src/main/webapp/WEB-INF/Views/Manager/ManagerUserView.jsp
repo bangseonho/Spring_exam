@@ -77,7 +77,6 @@ footer {
 			<table id="user-list">
 				<thead>
 					<tr>
-						<td>번호</td>
 						<td>이름</td>
 						<td>생년월일</td>
 						<td>수험번호</td>
@@ -85,27 +84,27 @@ footer {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td><% out.println(listUser.get(1).getName()); %></td>
-						<td><% out.println(listUser.get(1).getBirth()); %></td>
-						<td><% out.println(listUser.get(1).getCode()); %></td>
-						<td><a href="">삭제</a></td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>홍길동</td>
-						<td>929292</td>
-						<td>50</td>
-						<td><a href="">삭제</a></td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>홍길동</td>
-						<td>929292</td>
-						<td>50</td>
-						<td><a href="">삭제</a></td>
-					</tr>
+					<%
+						for(int i = 0; i < listUser.size() ; i++){
+							out.println("<tr>");
+							out.println("<td>");
+							out.println(listUser.get(i).getName());
+							out.println("</td>");
+							out.println("<td>");
+							out.println(listUser.get(i).getBirth());
+							out.println("</td>");
+							out.println("<td>");
+							out.println(listUser.get(i).getCode());
+							out.println("</td>");
+							out.println("<td>");
+							%>
+							<%-- out.println("<a href='/deleteUser?code=${listUser.get(i).getCode()}'> 삭제 </a>"); --%>
+							<a href="deleteUser?code=<%= listUser.get(i).getCode() %>">삭제</a>
+							<%
+							out.println("</td>");
+							out.println("</tr>");
+						}
+					%>
 				</tbody>
 			</table>
 			<script>
