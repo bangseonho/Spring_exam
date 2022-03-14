@@ -12,7 +12,7 @@
 <title>질문 추가/수정 페이지</title>
 <style>
 html {
-	
+	font-family: 'Gamja Flower', cursive;
 }
 body {
 	
@@ -101,6 +101,13 @@ body {
 	
 }
 
+table tr td {
+	padding : 10px;
+}
+table {
+	margin: 10px;
+}
+
 footer {
 	display: flex;
 	justify-content: center;
@@ -112,9 +119,10 @@ a{
 	text-decoration: none;
 	color: black;
 }
+.form-style{
+	text-align: center;
+}
 </style>
-<!-- 테스트용 -->
-<%= new Date() %>
 </head>
 <body>
 	<%
@@ -143,46 +151,50 @@ a{
 	
 	%>
 	<div class="title-group">
-		<label>질문 <%= sqlType %></label>
+		<label class="bold">질문 <%= sqlType %></label>
 	</div>
 	<div class="total-group">
-		<form method="post" action="<%= targetController %>">
-			<input type="hidden" name="id"	 	value="<%= questionDTO.getId()%>"/>
+		<form class="form-style" method="post" action="<%= targetController %>">
+			<input type="hidden" name="id" value="<%= questionDTO.getId()%>"/>
+			
+			<table>
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+				<td> <label>질문</label> </td>
+				<td> <input type="text"   name="phrase" 	value="<%= questionDTO.getPhrase()%>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>보기1</label> </td>
+				<td> <input type="text"   name="one" 	value="<%= questionDTO.getOne()%>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>보기2</label> </td>
+				<td> <input type="text"   name="two" 	value="<%= questionDTO.getTwo()%>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>보기3</label> </td>
+				<td> <input type="text"   name="three"  	value="<%= questionDTO.getThree()%>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>보기4</label> </td>
+				<td> <input type="text"   name="four" 	value="<%= questionDTO.getFour() %>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>답</label> </td>
+				<td> <input type="text"   name="answer" 	value="<%= questionDTO.getAnswer()%>"/> </td>
+				</tr>
+				<tr>
+				<td> <label>대상</label> </td>
+				<td> <input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/> </td>
+				</tr>
+			</tbody>
+			</table>
 			
 			<div>
-				<label>질문</label>
-				<input type="text"   name="phrase" 	value="<%= questionDTO.getPhrase()%>"/>
-			</div>			
-
-			<div>
-				<label>보기1</label>
-				<input type="text"   name="one" 	value="<%= questionDTO.getOne()%>"/>
-			</div>		
-			
-			<div>
-				<label>보기2</label>
-				<input type="text"   name="two" 	value="<%= questionDTO.getTwo()%>"/>
-			</div>	
-
-			<div>
-				<label>보기3</label>
-				<input type="text"   name="three"  	value="<%= questionDTO.getThree()%>"/>
-			</div>			
-			<div>
-				<label>보기4</label>
-				<input type="text"   name="four" 	value="<%= questionDTO.getFour() %>"/>
-			</div>
-			<div>
-				<label>답</label>
-				<input type="text"   name="answer" 	value="<%= questionDTO.getAnswer()%>"/>
-			</div>
-			<div>
-				<label>대상</label>
-				<input type="text"   name="who" 	value="<%= questionDTO.getWho()%>"/>
-			</div>
-			<div>
-				<input type="reset"  value="초기화"/> 
-				<input type="submit" value="<%= btnStr%>"/> 
+				<input class="button button5" type="reset"  value="초기화"/> 
+				<input class="button button5" type="submit" value="<%= btnStr%>"/> 
 			</div>
 		</form>	
 	
@@ -190,7 +202,7 @@ a{
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerQuestion'">질문 관리로 이동</button>
+		<button class="button button5" onclick="location='ManagerQuestion'">질문 관리로 이동</button>
 	</div>
 </footer>
 </html>
