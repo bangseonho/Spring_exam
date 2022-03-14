@@ -27,8 +27,6 @@ public class QuestionController implements HttpSessionBindingListener {
 	//	public String f1(Model model, ResultSet rs) {
 	//		return "QuestionFormView";
 	//	}
-
-	@RequestMapping("/questionform")
 	public String f2(Model model, HttpSession session) throws Exception {
 		ResultSet rs = questionDAO.getQuestion();
 		int no = 0;
