@@ -11,17 +11,23 @@ import Result.ResultDAO;
 import Result.ResultDTO;
 import User.UserDAO;
 import User.UserDTO;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ResultController {
-	
+	@Autowired
+	ResultDAO resultDAO;
 	@RequestMapping("/result")
-	public String form(Model model, ResultDTO result) {
-
-		ResultDAO resultDAO = new ResultDAO(); //select 결과쿼리
+	public String form(HttpSession session, Model model) {		
+		String userCode = (String)session.getAttribute("user_code");
+		String userName = (String)session.getAttribute("user_name");
 		
-		try {
-			model.addAttribute("rs", resultDAO.resultAnswer());
+		System.out.println(userCode);
+		System.out.println(userName);
+		try {			
+			model.addAttribute("rs2", resultDAO.resultAllCount(userCode));
+			model.addAttribute("rs3", resultDAO.resultCollectCount(userCode));
+			model.addAttribute("rs1", resultDAO.resultAnswer(userCode));
 		}catch(Exception e){
 			System.out.println("ȸ������ ����");
 		}

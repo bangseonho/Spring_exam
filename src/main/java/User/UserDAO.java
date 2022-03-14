@@ -67,7 +67,7 @@ public class UserDAO {
 				@SuppressWarnings("static-access")
 				Connection conn = conn1.getConnection();
 
-				String sql = "insert into user values(null, ?, ?, ?);";
+				String sql = "insert into user values(null, ?, ?, ?, null);";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, dto.getName());
@@ -104,11 +104,22 @@ public class UserDAO {
 		}
 	}
 
+	public void allUser() {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		
+		try {
+			String sql = "select * from user;";
+			psmt = conn.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			while(rs.next()) {
+				
+			}
+		} catch(Exception e) {System.out.println("error");}
+		
 	
+	}
 	
-	
-	
-	
-	
+		
 	
 }

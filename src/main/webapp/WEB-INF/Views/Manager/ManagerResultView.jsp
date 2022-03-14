@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Á¶»ç ÇöÈ² ÆäÀÌÁö</title>
+<title>ì¡°ì‚¬ í˜„í™©</title>
 <style>
 body {
 	
@@ -34,19 +35,43 @@ footer {
 	align-items: center;
 }
 </style>
-
+<!-- í…ŒìŠ¤íŠ¸ìš© -->
+<%= new Date() %>
 </head>
 <body>
-	<div class="title-group"><label>Á¶»çÇöÈ²</label></div>
+	<p id="time"></p>
+	<div class="title-group"><label>ì¡°ì‚¬í˜„í™©</label></div>
 	<div class="total-group">
 
-	Á¶»çÇöÈ² ³Ö±â
+	ì¡°ì‚¬í˜„í™© ë„£ê¸°
 
 	</div>
+	<script>
+		
+		var timeDisplay = document.getElementById("time");
+	
+		function refreshTime() {
+		  var dateString = new Date();
+		  timeDisplay.innerHTML = dateString.toString();
+		}
+	
+		setInterval(refreshTime, 1000);
+		
+		/* var timeDisplay = document.getElementById("time");
+
+
+		function refreshTime() {
+		  var dateString = new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"});
+		  var formattedString = dateString.replace(", ", " - ");
+		  timeDisplay.innerHTML = formattedString;
+		}
+
+		setInterval(refreshTime, 1000); */
+	</script>
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">¸ŞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='ManagerController'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>
 </footer>
 </html>

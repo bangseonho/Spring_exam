@@ -9,8 +9,13 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
+<%@page import="Result.ResultDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random" %>
+<<<<<<< HEAD
+=======
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -248,16 +253,26 @@ button:hover .button-text {
 	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
 	
+<<<<<<< HEAD
 	<div class="container1" id ="questionSurvey">
 			
 		<form method="POST"> <!-- action="submitQuestion21" -->
 			<div> 	
 				<span id="title"></span>
 			</div>	
+=======
+	<div class="container1" id="questionSurvey">
+		<form method="POST">
+			<!-- action="submitQuestion21" -->
+			<div>
+				<span id="title"></span>
+			</div>
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 			<div>
 				<span id="who">About<%=lst.get(i).get(0)%></span>
 			</div>
 			<h2 id="iddd"></h2>
+<<<<<<< HEAD
 			<label><input type="radio" name="radio" value="1" checked /> <span id="select1"><%=lst.get(i).get(2)%></span></label> 
 			<label><input type="radio" name="radio" value="2" /> <span  id="select2"><%=lst.get(i).get(3)%></span> </label> 
 			<label><input type="radio" name="radio" value="3" /> <span  id="select3"><%=lst.get(i).get(4)%></span> </label>
@@ -268,15 +283,35 @@ button:hover .button-text {
 						class="icon arrow"></span>
 					</span> <span class="button-text">Back</span>
 				</button>
+=======
+			<label><input type="radio" name="radio" value="1" checked />
+				<span id="select1"><%=lst.get(i).get(2)%></span></label> <label><input
+				type="radio" name="radio" value="2" /> <span id="select2"><%=lst.get(i).get(3)%></span>
+			</label> <label><input type="radio" name="radio" value="3" /> <span
+				id="select3"><%=lst.get(i).get(4)%></span> </label> <label><input
+				type="radio" name="radio" value="4" /> <span id="select4"><%=lst.get(i).get(5)%></span>
+			</label>
+			<div class="btns">
+				<!-- <button class="learn-more" type="button">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Back</span>
+				</button> -->
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 				<button class="learn-more" type="button" onclick="showQuestion()">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
 				</button>
 			</div>
+<<<<<<< HEAD
 
 	</div>
 	
+=======
+	</div>
+
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 	<script type="text/javascript">
 	var i   = 0;
 	var cnt = <%=cnt%>
@@ -286,12 +321,27 @@ button:hover .button-text {
 	arr[2]  = <%=strArr[2]%>;
 	arr[3]  = <%=strArr[3]%>;
 	arr[4]  = <%=strArr[4]%>;
+<<<<<<< HEAD
 	
 	// 첫 페이지 시작 시 불러옴
 	showQuestion();
 	
 	function showQuestion() {
 		
+=======
+	// 첫 페이지 시작 시 불러옴
+	showQuestion();
+	var timer;
+	function showQuestion() {
+		ResultDAO resultDAO = ${resultDAO};
+		resultDAO.insert(null, '1',1,'1',1);
+	
+		if(timer){			
+		clearTimeout(timer);
+		console.log(11);
+		}
+		console.log(22);
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 		if(i >= cnt){
 			console.log("끝");
 			// 컨트롤러로 값 전달 (어떻게?)
@@ -309,6 +359,7 @@ button:hover .button-text {
 		document.getElementById("select3").innerHTML = arr[i][4];
 		document.getElementById("select4").innerHTML = arr[i][5];
 		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+<<<<<<< HEAD
 		
 		console.log(arr[i]);
 		i++;
@@ -319,14 +370,26 @@ button:hover .button-text {
 		// 시간 지날 시 코드
 		alert("5초 경과");
 	}, 5000); // ms, 1000ms == 1s
+=======
+		i++;
+
+		timer = setTimeout(timeout, 3000);
+	}
+	function timeout(){
+			alert("5초 경과");
+	}
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 	
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
 		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
 		});
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
 	</script>
 	
 </body>

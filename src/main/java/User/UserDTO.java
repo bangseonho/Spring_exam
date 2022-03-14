@@ -8,7 +8,11 @@ public class UserDTO {
 	private String name;
 	private String birth;
 	private String code;
-
+	
+	UserDTO(){
+		
+	}
+	
 	public UserDTO(String name, String birth, String code) {
 		this.name = name;
 		this.birth = birth;

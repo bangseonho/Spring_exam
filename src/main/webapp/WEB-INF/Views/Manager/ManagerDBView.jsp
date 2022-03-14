@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@page import="Setting.SettingDTO"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>µ¥ÀÌÅÍº£ÀÌ½º °ü¸® ÆäÀÌÁö</title>
+<title>ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬</title>
 <style>
 body {
 	
@@ -34,32 +36,47 @@ footer {
 	align-items: center;
 }
 </style>
-
+<!-- í…ŒìŠ¤íŠ¸ìš© -->
+<%= new Date() %>
 </head>
 <body>
-	<div class="title-group"><label>µ¥ÀÌÅÍº£ÀÌ½º °ü¸®</label></div>
+	<%
+	SettingDTO settingDTO = (SettingDTO)request.getAttribute("settingDTO");
+	System.out.println(settingDTO.toString());
+	%>
+
+	<div class="title-group"><label>ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬</label></div>
 	<div class="total-group">
 
-		<div class="option-group">
-			<div>
-				<label>¼³¹®Á¶»ç ½Ã°£ : </label>
-				<input type="text" value="5">
-				<label> ºÐ</label>
+		<form method="post" action="SettingUpdate">
+			<div class="option-group">
+				<div>
+					<label>ì„¤ë¬¸ì¡°ì‚¬ ì‹œê°„ : </label>
+					<input type="text" name="limitTime" value="<%=settingDTO.getLimitTime()%>">
+					<label> ë¶„</label>
+				</div>
+				<div>
+					<label>ì„¤ë¬¸ì¡°ì‚¬ë‹¹ ë¬¸ì œ ìˆ˜ : </label>
+					<input type="text" name="questionNum" value="<%=settingDTO.getQuestionNum()%>">
+					<label> ê°œ</label>
+				</div>
+				<div>
+					<label>ì‘ì‹œê°€ëŠ¥ íšŸìˆ˜ : </label>
+					<input type="text" name="questionChance" value="<%=settingDTO.getQuestionChance()%>">
+					<label> íšŒ</label>
+				</div>
 			</div>
 			<div>
-				<button>Âü¿©ÀÚ ÀüÃ¼ »èÁ¦</button>
+				<input type="reset" value="ì´ˆê¸°í™”"></input>
+				<input type="submit" value="ì ìš©"></input>
 			</div>
-		</div>
-		<div>
-			<button>°ª ÃÊ±âÈ­</button>
-			<button>Àû¿ë</button>
-		</div>
+		</form>
 
 	</div>
 </body>
 <footer>
 	<div>
-		<button onclick="location='PageMove?page=ManagerMainView'">¸ÞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='ManagerController'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>
 </footer>
 </html>

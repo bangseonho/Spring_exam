@@ -4,7 +4,11 @@
     
     
     
+<<<<<<< HEAD
     <wb-module deploy-name="Mvc01-0.0.1-SNAPSHOT">
+=======
+    <wb-module deploy-name="Mvc3-0.0.1-SNAPSHOT">
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
                                                 
         
         
@@ -12,6 +16,11 @@
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                                                 
+<<<<<<< HEAD
+        
+        
+        
+=======
         
         
         
@@ -19,12 +28,29 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
                                                 
         
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
         
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                                                
+        
+        
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                                                
+        
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                                                 
         
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                
+        
+>>>>>>> b1e3192812cfd6eeb5255d45db90586745c378c0
         
         
         
