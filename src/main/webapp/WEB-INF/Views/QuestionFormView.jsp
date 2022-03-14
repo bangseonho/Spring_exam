@@ -255,26 +255,26 @@ button:hover .button-text {
 				<span id="title"></span>
 			</div>
 			<div>
-				<span id="who">About<%=lst.get(i).get(0)%></span>
+				<span id="who">About<%=lst.get(i).get(7)%></span>
 			</div>
 			<h2 id="iddd"></h2>
 			<label><input type="radio" name="radio" value="1" checked />
-				<span id="select1"><%=lst.get(i).get(2)%></span></label> <label><input
-				type="radio" name="radio" value="2" /> <span id="select2"><%=lst.get(i).get(3)%></span>
+				<span id="1"><%=lst.get(i).get(2)%></span></label> <label><input
+				type="radio" name="radio" value="2" /> <span id="2"><%=lst.get(i).get(3)%></span>
 			</label> <label><input type="radio" name="radio" value="3" /> <span
-				id="select3"><%=lst.get(i).get(4)%></span> </label> <label><input
-				type="radio" name="radio" value="4" /> <span id="select4"><%=lst.get(i).get(5)%></span>
+				id="3"><%=lst.get(i).get(4)%></span> </label> <label><input
+				type="radio" name="radio" value="4" /> <span id="4"><%=lst.get(i).get(5)%></span>
 			</label>
 			<div class="btns">
-				<!-- <button class="learn-more" type="button">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Back</span>
-				</button> -->
 				<button class="learn-more" type="button" onclick="showQuestion()">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
+				</button>
+				<button class="learn-more" type="button">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Submit</span>
 				</button>
 			</div>
 	</div>
@@ -291,6 +291,7 @@ button:hover .button-text {
 	// 첫 페이지 시작 시 불러옴
 	showQuestion();
 	var timer;
+	
 	function showQuestion() {
 		if(timer){			
 		clearTimeout(timer);
@@ -298,31 +299,51 @@ button:hover .button-text {
 		}
 		console.log(22);
 		if(i >= cnt){
-			console.log("끝");
-			// 컨트롤러로 값 전달 (어떻게?)
+			alert("시험종료");
+			/* setTimeout(()=>{
 			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
+			},1000) */
+			// 컨트롤러로 값 전달 (어떻게?)
 			return;
 		}
-		
 		/* document.getElementById("questionSurvey");
 		const headingEl = document.querySelector("span#title");
 		headingEl.textContent = "안녕하세요!"; */
-		
 		document.getElementById("title").innerHTML   = arr[i][1];
-		document.getElementById("select1").innerHTML = arr[i][2];
-		document.getElementById("select2").innerHTML = arr[i][3];
-		document.getElementById("select3").innerHTML = arr[i][4];
-		document.getElementById("select4").innerHTML = arr[i][5];
-		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+		document.getElementById("1").innerHTML = arr[i][2];
+		document.getElementById("2").innerHTML = arr[i][3];
+		document.getElementById("3").innerHTML = arr[i][4];
+		document.getElementById("4").innerHTML = arr[i][5];
+		document.getElementById("who").innerHTML = "About " + arr[i][7];
+		//
+		
+		//
 		i++;
 
-		timer = setTimeout(timeout, 3000);
+		//timer = setTimeout(timeout, 3000);
 	}
 	function timeout(){
 			alert("5초 경과");
+			showQuestion();
 	}
 	
-	
+	function setValue(){
+		// 문제마다 값을 저장해주는거고
+		const genderNodeList
+		  = document.getElementsByName('radio');
+		 genderNodeList.forEach((node) => {
+			    if(node.checked)  {
+			      var choice = document.getElementById(node.value).firstChild.nodeValue;
+			      var answer = "<%=lst.get(i).get(6)%>";
+			      var code = <%=(String) session.getAttribute("user_code")%>;
+			      var QuestionId = <%=lst.get(i).get(0)%>;
+			      var correct = 0;
+			      if(choice==answer){
+			    	  correct=1;
+			      }
+			      console.log(choice, answer, code, QuestionId, correct);
+			    }})
+	}
 	
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
