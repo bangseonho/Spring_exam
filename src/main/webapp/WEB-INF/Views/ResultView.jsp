@@ -58,15 +58,7 @@
 	<h1>
 		수험번호:<%=userCode%><br>
 	</h1>	
-	<%
-	String userCode = (String) session.getAttribute("user_code");
-	String userName = (String) session.getAttribute("user_name");
-	%>
 
-
-	<h1>
-		수험번호:<%=userCode%><br>
-	</h1>
 	
 	<%
 	int allCnt = 0;
