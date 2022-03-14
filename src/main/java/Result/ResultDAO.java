@@ -18,7 +18,7 @@ public class ResultDAO {
 	public ResultSet resultAnswer(String userCode) throws Exception {
 				Connection conn = ConnectionDB.getConnection();
 		try {
-			String sql1 = "select r.code, q.id, q.phrase, "
+			String sql1 = "select r.code, q.phrase, "
 					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct "
 					+ "from question as q, result as r "
 					+ "where q.id = r.question and r.code = " + userCode;		
@@ -70,21 +70,18 @@ public class ResultDAO {
 		} 
 	}	
 	
-	public void insertResult(ResultDTO dto) throws Exception {
-		try {
+	public int insertResult(ResultDTO dto) throws Exception {
+			System.out.println("insert result");
+
 			Connection conn = ConnectionDB.getConnection();
 			String sql = "insert into result values(null, ?,?,?,?);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("insert result");
-			
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
 			psmt.setInt(3, dto.getChoice());
 			psmt.setInt(4, dto.getCorrect());
-			cnt = psmt.executeUpdate();
-		} catch (SQLException e) {
-//			e.printStackTrace();
-			throw new Exception("insert fail");
-		} 
+			int num = psmt.executeUpdate();
+			
+			return num;
 	}
 }
