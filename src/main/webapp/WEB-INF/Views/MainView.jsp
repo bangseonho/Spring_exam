@@ -173,7 +173,6 @@ button{
           이거하느라 힘들었습니다. 내주말 돌려줘요</a></p>
           <button onclick="location.href='questionform'">시험 시작</button>
           <button onclick="location.href='result'">결과 보기</button>
-          
         </div>
       </div>
     </div>
