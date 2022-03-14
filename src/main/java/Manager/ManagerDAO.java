@@ -59,6 +59,16 @@ public class ManagerDAO {
 		return rs;
 	}
 	
+	public int deleteAllUser() throws Exception{
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		
+		String sql = "delete from user;";
+		psmt = conn.prepareStatement(sql);
+		int rs = psmt.executeUpdate();
+		return rs;
+	}
+	
 	public int deleteUsers(String code) throws Exception{
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
