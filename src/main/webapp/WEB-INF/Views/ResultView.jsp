@@ -43,9 +43,6 @@
 	text-align: center;
 }
 </style>
-
-
-
 <meta charset="UTF-8">
 <title>result view</title>
 </head>
@@ -58,35 +55,21 @@
 		return;
 	}
 	%>
-
-
 	<h1>
 		수험번호:<%=userCode%><br>
-	</h1>
-	
+	</h1>	
 	<%
 	int allCnt = 0;
-	int CollectCnt = 0;
-	int like = 0;
-	ResultSet rs2 = (ResultSet) request.getAttribute("rs2");
-	while (rs2.next()) {
-		allCnt = rs2.getInt("allcnt");
-	}
-	ResultSet rs3 = (ResultSet) request.getAttribute("rs3");
-	while (rs3.next()) {
-		CollectCnt = rs3.getInt("correctcnt");
-	}
-	System.out.print(allCnt);
+	int CorrectCnt = 0;
+	int like = 0;	
+	allCnt = (int)request.getAttribute("rs2");
+	CorrectCnt = (int)request.getAttribute("rs3");
 	%>
 
-	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CollectCnt%> 개 맞았습니다!</h1><br/>
+	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CorrectCnt%> 개 맞았습니다!</h1><br/>
 	<h1>
 		<%
-		System.out.print(allCnt);
-		System.out.print(CollectCnt);
-		
-		like = (CollectCnt*100)/allCnt;
-		
+		like = (CorrectCnt*100)/allCnt;		
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
 		} else if (like <= 50) {
@@ -98,8 +81,6 @@
 		}
 		%>
 	</h1>
-
-
 
 	<%
 	ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
@@ -118,8 +99,7 @@
 	<br>
 	<div class="grid-container">
 		<div>
-			<h3><%=id%>.
-				<%=phrase%></h3>
+			<h3><%=id%>. <%=phrase%></h3>
 			<%
 			if (correct) {
 				out.println("맞은 문제");
@@ -133,17 +113,13 @@
 				3.&nbsp;&nbsp;<%=three%>&emsp; 
 				4.&nbsp;&nbsp;<%=four%>&emsp;
 			</h3>
-			<h3>
-				입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
-			<h3>
-				정답 :&nbsp;&nbsp;<%=answer%></h3>
-			
-		</div>
-			
+			<h3>입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
+			<h3>정답 :&nbsp;&nbsp;<%=answer%></h3>
+		</div>	
 	</div>
 	<%
 			}
-	   /* 뒤로가기 시 새 페이지로 불로오기 위함 */
+	   // 뒤로가기 시 새 페이지로 불러오기 위함
 	   response.setHeader("Cache-Control", "no-cache");
 	   response.addHeader("Cache-Control", "no-store");
 	   response.setHeader("Pragma", "no-cache");
