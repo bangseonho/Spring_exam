@@ -247,36 +247,38 @@ button:hover .button-text {
 	/* session.setAttribute("page", 0);
 	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
-	
-	<div class="container1" id ="questionSurvey">
-			
-		<form method="POST"> <!-- action="submitQuestion21" -->
-			<div> 	
+
+	<div class="container1" id="questionSurvey">
+		<form method="POST">
+			<!-- action="submitQuestion21" -->
+			<div>
 				<span id="title"></span>
-			</div>	
+			</div>
 			<div>
 				<span id="who">About<%=lst.get(i).get(0)%></span>
 			</div>
 			<h2 id="iddd"></h2>
-			<label><input type="radio" name="radio" value="1" checked /> <span id="select1"><%=lst.get(i).get(2)%></span></label> 
-			<label><input type="radio" name="radio" value="2" /> <span  id="select2"><%=lst.get(i).get(3)%></span> </label> 
-			<label><input type="radio" name="radio" value="3" /> <span  id="select3"><%=lst.get(i).get(4)%></span> </label>
-			<label><input type="radio" name="radio" value="4" /> <span  id="select4"><%=lst.get(i).get(5)%></span> </label>
+			<label><input type="radio" name="radio" value="1" checked />
+				<span id="select1"><%=lst.get(i).get(2)%></span></label> <label><input
+				type="radio" name="radio" value="2" /> <span id="select2"><%=lst.get(i).get(3)%></span>
+			</label> <label><input type="radio" name="radio" value="3" /> <span
+				id="select3"><%=lst.get(i).get(4)%></span> </label> <label><input
+				type="radio" name="radio" value="4" /> <span id="select4"><%=lst.get(i).get(5)%></span>
+			</label>
 			<div class="btns">
-				<button class="learn-more" type="button">
+				<!-- <button class="learn-more" type="button">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Back</span>
-				</button>
+				</button> -->
 				<button class="learn-more" type="button" onclick="showQuestion()">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
 				</button>
 			</div>
-
 	</div>
-	
+
 	<script type="text/javascript">
 	var i   = 0;
 	var cnt = <%=cnt%>
@@ -286,12 +288,15 @@ button:hover .button-text {
 	arr[2]  = <%=strArr[2]%>;
 	arr[3]  = <%=strArr[3]%>;
 	arr[4]  = <%=strArr[4]%>;
-	
 	// 첫 페이지 시작 시 불러옴
 	showQuestion();
-	
+	var timer;
 	function showQuestion() {
-		
+		if(timer){			
+		clearTimeout(timer);
+		console.log(11);
+		}
+		console.log(22);
 		if(i >= cnt){
 			console.log("끝");
 			// 컨트롤러로 값 전달 (어떻게?)
@@ -309,24 +314,20 @@ button:hover .button-text {
 		document.getElementById("select3").innerHTML = arr[i][4];
 		document.getElementById("select4").innerHTML = arr[i][5];
 		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
-		
-		console.log(arr[i]);
 		i++;
+
+		timer = setTimeout(timeout, 3000);
+	}
+	function timeout(){
+			alert("5초 경과");
 	}
 	
-	// 시간 초과
-	setTimeout(() => {
-		// 시간 지날 시 코드
-		alert("5초 경과");
-	}, 5000); // ms, 1000ms == 1s
+	
 	
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
 		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
 		});
-
-
-
 	</script>
 	
 </body>
