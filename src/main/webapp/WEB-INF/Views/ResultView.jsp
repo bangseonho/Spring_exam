@@ -59,6 +59,16 @@
 		수험번호:<%=userCode%><br>
 	</h1>	
 	<%
+	String userCode = (String) session.getAttribute("user_code");
+	String userName = (String) session.getAttribute("user_name");
+	%>
+
+
+	<h1>
+		수험번호:<%=userCode%><br>
+	</h1>
+	
+	<%
 	int allCnt = 0;
 	int CorrectCnt = 0;
 	int like = 0;	
@@ -70,6 +80,7 @@
 	<h1>
 		<%
 		like = (CorrectCnt*100)/allCnt;		
+
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
 		} else if (like <= 50) {
@@ -82,6 +93,7 @@
 		%>
 	</h1>
 
+
 	<%
 	ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
 	while (rs1.next()) {
@@ -93,13 +105,14 @@
 		String three = rs1.getString("three");
 		String four = rs1.getString("four");
 		String answer = rs1.getString("answer");
-		int choice = rs1.getInt("choice");
+		String choice = rs1.getString("choice");
 		boolean correct = rs1.getBoolean("correct");
 	%>
 	<br>
 	<div class="grid-container">
 		<div>
-			<h3><%=id%>. <%=phrase%></h3>
+			<h3><%=id%>.
+				<%=phrase%></h3>
 			<%
 			if (correct) {
 				out.println("맞은 문제");
@@ -113,6 +126,7 @@
 				3.&nbsp;&nbsp;<%=three%>&emsp; 
 				4.&nbsp;&nbsp;<%=four%>&emsp;
 			</h3>
+
 			<h3>입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
 			<h3>정답 :&nbsp;&nbsp;<%=answer%></h3>
 		</div>	

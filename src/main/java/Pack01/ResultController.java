@@ -18,10 +18,11 @@ public class ResultController {
 	@Autowired
 	ResultDAO resultDAO;
 	@RequestMapping("/result")
+
 	public String form(HttpSession session, Model model) {		
 		String userCode = (String)session.getAttribute("user_code");
 		String userName = (String)session.getAttribute("user_name");
-		
+
 		System.out.println(userCode);
 		System.out.println(userName);
 		try {			
