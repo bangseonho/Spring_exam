@@ -25,17 +25,14 @@
 *, *:after, *:before {
 	box-sizing: border-box;
 }
-
 body {
 	
 }
-
 form {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 }
-
 label {
 	display: flex;
 	cursor: pointer;
@@ -44,20 +41,16 @@ label {
 	overflow: hidden;
 	margin-bottom: 0.375em;
 }
-
 label input {
 	position: absolute;
 	left: -9999px;
 }
-
 label input:checked+span {
 	background-color: #d6d6e5;
 }
-
 label input:checked+span:before {
 	box-shadow: inset 0 0 0 0.4375em #00005c;
 }
-
 label span {
 	display: flex;
 	align-items: center;
@@ -65,11 +58,9 @@ label span {
 	border-radius: 99em;
 	transition: 0.25s ease;
 }
-
 label span:hover {
 	background-color: #d6d6e5;
 }
-
 label span:before {
 	display: flex;
 	flex-shrink: 0;
@@ -82,7 +73,6 @@ label span:before {
 	transition: 0.25s ease;
 	box-shadow: inset 0 0 0 0.125em #00005c;
 }
-
 .container1 {
 	position: relative;
 	top: 0;
@@ -96,7 +86,6 @@ label span:before {
 	padding: 20px;
 	margin-top: 100px;
 }
-
 .container2 {
 	position: relative;
 	width: 100%;
@@ -105,17 +94,13 @@ label span:before {
 	padding: 20px;
 	text-align: center;
 }
-
 @import url("https://fonts.googleapis.com/css?family=Mukta:700");
-
 * {
 	box-sizing: border-box;
 }
-
 *::before, *::after {
 	box-sizing: border-box;
 }
-
 body {
 	font-family: "Mukta", sans-serif;
 	font-size: 1rem;
@@ -126,7 +111,6 @@ body {
 	min-height: 100vh;
 	background: #f3f8fa;
 }
-
 button {
 	position: relative;
 	display: inline-block;
@@ -140,13 +124,11 @@ button {
 	font-size: inherit;
 	font-family: inherit;
 }
-
 button.learn-more {
 	width: 12rem;
 	height: auto;
 	margin-bottom: 10px;
 }
-
 button.learn-more .circle {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: relative;
@@ -157,7 +139,6 @@ button.learn-more .circle {
 	background: #282936;
 	border-radius: 1.625rem;
 }
-
 button.learn-more .circle .icon {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: absolute;
@@ -166,7 +147,6 @@ button.learn-more .circle .icon {
 	margin: auto;
 	background: #fff;
 }
-
 button.learn-more .circle .icon.arrow {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	left: 0.625rem;
@@ -174,7 +154,6 @@ button.learn-more .circle .icon.arrow {
 	height: 0.125rem;
 	background: none;
 }
-
 button.learn-more .circle .icon.arrow::before {
 	position: absolute;
 	content: "";
@@ -186,7 +165,6 @@ button.learn-more .circle .icon.arrow::before {
 	border-right: 0.125rem solid #fff;
 	transform: rotate(45deg);
 }
-
 button.learn-more .button-text {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: absolute;
@@ -202,20 +180,16 @@ button.learn-more .button-text {
 	text-align: center;
 	text-transform: uppercase;
 }
-
 button:hover .circle {
 	width: 100%;
 }
-
 button:hover .circle .icon.arrow {
 	background: #fff;
 	transform: translate(1rem, 0);
 }
-
 button:hover .button-text {
 	color: #fff;
 }
-
 .btns {
 	margin-top: 30px;
 }
@@ -319,7 +293,6 @@ button:hover .button-text {
 		
 		//
 		i++;
-
 		//timer = setTimeout(timeout, 3000);
 	}
 	function timeout(){
@@ -328,7 +301,6 @@ button:hover .button-text {
 			showQuestion();
 	}
 	
-
 	function setValue(){
 		// 문제마다 값을 저장해주는거고
 		const genderNodeList
@@ -347,7 +319,6 @@ button:hover .button-text {
 			    }})
 	}
 	
-
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
 		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
