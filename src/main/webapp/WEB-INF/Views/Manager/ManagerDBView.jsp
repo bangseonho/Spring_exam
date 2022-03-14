@@ -10,6 +10,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <meta charset="utf-8">
 <title>데이터베이스 관리</title>
+<script type="text/javascript">
+	function realtimeClock() {
+		document.rtcForm.rtcInput.value = getTimeStamp();
+		setTimeout("realtimeClock()", 1000);
+	}
+	function getTimeStamp() { // 24시간제
+		var d = new Date();
+		
+		var s =
+		  leadingZeros(d.getFullYear(), 4) + '-' +
+		  leadingZeros(d.getMonth() + 1, 2) + '-' +
+		  leadingZeros(d.getDate(), 2) + ' ' +
+		
+		  leadingZeros(d.getHours(), 2) + ':' +
+		  leadingZeros(d.getMinutes(), 2) + ':' +
+		  leadingZeros(d.getSeconds(), 2);
+		
+		return s;
+	}
+	function leadingZeros(n, digits) {
+		var zero = '';
+		n = n.toString();
+		
+		if (n.length < digits) {
+		  for (i = 0; i < digits - n.length; i++)
+		    zero += '0';
+		}
+		return zero + n;
+	}
+</script>
 <style>
 html 
 {
@@ -156,12 +186,14 @@ a{
 
 </style>
 </head>
-<body>
+<body onload="realtimeClock()">
 	<%
 	SettingDTO settingDTO = (SettingDTO)request.getAttribute("settingDTO");
 	System.out.println(settingDTO.toString());
 	%>
-
+	<form name="rtcForm">
+		<input type="text" name="rtcInput" size="20" readonly="readonly" />
+	</form>
 	<div class="title-group">
 		<label class="bold">데이터베이스 관리</label></div>
 	<div class="total-group">

@@ -42,6 +42,7 @@ public class QuestionController implements HttpSessionBindingListener {
 			System.out.println(cnt);
 			return "redirect:result";
 //			return "MainView";
+
 		}
 		else {
 		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
