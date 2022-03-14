@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Question.QuestionDAO;
 import Result.ResultDAO;
 import Result.ResultDTO;
+import Setting.SettingDAO;
 
 @Controller
 public class QuestionController implements HttpSessionBindingListener {
@@ -24,6 +25,9 @@ public class QuestionController implements HttpSessionBindingListener {
 
 	@Autowired
 	ResultDAO resultDAO;
+	
+	@Autowired
+	SettingDAO settingDAO;
 
 	//	@RequestMapping("/getQuestion")
 	//	public String f1(Model model, ResultSet rs) {
@@ -101,9 +105,6 @@ public class QuestionController implements HttpSessionBindingListener {
 		question.add(rs.getString("answer")); // int
 		question.add(rs.getString("who"));
 		
-		System.out.println("question --");
-		System.out.println(question.toString());
-
 		model.addAttribute("question", question);
 		
 		return "QuestionFormView";
@@ -118,33 +119,54 @@ public class QuestionController implements HttpSessionBindingListener {
 		if(isExceedCnt(userCode)) return "redirect:result";
 		
 		// 사용자 선택지 저장
-		String myAnswer = request.getParameter("radio");
+		String myAnswer   = request.getParameter("radio");
 		String questionNo = request.getParameter("questionNo");
-		String answer = request.getParameter("answer");
-		int correct = 0;
+		String answer 	  = request.getParameter("answer");
 		
-		// 언제 null 값 되는지?
-		if (myAnswer != null) {
-			if (myAnswer.equals(answer)) {
-				correct = 1;
-			}
-			ResultDTO dto = new ResultDTO(userCode, Integer.parseInt(questionNo), Integer.parseInt(myAnswer), correct);
+		if(isNullChecker(new Object[] {userCode, myAnswer, questionNo, answer}) < 0){
+		
+			int correct = myAnswer.equals(answer) ? 1 : 0;
+			ResultDTO dto = new ResultDTO(
+					userCode, Integer.parseInt(questionNo), 
+					Integer.parseInt(myAnswer), 
+					correct
+					);
 			try {
 				resultDAO.insertResult(dto);
 			} catch (Exception e) { e.printStackTrace(); }
+			
+			return "redirect:QuestionGenerate";
+			
+		} else {
+			return "redirect:logout";
 		}
 		
-		return "redirect:QuestionGenerate"; 
 	}
 	
 	public boolean isExceedCnt(String userCode) {
-		int limitCnt = 5; // DB에서 가져오게 변경하기
+		int limitCnt = 5; // default;
 		int resCnt = 0;
 		try {
-			resCnt = questionDAO.resultAllCount(userCode);
+			// 더 나은 방법 있는지 생각해보기
+			ResultSet rs = settingDAO.selectSetting();
+			rs.next();
+			limitCnt = rs.getInt("questionNum");
+			resCnt 	 = questionDAO.resultAllCount(userCode);
 		}catch (Exception e) { e.printStackTrace(); }
 		
 		return resCnt >= limitCnt ? true : false;
+	}
+	
+	/**
+	 * Check Object array has null value. If null is exist in array, the index is return. else, return -1. 
+	 * @param arr : Object array
+	 * @return (1) null index, or (2) -1 if not exist.
+	 */
+	public int isNullChecker(Object[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] == null) return i;
+		}
+		return -1;
 	}
 	
 	/*@RequestMapping("/submitSelected")
