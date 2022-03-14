@@ -58,6 +58,7 @@
 	<h1>
 		수험번호:<%=userCode%><br>
 	</h1>	
+
 	
 	<%
 	int allCnt = 0;

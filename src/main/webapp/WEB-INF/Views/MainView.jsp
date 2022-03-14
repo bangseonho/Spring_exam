@@ -184,7 +184,7 @@ button{
           
           <%
           int flag = (int)request.getAttribute("flag");
-          	if(flag > 0){
+          	if(flag == 0){
           		 %>
           		<button class="button5" onclick="location.href='questionform'">시험 시작</button>
           		 <%
