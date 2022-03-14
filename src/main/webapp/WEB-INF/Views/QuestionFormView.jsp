@@ -237,7 +237,7 @@ button:hover .button-text {
 	<div class="container1" id="questionSurvey">
 		<form method="POST" action="questionform">
 			<div>
-				<span id="title"></span>
+				<span id="title"><%=lst.get(1)%></span>
 			</div>
 			<div>
 				<span id="who">About<%=lst.get(7)%></span>

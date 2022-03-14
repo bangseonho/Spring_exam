@@ -49,4 +49,23 @@ public class QuestionDAO {
 	      } 
 	}
 
+	public boolean isDuplicated(String userCode, String questionNo) {
+		Connection conn = ConnectionDB.getConnection();
+		Boolean isCheck = null;
+		try {
+			String sql3 = "select exists ( select * from result where result code=" + userCode + "and question="
+					+ questionNo;
+			psmt = conn.prepareStatement(sql3);
+			ResultSet rs3 = psmt.executeQuery();
+			if (rs3.next()) {
+				isCheck = rs3.getBoolean(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+
+		return isCheck;
+	}
+
 }
