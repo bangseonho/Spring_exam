@@ -73,11 +73,6 @@ body {
 	border-radius: 20px;
 }
 
-#user-list tbody tr:hover {
-	background-color: #555555;
-	color: white;
-}
-
 #user-list tbody td {
 	font-family: 'Gamja Flower', cursive;
 	letter-spacing: 2px;
@@ -146,9 +141,12 @@ a{
 					<%
 						for(int i = 0; i < userquestionList.size(); i++){
 							out.println("<tr>");
-							out.println("<td>");
-							out.println(usercode);
-							out.println("</td>");
+							if(i == 0){%>
+								<td rowspan='<%= userquestionList.size() %>'>
+								<%
+								out.println(usercode);
+								out.println("</td>");								
+							}
 							out.println("<td>");
 							out.println(userquestionList.get(i));
 							out.println("</td>");
@@ -158,7 +156,6 @@ a{
 							out.println("<td>");
 							out.println(usercorrectList.get(i));
 							out.println("</td>");
-							out.println("<td>");
 							out.println("</tr>");
 						}
 					%>
@@ -167,4 +164,9 @@ a{
 		</div>
 	</div>
 </body>
+<footer>
+	<div>
+		<button class="button button5" onclick="location='ManagerUserView'">메인으로 이동</button>
+	</div>
+</footer>
 </html>

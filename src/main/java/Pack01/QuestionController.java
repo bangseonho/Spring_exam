@@ -28,11 +28,10 @@ public class QuestionController implements HttpSessionBindingListener {
 	//		return "QuestionFormView";
 	//	}
 
-	// 문제 불러오는중
+	// 臾몄젣 遺덈윭�삤�뒗以�
 	@RequestMapping("/questionform")
-	   public String f2(Model model, HttpSession session, @RequestParam(value="page") int page) throws Exception {
+	   public String f2(Model model, HttpSession session) throws Exception {
 	      ResultSet rs = questionDAO.getQuestion();
-	      int no = 0;
 	      ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
 	      while (rs.next()) {
 	         ArrayList<String> lst2 = new ArrayList<String>();
@@ -54,7 +53,7 @@ public class QuestionController implements HttpSessionBindingListener {
 	public String f3(Model model, HttpServletRequest request, @RequestBody ArrayList<ArrayList<String>> lst) {
 		model.addAttribute("questionList", lst);
 	      System.out.println(lst.toString());
-	      System.out.println("여기까지오는가");
+	      System.out.println("�뿬湲곌퉴吏��삤�뒗媛�");
 		return "QuestionFormView";
 	}
 }
