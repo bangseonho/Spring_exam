@@ -1,8 +1,6 @@
-<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ page import="Manager.ManagerController"%>
-<%@ page import="User.UserDTO"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <meta charset="utf-8">
-<title>참여자 관리</title>
+<title>My Question</title>
 <style>
 html {
 	
@@ -116,77 +114,57 @@ a{
 	text-decoration: none;
 	color: black;
 }
-
 </style>
 
 </head>
 <body>
-	<div class="title-group">
-		<label>회원 관리</label>
+	<%
+		@SuppressWarnings("unchecked")
+		ArrayList<String> userquestionList = (ArrayList<String>)request.getAttribute("userquestionList");
+		@SuppressWarnings("unchecked")
+		ArrayList<String> userchoiceList = (ArrayList<String>)request.getAttribute("userchoiceList");
+		@SuppressWarnings("unchecked")
+		ArrayList<String> usercorrectList = (ArrayList<String>)request.getAttribute("usercorrectList");
+		@SuppressWarnings("unchecked")
+		String usercode = (String)request.getAttribute("usercode");
+	 %>
+	 <div class="title-group">
+		<label><%= usercode %>님의 문제풀이</label>
 	</div>
 	<div class="total-group">
-		<%
-		@SuppressWarnings("unchecked")
-		LinkedList<UserDTO> listUser = (LinkedList<UserDTO>)request.getAttribute("listUser");
-		 %>
-		<!-- 좌측. 문제 목록 -->
 		<div class="left-side">
 			<table id="user-list">
 				<thead>
 					<tr>
-						<td>이름</td>
-						<td>생년월일</td>
 						<td>수험번호</td>
-						<td>회원 정보 삭제</td>
-						<td>회원 문제 확인</td>
+						<td>질문 번호</td>
+						<td>질문 리스트</td>
+						<td>정답</td>
 					</tr>
 				</thead>
 				<tbody>
 					<%
-						for(int i = 0; i < listUser.size() ; i++){
+						for(int i = 0; i < userquestionList.size(); i++){
 							out.println("<tr>");
 							out.println("<td>");
-							out.println(listUser.get(i).getName());
+							out.println(usercode);
 							out.println("</td>");
 							out.println("<td>");
-							out.println(listUser.get(i).getBirth());
+							out.println(userquestionList.get(i));
 							out.println("</td>");
 							out.println("<td>");
-							out.println(listUser.get(i).getCode());
+							out.println(userchoiceList.get(i));
 							out.println("</td>");
 							out.println("<td>");
-							%>
-							<%-- out.println("<a href='/deleteUser?code=${listUser.get(i).getCode()}'> 삭제 </a>"); --%>
-							<a href="deleteUser?code=<%= listUser.get(i).getCode() %>">삭제</a>
-							<%
+							out.println(usercorrectList.get(i));
 							out.println("</td>");
 							out.println("<td>");
-							%>
-							<a href="userSolve?code=<%= listUser.get(i).getCode() %>">문제 확인</a>
-							<%
-							out.println("</td>");
 							out.println("</tr>");
 						}
 					%>
 				</tbody>
 			</table>
-			<script>
-				function func_confirm () {
-	        		if(confirm('회원 정보를 정말 모두 삭제 하시겠습니까? ')){
-	        			alert("삭제");
-	        			window.location.href = "deleteAllUser";
-	        		} else {
-	        			alert("취소");
-	        		}
-	        	}
-			</script>
 		</div>
 	</div>
 </body>
-<footer>
-	<div>
-		<button class="button button5" onclick="location='ManagerController'">메인으로 이동</button>
-		<button class="button button5" onclick="func_confirm ()">회원 전체 삭제</button>
-	</div>
-</footer>
 </html>

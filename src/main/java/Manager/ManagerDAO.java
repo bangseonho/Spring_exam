@@ -161,5 +161,14 @@ public class ManagerDAO {
 		int cnt = pstmt.executeUpdate();
 		return cnt;
 	}
-
+	
+	public ResultSet getSolveQuestion(String code) throws Exception {
+		String sql = "select * from result where code=?;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, code);
+		ResultSet rs = pstmt.executeQuery();
+		return rs;
+	}
 }
