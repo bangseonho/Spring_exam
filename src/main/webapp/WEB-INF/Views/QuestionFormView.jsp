@@ -25,17 +25,14 @@
 *, *:after, *:before {
 	box-sizing: border-box;
 }
-
 body {
 	
 }
-
 form {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 }
-
 label {
 	display: flex;
 	cursor: pointer;
@@ -44,20 +41,16 @@ label {
 	overflow: hidden;
 	margin-bottom: 0.375em;
 }
-
 label input {
 	position: absolute;
 	left: -9999px;
 }
-
 label input:checked+span {
 	background-color: #d6d6e5;
 }
-
 label input:checked+span:before {
 	box-shadow: inset 0 0 0 0.4375em #00005c;
 }
-
 label span {
 	display: flex;
 	align-items: center;
@@ -65,11 +58,9 @@ label span {
 	border-radius: 99em;
 	transition: 0.25s ease;
 }
-
 label span:hover {
 	background-color: #d6d6e5;
 }
-
 label span:before {
 	display: flex;
 	flex-shrink: 0;
@@ -82,7 +73,6 @@ label span:before {
 	transition: 0.25s ease;
 	box-shadow: inset 0 0 0 0.125em #00005c;
 }
-
 .container1 {
 	position: relative;
 	top: 0;
@@ -96,7 +86,6 @@ label span:before {
 	padding: 20px;
 	margin-top: 100px;
 }
-
 .container2 {
 	position: relative;
 	width: 100%;
@@ -105,17 +94,13 @@ label span:before {
 	padding: 20px;
 	text-align: center;
 }
-
 @import url("https://fonts.googleapis.com/css?family=Mukta:700");
-
 * {
 	box-sizing: border-box;
 }
-
 *::before, *::after {
 	box-sizing: border-box;
 }
-
 body {
 	font-family: "Mukta", sans-serif;
 	font-size: 1rem;
@@ -126,7 +111,6 @@ body {
 	min-height: 100vh;
 	background: #f3f8fa;
 }
-
 button {
 	position: relative;
 	display: inline-block;
@@ -140,13 +124,11 @@ button {
 	font-size: inherit;
 	font-family: inherit;
 }
-
 button.learn-more {
 	width: 12rem;
 	height: auto;
 	margin-bottom: 10px;
 }
-
 button.learn-more .circle {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: relative;
@@ -157,7 +139,6 @@ button.learn-more .circle {
 	background: #282936;
 	border-radius: 1.625rem;
 }
-
 button.learn-more .circle .icon {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: absolute;
@@ -166,7 +147,6 @@ button.learn-more .circle .icon {
 	margin: auto;
 	background: #fff;
 }
-
 button.learn-more .circle .icon.arrow {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	left: 0.625rem;
@@ -174,7 +154,6 @@ button.learn-more .circle .icon.arrow {
 	height: 0.125rem;
 	background: none;
 }
-
 button.learn-more .circle .icon.arrow::before {
 	position: absolute;
 	content: "";
@@ -186,7 +165,6 @@ button.learn-more .circle .icon.arrow::before {
 	border-right: 0.125rem solid #fff;
 	transform: rotate(45deg);
 }
-
 button.learn-more .button-text {
 	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 	position: absolute;
@@ -202,20 +180,16 @@ button.learn-more .button-text {
 	text-align: center;
 	text-transform: uppercase;
 }
-
 button:hover .circle {
 	width: 100%;
 }
-
 button:hover .circle .icon.arrow {
 	background: #fff;
 	transform: translate(1rem, 0);
 }
-
 button:hover .button-text {
 	color: #fff;
 }
-
 .btns {
 	margin-top: 30px;
 }
@@ -257,26 +231,26 @@ button:hover .button-text {
 				<span id="title"></span>
 			</div>
 			<div>
-				<span id="who">About<%=lst.get(i).get(0)%></span>
+				<span id="who">About<%=lst.get(i).get(7)%></span>
 			</div>
 			<h2 id="iddd"></h2>
 			<label><input type="radio" name="radio" value="1" checked />
-				<span id="select1"><%=lst.get(i).get(2)%></span></label> <label><input
-				type="radio" name="radio" value="2" /> <span id="select2"><%=lst.get(i).get(3)%></span>
+				<span id="1"><%=lst.get(i).get(2)%></span></label> <label><input
+				type="radio" name="radio" value="2" /> <span id="2"><%=lst.get(i).get(3)%></span>
 			</label> <label><input type="radio" name="radio" value="3" /> <span
-				id="select3"><%=lst.get(i).get(4)%></span> </label> <label><input
-				type="radio" name="radio" value="4" /> <span id="select4"><%=lst.get(i).get(5)%></span>
+				id="3"><%=lst.get(i).get(4)%></span> </label> <label><input
+				type="radio" name="radio" value="4" /> <span id="4"><%=lst.get(i).get(5)%></span>
 			</label>
 			<div class="btns">
-				<!-- <button class="learn-more" type="button">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
-					</span> <span class="button-text">Back</span>
-				</button> -->
 				<button class="learn-more" type="button" onclick="showQuestion()">
 					<span class="circle" aria-hidden="true"> <span
 						class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
+				</button>
+				<button class="learn-more" type="button">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Submit</span>
 				</button>
 			</div>
 	</div>
@@ -293,38 +267,56 @@ button:hover .button-text {
 	// 첫 페이지 시작 시 불러옴
 	showQuestion();
 	var timer;
+	
 	function showQuestion() {
-		ResultDAO resultDAO = ${resultDAO};
-		resultDAO.insert(null, '1',1,'1',1);
+		//ResultDAO resultDAO = ${resultDAO};
+		//resultDAO.insert(null, '1',1,'1',1);
 	
 		if(timer){			
 		clearTimeout(timer);
-		console.log(11);
 		}
-		console.log(22);
 		if(i >= cnt){
-			console.log("끝");
-			// 컨트롤러로 값 전달 (어떻게?)
+			alert("시험종료");
+			/* setTimeout(()=>{
 			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
+			},1000) */
+			// 컨트롤러로 값 전달 (어떻게?)
 			return;
 		}
-		
-		/* document.getElementById("questionSurvey");
-		const headingEl = document.querySelector("span#title");
-		headingEl.textContent = "안녕하세요!"; */
-		
 		document.getElementById("title").innerHTML   = arr[i][1];
-		document.getElementById("select1").innerHTML = arr[i][2];
-		document.getElementById("select2").innerHTML = arr[i][3];
-		document.getElementById("select3").innerHTML = arr[i][4];
-		document.getElementById("select4").innerHTML = arr[i][5];
-		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+		document.getElementById("1").innerHTML = arr[i][2];
+		document.getElementById("2").innerHTML = arr[i][3];
+		document.getElementById("3").innerHTML = arr[i][4];
+		document.getElementById("4").innerHTML = arr[i][5];
+		document.getElementById("who").innerHTML = "About " + arr[i][7];
+		//
+		
+		//
 		i++;
-
-		timer = setTimeout(timeout, 3000);
+		//timer = setTimeout(timeout, 3000);
 	}
 	function timeout(){
 			alert("5초 경과");
+			setValue();
+			showQuestion();
+	}
+	
+	function setValue(){
+		// 문제마다 값을 저장해주는거고
+		const genderNodeList
+		  = document.getElementsByName('radio');
+		 genderNodeList.forEach((node) => {
+			    if(node.checked)  {
+			      var choice = document.getElementById(node.value).firstChild.nodeValue;
+			      var answer = "<%=lst.get(i).get(6)%>";
+			      var code = <%=(String) session.getAttribute("user_code")%>;
+			      var QuestionId = <%=lst.get(i).get(0)%>;
+			      var correct = 0;
+			      if(choice==answer){
+			    	  correct=1;
+			      }
+			      console.log(choice, answer, code, QuestionId, correct);
+			    }})
 	}
 	
 	// 나가기 경고창
