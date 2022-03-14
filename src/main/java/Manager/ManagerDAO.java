@@ -72,12 +72,11 @@ public class ManagerDAO {
 	public int deleteUsers(String code) throws Exception{
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
-		
 		String sql = "delete from user where code = ?;";
 		psmt = conn.prepareStatement(sql);
 		psmt.setString(1, code);
-		int rs = psmt.executeUpdate();
-		return rs;
+		int cnt = psmt.executeUpdate();
+		return cnt;
 	}
 
 	/**
@@ -86,7 +85,7 @@ public class ManagerDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertQuestion(String phrase, String one, String two, String three, String four, String answer, String who) throws Exception {
+	public int insertQuestion(String phrase, String one, String two, String three, String four, int answer, String who) throws Exception {
 
 		String sql = "insert into question(phrase, one, two, three, four, answer, who) " 
 					+ "values( ?,?,?,?,?,?,?)";
@@ -100,7 +99,7 @@ public class ManagerDAO {
 		pstmt.setString(3, two);
 		pstmt.setString(4, three);
 		pstmt.setString(5, four);
-		pstmt.setString(6, answer);
+		pstmt.setInt(6, answer);
 		pstmt.setString(7, who);
 
 		cnt = pstmt.executeUpdate();
@@ -125,7 +124,7 @@ public class ManagerDAO {
 		pstmt.setString(3, dto.getTwo());
 		pstmt.setString(4, dto.getThree());
 		pstmt.setString(5, dto.getFour());
-		pstmt.setString(6, dto.getAnswer());
+		pstmt.setInt(6, dto.getAnswer());
 		pstmt.setString(7, dto.getWho());
 		pstmt.setString(8, dto.getId());
 		int cnt = pstmt.executeUpdate();
@@ -139,7 +138,18 @@ public class ManagerDAO {
 	 * @throws Exception
 	 */
 	public int deleteQuestion(String pk) throws Exception {
-		String sql = "delete from question where id=?;";
+//		String sql = "delete from question where id=?;";
+		String sql = "update question set remove=1 where id=?;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pk);
+		int cnt = pstmt.executeUpdate();
+		return cnt;
+	}
+	
+	public int restoreQuestion(String pk) throws Exception {
+		String sql = "update question set remove=0 where id=?;";
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -3,6 +3,7 @@ package Pack01;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
@@ -17,42 +18,45 @@ import Result.ResultDAO;
 
 @Controller
 public class QuestionController implements HttpSessionBindingListener {
-	@Autowired
-	QuestionDAO questionDAO;
+   @Autowired
+   QuestionDAO questionDAO;
 
-	@Autowired
-	ResultDAO resultDAO;
+   @Autowired
+   ResultDAO resultDAO;
 
-	//	@RequestMapping("/getQuestion")
-	//	public String f1(Model model, ResultSet rs) {
-	//		return "QuestionFormView";
-	//	}
-	@RequestMapping("/questionform")
-	public String f2(Model model, HttpSession session) throws Exception {
-		ResultSet rs = questionDAO.getQuestion();
-		int no = 0;
-		model.addAttribute("no", no);
-		System.out.println("�ш린���ㅼ�댁�ㅻ��?");
-		ArrayList<ArrayList<String>> lst1 = new ArrayList<ArrayList<String>>();
-		while (rs.next()) {
-			ArrayList<String> lst2 = new ArrayList<String>();
-			lst2.add(rs.getString("id"));
-			lst2.add(rs.getString("phrase"));
-			lst2.add(rs.getString("one"));
-			lst2.add(rs.getString("two"));
-			lst2.add(rs.getString("three"));
-			lst2.add(rs.getString("four"));
-			lst2.add(rs.getString("answer"));
-			lst2.add(rs.getString("who"));
-			lst1.add(lst2);
-			model.addAttribute("questionList", lst1);
-			model.addAttribute("resultDAO", resultDAO);
-		}
 
-		return "QuestionFormView";
-	}
-	@RequestMapping("/reviewQuestion")
-	public String f3() {
-		return "QuestionFormView";
-	}
+   @RequestMapping("/questionform")
+   public String f2(Model model, HttpSession session, HttpServletRequest request) throws Exception {
+      ResultSet rs = questionDAO.getQuestion();
+      ArrayList<String> question = new ArrayList<String>();
+      //      유저코드
+            String userCode = (String) session.getAttribute("user_code");
+      //      내가고른값 번호
+            String myAnswer = request.getParameter("radio");
+      //      문제번호
+            String questionNo = request.getParameter("questionNo");
+      //      정답 - 한글
+            String answer = request.getParameter("answer");
+            System.out.println(answer);
+      //      
+            //String[] value = request.getParameterValues("radio");
+            //String temp="";
+            
+      while (rs.next()) {
+         question.add(rs.getString("id"));
+         question.add(rs.getString("phrase"));
+         question.add(rs.getString("one"));
+         question.add(rs.getString("two"));
+         question.add(rs.getString("three"));
+         question.add(rs.getString("four"));
+         question.add(rs.getString("answer"));
+         question.add(rs.getString("who"));
+         model.addAttribute("question", question);
+      }
+      return "QuestionFormView";
+   }
+   /*@RequestMapping("/submitSelected")
+   public void f3(Model model) {
+      System.out.println("controller로 오는지확인");
+   }*/
 }

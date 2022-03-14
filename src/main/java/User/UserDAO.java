@@ -61,8 +61,8 @@ public class UserDAO {
 	}
 	
 	
-	public Boolean flagCheck(String name, String code) {
-		Boolean flag = null;
+	public int flagCheck(String name, String code) {
+		int flag = -1;
 		String sql = "select flag from user where name=? and code=?";
 		try {
 			@SuppressWarnings("static-access")
@@ -72,7 +72,7 @@ public class UserDAO {
 			pstmt.setString(2, code);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				flag = rs.getBoolean("flag");
+				flag = rs.getInt("flag");
 			}
 		} catch(Exception e) {System.out.println("error");}
 		return flag;
