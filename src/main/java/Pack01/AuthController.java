@@ -57,6 +57,16 @@ public class AuthController {
 		}
 		return null;
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, HttpServletResponse response) {
+//		session.invalidate();
+		session.removeAttribute("user_name");
+		session.removeAttribute("user_code");
+		System.out.print(session.getAttribute("user_name"));
+
+		return "redirect:/";
+	}
 
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,

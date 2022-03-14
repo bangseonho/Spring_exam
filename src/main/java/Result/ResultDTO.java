@@ -4,10 +4,10 @@ public class ResultDTO {
 	
 	private String code;
 	private int question;
-	private String choice;
+	private int choice;
 	private int correct;
 
-	public ResultDTO(String code, int question, String choice, int correct) {
+	public ResultDTO(String code, int question, int choice, int correct) {
 		this.code = code;
 		this.question = question;
 		this.choice = choice;
@@ -30,11 +30,11 @@ public class ResultDTO {
 		this.question = question;
 	}
 
-	public String getChoice() {
+	public int getChoice() {
 		return choice;
 	}
 
-	public void setChoice(String choice) {
+	public void setChoice(int choice) {
 		this.choice = choice;
 	}
 

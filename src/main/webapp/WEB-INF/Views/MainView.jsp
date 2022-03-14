@@ -173,17 +173,18 @@ button{
           이거하느라 힘들었습니다. 내주말 돌려줘요</a></p>
           
           <%
-          	boolean flag = (boolean)request.getAttribute("flag");
-          	System.out.print(flag);
-          	if(!flag){
+          int flag = (int)request.getAttribute("flag");
+          	if(flag > 0){
           		 %>
-          		<button onclick="location.href='questionform'">시험 시작</button>
+          			<button onclick="location.href='result'">결과 보기</button>
           		 <%
           	}else{
           		 %>
-          		<button onclick="location.href='result'">결과 보기</button>
+          		<button onclick="location.href='questionform'">시험 시작</button>
           		 <%
           	}
+          	System.out.print(a);
+          	System.out.print(b);
           %>
 
 
