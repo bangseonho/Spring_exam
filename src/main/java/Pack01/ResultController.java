@@ -32,6 +32,6 @@ public class ResultController {
 		}catch(Exception e){
 			System.out.println("result controller �떎�뙣");
 		}
-		return "redirect:ResultView";
+		return "ResultView";
 	}
 }
