@@ -328,7 +328,7 @@ button:hover .button-text {
 			showQuestion();
 	}
 	
-<<<<<<< HEAD
+
 	function setValue(){
 		// 문제마다 값을 저장해주는거고
 		const genderNodeList
@@ -347,8 +347,7 @@ button:hover .button-text {
 			    }})
 	}
 	
-=======
->>>>>>> develop
+
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
 		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
