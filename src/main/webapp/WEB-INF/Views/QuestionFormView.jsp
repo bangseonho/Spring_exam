@@ -23,6 +23,10 @@
 	box-sizing: border-box;
 }
 
+body {
+	
+}
+
 form {
 	display: flex;
 	flex-wrap: wrap;
@@ -217,12 +221,20 @@ button:hover .button-text {
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* body */
 body {
   min-height: 100vh;
   padding: 20px;
   display: flex;
-  flex-wrap: wrap;
+/*   flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -425,48 +437,38 @@ li:not(:last-child)::after {
 		}
 		System.out.println();
 	}
-	int no = 0;
+	 int no = (int)request.getAttribute("no");
+	System.out.println(no);
 	%>
-	<%
-	if (no >= 5) {
-	%>
-	<div>종료</div>
-	<%
-	} else {
-	%>
-	<form method="post" action="nextQuestion">
+	<form method="POST" action="reviewQuestion?no=${no+1}">
 		<div>
-			<span><%=no%> 번 문제</span>
+			<span>${no}번 문제</span>
 		</div>
-		<div>
+		 <div>
 			<span>About <%=lst.get(no).get(7)%></span>
-		</div>
+		</div>D
 		<br>
-		<div>
-		<label><input type="radio" name="radio" checked value="1"/> <span><%=lst.get(no).get(2)%></span></label>
-		<label><input type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span></label>
-		<label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span></label>
-		<label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span></label>
-		</div>
-		<div name="lst" value=<%=lst %>>
-			
-		</div>
+		<label><input type="radio" name="radio" checked value="1" />
+			<span><%=lst.get(no).get(2)%></span> </label> <label><input
+			type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
+		</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
+		</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
+		</label>
 		<div class="btns">
-			<button class="learn-more" id="nextBtn">
+			<button class="learn-more">
 				<span class="circle" aria-hidden="true"> <span
 					class="icon arrow"></span>
-				</span> <span class="button-text">Next</span>
+				</span> <span class="button-text">Back</span>
+			</button>
+			<button class="learn-more">
+				<span class="circle" aria-hidden="true"> <span
+					class="icon arrow"></span>
+				</span> <span class="button-text">저장하기</span>
 			</button>
 		</div>
 	</form>
-	<%
-	}
-	%>
-	<script>
-		/* document.getElementById("nextBtn").onclick=function(){
-			var test = "${no1}";
-			window.alert(${no1});
-		} */
-	</script>
+	<script type="text/javascript"> 
+
+   </script> 
 </body>
 </html>
