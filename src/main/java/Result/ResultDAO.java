@@ -12,17 +12,15 @@ import Pack01.ConnectionDB;
 
 public class ResultDAO {
 	PreparedStatement psmt;
-	String userCode = "001";
 	private int cnt;
 
 	public ResultSet resultAnswer(String userCode) throws Exception {
 				Connection conn = ConnectionDB.getConnection();
 		try {
 			String sql1 = "select r.code, q.phrase, "
-					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct "
+					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct, q.who "
 					+ "from question as q, result as r "
-					+ "where q.id = r.question and r.code = " + userCode;		
-	
+					+ "where q.id = r.question and r.code = " + userCode;				
 
 			psmt = conn.prepareStatement(sql1);
 			ResultSet rs1 = psmt.executeQuery();			
