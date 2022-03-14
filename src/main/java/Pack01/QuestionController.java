@@ -37,7 +37,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 		if(questionDAO.resultAllCount(userCode)>=5) {  
 			System.out.println("이미 시험쳤어요~");
-			return "ResultView";
+			return "redirect:result";
 		}
 		
 		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
