@@ -67,7 +67,7 @@ public class ResultDAO {
 	public void insertResult(ResultDTO dto) throws Exception {
 		try {
 			Connection conn = ConnectionDB.getConnection();
-			String sql = "insert into vote_user values(null, ?,?,?,?);";
+			String sql = "insert into result values(null, ?,?,?,?);";
 			psmt = conn.prepareStatement(sql);
 			System.out.println("insert result");
 			

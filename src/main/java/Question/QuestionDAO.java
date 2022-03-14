@@ -32,16 +32,21 @@ public class QuestionDAO {
 		}
 	}
 	// 유저가 푼 문항수 가져오가ㅣ
-	public ResultSet resultAllCount(String userCode) throws Exception {
+	public int resultAllCount(String userCode) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
-		try {
-			String sql2 = "select count(correct) as allcnt from result where code=" + userCode;		
-			psmt = conn.prepareStatement(sql2);
-			ResultSet rs2 = psmt.executeQuery();
-			return rs2;
-		} catch (SQLException e) {
-//			e.printStackTrace();
-			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
-		} 
+	      try {
+	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode;      
+	         psmt = conn.prepareStatement(sql2);
+	         ResultSet rs2 = psmt.executeQuery();
+	         int allCnt = 0;
+	         while (rs2.next()) {
+	            allCnt = rs2.getInt("allcnt");
+	         }
+	         return allCnt;
+	      } catch (SQLException e) {
+//	         e.printStackTrace();
+	         throw new Exception("result answer 遺  ъ ㅺ린  ㅽ  ");
+	      } 
 	}
+
 }
