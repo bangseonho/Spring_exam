@@ -1,14 +1,17 @@
 package Result;
 
-import org.json.JSONArray;
-
 public class ResultDTO {
+	
 	private String code;
-	private JSONArray answered;
+	private int question;
+	private String choice;
+	private int correct;
 
-	public ResultDTO(String code, JSONArray answered) {
+	public ResultDTO(String code, int question, String choice, int correct) {
 		this.code = code;
-		this.answered = answered;
+		this.question = question;
+		this.choice = choice;
+		this.correct = correct;
 	}
 
 	public String getCode() {
@@ -19,11 +22,29 @@ public class ResultDTO {
 		this.code = code;
 	}
 
-	public JSONArray getAnswered() {
-		return answered;
+	public int getQuestion() {
+		return question;
 	}
 
-	public void setAnswered(JSONArray answered) {
-		this.answered = answered;
+	public void setQuestion(int question) {
+		this.question = question;
 	}
+
+	public String getChoice() {
+		return choice;
+	}
+
+	public void setChoice(String choice) {
+		this.choice = choice;
+	}
+
+	public int getCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(int correct) {
+		this.correct = correct;
+	}
+
+	
 }

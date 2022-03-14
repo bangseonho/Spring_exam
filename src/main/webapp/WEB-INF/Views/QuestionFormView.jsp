@@ -9,8 +9,10 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
+<%@page import="Result.ResultDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Random" %>
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -247,7 +249,7 @@ button:hover .button-text {
 	/* session.setAttribute("page", 0);
 	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
-
+	
 	<div class="container1" id="questionSurvey">
 		<form method="POST">
 			<!-- action="submitQuestion21" -->
@@ -293,6 +295,9 @@ button:hover .button-text {
 	var timer;
 	
 	function showQuestion() {
+		ResultDAO resultDAO = ${resultDAO};
+		resultDAO.insert(null, '1',1,'1',1);
+	
 		if(timer){			
 		clearTimeout(timer);
 		}
@@ -323,6 +328,7 @@ button:hover .button-text {
 			showQuestion();
 	}
 	
+<<<<<<< HEAD
 	function setValue(){
 		// 문제마다 값을 저장해주는거고
 		const genderNodeList
@@ -341,6 +347,8 @@ button:hover .button-text {
 			    }})
 	}
 	
+=======
+>>>>>>> develop
 	// 나가기 경고창
 	window.addEventListener("beforeunload", function (event) {
 		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
