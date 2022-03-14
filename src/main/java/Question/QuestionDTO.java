@@ -7,12 +7,13 @@ public class QuestionDTO {
 	String two;
 	String three;
 	String four;
-	String answer;
+	int answer;
 	String who;
+	int remove;
 	
 	public QuestionDTO() {};
 	
-	public QuestionDTO(String id, String phrase, String one, String two, String three, String four, String answer, String who) {
+	public QuestionDTO(String id, String phrase, String one, String two, String three, String four, int answer, String who) {
 		this.id 	= id;
 		this.phrase = phrase;
 		this.one    = one;   
@@ -21,6 +22,17 @@ public class QuestionDTO {
 		this.four   = four;
 		this.answer = answer;
 		this.who    = who;
+	}
+	public QuestionDTO(String id, String phrase, String one, String two, String three, String four, int answer, String who, int remove) {
+		this.id 	= id;
+		this.phrase = phrase;
+		this.one    = one;   
+		this.two	= two;
+		this.three	= three;
+		this.four   = four;
+		this.answer = answer;
+		this.who    = who;
+		this.remove = remove;
 	}
 	
 	public String getId() {
@@ -71,11 +83,11 @@ public class QuestionDTO {
 		this.four = four;
 	}
 
-	public String getAnswer() {
+	public int getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
 
@@ -87,10 +99,19 @@ public class QuestionDTO {
 		this.who = who;
 	}
 
+	public int getRemove() {
+		return remove;
+	}
+
+	public void setRemove(int remove) {
+		this.remove = remove;
+	}
+
 	@Override
 	public String toString() {
-		return "QuestionDTO [phrase=" + phrase + ", one=" + one + ", two=" + two + ", three=" + three + ", four=" + four
-				+ ", answer=" + answer + ", who=" + who + "]";
+		return "QuestionDTO [id=" + id + ", phrase=" + phrase + ", one=" + one + ", two=" + two + ", three=" + three
+				+ ", four=" + four + ", answer=" + answer + ", who=" + who + ", remove=" + remove + "]";
 	}
+
 	
 }

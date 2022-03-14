@@ -13,15 +13,12 @@ import Pack01.ConnectionDB;
 public class ResultDAO {
 	
 	PreparedStatement psmt;
-<<<<<<< HEAD
 	String userCode = "001";
 	private int cnt;
-=======
 //	String userCode = "9904272";
 	
 	
 	public ResultSet resultAnswer(String userCode) throws Exception {
->>>>>>> c761e074eb86aa47bd6b14822d757dcd1b642d82
 	
 		System.out.println(userCode);
 		

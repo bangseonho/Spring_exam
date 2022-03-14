@@ -170,6 +170,17 @@ public class ManagerController {
 		return "redirect:/ManagerQuestion";
 	}
 	
+	@RequestMapping("/ManagerQuestionRestore")
+	String managerQuestionRestore(Model model, @RequestParam(value = "id") String id) {
+		
+		int cnt = 0;
+		try {
+			cnt = managerDAO.restoreQuestion(id);
+		} catch (Exception e) { e.printStackTrace(); }
+		
+		return "redirect:/ManagerQuestion";
+	}
+	
 	@RequestMapping("/ManagerQuestionDeleteAll")
 	String managerQuestionDeleteAll(Model model) {
 		
@@ -215,8 +226,9 @@ public class ManagerController {
 					rs.getString("two"), 
 					rs.getString("three"), 
 					rs.getString("four"), 
-					rs.getString("answer"), 
-					rs.getString("who")
+					rs.getInt("answer"), 
+					rs.getString("who"), 
+					rs.getInt("remove")
 			);
     }
 	

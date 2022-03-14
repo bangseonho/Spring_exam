@@ -139,7 +139,7 @@ a{
                      String name = questionColNameList[i];
                      out.println("<td>" + name + "</td>");
                   }
-                  out.println("<td>" + "수정" + "</td>");
+                  // out.println("<td>" + "수정" + "</td>");
                   out.println("<td>" + "삭제" + "</td>");
                   out.println("</tr>");
                   %>
@@ -159,10 +159,15 @@ a{
                      out.println("<td>" + dto.getTwo() + "</td>");
                      out.println("<td>" + dto.getThree() + "</td>");
                      out.println("<td>" + dto.getFour() + "</td>");
-                     out.println("<td>" + dto.getAnswer() + "</td>");
+                     out.println("<td>" + Integer.toString(dto.getAnswer()) + "</td>");
                      out.println("<td>" + dto.getWho() + "</td>");
-                     out.println("<td>" + "<button class=\"button5\" onclick=\"location='ManagerQuestionGet?id=" + dto.getId() + "'\">수정</button>" + "</td>");
-                     out.println("<td>" + "<button class=\"button5\" onclick=\"location='ManagerQuestionDeleteOne?id=" + dto.getId() + "'\">삭제</button>" + "</td>");
+                     // out.println("<td>" + "<button class=\"button5\" onclick=\"location='ManagerQuestionGet?id=" + dto.getId() + "'\">수정</button>" + "</td>");
+                     out.println("<td>" + dto.getRemove() + "</td>");
+                     if(dto.getRemove() > 0)
+                     	out.println("<td>" + "<button class=\"button5\" onclick=\"location='ManagerQuestionRestore?id=" + dto.getId() + "'\">복구</button>" + "</td>");
+                     else
+                     	out.println("<td>" + "<button class=\"button5\" onclick=\"location='ManagerQuestionDeleteOne?id=" + dto.getId() + "'\">삭제</button>" + "</td>");
+                     
                      out.println("</tr>");
                   }
                   %>
@@ -176,8 +181,8 @@ a{
 	<div>
 		<button class="button button5" 
 		   onclick="location='ManagerPageMove?page=ManagerQuestionCreateView'">질문추가</button>
-		<button class="button button5" 
-		   onclick="location='ManagerQuestionDeleteAll'">질문전체삭제</button>
+		<!-- <button class="button button5" 
+		   onclick="location='ManagerQuestionDeleteAll'">질문전체삭제 </button> -->
 		<button class="button button5" 
 		  onclick="location='ManagerController'">메인으로 이동</button>
 	</div>

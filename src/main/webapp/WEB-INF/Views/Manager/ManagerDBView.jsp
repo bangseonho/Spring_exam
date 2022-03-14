@@ -2,14 +2,56 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>데이터베이스 관리</title>
 <style>
+
+html {
+font-family: 'Gamja Flower', cursive;
+}
 body {
 	
+}
+
+.title-group {
+	font-family: 'Gamja Flower', cursive;
+	text-align: center;
+	font-size: 40px;
+	padding-bottom: 20px;
+}
+
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
 }
 
 .title-group{
@@ -35,9 +77,17 @@ footer {
 	justify-content: center;
 	align-items: center;
 }
+
+.button-group{
+	text-align: center;
+	margin: 10px;
+}
+
+#setting-table{
+	text-align: right;
+}
+
 </style>
-<!-- 테스트용 -->
-<%= new Date() %>
 </head>
 <body>
 	<%
@@ -45,30 +95,36 @@ footer {
 	System.out.println(settingDTO.toString());
 	%>
 
-	<div class="title-group"><label>데이터베이스 관리</label></div>
+	<div class="title-group">
+		<label class="bold">데이터베이스 관리</label></div>
 	<div class="total-group">
 
 		<form method="post" action="SettingUpdate">
 			<div class="option-group">
-				<div>
-					<label>설문조사 시간 : </label>
-					<input type="text" name="limitTime" value="<%=settingDTO.getLimitTime()%>">
-					<label> 분</label>
-				</div>
-				<div>
-					<label>설문조사당 문제 수 : </label>
-					<input type="text" name="questionNum" value="<%=settingDTO.getQuestionNum()%>">
-					<label> 개</label>
-				</div>
-				<div>
-					<label>응시가능 횟수 : </label>
-					<input type="text" name="questionChance" value="<%=settingDTO.getQuestionChance()%>">
-					<label> 회</label>
-				</div>
+				<table id="setting-table">
+					<tr>
+						<td><label>설문조사 시간 : </label></td>
+						<td><input type="text" name="limitTime"
+							value="<%=settingDTO.getLimitTime()%>"> <label> 분</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label>설문조사당 문제 수 : </label></td>
+						<td><input type="text" name="questionNum"
+							value="<%=settingDTO.getQuestionNum()%>"> <label>
+								개</label></td>
+					</tr>
+					<tr>
+						<td><label>응시가능 횟수 : </label></td>
+						<td><input type="text" name="questionChance"
+							value="<%=settingDTO.getQuestionChance()%>"> <label>
+								회</label></td>
+					</tr>
+				</table>
 			</div>
-			<div>
-				<input type="reset" value="초기화"></input>
-				<input type="submit" value="적용"></input>
+			<div class="button-group">
+				<input type="reset"  class="button button5" value="초기화"></input>
+				<input type="submit" class="button button5" value="적용"></input>
 			</div>
 		</form>
 
@@ -76,7 +132,7 @@ footer {
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerController'">메인으로 이동</button>
+		<button class="button button5" onclick="location='ManagerController'">메인으로 이동</button>
 	</div>
 </footer>
 </html>

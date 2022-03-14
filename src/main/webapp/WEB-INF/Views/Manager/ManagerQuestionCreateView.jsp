@@ -144,7 +144,7 @@ a{
 		btnStr = "수정";
 	}
 	else {
-		questionDTO = new QuestionDTO("id", "질문", "보기1", "보기2", "보기3", "보기4", "답", "대상");
+		questionDTO = new QuestionDTO("id", "질문", "보기1", "보기2", "보기3", "보기4", 1, "대상");
 		targetController = "ManagerQuestionCreate";
 		btnStr = "추가";
 	}
@@ -191,7 +191,6 @@ a{
 				</tr>
 			</tbody>
 			</table>
-			
 			<div>
 				<input class="button button5" type="reset"  value="초기화"/> 
 				<input class="button button5" type="submit" value="<%= btnStr%>"/> 
