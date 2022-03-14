@@ -295,9 +295,7 @@ button:hover .button-text {
 	function showQuestion() {
 		if(timer){			
 		clearTimeout(timer);
-		console.log(11);
 		}
-		console.log(22);
 		if(i >= cnt){
 			alert("시험종료");
 			/* setTimeout(()=>{
@@ -306,9 +304,6 @@ button:hover .button-text {
 			// 컨트롤러로 값 전달 (어떻게?)
 			return;
 		}
-		/* document.getElementById("questionSurvey");
-		const headingEl = document.querySelector("span#title");
-		headingEl.textContent = "안녕하세요!"; */
 		document.getElementById("title").innerHTML   = arr[i][1];
 		document.getElementById("1").innerHTML = arr[i][2];
 		document.getElementById("2").innerHTML = arr[i][3];
@@ -324,6 +319,7 @@ button:hover .button-text {
 	}
 	function timeout(){
 			alert("5초 경과");
+			setValue();
 			showQuestion();
 	}
 	
