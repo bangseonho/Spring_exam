@@ -10,6 +10,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="User.UserDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Random" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Survey Question</title>
 <style>
 *, *:after, *:before {
 	box-sizing: border-box;
@@ -216,259 +217,117 @@ button:hover .button-text {
 .btns {
 	margin-top: 30px;
 }
-/*  */
-
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-/* default */
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* body */
-body {
-  min-height: 100vh;
-  padding: 20px;
-  display: flex;
-/*   flex-wrap: wrap; */
-  justify-content: center;
-  align-items: center;
-  font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* .flip-card-container */
-.flip-card-container {
-  --hue: 150;
-  --primary: hsl(var(--hue), 50%, 50%);
-  --white-1: hsl(0, 0%, 90%);
-  --white-2: hsl(0, 0%, 80%);
-  --dark: hsl(var(--hue), 25%, 10%);
-  --grey: hsl(0, 0%, 50%);
-
-  width: 310px;
-  height: 500px;
-  margin: 40px;
-
-  perspective: 1000px;
-}
-
-/* .flip-card */
-.flip-card {
-  width: inherit;
-  height: inherit;
-
-  position: relative;
-  transform-style: preserve-3d;
-  transition: .6s .1s;
-}
-
-/* hover and focus-within states */
-.flip-card-container:hover .flip-card,
-.flip-card-container:focus-within .flip-card {
-  transform: rotateY(180deg);
-}
-
-/* .card-... */
-.card-front,
-.card-back {
-  width: 100%;
-  height: 100%;
-  border-radius: 24px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align:center;
-}
-
-/* .card-front */
-.card-front {
-  transform: rotateY(0deg);
-  z-index: 2;
-}
-
-/* .card-back */
-.card-back {
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-
-/* figure */
-figure {
-  z-index: -1;
-}
-
-/* figure, .img-bg */
-figure,
-.img-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-}
-
-/* img */
-img {
-  height: 100%;
-  border-radius: 24px;
-}
-
-/* figcaption */
-figcaption {
-  display: block;
-
-  width: auto;
-  margin-top: 12%;
-  padding: 8px 22px;
-
-  font-weight: bold;
-  line-height: 1.6;
-  letter-spacing: 2px;
-  word-spacing: 6px;
-  text-align: right;
-  position: absolute;
-  top: 0;
-  right: 12px;
-  color: var(--white-1);
-  background: hsla(var(--hue), 25%, 10%, .5);
-}
-
-/* .img-bg */
-.img-bg {
- /*  background: hsla(var(--hue), 25%, 10%, .5); */
-}
-
-.card-front .img-bg {
-  clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
-}
-
-.card-front .img-bg::before {
-  content: "";
-
-  position: absolute;
-  top: 34%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(18deg);
-
-  width: 100%;
-  height: 6px;
-  /* border: 1px solid var(--primary); */
-  border-left-color: transparent;
-  border-right-color: transparent;
-
-  transition: .1s;
-}
-
-.card-back .img-bg {
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
-}
-
-/* hover state */
-.flip-card-container:hover .card-front .img-bg::before {
-  width: 6px;
-  border-left-color: var(--primary);
-  border-right-color: var(--primary);
-}
-
-/* ul */
-ul {
-  padding-top: 50%;
-  margin: 0 auto;
-  width: 70%;
-  height: 100%;
-
-  list-style: none;
-  color: var(--white-1);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-/* li */
-li {
-  width: 100%;
-  margin-top: 12px;
-  padding-bottom: 12px;
-
-  font-size: 14px;
-  text-align: center;
-
-  position: relative;
-}
-
-li:nth-child(2n) {
-  color: var(--white-2);
-}
-
-li:not(:last-child)::after {
-  content: "";
-
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  width: 100%;
-  height: 1px;
-
-  background: currentColor;
-  opacity: .2;
-}
-/*  */
 </style>
 </head>
 <body>
- <%
-	ArrayList<ArrayList<String>> lst = (ArrayList<ArrayList<String>>) request.getAttribute("questionList");
+
+	<%
+	/* 데이터 : phrase; one; two; three; four; answer; who; */
+	ArrayList<ArrayList<String>> lst = 
+		(ArrayList<ArrayList<String>>) request.getAttribute("questionList");
+	int cnt = 5; // 문제 개수
+	String[] strArr = new String[cnt];
+	for(int i = 0; i < cnt; i++){
+		strArr[i] = "[";
+		for(int j = 0; j < lst.get(0).size(); j++){
+			strArr[i] += "'" + lst.get(i).get(j)+ "', ";
+		}
+		strArr[i] += "]";
+		System.out.println(strArr[i]);
+	}
+	
+	/* 출력 */
 	for (int i = 0; i < lst.size(); i++) {
 		for (int j = 0; j < lst.get(i).size(); j++) {
 			System.out.print(lst.get(i).get(j) + " ");
 		}
 		System.out.println();
 	}
-	 int no = (int)request.getAttribute("no");
-	System.out.println(no);
+	int i = 0;
+	/* session.setAttribute("page", 0);
+	System.out.println(session.getAttribute("page").getClass().getName()); */
 	%>
-	<form method="POST" action="reviewQuestion?no=${no+1}">
-		<div>
-			<span>${no}번 문제</span>
-		</div>
-		 <div>
-			<span>About <%=lst.get(no).get(7)%></span>
-		</div>D
-		<br>
-		<label><input type="radio" name="radio" checked value="1" />
-			<span><%=lst.get(no).get(2)%></span> </label> <label><input
-			type="radio" name="radio" value="2" /> <span><%=lst.get(no).get(3)%></span>
-		</label> <label><input type="radio" name="radio" value="3" /> <span><%=lst.get(no).get(4)%></span>
-		</label> <label><input type="radio" name="radio" value="4" /> <span><%=lst.get(no).get(5)%></span>
-		</label>
-		<div class="btns">
-			<button class="learn-more">
-				<span class="circle" aria-hidden="true"> <span
-					class="icon arrow"></span>
-				</span> <span class="button-text">Back</span>
-			</button>
-			<button class="learn-more">
-				<span class="circle" aria-hidden="true"> <span
-					class="icon arrow"></span>
-				</span> <span class="button-text">저장하기</span>
-			</button>
-		</div>
-	</form>
-	<script type="text/javascript"> 
+	
+	<div class="container1" id ="questionSurvey">
+			
+		<form method="POST"> <!-- action="submitQuestion21" -->
+			<div> 	
+				<span id="title"></span>
+			</div>	
+			<div>
+				<span id="who">About<%=lst.get(i).get(0)%></span>
+			</div>
+			<h2 id="iddd"></h2>
+			<label><input type="radio" name="radio" value="1" checked /> <span id="select1"><%=lst.get(i).get(2)%></span></label> 
+			<label><input type="radio" name="radio" value="2" /> <span  id="select2"><%=lst.get(i).get(3)%></span> </label> 
+			<label><input type="radio" name="radio" value="3" /> <span  id="select3"><%=lst.get(i).get(4)%></span> </label>
+			<label><input type="radio" name="radio" value="4" /> <span  id="select4"><%=lst.get(i).get(5)%></span> </label>
+			<div class="btns">
+				<button class="learn-more" type="button">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Back</span>
+				</button>
+				<button class="learn-more" type="button" onclick="showQuestion()">
+					<span class="circle" aria-hidden="true"> <span
+						class="icon arrow"></span>
+					</span> <span class="button-text">Next</span>
+				</button>
+			</div>
 
-   </script> 
+	</div>
+	
+	<script type="text/javascript">
+	var i   = 0;
+	var cnt = <%=cnt%>
+	var arr = [];
+	arr[0]  = <%=strArr[0]%>;
+	arr[1]  = <%=strArr[1]%>;
+	arr[2]  = <%=strArr[2]%>;
+	arr[3]  = <%=strArr[3]%>;
+	arr[4]  = <%=strArr[4]%>;
+	
+	// 첫 페이지 시작 시 불러옴
+	showQuestion();
+	
+	function showQuestion() {
+		
+		if(i >= cnt){
+			console.log("끝");
+			// 컨트롤러로 값 전달 (어떻게?)
+			location.href="index.jsp"; // 일단 메인으로 가게 해놨음
+			return;
+		}
+		
+		/* document.getElementById("questionSurvey");
+		const headingEl = document.querySelector("span#title");
+		headingEl.textContent = "안녕하세요!"; */
+		
+		document.getElementById("title").innerHTML   = arr[i][1];
+		document.getElementById("select1").innerHTML = arr[i][2];
+		document.getElementById("select2").innerHTML = arr[i][3];
+		document.getElementById("select3").innerHTML = arr[i][4];
+		document.getElementById("select4").innerHTML = arr[i][5];
+		document.getElementById("who").innerHTML 	 = "About " + arr[i][7];
+		
+		console.log(arr[i]);
+		i++;
+	}
+	
+	// 시간 초과
+	setTimeout(() => {
+		// 시간 지날 시 코드
+		alert("5초 경과");
+	}, 5000); // ms, 1000ms == 1s
+	
+	// 나가기 경고창
+	window.addEventListener("beforeunload", function (event) {
+		  event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
+		});
+
+
+
+	</script>
+	
 </body>
 </html>
