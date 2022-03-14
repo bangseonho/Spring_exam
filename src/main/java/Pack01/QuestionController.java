@@ -86,15 +86,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		String userCode = (String)session.getAttribute("user_code");
 
 		// 문제 푼 횟수 확인
-		int limitCnt = 5; // DB에서 가져오게 변경하기
-		int resCnt = 0;
-		try {
-			resCnt = questionDAO.resultAllCount(userCode);
-		}catch (Exception e) { e.printStackTrace(); }
-		if(resCnt >= limitCnt) {
-			System.out.println("이미 시험쳤어요~");
-			return "redirect:result";
-		}
+		if(isExceedCnt(userCode)) return "redirect:result";
 		
 		// 문제 생성
 		ArrayList<String> question = new ArrayList<String>();
@@ -122,6 +114,9 @@ public class QuestionController implements HttpSessionBindingListener {
 
 		String userCode = (String)session.getAttribute("user_code");
 		
+		// 문제 푼 횟수 확인
+		if(isExceedCnt(userCode)) return "redirect:result";
+		
 		// 사용자 선택지 저장
 		String myAnswer = request.getParameter("radio");
 		String questionNo = request.getParameter("questionNo");
@@ -140,6 +135,16 @@ public class QuestionController implements HttpSessionBindingListener {
 		}
 		
 		return "redirect:QuestionGenerate"; 
+	}
+	
+	public boolean isExceedCnt(String userCode) {
+		int limitCnt = 5; // DB에서 가져오게 변경하기
+		int resCnt = 0;
+		try {
+			resCnt = questionDAO.resultAllCount(userCode);
+		}catch (Exception e) { e.printStackTrace(); }
+		
+		return resCnt >= limitCnt ? true : false;
 	}
 	
 	/*@RequestMapping("/submitSelected")
