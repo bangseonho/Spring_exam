@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 target/m2e-wtp/web-resources/.gitignore
+=======
+/target/
+>>>>>>> develop
