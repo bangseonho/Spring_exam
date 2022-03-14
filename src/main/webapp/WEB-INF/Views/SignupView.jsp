@@ -7,13 +7,18 @@
 
 <meta charset="UTF-8">
 <title>메인 페이지</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
 
 body{
-  background: hsl(220, 10%, 12%);
-  margin:0;
+	font-family: 'Gamja Flower', cursive;
+  	background: hsl(220, 10%, 12%);
+  	margin:0;
 }
 
 .bold{
@@ -36,9 +41,13 @@ body{
   text-align:center;
   color:#fff;
   position:absolute;
-  height:50%;
+  height:100%;
   width:400px;
   z-index:30;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .hello{
@@ -170,8 +179,8 @@ input{
 <body>
 	<div class="container">
 		<div class="welcome">
-			<h4 class="bold welcome-text">아무도 물어보지 않은 TMI</h4>
-			<p>가입해줘유 냉큼</p>
+			<h1>아무도 물어보지 않은 TMI</h1>
+			<h1>가입해줘유 냉큼 !</h1>
 		</div>
 		<div class="form">
 			<h4 class="bold title">Create Account</h4>

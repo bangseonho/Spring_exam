@@ -87,7 +87,7 @@ public class AuthController {
 			try {
 				response.setCharacterEncoding("UTF-8");
 				PrintWriter out = response.getWriter();
-	            out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+	            out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
 	            out.flush();
 			}catch(Exception e){ System.out.println("response error");}
 		}

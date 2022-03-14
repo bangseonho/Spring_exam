@@ -32,6 +32,7 @@ body {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .button5 {

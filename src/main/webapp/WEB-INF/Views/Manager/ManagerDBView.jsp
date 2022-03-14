@@ -69,6 +69,7 @@ body {
 	background-color: white;
 	color: black;
 	border: 2px solid #555555;
+	border-radius: 15px;
 }
 
 .button5:hover {

@@ -30,8 +30,8 @@ public class ResultController {
 			model.addAttribute("rs3", resultDAO.resultCollectCount(userCode));
 			model.addAttribute("rs1", resultDAO.resultAnswer(userCode));
 		}catch(Exception e){
-			System.out.println("result controller 실패");
+			System.out.println("result controller �떎�뙣");
 		}
-		return "ResultView";
+		return "redirect:ResultView";
 	}
 }
