@@ -48,6 +48,7 @@ public class ResultDAO {
 		} 
 	}
 	
+	
 	public int resultCollectCount(String userCode) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
 		try {
