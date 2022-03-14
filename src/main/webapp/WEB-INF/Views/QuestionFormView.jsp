@@ -259,12 +259,12 @@ button:hover .button-text {
 		</form>
 	</div>
 
-	<script>
+	<!-- <script>
 		// 나가기 경고창
 		window.addEventListener("beforeunload", function(event) {
 			event.returnValue = "나가시겠습니까?"; // 익스플로러에서만 뜸
 		});
 		
-	</script>
+	</script> -->
 </body>
 </html>

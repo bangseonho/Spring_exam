@@ -18,8 +18,8 @@ public class QuestionDAO {
 	   QuestionDTO questionDTO;*/
 
 	@SuppressWarnings("null")
-	public static ResultSet getQuestion() throws Exception {
-		String sql = "SELECT * from question order by rand() limit 1;";
+	public static ResultSet getQuestion(String userCode) throws Exception {
+		String sql = "SELECT * from question where id not in (select question from result where code=" +userCode+  ") and remove=0 order by rand() limit 1;";
 		try {
 			@SuppressWarnings("static-access")
 			Connection conn = conn1.getConnection();
@@ -31,7 +31,7 @@ public class QuestionDAO {
 			throw new Exception("QuestionDAO.java occured error");
 		}
 	}
-	// 유저가 푼 문항수 가져오가ㅣ
+	// ����媛� �� 臾명���� 媛��몄�ㅺ���
 	public int resultAllCount(String userCode) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
 	      try {
@@ -45,7 +45,7 @@ public class QuestionDAO {
 	         return allCnt;
 	      } catch (SQLException e) {
 //	         e.printStackTrace();
-	         throw new Exception("result answer 遺  ъ ㅺ린  ㅽ  ");
+	         throw new Exception("result answer ��  � �븍┛  ��  ");
 	      } 
 	}
 
