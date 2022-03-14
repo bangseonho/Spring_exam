@@ -12,6 +12,7 @@ public class ResultDAO {
 	
 	PreparedStatement psmt;
 	String userCode = "001";
+	private int cnt;
 	
 	public ResultSet resultAnswer() throws Exception {
 		Connection conn = ConnectionDB.getConnection();
@@ -25,7 +26,7 @@ public class ResultDAO {
 			return rs1;	
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			throw new Exception("result answer 불러오기 실패");
+			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
 		} 
 	}	
 	
@@ -38,7 +39,7 @@ public class ResultDAO {
 			return rs2;
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			throw new Exception("result answer 불러오기 실패");
+			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
 		} 
 	}
 	
@@ -52,7 +53,26 @@ public class ResultDAO {
 			return rs3;	
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			throw new Exception("result answer 불러오기 실패");
+			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
 		} 
 	}	
+	
+	public void insertResult(ResultDTO dto) throws Exception {
+		try {
+			Connection conn = ConnectionDB.getConnection();
+			String sql = "insert into vote_user values(null, ?,?,?,?);";
+			psmt = conn.prepareStatement(sql);
+			System.out.println("insert result");
+			
+			psmt.setString(1, dto.getCode());
+			psmt.setInt(2, dto.getQuestion());
+			psmt.setString(3, dto.getChoice());
+			psmt.setInt(4, dto.getCorrect());
+			
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("insert fail");
+		} 
+	}
 }
