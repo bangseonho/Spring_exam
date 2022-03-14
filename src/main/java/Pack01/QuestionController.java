@@ -38,7 +38,7 @@ public class QuestionController implements HttpSessionBindingListener {
 
 		// DB에서 개수 가져오기
 		int cnt = 5; // sql로 가져오기
-		if(questionDAO.resultAllCount(userCode)>=cnt) {
+		if(questionDAO.resultAllCount(userCode)>cnt) {
 			System.out.println("이미 시험쳤어요~");
 
 			return "redirect:result";
