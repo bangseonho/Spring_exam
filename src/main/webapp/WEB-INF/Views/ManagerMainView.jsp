@@ -61,6 +61,7 @@ h4 {
 	color: #fff;
 	font-size: 14px;
 	border-radius: 25px;
+	cursor:pointer;
 }
 
 .button-group {

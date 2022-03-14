@@ -61,10 +61,13 @@ public class AuthController {
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
+		if(user.getName().equals("admin") && user.getCode().equals("2")) {
+			return "redirect:ManagerController";
+		}
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
 		model.addAttribute("flag", userDAO.flagCheck(user.getName(), user.getCode()));
-
+		
 		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
 		if (a) {
 			session.setAttribute("user_name", user.getName());

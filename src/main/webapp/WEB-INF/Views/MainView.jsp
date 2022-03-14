@@ -157,6 +157,7 @@ button{
   background-color: white;
   color: black;
   border: 2px solid #555555;
+  cursor:pointer;
 }
 
 </style>
@@ -186,11 +187,11 @@ button{
           	System.out.print(flag);
           	if(!flag){
           		 %>
-          		<button onclick="location.href='questionform'">시험 시작</button>
+          		<button class="button5" onclick="location.href='questionform'">시험 시작</button>
           		 <%
           	}else{
           		 %>
-          		<button onclick="location.href='result'">결과 보기</button>
+          		<button class="button5" onclick="location.href='result'">결과 보기</button>
           		 <%
           	}
           %>

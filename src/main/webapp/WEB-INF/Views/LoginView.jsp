@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">
 	<title>로그인</title>
 <style>
@@ -10,8 +13,9 @@
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
 
 body{
-  background: hsl(220, 10%, 12%);
-  margin:0;
+	font-family: 'Gamja Flower', cursive;
+  	background: hsl(220, 10%, 12%);
+  	margin:0;
 }
 
 .bold{
@@ -34,9 +38,13 @@ body{
   text-align:center;
   color:#fff;
   position:absolute;
-  height:50%;
+  height:100%;
   width:400px;
   z-index:30;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .hello{
@@ -150,6 +158,7 @@ input{
   color:#fff;
   font-size:14px;
   border-radius:25px;
+  cursor:pointer;
 }
 .loginForm{
 	margin-top:80px;
@@ -165,14 +174,15 @@ input{
 	color: black;
 	border: 2px solid #555555;
 	font-family: 'Gamja Flower', cursive;
+	cursor:pointer;
 }
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="welcome">
-			<h4 class="bold welcome-text">아무도 물어보지 않은 TMI</h4>
-			<p>로그인해줘요 냉큼</p>
+			<h1>아무도 물어보지 않은 TMI</h1>
+			<h1>로그인해줘요 냉큼 !</h1>
 		</div>
 		<div class="form">
 			<h4 class="bold title">Login</h4>
@@ -184,8 +194,6 @@ input{
 			</form>
 				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
 				<br />
-				<button class="button5" onclick="location.href='PageMove?page=MainView'">ResultView</button>
-				<button class="button5" onclick="location.href='ManagerController'">Manager</button>
 		</div>
 	</div>
 </body>

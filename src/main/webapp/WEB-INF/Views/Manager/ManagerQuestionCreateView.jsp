@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>질문 추가/수정 페이지</title>
 <style>
 html {
