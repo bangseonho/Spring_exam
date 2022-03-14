@@ -37,7 +37,6 @@
 	padding: 10px;
 	margin: 10px;
 	border-radius: 10px;
-	color: #fff;
 	background: #AFE1AF;
 	/* background: lightcoral; */
 	text-align: center;
@@ -90,7 +89,6 @@
 	ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
 	while (rs1.next()) {
 		String code = rs1.getString("code"); // 사용자 번호
-		int id = rs1.getInt("id"); // 문제 번호
 		String phrase = rs1.getString("phrase");
 		String one = rs1.getString("one");
 		String two = rs1.getString("two");
@@ -103,8 +101,7 @@
 	<br>
 	<div class="grid-container">
 		<div>
-			<h3><%=id%>.
-				<%=phrase%></h3>
+			<h3><%=phrase%></h3>
 			<%
 			if (correct) {
 				out.println("맞은 문제");

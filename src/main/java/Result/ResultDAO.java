@@ -18,7 +18,7 @@ public class ResultDAO {
 	public ResultSet resultAnswer(String userCode) throws Exception {
 				Connection conn = ConnectionDB.getConnection();
 		try {
-			String sql1 = "select r.code, q.id, q.phrase, "
+			String sql1 = "select r.code, q.phrase, "
 					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct "
 					+ "from question as q, result as r "
 					+ "where q.id = r.question and r.code = " + userCode;		

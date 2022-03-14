@@ -35,9 +35,9 @@ public class QuestionController implements HttpSessionBindingListener {
 		//		유저코드
 		String userCode = (String) session.getAttribute("user_code");
 		
-		if(questionDAO.resultAllCount(userCode)>=5) {
+		if(questionDAO.resultAllCount(userCode)>=5) {  
 			System.out.println("이미 시험쳤어요~");
-			return "MainView";
+			return "ResultView";
 		}
 		
 		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
