@@ -219,4 +219,32 @@ public class ManagerController {
 					rs.getString("who")
 			);
     }
+	
+	@RequestMapping(value = "userSolve", method = RequestMethod.GET)
+	String getSolveQuestion(Model model, String code) {
+		ResultSet rs = null;
+		String usercode = null;
+		ArrayList<String> userquestionList = new ArrayList<>();
+		ArrayList<String> userchoiceList = new ArrayList<>();
+		ArrayList<String> usercorrectList = new ArrayList<>();
+		
+		try {
+			rs = managerDAO.getSolveQuestion(code);
+			while(rs.next()) {
+				usercode = rs.getString(2);
+				userquestionList.add(rs.getString(3));
+				userchoiceList.add(rs.getString(4));
+				usercorrectList.add(rs.getString(5));
+			}
+			System.out.println(userquestionList.toString());
+			System.out.println(userchoiceList.toString());
+			System.out.println(usercorrectList.toString());
+			
+			model.addAttribute("usercode",usercode);
+			model.addAttribute("userquestionList", userquestionList);
+			model.addAttribute("userchoiceList", userchoiceList);
+			model.addAttribute("usercorrectList", usercorrectList);
+		}catch(Exception e){ e.printStackTrace();}
+		return "Manager/ManagerUserQuestionView";
+	}
 }

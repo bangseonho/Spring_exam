@@ -5,35 +5,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+<meta charset="utf-8">
 <title>질문 추가/수정 페이지</title>
 <style>
+html {
+	
+}
 body {
 	
 }
 
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+
 .title-group {
+	font-family: 'Gamja Flower', cursive;
 	text-align: center;
+	font-size: 40px;
+	padding-bottom: 20px;
 }
 
 .total-group {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
 
-.option-group {
+.left-side {
+	width: 60%;
+	text-align: center;
+}
+
+#user-list {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#user-list thead td{
+	font-family: 'Gamja Flower', cursive;
+}
+
+#user-list tbody tr:hover {
+	background-color: #555555;
+	color: white;
+}
+
+#user-list tbody td {
+	font-family: 'Gamja Flower', cursive;
+	letter-spacing: 2px;
+}
+
+.right-side {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	overflow: auto;
+}
+
+.content-title {
+	
+}
+
+.button-group {
+	display: flex;
+	justify-content: right;
+}
+
+.survey-group {
+	
 }
 
 footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-top: 30px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
 }
 </style>
 <!-- 테스트용 -->

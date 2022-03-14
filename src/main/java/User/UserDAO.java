@@ -85,7 +85,8 @@ public class UserDAO {
 				@SuppressWarnings("static-access")
 				Connection conn = conn1.getConnection();
 
-				String sql = "insert into user values(null, ?, ?, ?,false);";
+
+				String sql = "insert into user values(null, ?, ?, ?, false);";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, dto.getName());

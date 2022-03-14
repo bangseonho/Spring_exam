@@ -172,7 +172,6 @@ button{
           신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
           이거하느라 힘들었습니다. 내주말 돌려줘요</a></p>
           
-          
           <%
           	boolean flag = (boolean)request.getAttribute("flag");
           	System.out.print(flag);
@@ -186,6 +185,7 @@ button{
           		 <%
           	}
           %>
+
 
         </div>
       </div>
