@@ -1,3 +1,4 @@
+<%@page import="Setting.SettingDTO"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,7 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>데이터베이스 관리 페이지</title>
+<title>데이터베이스 관리</title>
 <style>
 body {
 	
@@ -39,24 +40,29 @@ footer {
 <%= new Date() %>
 </head>
 <body>
+	<%
+	SettingDTO settingDTO = (SettingDTO)request.getAttribute("settingDTO");
+	System.out.println(settingDTO.toString());
+	%>
+
 	<div class="title-group"><label>데이터베이스 관리</label></div>
 	<div class="total-group">
 
-		<form method="post" action="">
+		<form method="post" action="SettingUpdate">
 			<div class="option-group">
 				<div>
 					<label>설문조사 시간 : </label>
-					<input type="text" value="5">
+					<input type="text" name="limitTime" value="<%=settingDTO.getLimitTime()%>">
 					<label> 분</label>
 				</div>
 				<div>
 					<label>설문조사당 문제 수 : </label>
-					<input type="text" value="5">
+					<input type="text" name="questionNum" value="<%=settingDTO.getQuestionNum()%>">
 					<label> 개</label>
 				</div>
 				<div>
 					<label>응시가능 횟수 : </label>
-					<input type="text" value="1">
+					<input type="text" name="questionChance" value="<%=settingDTO.getQuestionChance()%>">
 					<label> 회</label>
 				</div>
 			</div>

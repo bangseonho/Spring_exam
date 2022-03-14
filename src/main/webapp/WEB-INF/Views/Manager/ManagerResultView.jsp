@@ -1,11 +1,11 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Á¶»ç ÇöÈ² ÆäÀÌÁö</title>
+<title>ì¡°ì‚¬ í˜„í™©</title>
 <style>
 body {
 	
@@ -35,15 +35,15 @@ footer {
 	align-items: center;
 }
 </style>
-<!-- Å×½ºÆ®¿ë -->
+<!-- í…ŒìŠ¤íŠ¸ìš© -->
 <%= new Date() %>
 </head>
 <body>
 	<p id="time"></p>
-	<div class="title-group"><label>Á¶»çÇöÈ²</label></div>
+	<div class="title-group"><label>ì¡°ì‚¬í˜„í™©</label></div>
 	<div class="total-group">
 
-	Á¶»çÇöÈ² ³Ö±â
+	ì¡°ì‚¬í˜„í™© ë„£ê¸°
 
 	</div>
 	<script>
@@ -71,7 +71,7 @@ footer {
 </body>
 <footer>
 	<div>
-		<button onclick="location='ManagerController'">¸ÞÀÎÀ¸·Î ÀÌµ¿</button>
+		<button onclick="location='ManagerController'">ë©”ì¸ìœ¼ë¡œ ì´ë™</button>
 	</div>
 </footer>
 </html>

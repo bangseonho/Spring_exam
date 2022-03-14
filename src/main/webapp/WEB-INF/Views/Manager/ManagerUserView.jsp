@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 <meta charset="utf-8">
-<title>참여자 관리 페이지</title>
+<title>참여자 관리</title>
 <style>
 html {
 	
