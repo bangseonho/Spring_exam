@@ -160,6 +160,12 @@ input{
 .btnmargin{
 	margin-top:20px;
 }
+.button5 {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+	font-family: 'Gamja Flower', cursive;
+}
 </style>
 </head>
 <body>
@@ -175,11 +181,11 @@ input{
 				<input type="text" name="code" required placeholder="Code"><br />
 				<button class="b-button bold btnmargin" type="submit">Login</button>
 				<br />
-				
-				<button onclick="location.href='PageMove?page=MainView'">ResultView</button>
-				<button onclick="location.href='ManagerController'">Manager</button>
-			
 			</form>
+				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
+				<br />
+				<button class="button5" onclick="location.href='PageMove?page=MainView'">ResultView</button>
+				<button class="button5" onclick="location.href='ManagerController'">Manager</button>
 		</div>
 	</div>
 </body>

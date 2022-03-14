@@ -20,6 +20,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	font-size: 20px;
 }
 
 .option-group{
@@ -46,28 +47,6 @@ footer {
 	조사현황 넣기
 
 	</div>
-	<script>
-		
-		var timeDisplay = document.getElementById("time");
-	
-		function refreshTime() {
-		  var dateString = new Date();
-		  timeDisplay.innerHTML = dateString.toString();
-		}
-	
-		setInterval(refreshTime, 1000);
-		
-		/* var timeDisplay = document.getElementById("time");
-
-
-		function refreshTime() {
-		  var dateString = new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"});
-		  var formattedString = dateString.replace(", ", " - ");
-		  timeDisplay.innerHTML = formattedString;
-		}
-
-		setInterval(refreshTime, 1000); */
-	</script>
 </body>
 <footer>
 	<div>

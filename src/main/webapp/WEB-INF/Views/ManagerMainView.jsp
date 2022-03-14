@@ -30,7 +30,7 @@ h4 {
 	width: 900px;
 	position: absolute;
 	top: 50%;
-	left: 50%;
+	left: calc(50% - 200px);
 	transform: translate(-50%, -50%);
 }
 
@@ -42,6 +42,7 @@ h4 {
 	width: 500px;
 	background-color: #fff;
 	border-radius: 10px 10px 10px 10px;
+	justify-content: center;
 }
 
 .title {
@@ -78,10 +79,6 @@ h4 {
 <body>
 	
 	<div class="container">
-		<div class="welcome">
-			<h4 class="bold welcome-text">관리자 페이지</h4>
-			<p>설문조사 관련된 환경을 관리할 수 있습니다.</p>
-		</div>
 		<div class="form">
 			<h4 class="bold title">Manager</h4>
 			<div class="button-group">

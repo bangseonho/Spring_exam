@@ -55,6 +55,7 @@ body {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	font-size: 20px;
 }
 
 .left-side {
@@ -117,6 +118,8 @@ a{
 		@SuppressWarnings("unchecked")
 		ArrayList<String> userquestionList = (ArrayList<String>)request.getAttribute("userquestionList");
 		@SuppressWarnings("unchecked")
+		ArrayList<String> userquestionanswerList = (ArrayList<String>)request.getAttribute("userquestionanswerList");
+		@SuppressWarnings("unchecked")
 		ArrayList<String> userchoiceList = (ArrayList<String>)request.getAttribute("userchoiceList");
 		@SuppressWarnings("unchecked")
 		ArrayList<String> usercorrectList = (ArrayList<String>)request.getAttribute("usercorrectList");
@@ -131,9 +134,9 @@ a{
 			<table id="user-list">
 				<thead>
 					<tr>
-						<td>수험번호</td>
-						<td>질문 번호</td>
-						<td>질문 리스트</td>
+						<td>질문</td>
+						<td>해당 질문 정답</td>
+						<td>선택한 정답</td>
 						<td>정답</td>
 					</tr>
 				</thead>
@@ -141,20 +144,21 @@ a{
 					<%
 						for(int i = 0; i < userquestionList.size(); i++){
 							out.println("<tr>");
-							if(i == 0){%>
-								<td rowspan='<%= userquestionList.size() %>'>
-								<%
-								out.println(usercode);
-								out.println("</td>");								
-							}
 							out.println("<td>");
 							out.println(userquestionList.get(i));
+							out.println("</td>");															
+							out.println("<td>");
+							out.println(userquestionanswerList.get(i));
 							out.println("</td>");
 							out.println("<td>");
 							out.println(userchoiceList.get(i));
 							out.println("</td>");
 							out.println("<td>");
-							out.println(usercorrectList.get(i));
+							if(usercorrectList.get(i).equals("1")){
+								out.println("O");
+							}else{
+								out.println("X");
+							}
 							out.println("</td>");
 							out.println("</tr>");
 						}

@@ -42,7 +42,7 @@ public class AuthController {
 				try {
 					response.setCharacterEncoding("UTF-8");
 					PrintWriter out = response.getWriter();
-		            out.println("<script>alert('중복된 로그인입니다. '); history.go(-1);</script>");
+		            out.println("<script>alert('중복된 회원정보입니다. '); history.go(-1);</script>");
 		            out.flush();
 				}catch(Exception e){ System.out.println("response error");}
 				return "SignupView";

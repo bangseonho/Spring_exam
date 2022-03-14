@@ -163,7 +163,10 @@ public class ManagerDAO {
 	}
 	
 	public ResultSet getSolveQuestion(String code) throws Exception {
-		String sql = "select * from result where code=?;";
+		String sql = "select result.code, question.phrase, question.answer, result.choice, result.correct\r\n"
+				+ "from result\r\n"
+				+ "join question\r\n"
+				+ "on result.question = question.id and result.code = ?;";
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
