@@ -36,4 +36,12 @@ public class SettingDAO {
 		
 	}
 	
+	/*
+	 * public int selectSettingValue(String columnName) {
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+	
 }
