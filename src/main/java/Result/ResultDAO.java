@@ -73,7 +73,7 @@ public class ResultDAO {
 			
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
-			psmt.setString(3, dto.getChoice());
+			psmt.setInt(3, dto.getChoice());
 			psmt.setInt(4, dto.getCorrect());
 			
 			cnt = psmt.executeUpdate();
