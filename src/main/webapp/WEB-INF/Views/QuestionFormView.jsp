@@ -295,8 +295,8 @@ button:hover .button-text {
 	var timer;
 	
 	function showQuestion() {
-		ResultDAO resultDAO = ${resultDAO};
-		resultDAO.insert(null, '1',1,'1',1);
+		//ResultDAO resultDAO = ${resultDAO};
+		//resultDAO.insert(null, '1',1,'1',1);
 	
 		if(timer){			
 		clearTimeout(timer);
