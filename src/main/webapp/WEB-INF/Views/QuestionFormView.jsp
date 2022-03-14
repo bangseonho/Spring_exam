@@ -235,24 +235,28 @@ button:hover .button-text {
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
 	%>
 	<div class="container1" id="questionSurvey">
-		<form method="POST" action="questionform">
+		<!-- <form method="POST" action="questionform"> -->
+		<form method="POST" action="QuestionResultInsert">
 			<div>
 				<span id="title"></span>
 			</div>
 			<div>
 				<span id="who">About<%=lst.get(7)%></span>
 			</div>
+			
 			<h2 id="iddd"></h2>
+			
 			<label><input type="radio" name="radio" value="1" checked /><span id="1"><%=lst.get(2)%></span></label>
 			<label><input type="radio" name="radio" value="2" /> <span id="2"><%=lst.get(3)%></span></label>
 			<label><input type="radio" name="radio" value="3" /> <span id="3"><%=lst.get(4)%></span> </label>
 			<label><input type="radio" name="radio" value="4" /> <span id="4"><%=lst.get(5)%></span> </label>
+			
 			<input type="hidden" name="questionNo" value=<%=lst.get(0)%>>
 			<input type="hidden" name="answer" value=<%=lst.get(6)%>>
+			
 			<div class="btns">
 				<button class="learn-more" type="submit">
-					<span class="circle" aria-hidden="true"> <span
-						class="icon arrow"></span>
+					<span class="circle" aria-hidden="true"> <span class="icon arrow"></span>
 					</span> <span class="button-text">Next</span>
 				</button>
 			</div>

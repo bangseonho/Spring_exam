@@ -79,6 +79,69 @@ public class QuestionController implements HttpSessionBindingListener {
 		return "QuestionFormView";
 		}
 	}
+	
+	@RequestMapping("/QuestionGenerate")
+	public String questionGenerate(Model model, HttpSession session) throws Exception {
+
+		String userCode = (String)session.getAttribute("user_code");
+
+		// 문제 푼 횟수 확인
+		int limitCnt = 5; // DB에서 가져오게 변경하기
+		int resCnt = 0;
+		try {
+			resCnt = questionDAO.resultAllCount(userCode);
+		}catch (Exception e) { e.printStackTrace(); }
+		if(resCnt >= limitCnt) {
+			System.out.println("이미 시험쳤어요~");
+			return "redirect:result";
+		}
+		
+		// 문제 생성
+		ArrayList<String> question = new ArrayList<String>();
+		ResultSet rs = questionDAO.getQuestion(userCode);
+		rs.next();
+		question.add(rs.getString("id"));
+		question.add(rs.getString("phrase"));
+		question.add(rs.getString("one"));
+		question.add(rs.getString("two"));
+		question.add(rs.getString("three"));
+		question.add(rs.getString("four"));
+		question.add(rs.getString("answer")); // int
+		question.add(rs.getString("who"));
+		
+		System.out.println("question --");
+		System.out.println(question.toString());
+
+		model.addAttribute("question", question);
+		
+		return "QuestionFormView";
+	}
+	
+	@RequestMapping("/QuestionResultInsert")
+	public String questionResultInsert(HttpSession session, HttpServletRequest request) {
+
+		String userCode = (String)session.getAttribute("user_code");
+		
+		// 사용자 선택지 저장
+		String myAnswer = request.getParameter("radio");
+		String questionNo = request.getParameter("questionNo");
+		String answer = request.getParameter("answer");
+		int correct = 0;
+		
+		// 언제 null 값 되는지?
+		if (myAnswer != null) {
+			if (myAnswer.equals(answer)) {
+				correct = 1;
+			}
+			ResultDTO dto = new ResultDTO(userCode, Integer.parseInt(questionNo), Integer.parseInt(myAnswer), correct);
+			try {
+				resultDAO.insertResult(dto);
+			} catch (Exception e) { e.printStackTrace(); }
+		}
+		
+		return "redirect:QuestionGenerate"; 
+	}
+	
 	/*@RequestMapping("/submitSelected")
 	public void f3(Model model) {
 		System.out.println("controller로 오는지확인");
