@@ -11,9 +11,10 @@
 <meta charset="utf-8">
 <title>데이터베이스 관리</title>
 <script type="text/javascript">
+	var dt = new Date();
 	function realtimeClock() {
 		document.rtcForm.rtcInput.value = getTimeStamp();
-		setTimeout("realtimeClock()", 1000);
+		setTimeout("realtimeClock()", 1);
 	}
 	function getTimeStamp() { // 24시간제
 		var d = new Date();
@@ -27,7 +28,7 @@
 		  leadingZeros(d.getMinutes(), 2) + ':' +
 		  leadingZeros(d.getSeconds(), 2);
 		
-		return s;
+		return (d - dt) / 1000;
 	}
 	function leadingZeros(n, digits) {
 		var zero = '';
@@ -112,6 +113,7 @@ body {
 	text-align: center;
 	font-size: 40px;
 	padding-bottom: 20px;
+	width: 100%;
 }
 
 .total-group {
@@ -187,10 +189,12 @@ a{
 </style>
 </head>
 <body onload="realtimeClock()">
+	<%-- <%=new Date()%> --%>
 	<%
 	SettingDTO settingDTO = (SettingDTO)request.getAttribute("settingDTO");
 	System.out.println(settingDTO.toString());
 	%>
+	<p>진행시간</p>
 	<form name="rtcForm">
 		<input type="text" name="rtcInput" size="20" readonly="readonly" />
 	</form>
