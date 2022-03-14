@@ -34,20 +34,19 @@ public class QuestionController implements HttpSessionBindingListener {
 		// 이 회원이 문제를 얼마나 풀었는지 확인하기
 		//		유저코드
 		String userCode = (String) session.getAttribute("user_code");
-		
-
+		Thread.sleep(1000);
 		// DB에서 개수 가져오기
 		int cnt = 5; // sql로 가져오기
 		if(questionDAO.resultAllCount(userCode)>cnt) {
 			System.out.println("이미 시험쳤어요~");
-
+			System.out.println(cnt);
 			return "redirect:result";
 //			return "MainView";
 
 		}
-		
+		else {
 		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
-		ResultSet rs = questionDAO.getQuestion();
+		ResultSet rs = questionDAO.getQuestion(userCode);
 		ArrayList<String> question = new ArrayList<String>();
 		//		내가고른값 번호
 				String myAnswer = request.getParameter("radio");
@@ -78,6 +77,7 @@ public class QuestionController implements HttpSessionBindingListener {
 			model.addAttribute("question", question);
 		}
 		return "QuestionFormView";
+		}
 	}
 	/*@RequestMapping("/submitSelected")
 	public void f3(Model model) {
