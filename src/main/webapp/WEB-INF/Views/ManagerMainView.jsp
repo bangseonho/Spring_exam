@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*"%>
-
+<%@page import="User.UserDTO"%>
+<%@page import="User.UserDAO"%>
 <html>
 
 <style>
@@ -87,7 +88,21 @@ h4 {
 				<button class="b-button bold" onclick="location='ManagerUserView'">회원관리</button>
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
 				<button class="b-button bold" onclick="location='ManagerPageMove?page=ManagerResultView'">조사현황</button>
-				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>     
+				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
+				<%
+				UserDAO userDAO = new UserDAO();
+		    	UserDTO adminInfo = userDAO.findUserInfo("admin");
+		    	System.out.println(adminInfo.getFlag());
+		    	if(adminInfo.getFlag()==1){
+              	%>
+                 	<button class="b-button bold" onclick="location='open'">투표 시작</button>
+               	<% 
+             	}else{
+             	%>
+                	<button class="b-button bold" onclick="location='close'">투표 종료</button>
+             	<% 
+              	}
+				%>
 			</div>
 		</div>
 	</div>

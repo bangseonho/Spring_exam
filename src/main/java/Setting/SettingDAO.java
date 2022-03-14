@@ -36,6 +36,43 @@ public class SettingDAO {
 		
 	}
 	
+	public Boolean closeVote() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		Boolean rsDrop = false;
+		try {
+			String sql = "drop table result;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			rsDrop = pstmt.execute();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("drop vote result fail");
+		}
+		return rsDrop;
+	}
+	
+	public Boolean openVote() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		Boolean rsDrop = false;
+		try {
+			String sql = "CREATE TABLE result (\r\n"
+					+ "  id int not null auto_increment,\r\n"
+					+ "  code varchar(45) not null,\r\n"
+					+ "  question int not null,\r\n"
+					+ "  choice int not null,\r\n"
+					+ "  PRIMARY KEY (id));";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			rsDrop = pstmt.execute();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("create vote result fail");
+		}
+		return rsDrop;
+	}
+	
 	/*
 	 * public int selectSettingValue(String columnName) {
 	 * 

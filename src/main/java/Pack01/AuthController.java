@@ -30,7 +30,7 @@ public class AuthController {
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
-		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.isFlag());
+		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.getFlag());
 		try {
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
