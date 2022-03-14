@@ -134,5 +134,10 @@
 	<%
 			}
 	%>
+	<div style=align:center>
+<!-- 	<button onclick="location='PageMove?page=MainView'">메인으로 가기</button> -->
+	<button onclick="location='PageMove?page=LoginView'">로그아웃하기</button>
+	</div>
+	
 </body>
 </html>
