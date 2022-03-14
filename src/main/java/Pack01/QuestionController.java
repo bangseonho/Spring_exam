@@ -35,6 +35,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		//		유저코드
 		String userCode = (String) session.getAttribute("user_code");
 		
+
 		// DB에서 개수 가져오기
 		int cnt = 5; // sql로 가져오기
 		if(questionDAO.resultAllCount(userCode)>=cnt) {
@@ -42,6 +43,7 @@ public class QuestionController implements HttpSessionBindingListener {
 
 			return "redirect:result";
 //			return "MainView";
+
 		}
 		
 		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
