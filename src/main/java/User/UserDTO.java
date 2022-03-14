@@ -8,17 +8,25 @@ public class UserDTO {
 	private String name;
 	private String birth;
 	private String code;
+	private boolean flag;
 	
-	UserDTO(){
-		
+	UserDTO(){		
 	}
 	
+
 	public UserDTO(String name, String birth, String code) {
 		this.name = name;
 		this.birth = birth;
 		this.code = code;
 	}
 
+	public UserDTO(String name, String birth, String code, boolean flag) {
+		this.name = name;
+		this.birth = birth;
+		this.code = code;
+		this.flag = flag;
+		}
+	
 	public String getName() {
 		return name;
 	}
@@ -42,5 +50,15 @@ public class UserDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	
+	
 
 }

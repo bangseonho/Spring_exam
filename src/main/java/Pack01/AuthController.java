@@ -30,7 +30,7 @@ public class AuthController {
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
-		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode());
+		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.isFlag());
 		try {
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
@@ -57,12 +57,23 @@ public class AuthController {
 		}
 		return null;
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, HttpServletResponse response) {
+//		session.invalidate();
+		session.removeAttribute("user_name");
+		session.removeAttribute("user_code");
+		System.out.print(session.getAttribute("user_name"));
+
+		return "redirect:/";
+	}
 
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
 		model.addAttribute("name", user.getName());
 		model.addAttribute("code", user.getCode());
+		model.addAttribute("flag", userDAO.flagCheck(user.getName(), user.getCode()));
 
 		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
 		if (a) {

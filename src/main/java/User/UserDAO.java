@@ -59,6 +59,24 @@ public class UserDAO {
 		} catch(Exception e) {System.out.println("error");}
 		return existName;
 	}
+	
+	
+	public int flagCheck(String name, String code) {
+		int flag = -1;
+		String sql = "select flag from user where name=? and code=?";
+		try {
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, code);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				flag = rs.getInt("flag");
+			}
+		} catch(Exception e) {System.out.println("error");}
+		return flag;
+	}
 
 	public boolean join(UserDTO dto) throws Exception {
 
@@ -67,7 +85,8 @@ public class UserDAO {
 				@SuppressWarnings("static-access")
 				Connection conn = conn1.getConnection();
 
-				String sql = "insert into user values(null, ?, ?, ?, null);";
+
+				String sql = "insert into user values(null, ?, ?, ?, false);";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, dto.getName());

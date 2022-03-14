@@ -175,8 +175,6 @@ input{
 				<input type="text" name="code" required placeholder="Code"><br />
 				<button class="b-button bold btnmargin" type="submit">Login</button>
 				<br />
-				
-				<button onclick="location.href='PageMove?page=MainView'">ResultView</button>
 				<button onclick="location.href='ManagerController'">Manager</button>
 			
 			</form>

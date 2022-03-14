@@ -65,7 +65,7 @@ public class ManagerController {
 		    	questionList.add(getQuestionDTO(rs));
 		    }
 			
-			System.out.println("¼³¹® ¸ñ·Ï 1¹ø¤Š ³»¿ë");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
 
@@ -190,7 +190,7 @@ public class ManagerController {
 			cnt = managerDAO.deleteAllQuestions();
 		} catch (Exception e) { e.printStackTrace(); }
 		*/
-		System.out.println("¹®Á¦ ÀüÃ¼ »èÁ¦");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½");
 
 		return "redirect:/ManagerQuestion";
 	}

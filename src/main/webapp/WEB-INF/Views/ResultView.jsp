@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="Result.ResultDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
@@ -24,7 +25,7 @@
 
 * {
 	font-family: 'Cafe24Oneprettynight';
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .grid-container {
@@ -49,9 +50,13 @@
 <title>result view</title>
 </head>
 <body>
-	<%
+	<%	
 	String userCode = (String) session.getAttribute("user_code");
 	String userName = (String) session.getAttribute("user_name");
+	if(userCode == null || userName == null){
+		response.sendRedirect("PageMove?page=LoginView");
+		return;
+	}
 	%>
 
 
@@ -71,12 +76,17 @@
 	while (rs3.next()) {
 		CollectCnt = rs3.getInt("correctcnt");
 	}
+	System.out.print(allCnt);
 	%>
 
 	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CollectCnt%> 개 맞았습니다!</h1><br/>
 	<h1>
 		<%
+		System.out.print(allCnt);
+		System.out.print(CollectCnt);
+		
 		like = (CollectCnt*100)/allCnt;
+		
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
 		} else if (like <= 50) {
@@ -102,7 +112,7 @@
 		String three = rs1.getString("three");
 		String four = rs1.getString("four");
 		String answer = rs1.getString("answer");
-		String choice = rs1.getString("choice");
+		int choice = rs1.getInt("choice");
 		boolean correct = rs1.getBoolean("correct");
 	%>
 	<br>
@@ -133,6 +143,16 @@
 	</div>
 	<%
 			}
+	   /* 뒤로가기 시 새 페이지로 불로오기 위함 */
+	   response.setHeader("Cache-Control", "no-cache");
+	   response.addHeader("Cache-Control", "no-store");
+	   response.setHeader("Pragma", "no-cache");
+	   response.setDateHeader("Expires", 1L);
 	%>
+	<div style=align:center>
+<!-- 	<button onclick="location='PageMove?page=MainView'">메인으로 가기</button> -->
+	<button onclick="location.href='logout'">로그아웃하기</button>
+	</div>
+	
 </body>
 </html>

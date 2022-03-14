@@ -171,9 +171,23 @@ button{
           <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지, 사실 아무도 궁금해하지는 않을 것이지만, 
           신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
           이거하느라 힘들었습니다. 내주말 돌려줘요</a></p>
-          <button onclick="location.href='questionform'">시험 시작</button>
-          <button onclick="location.href='result'">결과 보기</button>
           
+          <%
+          int flag = (int)request.getAttribute("flag");
+          	if(flag > 0){
+          		 %>
+          			<button onclick="location.href='result'">결과 보기</button>
+          		 <%
+          	}else{
+          		 %>
+          		<button onclick="location.href='questionform'">시험 시작</button>
+          		 <%
+          	}
+          	System.out.print(a);
+          	System.out.print(b);
+          %>
+
+
         </div>
       </div>
     </div>
