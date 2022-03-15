@@ -44,6 +44,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		if(questionDAO.resultAllCount(userCode)>cnt) {
 			System.out.println("이미 시험쳤어요~");
 			System.out.println(cnt);
+			resultDAO.updateFlag(userCode); 
 			return "redirect:result";
 //			return "MainView";
 
@@ -93,7 +94,10 @@ public class QuestionController implements HttpSessionBindingListener {
 		String userCode = (String)session.getAttribute("user_code");
 
 		// 문제 푼 횟수 확인
-		if(isExceedCnt(userCode)) return "redirect:result";
+		if(isExceedCnt(userCode)) {
+			resultDAO.updateFlag(userCode); 
+			return "redirect:result";
+		}
 		
 		// 문제 생성
 		ArrayList<String> question = new ArrayList<String>();
@@ -176,4 +180,5 @@ public class QuestionController implements HttpSessionBindingListener {
 	public void f3(Model model) {
 		System.out.println("controller로 오는지확인");
 	}*/
+
 }
