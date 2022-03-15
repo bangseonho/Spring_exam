@@ -72,6 +72,9 @@ public class AuthController {
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
 		if(user.getName().equals("admin") && user.getCode().equals("2")) {
+			session.setAttribute("user_name", user.getName());
+			session.setAttribute("user_code", user.getCode());
+			session.setMaxInactiveInterval(30 * 60);
 			return "redirect:ManagerController";
 		}
 		model.addAttribute("name", user.getName());
@@ -80,6 +83,7 @@ public class AuthController {
 		
 		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
 		if (a) {
+			System.out.println("session login");
 			session.setAttribute("user_name", user.getName());
 			session.setAttribute("user_code", user.getCode());
 			session.setMaxInactiveInterval(30 * 60);

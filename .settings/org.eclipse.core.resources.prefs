@@ -2,6 +2,7 @@
 <<<<<<<=HEAD
 >>>>>>>=develop
 eclipse.preferences.version=1
+encoding//src/main/java/Manager/ManagerController.java=UTF-8
 encoding//src/main/java/Pack01/AuthController.java=UTF-8
 encoding//src/main/java/Pack01/QuestionController.java=UTF-8
 encoding//src/main/java/Pack01/ResultController.java=UTF-8

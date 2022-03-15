@@ -79,6 +79,13 @@ h4 {
 </head>
 
 <body>
+			<%
+				int flag = (Integer)request.getAttribute("flag");
+				System.out.println(flag);
+				String s1 = (flag==1) ? "ManagerSuerveyOpen" : "ManagerSuerveyClose";
+				String s2 = (flag==1) ? "투표 시작" : "투표 종료";
+					
+            %>
 	
 	<div class="container">
 		<div class="form">
@@ -89,20 +96,10 @@ h4 {
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
 				<button class="b-button bold" onclick="location='ManagerPageMove?page=ManagerResultView'">조사현황</button>
 				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
-				<%
-				UserDAO userDAO = new UserDAO();
-		    	UserDTO adminInfo = userDAO.findUserInfo("admin");
-		    	System.out.println(adminInfo.getFlag());
-		    	if(adminInfo.getFlag()==1){
-              	%>
-                 	<button class="b-button bold" onclick="location='open'">투표 시작</button>
-               	<% 
-             	}else{
-             	%>
-                	<button class="b-button bold" onclick="location='close'">투표 종료</button>
-             	<% 
-              	}
-				%>
+				
+                <button class="b-button bold" onclick="location=<%=s1%>"><%=s2%></button>
+              	
+               	
 			</div>
 		</div>
 	</div>

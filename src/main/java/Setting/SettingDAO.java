@@ -41,7 +41,7 @@ public class SettingDAO {
 		Connection conn = conn1.getConnection();
 		Boolean rsDrop = false;
 		try {
-			String sql = "drop table result;";
+			String sql = "delete from result ;";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
 			rsDrop = pstmt.execute();

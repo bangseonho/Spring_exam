@@ -12,7 +12,9 @@ public class UserDTO {
 	
 	UserDTO(){		
 	}
-	
+	public UserDTO(String name) {
+		this.name = name;
+	}
 
 	public UserDTO(String name, String birth, String code) {
 		this.name = name;
