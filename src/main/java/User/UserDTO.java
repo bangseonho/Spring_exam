@@ -8,9 +8,12 @@ public class UserDTO {
 	private String name;
 	private String birth;
 	private String code;
-	private boolean flag;
-
-	UserDTO() {
+	private int flag;
+	
+	UserDTO(){		
+	}
+	public UserDTO(String name) {
+		this.name = name;
 	}
 
 	public UserDTO(String name, String birth, String code) {
@@ -19,7 +22,7 @@ public class UserDTO {
 		this.code = code;
 	}
 
-	public UserDTO(String name, String birth, String code, boolean flag) {
+	public UserDTO(String name, String birth, String code, int flag) {
 		this.name = name;
 		this.birth = birth;
 		this.code = code;
@@ -51,11 +54,11 @@ public class UserDTO {
 		this.code = code;
 	}
 
-	public boolean isFlag() {
+	public int getFlag() {
 		return flag;
 	}
 
-	public void setFlag(boolean flag) {
+	public void setFlag(int flag) {
 		this.flag = flag;
 	}
 	public String addNan() {

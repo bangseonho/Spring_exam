@@ -30,7 +30,7 @@ public class AuthController {
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
-		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.isFlag());
+		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.getFlag());
 		try {
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
@@ -72,7 +72,7 @@ public class AuthController {
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		
+
 		String name = "";
 		String code = "";
 		if(user.getName() == null || user.getCode() == null) {
@@ -83,11 +83,14 @@ public class AuthController {
 			code = user.getCode();
 		}
 		if(name.equals("admin") && code.equals("2")) {
+			session.setAttribute("user_name", name);
+			session.setAttribute("user_code", code);
 			return "redirect:ManagerController";
 		}
 		
 		Boolean a = userDAO.loginCheck(name, code);
 		if (a) {
+
 			session.setAttribute("user_name", name);
 			session.setAttribute("user_code", code);
 			session.setMaxInactiveInterval(30 * 60);

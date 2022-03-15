@@ -11,6 +11,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import Pack01.ConnectionDB;
+import User.UserDTO;
 
 public class UserDAO {
 	@Autowired
@@ -18,6 +19,7 @@ public class UserDAO {
 
 	PreparedStatement psmt;
 	int cnt;
+	private UserDTO user = null; 
 
 	public Boolean isDuplicated(String name, String birth) {
 		Boolean isCheck = null;
@@ -137,10 +139,60 @@ public class UserDAO {
 			while (rs.next()) {
 
 			}
-		} catch (Exception e) {
-			System.out.println("error");
-		}
-
+		} catch(Exception e) {System.out.println("error");}
+		
 	}
+	public UserDTO findUserInfo(String userId) throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		try {
+			String sql = "select * from user where name=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, userId);
+			
+			ResultSet rs = psmt.executeQuery();
+			if (rs.next()) {
+				String name = rs.getString(2);
+				String birth = rs.getString(3);
+				String code = rs.getString(4);
+				int flag = rs.getInt(5);
+				
+				user = new UserDTO(name, birth, code, flag);
+			}
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("find user fail");
+		}
+		return user;
+	}
+	public int adminOpen() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		try {
+			String sql = "update user set flag=0 where name='admin'";
+			psmt = conn.prepareStatement(sql);
 
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("open fail");
+		} 
+		return cnt;
+	}
+	
+	public int adminClose() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		try {
+			String sql = "update user set flag=1 where name='admin'";
+			psmt = conn.prepareStatement(sql);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new Exception("close fail");
+		} 
+		return cnt;
+	}
+		
 }

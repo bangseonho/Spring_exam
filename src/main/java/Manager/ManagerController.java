@@ -7,6 +7,9 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.LinkedList;
+
+import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +21,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Pack01.ConnectionDB;
+import User.UserDAO;
 import User.UserDTO;
 import Question.QuestionDTO;
+import Setting.SettingDAO;
 
 @Controller
 public class ManagerController {
 	@Autowired
 	ManagerDAO managerDAO;
 	
+	@Autowired
+	UserDAO userDAO;
+	
+	@Autowired
+	SettingDAO settingDAO;
+	
 	@RequestMapping("/ManagerController")
-	String managerController() {	
+	String managerController(Model model) {
+    	UserDTO adminInfo = null;
+		try {
+			adminInfo = userDAO.findUserInfo("admin");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	model.addAttribute("flag", adminInfo.getFlag());
 		return "ManagerMainView";
 	}
 
@@ -65,7 +84,7 @@ public class ManagerController {
 		    	questionList.add(getQuestionDTO(rs));
 		    }
 			
-			System.out.println("���� ��� 1���� ����");
+			System.out.println("占쏙옙占쏙옙 占쏙옙占� 1占쏙옙占쏙옙 占쏙옙占쏙옙");
 			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
 
@@ -190,7 +209,7 @@ public class ManagerController {
 			cnt = managerDAO.deleteAllQuestions();
 		} catch (Exception e) { e.printStackTrace(); }
 		*/
-		System.out.println("���� ��ü ����");
+		System.out.println("占쏙옙占쏙옙 占쏙옙체 占쏙옙占쏙옙");
 
 		return "redirect:/ManagerQuestion";
 	}
@@ -263,4 +282,40 @@ public class ManagerController {
 		}catch(Exception e){ e.printStackTrace();}
 		return "Manager/ManagerUserQuestionView";
 	}
+	
+	@RequestMapping("/ManagerSurveyOpen")
+	String managerSuerveyOpen(HttpSession session) {
+		String s = (String)session.getAttribute("user_name");
+		if(!(s.equals("admin"))){
+			// return "Manager/ManagerMainView";
+			return "redirect:ManagerController";
+		}
+		else{
+			try{
+				int cnt = userDAO.adminOpen(); 
+				settingDAO.closeVote();
+//				settingDAO.openVote();
+			}catch(Exception e){
+				System.out.println("리셋 실패");
+			}
+			return "redirect:ManagerController";
+		
+		}
+	}
+	@RequestMapping("/ManagerSurveyClose")
+	String managerSuerveyClose(HttpSession session) {
+		String s = (String)session.getAttribute("user_name");
+		if(!(s.equals("admin"))){
+			return "redirect:ManagerController";
+		}
+		else{
+			try{
+				int cnt = userDAO.adminClose();
+			}catch(Exception e){
+				System.out.println("close 실패");
+			}
+			return "redirect:ManagerController";
+		}
+	}
+	
 }
