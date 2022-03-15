@@ -117,21 +117,23 @@
 	<%
 	ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
 	while (rs1.next()) {
-		String code = rs1.getString("code"); // 사용자 번호
-		String phrase = rs1.getString("phrase");
-		String one = rs1.getString("one");
-		String two = rs1.getString("two");
-		String three = rs1.getString("three");
-		String four = rs1.getString("four");
-		int answer = rs1.getInt("answer");
-		int choice = rs1.getInt("choice");
+		String code 	= rs1.getString("code"); // 사용자 번호
+		String phrase 	= rs1.getString("phrase");
+		String one 		= rs1.getString("one");
+		String two 		= rs1.getString("two");
+		String three 	= rs1.getString("three");
+		String four 	= rs1.getString("four");
+		int answer 		= rs1.getInt("answer");
+		int choice 		= rs1.getInt("choice");
 		boolean correct = rs1.getBoolean("correct");
-		String who = rs1.getString("who");
+		String who 		= rs1.getString("who");
+		int flag 		= rs1.getInt("flag");
 	%>
 	<br>
 	<div class="grid-container">
 		<div class="test<%= correct %>">
-			<h3><%=who%>의 문제 <br />
+			<h3>< <%=flag+1%> 회차 ></h3>
+			<h3><%=who%>의 문제<br/>
 				<%=phrase%></h3>
 			<%
 			if (correct) {

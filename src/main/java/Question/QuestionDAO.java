@@ -18,8 +18,11 @@ public class QuestionDAO {
 	   QuestionDTO questionDTO;*/
 
 	@SuppressWarnings("null")
-	public static ResultSet getQuestion(String userCode) throws Exception {
-		String sql = "SELECT * from question where id not in (select question from result where code=" +userCode+  ") and remove=0 order by rand() limit 1;";
+	public static ResultSet getQuestion(String userCode, int flag) throws Exception {
+		String sql = "SELECT * from question"
+				+ " where id not in"
+				+ " (select question from result where code=" + userCode +  " and flag="+ flag +")"
+				+ " and remove=0 order by rand() limit 1;";
 		try {
 			@SuppressWarnings("static-access")
 			Connection conn = conn1.getConnection();
@@ -44,8 +47,25 @@ public class QuestionDAO {
 	         }
 	         return allCnt;
 	      } catch (SQLException e) {
-//	         e.printStackTrace();
-	         throw new Exception("result answer ��  � �븍┛  ��  ");
+	         e.printStackTrace();
+	         throw new Exception("result answer exception");
+	      } 
+	}
+	
+	public int getCurFlagResultCount(String userCode, int flag) throws Exception {
+		Connection conn = ConnectionDB.getConnection();
+	      try {
+	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode + " and flag=" + flag;      
+	         psmt = conn.prepareStatement(sql2);
+	         ResultSet rs2 = psmt.executeQuery();
+	         int allCnt = 0;
+	         while (rs2.next()) {
+	            allCnt = rs2.getInt("allcnt");
+	         }
+	         return allCnt;
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         throw new Exception("result answer exception");
 	      } 
 	}
 

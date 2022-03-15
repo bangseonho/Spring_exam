@@ -91,12 +91,13 @@ public class UserDAO {
 				@SuppressWarnings("static-access")
 				Connection conn = conn1.getConnection();
 
-				String sql = "insert into user values(null, ?, ?, ?, false);";
+				String sql = "insert into user(name, birth, code, flag) values(?, ?, ?, ?);";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, dto.getName());
 				psmt.setString(2, dto.getBirth());
 				psmt.setString(3, dto.addNan());
+				psmt.setInt(4, 0);	
 
 				cnt = psmt.executeUpdate();
 

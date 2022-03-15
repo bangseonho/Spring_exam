@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Setting.SettingDAO;
+import Setting.SettingDTO;
 import User.UserDAO;
 import User.UserDTO;
 
@@ -28,6 +31,12 @@ import User.UserDTO;
 public class AuthController {
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	SettingDAO settingDAO;
+	
+	@Autowired
+	SettingDTO settingDTO;
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
@@ -36,7 +45,7 @@ public class AuthController {
 			if (userDAO.join(dto)) {
 				response.setCharacterEncoding("UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('" + "회원님의 코드번호는" + dto.getCode() + " 입니다 ');</script>");
+				out.println("<script>alert('회원님의 코드번호는 " + dto.getCode() + " 입니다 ');</script>");
 				out.flush();
 				return "LoginView";
 			} else {
@@ -84,6 +93,7 @@ public class AuthController {
 			name = user.getName();
 			code = user.getCode();
 		}
+		
 		if(name.equals("admin") && code.equals("2")) {
 			session.setAttribute("user_name", name);
 			session.setAttribute("user_code", code);
@@ -103,22 +113,34 @@ public class AuthController {
 				out.flush();
 			} catch (Exception e) {
 				System.out.println("response error");
+				e.printStackTrace();
 			}
 			return "LoginView";
 		}
 
+		int questionChance = 3; // default
+		ResultSet rs;
+		try {
+			rs = settingDAO.selectSetting();
+			rs.next();
+			questionChance = rs.getInt("questionChance");
+
+			// 로그인 시 DB의 세팅값 넣어준다.
+			settingDTO.setLimitTime(rs.getInt("limitTime"));
+			settingDTO.setQuestionNum(rs.getInt("questionNum"));
+			settingDTO.setQuestionChance(rs.getInt("questionChance"));
+		} catch (Exception e) { e.printStackTrace(); }
+		
 		model.addAttribute("name", name);
 		model.addAttribute("code", code);
 		model.addAttribute("flag", userDAO.flagCheck(name, code));
+		model.addAttribute("questionChance", questionChance);
 		
 		// get admin flag
 		UserDTO adminInfo = null;
 		try {
 			adminInfo = userDAO.findUserInfo("admin");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) { e.printStackTrace(); }
     	model.addAttribute("adminFlag", adminInfo.getFlag());
 		
 		return "MainView";
