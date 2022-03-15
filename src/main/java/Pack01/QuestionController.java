@@ -17,6 +17,8 @@ import Question.QuestionDAO;
 import Result.ResultDAO;
 import Result.ResultDTO;
 import Setting.SettingDAO;
+import User.UserDAO;
+import User.UserDTO;
 
 @Controller
 public class QuestionController implements HttpSessionBindingListener {
@@ -28,6 +30,9 @@ public class QuestionController implements HttpSessionBindingListener {
 	
 	@Autowired
 	SettingDAO settingDAO;
+	
+	@Autowired
+	UserDAO userDAO;
 
 	//	@RequestMapping("/getQuestion")
 	//	public String f1(Model model, ResultSet rs) {
@@ -119,7 +124,17 @@ public class QuestionController implements HttpSessionBindingListener {
 	
 	@RequestMapping("/QuestionResultInsert")
 	public String questionResultInsert(HttpSession session, HttpServletRequest request) {
-
+		int adminFlag = 1;
+		// get admin flag
+		UserDTO adminInfo = null;
+		try {
+			adminInfo = userDAO.findUserInfo("admin");
+			adminFlag = adminInfo.getFlag();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
 		String userCode = (String)session.getAttribute("user_code");
 		
 		// 문제 푼 횟수 확인
@@ -130,7 +145,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		String questionNo = request.getParameter("questionNo");
 		String answer 	  = request.getParameter("answer");
 		
-		if(isNullChecker(new Object[] {userCode, myAnswer, questionNo, answer}) < 0){
+		if((isNullChecker(new Object[] {userCode, myAnswer, questionNo, answer}) < 0) && (adminFlag == 0)){
 		
 			int correct = myAnswer.equals(answer) ? 1 : 0;
 			ResultDTO dto = new ResultDTO(
