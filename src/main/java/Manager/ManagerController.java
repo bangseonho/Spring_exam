@@ -314,20 +314,12 @@ public class ManagerController {
 		}
 	}
 	
-	@RequestMapping("/ManagerGetCorrectRate")
+	@RequestMapping("/ManagerResult")
 	String managerGetCorrectRate(HttpSession session) {
-		String s = (String)session.getAttribute("user_name");
-		if(!(s.equals("admin"))){
-			return "redirect:ManagerController";
-		}
-		else{
-			try{
-				int cnt = userDAO.adminClose();
-			}catch(Exception e){
-				System.out.println("close 실패");
-			}
-			return "redirect:ManagerController";
-		}
+		
+		
+		
+		return "Manager/ManagerResultView";
 	}
 	
 }
