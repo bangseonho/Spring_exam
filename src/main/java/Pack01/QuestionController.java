@@ -127,9 +127,10 @@ public class QuestionController implements HttpSessionBindingListener {
 		try {
 			// 더 나은 방법 있는지 생각해보기
 			ResultSet rs = settingDAO.selectSetting();
-			rs.next();
-			limitCnt = rs.getInt("questionNum");
-			resCnt 	 = questionDAO.resultAllCount(userCode);
+			if(rs.next()){
+				limitCnt = rs.getInt("questionNum");
+				resCnt 	 = questionDAO.resultAllCount(userCode);
+			}
 		}catch (Exception e) { e.printStackTrace(); }
 		
 		return resCnt >= limitCnt ? true : false;

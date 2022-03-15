@@ -50,7 +50,7 @@ public class QuestionDAO {
 		Connection conn = ConnectionDB.getConnection();
 		int allCnt = 0;
 	      try {
-	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode + "and choice is not null";      
+	    	 String sql2 = "select count(correct) as allcnt from result where choice IS NOT NULL and code=" + userCode;      
 	         psmt = conn.prepareStatement(sql2);
 	         ResultSet rs2 = psmt.executeQuery();
 	         while (rs2.next()) {
