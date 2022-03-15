@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <style>
 @import
@@ -133,9 +133,9 @@ margin:0 auto;
 <body>
 	<div class="form">
 		<h4 class="bold title">Get Code</h4>
-		<form method="post" action="getMyCode" class="loginForm">
+		<form method="post" action="getMyCode" class="loginForm" accept-charset="utf-8">
 			<input type="text" name="name" required placeholder="Name"> <input
-				type="text" name="code" required placeholder="Birth"><br />
+				type="text" name="birth" required placeholder="Birth"><br />
 			<div class="buttonform">
 				<button class="b-button bold btnmargin" type="submit">Get</button>
 			</div>

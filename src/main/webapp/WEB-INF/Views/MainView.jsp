@@ -151,7 +151,7 @@ body {
 }
 /*  */
 button{
-	margin-top: 10px;
+	margin-top: 8px;
 }
 .button5 {
   background-color: white;
