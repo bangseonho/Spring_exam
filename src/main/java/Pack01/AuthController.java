@@ -103,5 +103,9 @@ public class AuthController {
 	String managerPageMove(@RequestParam(value = "page") String page) {
 		return "Manager/"+page;
 	}
+	@RequestMapping("/getMyCode")
+	String getMyCode() {
+		return null;
+	}
 
 }
