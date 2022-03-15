@@ -35,7 +35,7 @@ public class AuthController {
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
 					PrintWriter out = response.getWriter();
-		            out.println("<script>alert('"+"회원님의 코드번호는"+dto.getCode()+" 입니다 ');</script>");
+		            out.println("<script>alert('"+"회원님의 코드번호는 "+dto.getCode()+" 입니다 ');</script>");
 		            out.flush();
 				return "LoginView";
 			}else {

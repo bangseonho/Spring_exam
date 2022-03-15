@@ -185,8 +185,8 @@ input{
 		<div class="form">
 			<h4 class="bold title">Create Account</h4>
 			<form method="post" action="signup" class="signupForm">
-				<input type="text" placeholder="Name" class="normal name" name="name" required pattern="^[가-힣a-zA-Z]+$">
-				<input type="text" placeholder="Birth+Gender(1,2)" class="normal" name="birth" required pattern="^[0-9]{6}"> <br />
+				<input type="text" placeholder="Name (Korean, English)" class="normal name" name="name" required pattern="^[가-힣a-zA-Z]+$">
+				<input type="text" placeholder="Birth (YYMMDD)" class="normal" name="birth" required pattern="^[0-9]{6}"> <br />
 				<button class="b-button bold btnmargin" type="submit">SIGN UP</button>
 				<br>
 				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
