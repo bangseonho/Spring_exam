@@ -107,6 +107,16 @@ public class AuthController {
 		model.addAttribute("code", code);
 		model.addAttribute("flag", userDAO.flagCheck(name, code));
 		
+		// get admin flag
+		UserDTO adminInfo = null;
+		try {
+			adminInfo = userDAO.findUserInfo("admin");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	model.addAttribute("adminFlag", adminInfo.getFlag());
+		
 		return a ? "MainView" : "LoginView";
 	}
 
