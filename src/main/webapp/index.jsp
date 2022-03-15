@@ -104,8 +104,8 @@ figure, .img-bg {
 
 /* img */
 img {
-	height: 100%;
 	border-radius: 24px;
+	weight: 100%;
 }
 
 /* figcaption */
@@ -324,7 +324,7 @@ button:hover+.design-container, button:active+.design-container, button:focus+.d
 				<figure>
 					<div class="img-bg"></div>
 					<img
-						src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-8WaGPSrxznu_5_Unk5hXJguxbw1Wggls_zqIQUJZJciUhpQiK9mR26NPA_9XdYpvsOQ&usqp=CAU"
 						alt="Brohm Lake">
 					<figcaption>About US</figcaption>
 				</figure>
@@ -339,16 +339,11 @@ button:hover+.design-container, button:active+.design-container, button:focus+.d
 			</div>
 
 			<div class="card-back">
-				<figure>
-					<div class="img-bg"></div>
-					<img
-						src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-						alt="Brohm Lake">
-				</figure>
+			
 
-				<button onclick="location='PageMove?page=LoginView'">Login</button>
+				<button onclick="location='PageMove?page=LoginView'" style="margin:5px;">Login</button>
 				<br />
-				<button onclick="location='PageMove?page=SignupView'">Signup</button>
+				<button onclick="location='PageMove?page=SignupView'" style="margin:5px;">Signup</button>
 			</div>
 
 		</div>
