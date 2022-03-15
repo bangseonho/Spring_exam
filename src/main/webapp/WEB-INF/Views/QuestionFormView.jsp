@@ -20,8 +20,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Survey Question</title>
+<script type="text/javascript">
+	var dt = new Date();;
+	
+	function realtimeClock() {
+		document.rtcForm.rtcInput.value = getTimeStamp();
+		setTimeout("realtimeClock()", 1);
+	}
+	
+	function getTimeStamp() { // 24시간제
+		var d = new Date();
+		var ct = (d - dt) / 1000;
+		
+		if (ct > 10){
+			alert("10초 경과! 다음 문제로 넘어갑니다. ");
+			dt = new Date();
+			document.getElementById('frm').submit();
+		}
+		/* ctt = ct * 10
+		document.documentElement.style.setProperty(`--ct`, ''${ctt}''); */
+		return ct;
+	}
+	
+	function leadingZeros(n, digits) {
+		var zero = '';
+		n = n.toString();
+		
+		if (n.length < digits) {
+		  for (i = 0; i < digits - n.length; i++)
+		    zero += '0';
+		}
+		return zero + n;
+	}
+</script>
 <style>
+:root{
+	--ct: '----';
+}
 *, *:after, *:before {
    box-sizing: border-box;
 }
@@ -93,8 +132,9 @@ label span:before {
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 20px;
-   margin-top: 100px;
+   /* padding: 20px; */
+   margin-top: 50px;
+   flex-direction: column;
 }
 
 .container2 {
@@ -227,16 +267,36 @@ button:hover .button-text {
 .submitbtn {
 	text-align: center;
 }
+.time{
+	height: 30px;
+	ouline: blue;
+	border-width: 10px;
+	border-radius: 10px;
+	border-top: none;
+	/* border-left: none;
+	border-right: none; */
+	border-bottom: none;
+	text-align: center;	
+}
 </style>
 </head>
-<body>
+<body onload="realtimeClock()">
 	<%
 	/* 데이터 : phrase; one; two; three; four; answer; who; */
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
 	%>
 	<div class="container1" id="questionSurvey">
+		<form name="rtcForm">
+			<h5>제한 시간은 <u>10초</u>입니다. 화이팅.</h5>
+			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
+			<div class="progress">
+			<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=0
+			 	aria-valuemin="0" aria-valuemax="100" style="width:var(--ct)%;">
+			</div>
+			</div>
+		</form>
 		<!-- <form method="POST" action="questionform"> -->
-		<form method="POST" action="QuestionResultInsert">
+		<form method="POST" action="QuestionResultInsert" id="frm">
 			<div>
 				<span id="title"></span>
 			</div>
