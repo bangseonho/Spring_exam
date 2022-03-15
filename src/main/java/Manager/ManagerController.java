@@ -283,7 +283,7 @@ public class ManagerController {
 		return "Manager/ManagerUserQuestionView";
 	}
 	
-	@RequestMapping("/ManagerSuerveyOpen")
+	@RequestMapping("/ManagerSurveyOpen")
 	String managerSuerveyOpen(HttpSession session) {
 		System.out.println("session : " + session.getAttribute("user_name"));
 		String s = (String)session.getAttribute("user_name");
@@ -294,7 +294,7 @@ public class ManagerController {
 		else{
 			try{
 				int cnt = userDAO.adminOpen(); 
-//				settingDAO.closeVote();
+				settingDAO.closeVote();
 //				settingDAO.openVote();
 			}catch(Exception e){
 				System.out.println("리셋 실패");
@@ -303,8 +303,9 @@ public class ManagerController {
 		
 		}
 	}
-	@RequestMapping("/ManagerSuerveyClose")
+	@RequestMapping("/ManagerSurveyClose")
 	String managerSuerveyClose(HttpSession session) {
+		System.out.println("ManagerSurveyClose에 들어옴");
 		String s = (String)session.getAttribute("user_name");
 		if(!(s.equals("admin"))){
 			return "redirect:ManagerController";

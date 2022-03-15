@@ -27,7 +27,7 @@
 		
 		try{
 			settingDAO.closeVote();
-			settingDAO.openVote();
+			//settingDAO.openVote();
 		}catch(Exception e){
 			throw new Exception("리셋 실패");
 		}

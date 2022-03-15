@@ -82,7 +82,7 @@ h4 {
 			<%
 				int flag = (Integer)request.getAttribute("flag");
 				System.out.println(flag);
-				String s1 = (flag==1) ? "ManagerSuerveyOpen" : "ManagerSuerveyClose";
+				String s1 = (flag==1) ? "ManagerSurveyOpen" : "ManagerSurveyClose";
 				String s2 = (flag==1) ? "투표 시작" : "투표 종료";
 					
             %>
