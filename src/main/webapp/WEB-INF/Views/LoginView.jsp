@@ -166,6 +166,15 @@ input {
 	border-radius: 25px;
 	cursor: pointer;
 }
+.c-button {
+	background-color: #24a4ee;
+	clor: white;
+	padding: 12px 60px;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 25px;
+	cursor: pointer;
+}
 
 .loginForm {
 	margin-top: 80px;
@@ -205,11 +214,13 @@ input {
 				<input type="text" name="code" required placeholder="Code"><br />
 				<div class="buttonform">
 				<button class="b-button bold btnmargin" type="submit">Login</button>
-				<button class="b-button bold btnmargin" type="button" onclick="location.href='ForgotCode.jsp'">Forgot Code</button>
 				</div>
+				
 			</form>
-			<button class="b-button bold btnmargin"
-				onclick="location.href='index.jsp'">Main</button>
+			<form method="get" action="getMycodePage">
+				<button class="b-button bold btnmargin" type="submit">Forgot Code</button>
+			</form>
+			<button class="c-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
 			<br />
 		</div>
 	</div>

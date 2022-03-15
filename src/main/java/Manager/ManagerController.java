@@ -288,9 +288,11 @@ public class ManagerController {
 		}
 		else{
 			try{
-				int cnt = userDAO.adminOpen(); 
+				// 새로 시작하기, 종료 -> 정지, 시작, 초기화
+				// int cnt1 = userDAO.adminOpen(); 
+				userDAO.userFlagInit();
 				settingDAO.closeVote();
-//				settingDAO.openVote();
+				// settingDAO.openVote();
 			}catch(Exception e){
 				System.out.println("리셋 실패");
 			}
@@ -314,20 +316,12 @@ public class ManagerController {
 		}
 	}
 	
-	@RequestMapping("/ManagerGetCorrectRate")
+	@RequestMapping("/ManagerResult")
 	String managerGetCorrectRate(HttpSession session) {
-		String s = (String)session.getAttribute("user_name");
-		if(!(s.equals("admin"))){
-			return "redirect:ManagerController";
-		}
-		else{
-			try{
-				int cnt = userDAO.adminClose();
-			}catch(Exception e){
-				System.out.println("close 실패");
-			}
-			return "redirect:ManagerController";
-		}
+		
+		
+		
+		return "Manager/ManagerResultView";
 	}
 	
 }

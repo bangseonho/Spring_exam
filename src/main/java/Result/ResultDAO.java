@@ -101,5 +101,8 @@ public class ResultDAO {
 		} 
 	}	
 	
+	public void getCorrectCnt() {
+		
+	}
 
 }

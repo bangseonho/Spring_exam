@@ -16,6 +16,11 @@ public class UserDTO {
 		this.name = name;
 	}
 
+	public UserDTO(String name, String birth) {
+		this.name = name;
+		this.birth = birth;
+	}
+
 	public UserDTO(String name, String birth, String code) {
 		this.name = name;
 		this.birth = birth;
@@ -27,7 +32,7 @@ public class UserDTO {
 		this.birth = birth;
 		this.code = code;
 		this.flag = flag;
-		
+
 	}
 
 	public String getName() {
@@ -61,9 +66,10 @@ public class UserDTO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+
 	public String addNan() {
 		int a = ((int) (Math.random() * 999) + 100);
-		this.code = birth+a;
-		return birth+a;
+		this.code = birth + a;
+		return birth + a;
 	}
 }
