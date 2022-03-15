@@ -1,3 +1,5 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+<%@page import="User.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -164,9 +166,9 @@ button{
 </head>
 <body>
 	<%-- <h3>${ name }의 수험 번호 ${ code }</h3> --%>
-	<%
-		String a = (String)session.getAttribute("user_code");
-		String b = (String)session.getAttribute("user_name");
+	<%		
+		String code = (String)session.getAttribute("user_code");
+		String name = (String)session.getAttribute("user_name");
 	%>
 	<section>
   <div class="container">
@@ -183,7 +185,9 @@ button{
           이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
           
           <%
-          int flag = (int)request.getAttribute("flag");
+        int flag = (int)request.getAttribute("flag");
+		/* UserDAO userDAO; 
+          int flag = userDAO.flagCheck(name, code); */
           System.out.println("flag : " + flag);
           	if(flag == 0){
           		 %>
@@ -195,8 +199,8 @@ button{
           		<button class="button5" onclick="location.href='result'">결과 보기</button>
           		 <%
           	}
-          	System.out.print(a);
-          	System.out.print(b);
+          	System.out.print(name);
+          	System.out.print(code);
           %>
 		
 		<button onclick="location.href='logout'">로그아웃하기</button>

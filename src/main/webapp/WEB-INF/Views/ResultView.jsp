@@ -124,13 +124,13 @@
 	<%
 			}
 	   // 뒤로가기 시 새 페이지로 불러오기 위함
-	   response.setHeader("Cache-Control", "no-cache");
+	  /*  response.setHeader("Cache-Control", "no-cache");
 	   response.addHeader("Cache-Control", "no-store");
 	   response.setHeader("Pragma", "no-cache");
-	   response.setDateHeader("Expires", 1L);
+	   response.setDateHeader("Expires", 1L); */
 	%>
-	<div style=align:center>
-<!-- 	<button onclick="location='PageMove?page=MainView'">메인으로 가기</button> -->
+	<div>
+	<button onclick="location.href='main'">메인으로 가기</button>
 	<button onclick="location.href='logout'">로그아웃하기</button>
 	</div>
 	

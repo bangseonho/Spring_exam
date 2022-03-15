@@ -68,20 +68,28 @@ public class AuthController {
 		return "redirect:/";
 	}
 
+	// @SuppressWarnings("unused")
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		if(user.getName().equals("admin") && user.getCode().equals("2")) {
+		
+		String name = "";
+		String code = "";
+		if(user.getName() == null || user.getCode() == null) {
+			name = (String)session.getAttribute("user_name");
+			code = (String)session.getAttribute("user_code");
+		}else {
+			name = user.getName();
+			code = user.getCode();
+		}
+		if(name.equals("admin") && code.equals("2")) {
 			return "redirect:ManagerController";
 		}
-		model.addAttribute("name", user.getName());
-		model.addAttribute("code", user.getCode());
-		model.addAttribute("flag", userDAO.flagCheck(user.getName(), user.getCode()));
 		
-		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
+		Boolean a = userDAO.loginCheck(name, code);
 		if (a) {
-			session.setAttribute("user_name", user.getName());
-			session.setAttribute("user_code", user.getCode());
+			session.setAttribute("user_name", name);
+			session.setAttribute("user_code", code);
 			session.setMaxInactiveInterval(30 * 60);
 		}else {
 			try {
@@ -91,6 +99,11 @@ public class AuthController {
 	            out.flush();
 			}catch(Exception e){ System.out.println("response error");}
 		}
+
+		model.addAttribute("name", name);
+		model.addAttribute("code", code);
+		model.addAttribute("flag", userDAO.flagCheck(name, code));
+		
 		return a ? "MainView" : "LoginView";
 	}
 

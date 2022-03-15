@@ -62,6 +62,7 @@ public class UserDAO {
 	
 	
 	public int flagCheck(String name, String code) {
+		@SuppressWarnings("static-access")
 		int flag = -1;
 		String sql = "select flag from user where name=? and code=?";
 		try {
