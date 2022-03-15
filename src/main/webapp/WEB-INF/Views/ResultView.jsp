@@ -26,6 +26,7 @@
 * {
 	font-family: 'Cafe24Oneprettynight';
 	font-size: 20px;
+	text-align: center;
 }
 
 .grid-container {
@@ -46,31 +47,36 @@
 <title>result view</title>
 </head>
 <body>
-	<%	
+	<%
 	String userCode = (String) session.getAttribute("user_code");
 	String userName = (String) session.getAttribute("user_name");
-	if(userCode == null || userName == null){
+	if (userCode == null || userName == null) {
 		response.sendRedirect("PageMove?page=LoginView");
 		return;
 	}
 	%>
 	<h1>
 		수험번호:<%=userCode%><br>
-	</h1>	
+	</h1>
 
-	
+
 	<%
 	int allCnt = 0;
 	int CorrectCnt = 0;
-	int like = 0;	
-	allCnt = (int)request.getAttribute("rs2");
-	CorrectCnt = (int)request.getAttribute("rs3");
+	int like = 0;
+	allCnt = (int) request.getAttribute("rs2");
+	CorrectCnt = (int) request.getAttribute("rs3");
 	%>
 
-	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CorrectCnt%> 개 맞았습니다!</h1><br/>
-	<h1>
+	<h1 style="font: bold; font-size: 40px;"><%=userName%>님의 점수 결과 :
+		<%=allCnt%>
+		개 중에
+		<%=CorrectCnt%>
+		개 맞았습니다!
+	</h1>
+	<h1 style="font-size: 30px;">
 		<%
-		like = (CorrectCnt*100)/allCnt;		
+		like = (CorrectCnt * 100) / allCnt;
 
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
@@ -102,7 +108,8 @@
 	<br>
 	<div class="grid-container">
 		<div>
-			<h3><%=who%>의 문제 <br/> <%=phrase%></h3>
+			<h3><%=who%>의 문제 <br />
+				<%=phrase%></h3>
 			<%
 			if (correct) {
 				out.println("맞은 문제");
@@ -111,28 +118,31 @@
 			}
 			%>
 			<h3>
-				1.&nbsp;&nbsp;<%=one%>&emsp; 
-				2.&nbsp;&nbsp;<%=two%>&emsp; 
-				3.&nbsp;&nbsp;<%=three%>&emsp; 
-				4.&nbsp;&nbsp;<%=four%>&emsp;
+				1.&nbsp;&nbsp;<%=one%>
+				&emsp; 2.&nbsp;&nbsp;<%=two%>
+				&emsp; 3.&nbsp;&nbsp;<%=three%>
+				&emsp; 4.&nbsp;&nbsp;<%=four%>
+				&emsp;
 			</h3>
 
-			<h3>입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
-			<h3>정답 :&nbsp;&nbsp;<%=answer%></h3>
-		</div>	
+			<h3>
+				입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
+			<h3>
+				정답 :&nbsp;&nbsp;<%=answer%></h3>
+		</div>
 	</div>
 	<%
-			}
-	   // 뒤로가기 시 새 페이지로 불러오기 위함
-	   response.setHeader("Cache-Control", "no-cache");
-	   response.addHeader("Cache-Control", "no-store");
-	   response.setHeader("Pragma", "no-cache");
-	   response.setDateHeader("Expires", 1L); 
+	}
+	// 뒤로가기 시 새 페이지로 불러오기 위함
+	response.setHeader("Cache-Control", "no-cache");
+	response.addHeader("Cache-Control", "no-store");
+	response.setHeader("Pragma", "no-cache");
+	response.setDateHeader("Expires", 1L);
 	%>
-	<div>
-	<button onclick="location.href='main'">메인으로 가기</button>
-	<button onclick="location.href='logout'">로그아웃하기</button>
+	<div style="text-align: center;'">
+		<button onclick="location.href='main'">메인으로 가기</button>
+		<button onclick="location.href='logout'">로그아웃하기</button>
 	</div>
-	
+
 </body>
 </html>
