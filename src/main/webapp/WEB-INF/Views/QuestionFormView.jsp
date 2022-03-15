@@ -64,6 +64,11 @@
     }
 	}
 	document.onkeydown = noEvent;
+	
+	document.ontouchmove  = function (event) { 
+		event.preventDefault();
+	    return event.returnValue = 'Are you sure you want to exit?';
+	}
 
 </script>
 <style>

@@ -14,6 +14,7 @@ public class QuestionDAO {
 	@Autowired
 	static ConnectionDB conn1;
 	PreparedStatement psmt;
+	int cnt;
 	/*   @Autowired
 	   QuestionDTO questionDTO;*/
 
@@ -31,22 +32,34 @@ public class QuestionDAO {
 			throw new Exception("QuestionDAO.java occured error");
 		}
 	}
+	public static ResultSet bringQuestion(String userCode) throws Exception {
+		String sql = "select * from question where id in (select question from result where choice is null and code=" +userCode+  ") and remove=0 order by id limit 1";
+		try {
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;
+
+		} catch (Exception e) {
+			throw new Exception("QuestionDAO.java occured error");
+		}
+	}
 	// 
-	public int resultAllCount(String userCode) throws Exception {
+	public int resultAllCount(String userCode) {
 		Connection conn = ConnectionDB.getConnection();
+		int allCnt = 0;
 	      try {
-	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode;      
+	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode + "and choice is not null";      
 	         psmt = conn.prepareStatement(sql2);
 	         ResultSet rs2 = psmt.executeQuery();
-	         int allCnt = 0;
 	         while (rs2.next()) {
 	            allCnt = rs2.getInt("allcnt");
 	         }
-	         return allCnt;
 	      } catch (SQLException e) {
-//	         e.printStackTrace();
-	         throw new Exception("result answer ��  � �븍┛  ��  ");
+	         e.printStackTrace();
 	      } 
+	      return allCnt;
 	}
 
 	public boolean isDuplicated(String userCode, String questionNo) {
@@ -66,6 +79,50 @@ public class QuestionDAO {
 		}
 
 		return isCheck;
+	}
+	
+	@SuppressWarnings("null")
+	public static int getQuestion2(String userCode) throws Exception {
+		int questionNumber = 0;
+		String sql = "SELECT * from question where id not in (select question from result where code=" +userCode+  ") and remove=0 order by rand() limit 1;";
+		try {
+			System.out.println("Question2 시작");
+			@SuppressWarnings("static-access")
+			Connection conn = conn1.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			System.out.println("query 실행후");
+			if (rs.next()) {
+				questionNumber = rs.getInt(1);
+			}
+			
+			System.out.println(questionNumber);
+			return questionNumber;
+
+		} catch (Exception e) {
+			throw new Exception("QuestionDAO.java occured error");
+		}
+	}
+	
+	public void makeQ(String userCode) {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		
+		try {
+			int questionNumber = getQuestion2(userCode);
+			
+			String sql = "insert into result values(null, ?, ?, null, false);";
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, userCode);
+			psmt.setInt(2, questionNumber);
+			
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
