@@ -288,9 +288,10 @@ public class ManagerController {
 		}
 		else{
 			try{
-				int cnt = userDAO.adminOpen(); 
+				// int cnt1 = userDAO.adminOpen(); 
+				userDAO.userFlagInit();
 				settingDAO.closeVote();
-//				settingDAO.openVote();
+				// settingDAO.openVote();
 			}catch(Exception e){
 				System.out.println("리셋 실패");
 			}

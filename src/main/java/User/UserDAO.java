@@ -194,5 +194,14 @@ public class UserDAO {
 		} 
 		return cnt;
 	}
-		
+
+	public int userFlagInit() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		String sql = "update user set flag=0;";
+		psmt = conn.prepareStatement(sql);
+		cnt = psmt.executeUpdate();
+		return cnt;
+	}
+
 }

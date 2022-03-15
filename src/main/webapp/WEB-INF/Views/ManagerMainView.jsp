@@ -95,11 +95,8 @@ h4 {
 				<button class="b-button bold" onclick="location='ManagerUserView'">회원관리</button>
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
 				<button class="b-button bold" onclick="location='ManagerResult'">조사현황</button>
-				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
-				
                 <button class="b-button bold" onclick="location='<%=s1%>'"><%=s2%></button>
-              	
-               	
+				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
 			</div>
 		</div>
 	</div>
