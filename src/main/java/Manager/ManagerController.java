@@ -24,6 +24,7 @@ import Pack01.ConnectionDB;
 import User.UserDAO;
 import User.UserDTO;
 import Question.QuestionDTO;
+import Result.ResultDAO;
 import Setting.SettingDAO;
 
 @Controller
@@ -36,6 +37,9 @@ public class ManagerController {
 	
 	@Autowired
 	SettingDAO settingDAO;
+	
+	@Autowired
+	ResultDAO resultDAO;
 	
 	@RequestMapping("/ManagerController")
 	String managerController(Model model) {
@@ -318,4 +322,16 @@ public class ManagerController {
 		}
 	}
 	
+	@RequestMapping("/Ratio")
+	String userRatio(Model model) {
+		try {			
+			System.out.println(123);
+			model.addAttribute("rs1", managerDAO.UserRank());		
+			System.out.println(456);
+		}catch(Exception e){
+			System.out.println("매니저-조사현황 : db에서 데이터 꺼내오기 에러");
+		}
+		
+		return "Manager/ManagerResultView";
+	}
 }
