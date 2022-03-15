@@ -92,7 +92,6 @@ public class AuthController {
 		
 		Boolean a = userDAO.loginCheck(name, code);
 		if (a) {
-
 			session.setAttribute("user_name", name);
 			session.setAttribute("user_code", code);
 			session.setMaxInactiveInterval(30 * 60);
@@ -100,11 +99,12 @@ public class AuthController {
 			try {
 				response.setCharacterEncoding("UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+				out.println("<script>alert('Check your account information');</script>");
 				out.flush();
 			} catch (Exception e) {
 				System.out.println("response error");
 			}
+			return "LoginView";
 		}
 
 		model.addAttribute("name", name);
@@ -121,7 +121,7 @@ public class AuthController {
 		}
     	model.addAttribute("adminFlag", adminInfo.getFlag());
 		
-		return a ? "MainView" : "LoginView";
+		return "MainView";
 	}
 
 	@RequestMapping("/PageMove")
