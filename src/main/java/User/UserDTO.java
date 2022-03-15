@@ -27,8 +27,9 @@ public class UserDTO {
 		this.birth = birth;
 		this.code = code;
 		this.flag = flag;
-		}
-	
+		
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -60,7 +61,9 @@ public class UserDTO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
-	
-	
-
+	public String addNan() {
+		int a = ((int) (Math.random() * 999) + 100);
+		this.code = birth+a;
+		return birth+a;
+	}
 }
