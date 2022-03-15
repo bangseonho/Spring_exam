@@ -186,6 +186,7 @@ button{
             String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
             String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
             %>
+		<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
 		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
 		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
 

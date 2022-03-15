@@ -38,59 +38,15 @@ public class QuestionController implements HttpSessionBindingListener {
 	//	public String f1(Model model, ResultSet rs) {
 	//		return "QuestionFormView";
 	//	}
-	@RequestMapping("/questionform")
-	public String f2(Model model, HttpSession session, HttpServletRequest request) throws Exception {
-		// 이 회원이 문제를 얼마나 풀었는지 확인하기
-		//		유저코드
-		String userCode = (String) session.getAttribute("user_code");
-		Thread.sleep(1000);
-		// DB에서 개수 가져오기
-		int cnt = 5; // sql로 가져오기
-		if(questionDAO.resultAllCount(userCode)>cnt) {
-			System.out.println("이미 시험쳤어요~");
-			System.out.println(cnt);
-			resultDAO.updateFlag(userCode); 
-			return "redirect:result";
-//			return "MainView";
-
-		}
-		else {
-		System.out.println(questionDAO.resultAllCount(userCode)+"123a");
-		ResultSet rs = questionDAO.getQuestion(userCode);
-		ArrayList<String> question = new ArrayList<String>();
-		//		내가고른값 번호
-				String myAnswer = request.getParameter("radio");
-		//		문제번호
-				String questionNo = request.getParameter("questionNo");
-		//		정답
-				String answer = request.getParameter("answer");
-				int correct=0;
-				
-				if(questionNo!=null) {
-					if(myAnswer.equals(answer)) {
-						correct=1;
-					}
-					System.out.println(Integer.parseInt(myAnswer));
-					ResultDTO dto = new ResultDTO(userCode, Integer.parseInt(questionNo), Integer.parseInt(myAnswer), correct);
-					resultDAO.insertResult(dto);
-				}
-				
-		while (rs.next()) {
-			question.add(rs.getString("id"));
-			if(questionDAO.isDuplicated(userCode,rs.getString("id"))==true) {
-				return "QuestionFormView";
+	
+	@RequestMapping("/MakeQuestion")
+		public String makeQuestion(HttpSession session){
+			String userCode = (String) session.getAttribute("user_code");
+			for(int i=0; i<5; i++) {
+				questionDAO.makeQ(userCode);	//makeQ -> Quesion2
 			}
-			question.add(rs.getString("phrase"));
-			question.add(rs.getString("one"));
-			question.add(rs.getString("two"));
-			question.add(rs.getString("three"));
-			question.add(rs.getString("four"));
-			question.add(rs.getString("answer"));
-			question.add(rs.getString("who"));
-			model.addAttribute("question", question);
-		}
-		return "QuestionFormView";
-		}
+			
+		return "redirect:QuestionGenerate";
 	}
 	
 	@RequestMapping("/QuestionGenerate")
@@ -106,7 +62,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 		// 문제 생성
 		ArrayList<String> question = new ArrayList<String>();
-		ResultSet rs = questionDAO.getQuestion(userCode);
+		ResultSet rs = questionDAO.bringQuestion(userCode);
 		rs.next();
 		question.add(rs.getString("id"));
 		question.add(rs.getString("phrase"));
@@ -171,9 +127,10 @@ public class QuestionController implements HttpSessionBindingListener {
 		try {
 			// 더 나은 방법 있는지 생각해보기
 			ResultSet rs = settingDAO.selectSetting();
-			rs.next();
-			limitCnt = rs.getInt("questionNum");
-			resCnt 	 = questionDAO.resultAllCount(userCode);
+			if(rs.next()){
+				limitCnt = rs.getInt("questionNum");
+				resCnt 	 = questionDAO.resultAllCount(userCode);
+			}
 		}catch (Exception e) { e.printStackTrace(); }
 		
 		return resCnt >= limitCnt ? true : false;
