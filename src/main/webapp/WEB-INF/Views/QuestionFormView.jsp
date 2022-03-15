@@ -283,7 +283,7 @@ button:hover .button-text {
 			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
 		</form>
 		<!-- <form method="POST" action="questionform"> -->
-		<form method="POST" action="QuestionResultInsert" id="frm">
+		<form method="POST" action="QuestionResultInsert" id="frm" style=text-align:center;>
 			<div>
 				<span id="title"><%=lst.get(1)%></span>
 			</div>
