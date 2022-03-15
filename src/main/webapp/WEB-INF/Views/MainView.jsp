@@ -183,11 +183,14 @@ button{
 	          int adminFlag   = (Integer)request.getAttribute("adminFlag");
 	          int settingFlag = (Integer)request.getAttribute("questionChance");
 	          
-	          /*
-	          String s1 	  	= (userFlag < settingFlag && adminFlag == 0) ? "QuestionGenerate" : "result";
-	          String s2 	  	= (userFlag < settingFlag && adminFlag == 0) ? "시험시작" : "결과보기";
-	          */
-	          
+	            /* 
+	          	int flag = (Integer)request.getAttribute("flag");
+	            int adminFlag = (Integer)request.getAttribute("adminFlag");
+	            
+	            String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
+	            String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
+            	*/
+	            
 	          if(userFlag < settingFlag && adminFlag == 0){
 	        	  out.println("<button class=\"btn\" onclick=\"location.href='QuestionGenerate'\">시험시작</button>");
 	          }
@@ -197,7 +200,12 @@ button{
 	          
 	        %>
 	        
-			<%-- <button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button> --%>
+			<%-- 
+			<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
+			<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
+			 --%>
+			
+			<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
 			<button class="btn" onclick="location.href='logout'">로그아웃</button>
 
         </div>

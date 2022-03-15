@@ -43,6 +43,16 @@ public class QuestionController implements HttpSessionBindingListener {
 	//		return "QuestionFormView";
 	//	}
 	
+	@RequestMapping("/MakeQuestion")
+		public String makeQuestion(HttpSession session){
+			String userCode = (String) session.getAttribute("user_code");
+			for(int i=0; i<5; i++) {
+				questionDAO.makeQ(userCode);	//makeQ -> Quesion2
+			}
+			
+		return "redirect:QuestionGenerate";
+	}
+	
 	@RequestMapping("/QuestionGenerate")
 	public String questionGenerate(Model model, HttpSession session) throws Exception {
 		System.out.println("Start Generate ===");
@@ -154,16 +164,20 @@ public class QuestionController implements HttpSessionBindingListener {
 		try {
 			// 더 나은 방법 있는지 생각해보기
 			// DB 방식
-			//ResultSet rs = settingDAO.selectSetting();
-			//rs.next();
-			//limitCnt = rs.getInt("questionNum");
+			/*
+			ResultSet rs = settingDAO.selectSetting();
+			if(rs.next()){
+				limitCnt = rs.getInt("questionNum");
+				resCnt 	 = questionDAO.resultAllCount(userCode);
+			}
+			*/
 			
 			// DTO 방식
 			limitCnt = settingDTO.getQuestionNum();
 			System.out.println("limitCnt : " + limitCnt);
-			
 			// resCnt 	 = questionDAO.resultAllCount(userCode);
 			resCnt 	 = questionDAO.getCurFlagResultCount(userCode, flag);
+			
 		}catch (Exception e) { e.printStackTrace(); }
 		
 		return resCnt >= limitCnt ? true : false;
