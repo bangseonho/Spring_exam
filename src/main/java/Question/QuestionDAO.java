@@ -31,7 +31,7 @@ public class QuestionDAO {
 			throw new Exception("QuestionDAO.java occured error");
 		}
 	}
-	// ����媛� �� 臾명���� 媛��몄�ㅺ���
+	// 
 	public int resultAllCount(String userCode) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
 	      try {
@@ -47,6 +47,25 @@ public class QuestionDAO {
 //	         e.printStackTrace();
 	         throw new Exception("result answer ��  � �븍┛  ��  ");
 	      } 
+	}
+
+	public boolean isDuplicated(String userCode, String questionNo) {
+		Connection conn = ConnectionDB.getConnection();
+		Boolean isCheck = null;
+		try {
+			String sql3 = "select exists ( select * from result where result code=" + userCode + "and question="
+					+ questionNo;
+			psmt = conn.prepareStatement(sql3);
+			ResultSet rs3 = psmt.executeQuery();
+			if (rs3.next()) {
+				isCheck = rs3.getBoolean(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+
+		return isCheck;
 	}
 
 }

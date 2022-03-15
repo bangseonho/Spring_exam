@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>메인 페이지</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,7 +170,7 @@ input{
 	margin-top:50px;
 }
 .btnmargin{
-	margin-top:20px;
+	margin-top:8px;
 }
 </style>
 
@@ -185,11 +185,12 @@ input{
 		<div class="form">
 			<h4 class="bold title">Create Account</h4>
 			<form method="post" action="signup" class="signupForm">
-				<input type="text" placeholder="Name" class="normal name" name="name" required pattern="^[가-힣a-zA-Z]+$">
-				<input type="text" placeholder="Birth+Gender(1,2)" class="normal" name="birth" required pattern="^[0-9]{7}"> <br />
+				<input type="text" placeholder="Name (Korean, English)" class="normal name" name="name" required pattern="^[가-힣a-zA-Z]+$">
+				<input type="text" placeholder="Birth (YYMMDD)" class="normal" name="birth" required pattern="^[0-9]{6}"> <br />
 				<button class="b-button bold btnmargin" type="submit">SIGN UP</button>
-			</form>
+				<br>
 				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
+			</form>
 		</div>
 	</div>
 </body>

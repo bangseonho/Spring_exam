@@ -14,12 +14,14 @@ public class SettingDAO {
 	ConnectionDB conn1;
 	
 	public ResultSet selectSetting() throws Exception {
+		
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		String sql = "select * from setting;";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		ResultSet rs = psmt.executeQuery();
 		return rs;
+		
 	}
 	
 	public int updateSetting(SettingDTO dto) throws Exception {

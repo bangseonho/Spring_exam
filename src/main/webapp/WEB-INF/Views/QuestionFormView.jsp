@@ -21,6 +21,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Survey Question</title>
+<script type="text/javascript">
+	var dt = new Date();;
+	
+	function realtimeClock() {
+		document.rtcForm.rtcInput.value = getTimeStamp();
+		setTimeout("realtimeClock()", 1);
+	}
+	
+	function getTimeStamp() { // 24시간제
+		var d = new Date();
+		var ct = (d - dt) / 1000;
+		
+		if (ct > 10){
+			alert("10초 경과! 다음 문제로 넘어갑니다. ");
+			dt = new Date();
+			document.getElementById('frm').submit();
+		}
+		return ct;
+	}
+	
+	function leadingZeros(n, digits) {
+		var zero = '';
+		n = n.toString();
+		
+		if (n.length < digits) {
+		  for (i = 0; i < digits - n.length; i++)
+		    zero += '0';
+		}
+		return zero + n;
+	}
+</script>
 <style>
 *, *:after, *:before {
    box-sizing: border-box;
@@ -93,8 +124,9 @@ label span:before {
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 20px;
-   margin-top: 100px;
+   /* padding: 20px; */
+   margin-top: 50px;
+   flex-direction: column;
 }
 
 .container2 {
@@ -227,21 +259,36 @@ button:hover .button-text {
 .submitbtn {
 	text-align: center;
 }
+.time{
+	height: 30px;
+	ouline: blue;
+	border-width: 10px;
+	border-radius: 10px;
+	border-top: none;
+	/* border-left: none;
+	border-right: none; */
+	border-bottom: none;
+	text-align: center;	
+}
 </style>
 </head>
-<body>
+<body onload="realtimeClock()">
 	<%
 	/* 데이터 : phrase; one; two; three; four; answer; who; */
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
 	%>
 	<div class="container1" id="questionSurvey">
+		<form name="rtcForm">
+			<h5>제한 시간은 <u>10초</u>입니다. 화이팅.</h5>
+			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
+		</form>
 		<!-- <form method="POST" action="questionform"> -->
-		<form method="POST" action="QuestionResultInsert">
+		<form method="POST" action="QuestionResultInsert" id="frm" style=text-align:center;>
 			<div>
-				<span id="title"></span>
+				<span id="title"><%=lst.get(1)%></span>
 			</div>
 			<div>
-				<span id="who">About<%=lst.get(7)%></span>
+				<span id="who">About <%=lst.get(7)%></span>
 			</div>
 			
 			<h2 id="iddd"></h2>
@@ -256,8 +303,16 @@ button:hover .button-text {
 			
 			<div class="btns">
 				<button class="learn-more" type="submit">
-					<span class="circle" aria-hidden="true"> <span class="icon arrow"></span>
-					</span> <span class="button-text">Next</span>
+					<span class="circle" aria-hidden="true">
+						<span class="icon arrow"></span>
+					</span>
+					<span class="button-text">Next</span>
+				</button>
+				<button class="learn-more" type="button" onclick="location.href='logout'">
+					<span class="circle" aria-hidden="true">
+						<span class="icon arrow"></span>
+					</span> 
+					<span class="button-text">Logout</span>
 				</button>
 			</div>
 		</form>
