@@ -20,9 +20,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Survey Question</title>
 <script type="text/javascript">
 	var dt = new Date();;
@@ -41,8 +38,6 @@
 			dt = new Date();
 			document.getElementById('frm').submit();
 		}
-		/* ctt = ct * 10
-		document.documentElement.style.setProperty(`--ct`, ''${ctt}''); */
 		return ct;
 	}
 	
@@ -58,9 +53,6 @@
 	}
 </script>
 <style>
-:root{
-	--ct: '----';
-}
 *, *:after, *:before {
    box-sizing: border-box;
 }
@@ -289,11 +281,6 @@ button:hover .button-text {
 		<form name="rtcForm">
 			<h5>제한 시간은 <u>10초</u>입니다. 화이팅.</h5>
 			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
-			<div class="progress">
-			<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow=0
-			 	aria-valuemin="0" aria-valuemax="100" style="width:var(--ct)%;">
-			</div>
-			</div>
 		</form>
 		<!-- <form method="POST" action="questionform"> -->
 		<form method="POST" action="QuestionResultInsert" id="frm">
