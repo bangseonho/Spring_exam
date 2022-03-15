@@ -82,4 +82,24 @@ public class ResultDAO {
 			
 			return num;
 	}
+	
+	
+	
+
+	public void updateFlag(String userCode) throws Exception {
+		/*	@SuppressWarnings("static-access")*/
+		Connection conn = ConnectionDB.getConnection();
+		try {
+			String sql4 = "UPDATE user SET flag=1 WHERE CODE = " + userCode;				
+//			psmt.setString(1, userCode);
+			psmt = conn.prepareStatement(sql4);
+			int rs4 = psmt.executeUpdate();			
+			System.out.println("변경된 row : " + rs4);
+		} catch (SQLException e) {
+			//	e.printStackTrace();
+			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
+		} 
+	}	
+	
+
 }
