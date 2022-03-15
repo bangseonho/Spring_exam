@@ -88,8 +88,6 @@ public class ManagerController {
 		    	questionList.add(getQuestionDTO(rs));
 		    }
 			
-			System.out.println("占쏙옙占쏙옙 占쏙옙占� 1占쏙옙占쏙옙 占쏙옙占쏙옙");
-			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
 
 		} catch (Exception e) { e.printStackTrace(); }
@@ -213,8 +211,6 @@ public class ManagerController {
 			cnt = managerDAO.deleteAllQuestions();
 		} catch (Exception e) { e.printStackTrace(); }
 		*/
-		System.out.println("占쏙옙占쏙옙 占쏙옙체 占쏙옙占쏙옙");
-
 		return "redirect:/ManagerQuestion";
 	}
 
@@ -296,9 +292,11 @@ public class ManagerController {
 		}
 		else{
 			try{
-				int cnt = userDAO.adminOpen(); 
+				// 새로 시작하기, 종료 -> 정지, 시작, 초기화
+				// int cnt1 = userDAO.adminOpen(); 
+				userDAO.userFlagInit();
 				settingDAO.closeVote();
-//				settingDAO.openVote();
+				// settingDAO.openVote();
 			}catch(Exception e){
 				System.out.println("리셋 실패");
 			}
@@ -322,16 +320,13 @@ public class ManagerController {
 		}
 	}
 	
-	@RequestMapping("/Ratio")
-	String userRatio(Model model) {
-		try {			
-			System.out.println(123);
-			model.addAttribute("rs1", managerDAO.UserRank());		
-			System.out.println(456);
-		}catch(Exception e){
-			System.out.println("매니저-조사현황 : db에서 데이터 꺼내오기 에러");
-		}
+
+	@RequestMapping("/ManagerResult")
+	String managerGetCorrectRate(HttpSession session) {
+		
+		
 		
 		return "Manager/ManagerResultView";
 	}
+	
 }
