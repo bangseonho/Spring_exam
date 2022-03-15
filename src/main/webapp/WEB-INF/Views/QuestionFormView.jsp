@@ -51,6 +51,20 @@
 		}
 		return zero + n;
 	}
+	
+	//새로고침 막기(F5키)
+	function noEvent() {
+    if (event.keyCode == 116) { // function F5
+        event.keyCode= 2;
+        return false;
+    }
+    else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82)) // ctrl+N , ctrl+R
+    {
+        return false;
+    }
+	}
+	document.onkeydown = noEvent;
+
 </script>
 <style>
 *, *:after, *:before {
@@ -272,7 +286,7 @@ button:hover .button-text {
 }
 </style>
 </head>
-<body onload="realtimeClock()">
+<body onload="realtimeClock()" oncontextmenu="return false">	<!-- 오른쪽 버튼 새로고침 막기 -->
 	<%
 	/* 데이터 : phrase; one; two; three; four; answer; who; */
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
