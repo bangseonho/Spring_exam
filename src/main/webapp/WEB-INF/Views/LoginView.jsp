@@ -172,9 +172,10 @@ input {
 			<form method="get" action="getMycodePage">
 				<button class="b-button bold btnmargin" type="submit">Forgot
 					Code</button>
-				<button class="b-button bold btnmargin"
-					onclick="location.href='index.jsp'">Main</button>
+					<button class="b-button bold btnmargin"
+					onclick="location.href='index.jsp'" type="button">Main</button>
 			</form>
+				
 			<br />
 		</div>
 	</div>

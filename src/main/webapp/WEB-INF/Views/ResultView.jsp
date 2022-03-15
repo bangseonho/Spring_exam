@@ -28,7 +28,6 @@
 	font-size: 20px;
 	text-align: center;
 }
-
 .grid-container {
 	padding: 10px;
 	display: grid;
@@ -55,10 +54,7 @@
 		return;
 	}
 	%>
-	<h1>
-		수험번호:<%=userCode%><br>
-	</h1>
-
+	
 
 	<%
 	int allCnt = 0;
@@ -66,7 +62,26 @@
 	int like = 0;
 	allCnt = (int) request.getAttribute("rs2");
 	CorrectCnt = (int) request.getAttribute("rs3");
+
+	if(allCnt == 0){
+
+		%>
+		<h1 style="margin-top: 100px;">
+			수험번호:<%=userCode%><br>
+		</h1>
+			<label>시험 결과를 확인할 수 없습니다. 관리자에게 문의하세요.</label>
+		<div style="text-align: center; margin-top : 20px;'">
+<!-- 		<button onclick="location.href='main'">메인으로 가기</button> -->
+		<button onclick="location.href='logout'">로그아웃하기</button>
+		</div>
+	
+		<%
+		return;
+	}
 	%>
+	<h1>
+		수험번호:<%=userCode%><br>
+	</h1>
 
 	<h1 style="font: bold; font-size: 40px;"><%=userName%>님의 점수 결과 :
 		<%=allCnt%>
