@@ -30,12 +30,12 @@ public class AuthController {
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
-		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.isFlag());
+		UserDTO dto = new UserDTO(user.getName(), user.getBirth(), user.getCode(), user.getFlag());
 		try {
 			if (userDAO.join(dto)) {
 					response.setCharacterEncoding("UTF-8");
 					PrintWriter out = response.getWriter();
-		            out.println("<script>alert('Signup success ! ');</script>");
+		            out.println("<script>alert('"+"회원님의 코드번호는"+dto.getCode()+" 입니다 ');</script>");
 		            out.flush();
 				return "LoginView";
 			}else {
@@ -68,20 +68,31 @@ public class AuthController {
 		return "redirect:/";
 	}
 
+	// @SuppressWarnings("unused")
 	@RequestMapping("/main")
 	String main(Model model, UserDTO user, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		if(user.getName().equals("admin") && user.getCode().equals("2")) {
+
+		String name = "";
+		String code = "";
+		if(user.getName() == null || user.getCode() == null) {
+			name = (String)session.getAttribute("user_name");
+			code = (String)session.getAttribute("user_code");
+		}else {
+			name = user.getName();
+			code = user.getCode();
+		}
+		if(name.equals("admin") && code.equals("2")) {
+			session.setAttribute("user_name", name);
+			session.setAttribute("user_code", code);
 			return "redirect:ManagerController";
 		}
-		model.addAttribute("name", user.getName());
-		model.addAttribute("code", user.getCode());
-		model.addAttribute("flag", userDAO.flagCheck(user.getName(), user.getCode()));
 		
-		Boolean a = userDAO.loginCheck(user.getName(), user.getCode());
+		Boolean a = userDAO.loginCheck(name, code);
 		if (a) {
-			session.setAttribute("user_name", user.getName());
-			session.setAttribute("user_code", user.getCode());
+
+			session.setAttribute("user_name", name);
+			session.setAttribute("user_code", code);
 			session.setMaxInactiveInterval(30 * 60);
 		}else {
 			try {
@@ -91,6 +102,11 @@ public class AuthController {
 	            out.flush();
 			}catch(Exception e){ System.out.println("response error");}
 		}
+
+		model.addAttribute("name", name);
+		model.addAttribute("code", code);
+		model.addAttribute("flag", userDAO.flagCheck(name, code));
+		
 		return a ? "MainView" : "LoginView";
 	}
 
@@ -102,6 +118,10 @@ public class AuthController {
 	@RequestMapping("/ManagerPageMove")
 	String managerPageMove(@RequestParam(value = "page") String page) {
 		return "Manager/"+page;
+	}
+	@RequestMapping("/getMyCode")
+	String getMyCode() {
+		return null;
 	}
 
 }

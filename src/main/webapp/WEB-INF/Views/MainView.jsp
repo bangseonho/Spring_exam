@@ -1,3 +1,5 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+<%@page import="User.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -164,9 +166,9 @@ button{
 </head>
 <body>
 	<%-- <h3>${ name }의 수험 번호 ${ code }</h3> --%>
-	<%
-		String a = (String)session.getAttribute("user_code");
-		String b = (String)session.getAttribute("user_name");
+	<%		
+		String code = (String)session.getAttribute("user_code");
+		String name = (String)session.getAttribute("user_name");
 	%>
 	<section>
   <div class="container">
@@ -181,24 +183,14 @@ button{
           <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지, 사실 아무도 궁금해하지는 않을 것이지만, 
           신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
           이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
-          
           <%
-          int flag = (int)request.getAttribute("flag");
-          	if(flag == 0){
-          		 %>
-          		<!-- <button class="button5" onclick="location.href='questionform'">시험 시작</button> -->
-          		<button class="button5" onclick="location.href='QuestionGenerate'">시험 시작</button>
-          		 <%
-          	}else{
-          		 %>
-          		<button class="button5" onclick="location.href='result'">결과 보기</button>
 
-          		 <%
-          	}
-          	System.out.print(a);
-          	System.out.print(b);
-          %>
-
+            int flag = (Integer)request.getAttribute("flag");
+            String s1 = (flag!=1) ? "QuestionGenerate" : "result";
+            String s2 = (flag!=1) ? "시험 시작" : "결과 보기";
+            %>
+		<button class="button5" onclick="location.href='<%=s1%>'"><%=s2%></button>
+		<button onclick="location.href='logout'">로그아웃하기</button>
 
         </div>
       </div>

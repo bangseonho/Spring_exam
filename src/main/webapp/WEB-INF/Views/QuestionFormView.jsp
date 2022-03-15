@@ -285,10 +285,10 @@ button:hover .button-text {
 		<!-- <form method="POST" action="questionform"> -->
 		<form method="POST" action="QuestionResultInsert" id="frm">
 			<div>
-				<span id="title"></span>
+				<span id="title"><%=lst.get(1)%></span>
 			</div>
 			<div>
-				<span id="who">About<%=lst.get(7)%></span>
+				<span id="who">About <%=lst.get(7)%></span>
 			</div>
 			
 			<h2 id="iddd"></h2>
@@ -303,8 +303,16 @@ button:hover .button-text {
 			
 			<div class="btns">
 				<button class="learn-more" type="submit">
-					<span class="circle" aria-hidden="true"> <span class="icon arrow"></span>
-					</span> <span class="button-text">Next</span>
+					<span class="circle" aria-hidden="true">
+						<span class="icon arrow"></span>
+					</span>
+					<span class="button-text">Next</span>
+				</button>
+				<button class="learn-more" type="button" onclick="location.href='logout'">
+					<span class="circle" aria-hidden="true">
+						<span class="icon arrow"></span>
+					</span> 
+					<span class="button-text">Logout</span>
 				</button>
 			</div>
 		</form>
