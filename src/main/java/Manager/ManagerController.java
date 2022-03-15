@@ -288,6 +288,7 @@ public class ManagerController {
 		}
 		else{
 			try{
+				// 새로 시작하기, 종료 -> 정지, 시작, 초기화
 				// int cnt1 = userDAO.adminOpen(); 
 				userDAO.userFlagInit();
 				settingDAO.closeVote();

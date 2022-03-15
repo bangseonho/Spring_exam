@@ -186,7 +186,6 @@ public class UserDAO {
 		try {
 			String sql = "update user set flag=1 where name='admin'";
 			psmt = conn.prepareStatement(sql);
-
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -204,4 +203,22 @@ public class UserDAO {
 		return cnt;
 	}
 
+	public int getCode(String name, String birth) {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		try {
+			System.out.println(name + birth);
+			String sql = "select * from user where name=? and birth=?;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, birth);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int code = rs.getInt(4);
+				return code;
+			}
+		} catch (Exception e) {
+		}
+		return 0;
+	}
 }
