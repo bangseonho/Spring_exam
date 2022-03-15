@@ -205,7 +205,7 @@ input {
 				<input type="text" name="code" required placeholder="Code"><br />
 				<div class="buttonform">
 				<button class="b-button bold btnmargin" type="submit">Login</button>
-				<button class="b-button bold btnmargin" type="button">Forgot Code</button>
+				<button class="b-button bold btnmargin" type="button" onclick="location.href='ForgotCode'">Forgot Code</button>
 				</div>
 			</form>
 			<button class="b-button bold btnmargin"
