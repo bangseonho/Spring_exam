@@ -84,9 +84,6 @@ public class ResultDAO {
 			return num;
 	}
 	
-	
-	
-
 	public void updateFlag(String userCode) throws Exception {
 		/*	@SuppressWarnings("static-access")*/
 		Connection conn = ConnectionDB.getConnection();
@@ -100,6 +97,24 @@ public class ResultDAO {
 			//	e.printStackTrace();
 			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
 		} 
+	}
+	
+	public int blockBringQuestion(String userCode) throws Exception {
+		/*	@SuppressWarnings("static-access")*/
+		Connection conn = ConnectionDB.getConnection();
+		int allCnt = 0;
+		try {
+			String sql5 = "SELECT COUNT(*) as allcnt FROM result WHERE CODE = " + userCode;
+			psmt = conn.prepareStatement(sql5);
+			ResultSet rs5 = psmt.executeQuery();
+			while (rs5.next()) {
+	            allCnt = rs5.getInt("allcnt");
+	         }
+		} catch (SQLException e) {
+			//	e.printStackTrace();
+			throw new Exception("blockBringQuestion error");
+		} 
+		return allCnt;
 	}	
 	
 	public void getCorrectCnt() {
