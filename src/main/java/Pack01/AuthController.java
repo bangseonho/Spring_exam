@@ -117,14 +117,13 @@ public class AuthController {
 	@RequestMapping("/getMyCode")
 	String getMyCode(UserDTO userInfo, HttpServletResponse response, Model model) throws IOException {
 		int myCode = userDAO.getCode(userInfo.getName(), userInfo.getBirth());
+		
 		if (myCode != 0) {
 			model.addAttribute("code", myCode);
 			return "GetCode";
 		} else {
-			response.setCharacterEncoding("UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('Sorry, you have to write correct information');</script>");
-			return "redirect:ForgotView";
+			model.addAttribute("code", "일치하는 정보가 없습니다, 다시 한번 입력해주세요.");
+			return "ForgotCode";
 		}
 	}
 

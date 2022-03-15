@@ -133,6 +133,7 @@ margin:0 auto;
 <body>
 	<div class="form">
 		<h4 class="bold title">Get Code</h4>
+		<p>${code}</p>
 		<form method="post" action="getMyCode" class="loginForm" accept-charset="utf-8">
 			<input type="text" name="name" required placeholder="Name"> <input
 				type="text" name="birth" required placeholder="Birth"><br />
