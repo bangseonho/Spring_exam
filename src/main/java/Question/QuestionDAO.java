@@ -31,7 +31,7 @@ public class QuestionDAO {
 			throw new Exception("QuestionDAO.java occured error");
 		}
 	}
-	// ����媛� �� 臾명���� 媛��몄�ㅺ���
+	// 
 	public int resultAllCount(String userCode) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
 	      try {

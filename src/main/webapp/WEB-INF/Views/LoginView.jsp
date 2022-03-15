@@ -9,172 +9,186 @@
 	<meta charset="UTF-8">
 	<title>로그인</title>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap')
+	;
 
-body{
+@import
+	url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap')
+	;
+
+body {
 	font-family: 'Gamja Flower', cursive;
-  	background: hsl(220, 10%, 12%);
-  	margin:0;
+	background: hsl(220, 10%, 12%);
+	margin: 0;
 }
 
-.bold{
-  font-family: 'Montserrat', sans-serif;
-  font-weight:700;
-  font-size:25px;
+.bold {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	font-size: 25px;
 }
 
-.normal{
-  font-family: 'Darker Grotesque', sans-serif;
-  font-weight:500;
-  font-size:17px;
+.normal {
+	font-family: 'Darker Grotesque', sans-serif;
+	font-weight: 500;
+	font-size: 17px;
 }
 
-.welcome-text{
-  color:#fff;
+.welcome-text {
+	color: #fff;
 }
 
-.welcome{
-  text-align:center;
-  color:#fff;
-  position:absolute;
-  height:100%;
-  width:400px;
-  z-index:30;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.welcome {
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	height: 100%;
+	width: 400px;
+	z-index: 30;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
 
-.hello{
-  text-align:center;
-  color:#fff;
-  position:absolute;
-  height:50%;
-  right:0;
-  width:400px;
-  z-index:30;
-  display:none;
+.hello {
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	height: 50%;
+	right: 0;
+	width: 400px;
+	z-index: 30;
+	display: none;
 }
 
-.welcome-text{
-  margin-top:100px;
+.welcome-text {
+	margin-top: 100px;
 }
 
-.move{
-  height:100%;
-  position:absolute;
-  width:400px;
-  text-align:center;
-  z-index:20;
-  background-color:#2ecc71;
-  background-image:url("http://www.pixmy.tech/Projects/Codepen/SlideForm/bg.jpg");
-  background-size:cover;
-  background-position:left;
-  transition:all .4s ease;
-  border-radius: 10px 0px 0px 10px;
+.move {
+	height: 100%;
+	position: absolute;
+	width: 400px;
+	text-align: center;
+	z-index: 20;
+	background-color: #2ecc71;
+	background-image:
+		url("http://www.pixmy.tech/Projects/Codepen/SlideForm/bg.jpg");
+	background-size: cover;
+	background-position: left;
+	transition: all .4s ease;
+	border-radius: 10px 0px 0px 10px;
 }
 
-.start{
-  animation: start .4s linear forwards;
-  transition:all .4s ease-out;
+.start {
+	animation: start .4s linear forwards;
+	transition: all .4s ease-out;
 }
 
-.startForm{
-  animation: startForm .4s linear forwards;
-  transition:all .4s ease-out;
+.startForm {
+	animation: startForm .4s linear forwards;
+	transition: all .4s ease-out;
 }
 
-.p-button{
-   animation-iteration-count:5;
-  color:white;
-  padding:12px 60px;
-  color:#fff;
-  font-size:14px;
-  border-radius:25px;
-  border:1px solid #fff;
-  width:40%;
-  position:absolute;
-  left:0;
-  right:0;
-  margin: auto;
-  top:60%;
-  text-align:center;
-  cursor:pointer;
-  transition:all .4s ease;
+.p-button {
+	animation-iteration-count: 5;
+	color: white;
+	padding: 12px 60px;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 25px;
+	border: 1px solid #fff;
+	width: 40%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 60%;
+	text-align: center;
+	cursor: pointer;
+	transition: all .4s ease;
 }
 
-.p-button:hover{
-  transition:all .4s ease;
-  background-color:rgba(0,0,0,.7);
+.p-button:hover {
+	transition: all .4s ease;
+	background-color: rgba(0, 0, 0, .7);
 }
 
-h4{
-  font-size:22px;
+h4 {
+	font-size: 22px;
 }
 
-p{
-  font-size:14px;
+p {
+	font-size: 14px;
 }
 
-.container{
-  height:450px;
-  width:900px;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+.container {
+	height: 450px;
+	width: 900px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.text{
-  width:60%;
-  line-height:20px;
-  margin:0 auto;
+.text {
+	width: 60%;
+	line-height: 20px;
+	margin: 0 auto;
 }
 
-.form{
-  text-align:center;
-  position:absolute;
-  height:100%;
-  transform:translate(400px);
-  width:500px;
-  background-color:#fff;
-  border-radius:10px 10px 10px 10px;
+.form {
+	text-align: center;
+	position: absolute;
+	height: 100%;
+	transform: translate(400px);
+	width: 500px;
+	background-color: #fff;
+	border-radius: 10px 10px 10px 10px;
 }
 
-input{
-  border:0px;
-  border-bottom:1px solid lightgray;
-  margin-bottom:15px;
-  padding: 8px 5px;
-  width:60%;
+input {
+	border: 0px;
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 15px;
+	padding: 8px 5px;
+	width: 60%;
 }
 
-.b-button{
-  background-color:#24a4ee;
-  clor:white;
-  padding:12px 60px;
-  color:#fff;
-  font-size:14px;
-  border-radius:25px;
-  cursor:pointer;
+.b-button {
+	background-color: #24a4ee;
+	clor: white;
+	padding: 12px 60px;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 25px;
+	cursor: pointer;
 }
-.loginForm{
-	margin-top:80px;
+
+.loginForm {
+	margin-top: 80px;
 }
-.title{
-	margin-top:50px;
+
+.title {
+	margin-top: 50px;
 }
-.btnmargin{
-	margin-top:20px;
+
+.btnmargin {
+	margin-top: 8px;
 }
+
 .button5 {
 	background-color: white;
 	color: black;
 	border: 2px solid #555555;
 	font-family: 'Gamja Flower', cursive;
-	cursor:pointer;
+	cursor: pointer;
+}
+
+.buttonform {
+	margin-top: 10px;
 }
 </style>
 </head>
@@ -189,11 +203,14 @@ input{
 			<form method="post" action="main" class="loginForm">
 				<input type="text" name="name" required placeholder="Name">
 				<input type="text" name="code" required placeholder="Code"><br />
+				<div class="buttonform">
 				<button class="b-button bold btnmargin" type="submit">Login</button>
-				<br />
+				<button class="b-button bold btnmargin" type="button">Forgot Code</button>
+				</div>
 			</form>
-				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
-				<br />
+			<button class="b-button bold btnmargin"
+				onclick="location.href='index.jsp'">Main</button>
+			<br />
 		</div>
 	</div>
 </body>
