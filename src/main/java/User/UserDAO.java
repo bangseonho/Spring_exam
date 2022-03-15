@@ -40,7 +40,7 @@ public class UserDAO {
 		}
 		return isCheck;
 	}
-	
+
 	public Boolean loginCheck(String name, String code) {
 		Boolean existName = null;
 		String sql = "select exists (select * from user where name=? and code=?);";
@@ -48,19 +48,20 @@ public class UserDAO {
 			@SuppressWarnings("static-access")
 			Connection conn = conn1.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, name);
 			pstmt.setString(2, code);
 			ResultSet rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				existName = rs.getBoolean(1);
 			}
-		} catch(Exception e) {System.out.println("error");}
+		} catch (Exception e) {
+			System.out.println("error");
+		}
 		return existName;
 	}
-	
-	
+
 	public int flagCheck(String name, String code) {
 		@SuppressWarnings("static-access")
 		int flag = -1;
@@ -72,10 +73,12 @@ public class UserDAO {
 			pstmt.setString(1, name);
 			pstmt.setString(2, code);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				flag = rs.getInt("flag");
 			}
-		} catch(Exception e) {System.out.println("error");}
+		} catch (Exception e) {
+			System.out.println("error");
+		}
 		return flag;
 	}
 
@@ -86,13 +89,12 @@ public class UserDAO {
 				@SuppressWarnings("static-access")
 				Connection conn = conn1.getConnection();
 
-
 				String sql = "insert into user values(null, ?, ?, ?, false);";
 				psmt = conn.prepareStatement(sql);
 
 				psmt.setString(1, dto.getName());
 				psmt.setString(2, dto.getBirth());
-				psmt.setString(3, dto.getBirth());
+				psmt.setString(3, dto.addNan());
 
 				cnt = psmt.executeUpdate();
 
@@ -102,7 +104,7 @@ public class UserDAO {
 				throw new Exception("join fail");
 			}
 		} else {
-			System.out.println("�씠由�, �깮�뀈�썡�씪 以묐났!!");
+			System.out.println("회원가입과정에서 에러발생!!");
 			return false;
 		}
 
@@ -119,7 +121,7 @@ public class UserDAO {
 
 			return rs;
 		} catch (SQLException e) {
-//			e.printStackTrace();
+			//			e.printStackTrace();
 			throw new Exception("find user failed");
 		}
 	}
@@ -127,19 +129,18 @@ public class UserDAO {
 	public void allUser() {
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
-		
+
 		try {
 			String sql = "select * from user;";
 			psmt = conn.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
-			while(rs.next()) {
-				
+			while (rs.next()) {
+
 			}
-		} catch(Exception e) {System.out.println("error");}
-		
-	
+		} catch (Exception e) {
+			System.out.println("error");
+		}
+
 	}
-	
-		
-	
+
 }

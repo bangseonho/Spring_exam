@@ -72,6 +72,9 @@ public class QuestionController implements HttpSessionBindingListener {
 				
 		while (rs.next()) {
 			question.add(rs.getString("id"));
+			if(questionDAO.isDuplicated(userCode,rs.getString("id"))==true) {
+				return "QuestionFormView";
+			}
 			question.add(rs.getString("phrase"));
 			question.add(rs.getString("one"));
 			question.add(rs.getString("two"));
