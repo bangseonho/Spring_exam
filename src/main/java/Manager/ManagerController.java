@@ -285,7 +285,6 @@ public class ManagerController {
 	
 	@RequestMapping("/ManagerSurveyOpen")
 	String managerSuerveyOpen(HttpSession session) {
-		System.out.println("session : " + session.getAttribute("user_name"));
 		String s = (String)session.getAttribute("user_name");
 		if(!(s.equals("admin"))){
 			// return "Manager/ManagerMainView";
@@ -305,7 +304,6 @@ public class ManagerController {
 	}
 	@RequestMapping("/ManagerSurveyClose")
 	String managerSuerveyClose(HttpSession session) {
-		System.out.println("ManagerSurveyClose에 들어옴");
 		String s = (String)session.getAttribute("user_name");
 		if(!(s.equals("admin"))){
 			return "redirect:ManagerController";

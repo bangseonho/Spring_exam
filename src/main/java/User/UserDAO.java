@@ -149,10 +149,10 @@ public class UserDAO {
 			
 			ResultSet rs = psmt.executeQuery();
 			if (rs.next()) {
-				String name = rs.getString(1);
-				String birth = rs.getString(2);
-				String code = rs.getString(3);
-				int flag = rs.getInt(4);
+				String name = rs.getString(2);
+				String birth = rs.getString(3);
+				String code = rs.getString(4);
+				int flag = rs.getInt(5);
 				
 				user = new UserDTO(name, birth, code, flag);
 			}
@@ -166,7 +166,7 @@ public class UserDAO {
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		try {
-			String sql = "update user set flag=0 where name='admin';";
+			String sql = "update user set flag=0 where name='admin'";
 			psmt = conn.prepareStatement(sql);
 
 			cnt = psmt.executeUpdate();
@@ -181,7 +181,7 @@ public class UserDAO {
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		try {
-			String sql = "update user set flag=1 where name='admin';";
+			String sql = "update user set flag=1 where name='admin'";
 			psmt = conn.prepareStatement(sql);
 
 			cnt = psmt.executeUpdate();

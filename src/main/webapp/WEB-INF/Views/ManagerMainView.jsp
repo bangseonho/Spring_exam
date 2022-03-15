@@ -81,7 +81,7 @@ h4 {
 <body>
 			<%
 				int flag = (Integer)request.getAttribute("flag");
-				System.out.println(flag);
+				System.out.println("flag: "+ flag);
 				String s1 = (flag==1) ? "ManagerSurveyOpen" : "ManagerSurveyClose";
 				String s2 = (flag==1) ? "투표 시작" : "투표 종료";
 					
@@ -97,7 +97,7 @@ h4 {
 				<button class="b-button bold" onclick="location='ManagerPageMove?page=ManagerResultView'">조사현황</button>
 				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
 				
-                <button class="b-button bold" onclick="location=<%=s1%>"><%=s2%></button>
+                <button class="b-button bold" onclick="location='<%=s1%>'"><%=s2%></button>
               	
                	
 			</div>
