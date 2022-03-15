@@ -184,4 +184,18 @@ public class ManagerDAO {
 		ResultSet rs = pstmt.executeQuery();
 		return rs;
 	}
+	
+	public ResultSet getCorrect() throws Exception{
+		String sql = "select q.who, q.phrase, count(r.correct) as 'total', sum(r.correct) as 'correct', sum(r.correct)/count(r.correct) as top\r\n"
+				+ "from question q , result r\r\n"
+				+ "where r.question = q.id \r\n"
+				+ "group by q.id\r\n"
+				+ "order by top desc;";
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		return rs;
+	}
+	
 }
