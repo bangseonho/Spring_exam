@@ -84,8 +84,6 @@ public class ManagerController {
 		    	questionList.add(getQuestionDTO(rs));
 		    }
 			
-			System.out.println("占쏙옙占쏙옙 占쏙옙占� 1占쏙옙占쏙옙 占쏙옙占쏙옙");
-			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
 
 		} catch (Exception e) { e.printStackTrace(); }
@@ -209,8 +207,6 @@ public class ManagerController {
 			cnt = managerDAO.deleteAllQuestions();
 		} catch (Exception e) { e.printStackTrace(); }
 		*/
-		System.out.println("占쏙옙占쏙옙 占쏙옙체 占쏙옙占쏙옙");
-
 		return "redirect:/ManagerQuestion";
 	}
 
@@ -304,6 +300,22 @@ public class ManagerController {
 	}
 	@RequestMapping("/ManagerSurveyClose")
 	String managerSuerveyClose(HttpSession session) {
+		String s = (String)session.getAttribute("user_name");
+		if(!(s.equals("admin"))){
+			return "redirect:ManagerController";
+		}
+		else{
+			try{
+				int cnt = userDAO.adminClose();
+			}catch(Exception e){
+				System.out.println("close 실패");
+			}
+			return "redirect:ManagerController";
+		}
+	}
+	
+	@RequestMapping("/ManagerGetCorrectRate")
+	String managerGetCorrectRate(HttpSession session) {
 		String s = (String)session.getAttribute("user_name");
 		if(!(s.equals("admin"))){
 			return "redirect:ManagerController";
