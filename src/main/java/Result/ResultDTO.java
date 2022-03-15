@@ -1,49 +1,71 @@
 package Result;
 
 public class ResultDTO {
-   private String code;
-   private int question;
-   private int choice;
-   private int correct;
+	private String code;
+	private int question;
+	private int choice;
+	private int correct;
+	private int flag;
 
-   public ResultDTO(String code, int question, int choice, int correct) {
-      this.code = code;
-      this.question = question;
-      this.choice = choice;
-      this.correct = correct;
-   }
+	public ResultDTO(String code, int question, int choice, int correct) {
+		this.code = code;
+		this.question = question;
+		this.choice = choice;
+		this.correct = correct;
+	}
 
-   public String getCode() {
-      return code;
-   }
+	public ResultDTO(String code, int question, int choice, int correct, int flag) {
+		this.code = code;
+		this.question = question;
+		this.choice = choice;
+		this.correct = correct;
+		this.flag = flag;
+	}
 
-   public void setCode(String code) {
-      this.code = code;
-   }
+	public int getFlag() {
+		return flag;
+	}
 
-   public int getQuestion() {
-      return question;
-   }
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 
-   public void setQuestion(int question) {
-      this.question = question;
-   }
+	public String getCode() {
+		return code;
+	}
 
-   public int getChoice() {
-      return choice;
-   }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-   public void setChoice(int choice) {
-      this.choice = choice;
-   }
+	public int getQuestion() {
+		return question;
+	}
 
-   public int getCorrect() {
-      return correct;
-   }
+	public void setQuestion(int question) {
+		this.question = question;
+	}
 
-   public void setCorrect(int correct) {
-      this.correct = correct;
-   }
+	public int getChoice() {
+		return choice;
+	}
 
-   
+	public void setChoice(int choice) {
+		this.choice = choice;
+	}
+
+	public int getCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(int correct) {
+		this.correct = correct;
+	}
+
+	@Override
+	public String toString() {
+		return "ResultDTO [code=" + code + ", question=" + question + ", choice=" + choice + ", correct=" + correct
+				+ ", flag=" + flag + "]";
+	}
+
 }

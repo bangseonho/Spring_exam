@@ -72,12 +72,14 @@ public class ResultDAO {
 			System.out.println("insert result");
 
 			Connection conn = ConnectionDB.getConnection();
-			String sql = "insert into result values(null, ?,?,?,?);";
+			String sql = "insert into result values(null, ?,?,?,?,?);";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
 			psmt.setInt(3, dto.getChoice());
 			psmt.setInt(4, dto.getCorrect());
+			psmt.setInt(5, dto.getFlag());
+			
 			int num = psmt.executeUpdate();
 			
 			return num;
@@ -98,6 +100,21 @@ public class ResultDAO {
 		} catch (SQLException e) {
 			//	e.printStackTrace();
 			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
+		} 
+	}	
+	
+	public void increaseFlag(String userCode) throws Exception {
+		/*	@SuppressWarnings("static-access")*/
+		Connection conn = ConnectionDB.getConnection();
+		try {
+			String sql4 = "UPDATE user SET flag=flag+1 WHERE CODE = " + userCode;				
+//			psmt.setString(1, userCode);
+			psmt = conn.prepareStatement(sql4);
+			int rs4 = psmt.executeUpdate();			
+			System.out.println("변경된 row : " + rs4);
+		} catch (SQLException e) {
+			//	e.printStackTrace();
+			throw new Exception("result answer ");
 		} 
 	}	
 	

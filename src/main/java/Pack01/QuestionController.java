@@ -96,11 +96,12 @@ public class QuestionController implements HttpSessionBindingListener {
 	@RequestMapping("/QuestionGenerate")
 	public String questionGenerate(Model model, HttpSession session) throws Exception {
 
+		String userName = (String)session.getAttribute("user_name");
 		String userCode = (String)session.getAttribute("user_code");
 
 		// 문제 푼 횟수 확인
-		if(isExceedCnt(userCode)) {
-			resultDAO.updateFlag(userCode); 
+		if(isExceedCnt(userName, userCode)) {
+			resultDAO.increaseFlag(userCode); 
 			return "redirect:result";
 		}
 		
@@ -124,34 +125,34 @@ public class QuestionController implements HttpSessionBindingListener {
 	
 	@RequestMapping("/QuestionResultInsert")
 	public String questionResultInsert(HttpSession session, HttpServletRequest request) {
-		int adminFlag = 1;
-		// get admin flag
+		
+		// 관리자 상태 확인
+		int 	adminFlag = 1;
 		UserDTO adminInfo = null;
 		try {
 			adminInfo = userDAO.findUserInfo("admin");
 			adminFlag = adminInfo.getFlag();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) { e.printStackTrace(); }
     	
+		String userName = (String)session.getAttribute("user_name");
 		String userCode = (String)session.getAttribute("user_code");
 		
 		// 문제 푼 횟수 확인
-		if(isExceedCnt(userCode)) return "redirect:result";
+		if(isExceedCnt(userName, userCode)) return "redirect:result";
 		
 		// 사용자 선택지 저장
 		String myAnswer   = request.getParameter("radio");
 		String questionNo = request.getParameter("questionNo");
 		String answer 	  = request.getParameter("answer");
-		
-		if((isNullChecker(new Object[] {userCode, myAnswer, questionNo, answer}) < 0) && (adminFlag == 0)){
+		int userFlag   	  = userDAO.flagCheck(userName, userCode);
+		if((isNullChecker(new Object[] {userCode, myAnswer, questionNo, answer, userFlag}) < 0) && (adminFlag == 0)){
 		
 			int correct = myAnswer.equals(answer) ? 1 : 0;
 			ResultDTO dto = new ResultDTO(
 					userCode, Integer.parseInt(questionNo), 
 					Integer.parseInt(myAnswer), 
-					correct
+					correct,
+					userFlag
 					);
 			try {
 				resultDAO.insertResult(dto);
@@ -165,7 +166,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 	}
 	
-	public boolean isExceedCnt(String userCode) {
+	public boolean isExceedCnt(String userName, String userCode) {
 		int limitCnt = 5; // default;
 		int resCnt = 0;
 		try {
@@ -173,7 +174,9 @@ public class QuestionController implements HttpSessionBindingListener {
 			ResultSet rs = settingDAO.selectSetting();
 			rs.next();
 			limitCnt = rs.getInt("questionNum");
-			resCnt 	 = questionDAO.resultAllCount(userCode);
+			int flag = userDAO.flagCheck(userName, userCode);
+			System.out.println("flag12 : " + flag);
+			resCnt 	 = questionDAO.resulResultFlagCount(userCode, flag);
 		}catch (Exception e) { e.printStackTrace(); }
 		
 		return resCnt >= limitCnt ? true : false;

@@ -179,12 +179,13 @@ button{
           신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
           이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
           <%
-
-            int flag = (Integer)request.getAttribute("flag");
-            int adminFlag = (Integer)request.getAttribute("adminFlag");
+            int userFlag 	= (Integer)request.getAttribute("flag");
+            int adminFlag 	= (Integer)request.getAttribute("adminFlag");
+            int settingFlag = 3;
+            System.out.println("flag : " + userFlag + ", " + adminFlag + ", " + settingFlag);
             
-            String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
-            String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
+            String s1 = (adminFlag == 0) ? "QuestionGenerate" : "result";
+            String s2 = (adminFlag == 0) ? "시험 시작" : "결과 보기";
             %>
 		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
 		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
