@@ -255,6 +255,7 @@ public class ManagerController {
 		ArrayList<String> userquestionanswerList = new ArrayList<>();
 		ArrayList<String> userchoiceList = new ArrayList<>();
 		ArrayList<String> usercorrectList = new ArrayList<>();
+		ArrayList<Integer> userflagList = new ArrayList<>();
 		
 		try {
 			rs = managerDAO.getSolveQuestion(code);
@@ -264,17 +265,20 @@ public class ManagerController {
 				userquestionanswerList.add(rs.getString(3));
 				userchoiceList.add(rs.getString(4));
 				usercorrectList.add(rs.getString(5));
+				userflagList.add(rs.getInt(6));
 			}
 			System.out.println(userquestionList.toString());
 			System.out.println(userquestionanswerList.toString());
 			System.out.println(userchoiceList.toString());
 			System.out.println(usercorrectList.toString());
+			System.out.println(userflagList.toString());
 			
-			model.addAttribute("usercode",usercode);
+			model.addAttribute("usercode", usercode);
 			model.addAttribute("userquestionList", userquestionList);
 			model.addAttribute("userquestionanswerList", userquestionanswerList);
 			model.addAttribute("userchoiceList", userchoiceList);
 			model.addAttribute("usercorrectList", usercorrectList);
+			model.addAttribute("userflagList", userflagList);
 		}catch(Exception e){ e.printStackTrace();}
 		return "Manager/ManagerUserQuestionView";
 	}

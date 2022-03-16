@@ -208,7 +208,7 @@ a{
 					<tr>
 						<td><label>설문조사 시간 : </label></td>
 						<td><input type="text" name="limitTime"
-							value="<%=settingDTO.getLimitTime()%>"> <label> 분</label>
+							value="<%=settingDTO.getLimitTime()%>"> <label> 초</label>
 						</td>
 					</tr>
 					<tr>

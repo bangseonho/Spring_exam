@@ -174,21 +174,39 @@ button{
         <span></span>
         <span></span>
         <div class="content">
-          <h2>시험 응시 전</h2><br/>
-          <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지, 사실 아무도 궁금해하지는 않을 것이지만, 
-          신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
-          이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
-          <%
-            int userFlag 	= (Integer)request.getAttribute("flag");
-            int adminFlag 	= (Integer)request.getAttribute("adminFlag");
-            int settingFlag = 3;
-            System.out.println("flag : " + userFlag + ", " + adminFlag + ", " + settingFlag);
-            
-            String s1 = (adminFlag == 0) ? "QuestionGenerate" : "result";
-            String s2 = (adminFlag == 0) ? "시험 시작" : "결과 보기";
-            %>
-		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
-		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
+	        <h2>시험 응시 전</h2><br/>
+	        <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지, 사실 아무도 궁금해하지는 않을 것이지만, 
+	        신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
+	        이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
+	        <%
+	          int userFlag    = (Integer)request.getAttribute("flag");
+	          int adminFlag   = (Integer)request.getAttribute("adminFlag");
+	          int settingFlag = (Integer)request.getAttribute("questionChance");
+	          
+	            /* 
+	          	int flag = (Integer)request.getAttribute("flag");
+	            int adminFlag = (Integer)request.getAttribute("adminFlag");
+	            
+	            String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
+	            String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
+            	*/
+	            
+	          if(userFlag < settingFlag && adminFlag == 0){
+	        	  out.println("<button class=\"btn\" onclick=\"location.href='QuestionGenerate'\">시험시작</button>");
+	          }
+	          if(userFlag > 0){
+	        	  out.println("<button class=\"btn\" onclick=\"location.href='result'\">결과보기</button>");
+	          }
+	          
+	        %>
+	        
+			<%-- 
+			<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
+			<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
+			 --%>
+			
+			<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
+			<button class="btn" onclick="location.href='logout'">로그아웃</button>
 
         </div>
       </div>

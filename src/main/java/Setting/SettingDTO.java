@@ -5,6 +5,10 @@ public class SettingDTO {
 	private int questionNum;
 	private int questionChance;
 	
+	public SettingDTO() {
+		
+	}
+	
 	public SettingDTO(int limitTime, int questionNum, int questionChance) {
 		this.limitTime = limitTime;
 		this.questionNum = questionNum;

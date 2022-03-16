@@ -38,9 +38,16 @@
 	padding: 10px;
 	margin: 10px;
 	border-radius: 10px;
-	background: #AFE1AF;
 	/* background: lightcoral; */
 	text-align: center;
+}
+
+.testfalse {
+	background: #F47C7C;
+}
+
+.testtrue {
+	background: #AFE1AF;
 }
 </style>
 <meta charset="UTF-8">
@@ -55,9 +62,6 @@
 		return;
 	}
 	%>
-	<h1>
-		수험번호:<%=userCode%><br>
-	</h1>
 
 
 	<%
@@ -66,7 +70,26 @@
 	int like = 0;
 	allCnt = (int) request.getAttribute("rs2");
 	CorrectCnt = (int) request.getAttribute("rs3");
+
+	if(allCnt == 0){
+
+		%>
+	<h1 style="margin-top: 100px;">
+		수험번호:<%=userCode%><br>
+	</h1>
+	<label>시험 결과를 확인할 수 없습니다. 관리자에게 문의하세요.</label>
+	<div style="text-align: center; margin-top: 20px;'">
+		<!-- 		<button onclick="location.href='main'">메인으로 가기</button> -->
+		<button onclick="location.href='logout'">로그아웃하기</button>
+	</div>
+
+	<%
+		return;
+	}
 	%>
+	<h1>
+		수험번호:<%=userCode%><br>
+	</h1>
 
 	<h1 style="font: bold; font-size: 40px;"><%=userName%>님의 점수 결과 :
 		<%=allCnt%>
@@ -94,21 +117,23 @@
 	<%
 	ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
 	while (rs1.next()) {
-		String code = rs1.getString("code"); // 사용자 번호
-		String phrase = rs1.getString("phrase");
-		String one = rs1.getString("one");
-		String two = rs1.getString("two");
-		String three = rs1.getString("three");
-		String four = rs1.getString("four");
-		int answer = rs1.getInt("answer");
-		int choice = rs1.getInt("choice");
+		String code 	= rs1.getString("code"); // 사용자 번호
+		String phrase 	= rs1.getString("phrase");
+		String one 		= rs1.getString("one");
+		String two 		= rs1.getString("two");
+		String three 	= rs1.getString("three");
+		String four 	= rs1.getString("four");
+		int answer 		= rs1.getInt("answer");
+		int choice 		= rs1.getInt("choice");
 		boolean correct = rs1.getBoolean("correct");
-		String who = rs1.getString("who");
+		String who 		= rs1.getString("who");
+		int flag 		= rs1.getInt("flag");
 	%>
 	<br>
 	<div class="grid-container">
-		<div>
-			<h3><%=who%>의 문제 <br />
+		<div class="test<%= correct %>">
+			<h3>< <%=flag+1%> 회차 ></h3>
+			<h3><%=who%>의 문제<br/>
 				<%=phrase%></h3>
 			<%
 			if (correct) {

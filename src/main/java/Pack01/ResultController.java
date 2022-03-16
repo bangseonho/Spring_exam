@@ -28,14 +28,14 @@ public class ResultController {
 		String userCode = (String)session.getAttribute("user_code");
 		String userName = (String)session.getAttribute("user_name");
 
-		System.out.println(userCode);
-		System.out.println(userName);
+		System.out.println("/result userCode : " + userCode + ", userName : " + userName);
 		try {			
 			model.addAttribute("rs2", resultDAO.resultAllCount(userCode));
 			model.addAttribute("rs3", resultDAO.resultCollectCount(userCode));
 			model.addAttribute("rs1", resultDAO.resultAnswer(userCode));
 		}catch(Exception e){
-			System.out.println("result controller �떎�뙣");
+			e.printStackTrace();
+			System.out.println("result controller exception");
 		}
 		return "ResultView";
 	}

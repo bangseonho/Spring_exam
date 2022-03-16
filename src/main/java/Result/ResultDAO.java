@@ -18,7 +18,7 @@ public class ResultDAO {
 				Connection conn = ConnectionDB.getConnection();
 		try {
 			String sql1 = "select r.code, q.phrase, "
-					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct, q.who "
+					+ "q.one, q.two, q.three, q.four, q.answer, r.choice, r.correct, q.who, r.flag "
 					+ "from question as q, result as r "
 					+ "where q.id = r.question and r.code = " + userCode;				
 
@@ -26,8 +26,8 @@ public class ResultDAO {
 			ResultSet rs1 = psmt.executeQuery();			
 			return rs1;	
 		} catch (SQLException e) {
-//			e.printStackTrace();
-			throw new Exception("result answer 遺��ъ�ㅺ린 �ㅽ��");
+			e.printStackTrace();
+			throw new Exception("result answer exception");
 		} 
 	}	
 	
@@ -72,17 +72,15 @@ public class ResultDAO {
 			System.out.println("insert result");
 
 			Connection conn = ConnectionDB.getConnection();
-			String sql = "insert into result values(null, ?,?,?,?,?);";
+			String sql = "insert into result(code, question, choice, correct, flag) values(?,?,?,?,?);";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
 			psmt.setInt(3, dto.getChoice());
 			psmt.setInt(4, dto.getCorrect());
 			psmt.setInt(5, dto.getFlag());
+			return psmt.executeUpdate();
 			
-			int num = psmt.executeUpdate();
-			
-			return num;
 	}
 	
 	
@@ -103,23 +101,12 @@ public class ResultDAO {
 		} 
 	}	
 	
-	public void increaseFlag(String userCode) throws Exception {
+	public int increaseFlag(String userCode) throws Exception {
 		/*	@SuppressWarnings("static-access")*/
 		Connection conn = ConnectionDB.getConnection();
-		try {
-			String sql4 = "UPDATE user SET flag=flag+1 WHERE CODE = " + userCode;				
-//			psmt.setString(1, userCode);
-			psmt = conn.prepareStatement(sql4);
-			int rs4 = psmt.executeUpdate();			
-			System.out.println("변경된 row : " + rs4);
-		} catch (SQLException e) {
-			//	e.printStackTrace();
-			throw new Exception("result answer ");
-		} 
+		String sql4 = "UPDATE user SET flag=flag+1 WHERE CODE = " + userCode;
+		psmt = conn.prepareStatement(sql4);
+		return psmt.executeUpdate();
 	}	
-	
-	public void getCorrectCnt() {
-		
-	}
 
 }

@@ -58,11 +58,12 @@ h4 {
 
 .b-button {
 	background-color: #24a4ee;
-	padding: 12px 60px;
+	padding: 10px 60px;
 	color: #fff;
 	font-size: 14px;
 	border-radius: 25px;
 	cursor:pointer;
+	margin : 5px;
 }
 
 .button-group {
@@ -79,14 +80,26 @@ h4 {
 </head>
 
 <body>
-			<%
-				int flag = (Integer)request.getAttribute("flag");
-				System.out.println("flag: "+ flag);
-				String s1 = (flag==1) ? "ManagerSurveyOpen" : "ManagerSurveyClose";
-				String s2 = (flag==1) ? "투표 시작" : "투표 종료";
-					
-            %>
-	
+	<%
+	int flag = (Integer)request.getAttribute("flag");
+	System.out.println("flag: "+ flag);
+	String s1 = (flag==1) ? "ManagerSurveyOpen" : "ManagerSurveyClose";
+	String s2 = (flag==1) ? "설문 조사 시작" : "설문 조사 종료";
+	String s3 = (flag==1) ? "설문 조사 시작 시 모든 조사 결과가 초기화 됩니다.\\n그래도 시작하시겠습니까?" : "설문 조사를 종료할 시 더이상 참여자가 설문 조사에 참여할 수 없습니다.\\n그래도 종료하시겠습니까?";
+	String s4 = (flag==1) ? "모든 조사 결과가 초기화되고, 설문 조사가 시작됩니다." : "설문 조사가 종료됩니다.";
+    %>
+
+	<script>
+		function func_confirm() {
+			if (confirm("<%=s3%>")) {
+				alert("<%=s4%>");
+				window.location.href = "<%=s1%>";
+			} else {
+				alert("취소하였습니다.");
+			}
+		}
+	</script>
+
 	<div class="container">
 		<div class="form">
 			<h4 class="bold title">Manager</h4>
@@ -95,8 +108,8 @@ h4 {
 				<button class="b-button bold" onclick="location='ManagerUserView'">회원관리</button>
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
 				<button class="b-button bold" onclick="location='ManagerResult'">조사현황</button>
-                <button class="b-button bold" onclick="location='<%=s1%>'"><%=s2%></button>
-				<button class="b-button bold" onclick="location='index.jsp'">로그인화면으로 이동</button>
+                <button class="b-button bold" onclick="func_confirm()"><%=s2%></button>
+				<button class="b-button bold" onclick="location.href='logout'">로그아웃</button>
 			</div>
 		</div>
 	</div>

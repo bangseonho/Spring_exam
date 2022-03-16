@@ -8,6 +8,7 @@ import Question.QuestionDAO;
 import User.UserDAO;
 import Result.ResultDAO;
 import Setting.SettingDAO;
+import Setting.SettingDTO;
 
 @Configuration
 public class AppConfig {
@@ -34,5 +35,9 @@ public class AppConfig {
    @Bean
    SettingDAO settingDAO() {
 	   return new SettingDAO();
+   }
+   @Bean
+   SettingDTO settingDTO() {
+	   return new SettingDTO();
    }
 }

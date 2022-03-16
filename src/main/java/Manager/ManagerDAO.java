@@ -173,7 +173,7 @@ public class ManagerDAO {
 	}
 	
 	public ResultSet getSolveQuestion(String code) throws Exception {
-		String sql = "select result.code, question.phrase, question.answer, result.choice, result.correct\r\n"
+		String sql = "select result.code, question.phrase, question.answer, result.choice, result.correct, result.flag\r\n"
 				+ "from result\r\n"
 				+ "join question\r\n"
 				+ "on result.question = question.id and result.code = ?;";

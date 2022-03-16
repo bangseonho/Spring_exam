@@ -125,6 +125,8 @@ a{
 		@SuppressWarnings("unchecked")
 		ArrayList<String> usercorrectList = (ArrayList<String>)request.getAttribute("usercorrectList");
 		@SuppressWarnings("unchecked")
+		ArrayList<Integer> userflagList = (ArrayList<Integer>)request.getAttribute("userflagList");
+		@SuppressWarnings("unchecked")
 		String usercode = (String)request.getAttribute("usercode");
 	 %>
 	 <div class="title-group">
@@ -135,6 +137,7 @@ a{
 			<table id="user-list">
 				<thead>
 					<tr>
+						<td>회차</td>
 						<td>질문</td>
 						<td>해당 질문 정답</td>
 						<td>선택한 정답</td>
@@ -145,6 +148,9 @@ a{
 					<%
 						for(int i = 0; i < userquestionList.size(); i++){
 							out.println("<tr>");
+							out.println("<td>");
+							out.println(userflagList.get(i)+1);
+							out.println("</td>");
 							out.println("<td>");
 							out.println(userquestionList.get(i));
 							out.println("</td>");															
