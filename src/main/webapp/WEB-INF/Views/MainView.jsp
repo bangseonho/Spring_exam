@@ -175,21 +175,18 @@ button{
         <span></span>
         <div class="content">
           <h2>시험 응시 전</h2><br/>
-          <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지, 사실 아무도 궁금해하지는 않을 것이지만, 
-          신중하게 답변해주시기 바랍니다. 시간제한은 5분이며, 결과에 따라 제공되는 것은 아무것도 없습니다. 
-          이거하느라 힘들었습니다. 내주말 돌려줘요...</a></p>
-          <%
-
-            int flag = (Integer)request.getAttribute("flag");
+          <p><a>이 테스트는 저희조 구성원에 대해 얼마나 알고 있는지 알아보는 테스트입니다!
+          적극적인 참여 부탁드려용!! 한 문제당 10초이며, 결과에 따라 제공되는 것은 저희들의 사랑입니다ㅎㅎ 
+          그럼 시작해볼까요??</a></p>
+      	<%
+         	int flag = (Integer)request.getAttribute("flag");
             int adminFlag = (Integer)request.getAttribute("adminFlag");
-            
-            String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
+         
+            String s1 = ((flag!=1) && (adminFlag==0)) ? "MakeQuestion" : "result";
             String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
             %>
-		<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
-		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
-		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
-
+     		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
+     		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
         </div>
       </div>
     </div>
