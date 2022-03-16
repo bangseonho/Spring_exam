@@ -108,5 +108,23 @@ public class ResultDAO {
 		psmt = conn.prepareStatement(sql4);
 		return psmt.executeUpdate();
 	}	
+	
+	public int blockBringQuestion(String userCode) throws Exception {
+	      /*   @SuppressWarnings("static-access")*/
+	      Connection conn = ConnectionDB.getConnection();
+	      int allCnt = 0;
+	      try {
+	         String sql5 = "SELECT COUNT(*) as allcnt FROM result WHERE CODE = " + userCode;
+	         psmt = conn.prepareStatement(sql5);
+	         ResultSet rs5 = psmt.executeQuery();
+	         while (rs5.next()) {
+	               allCnt = rs5.getInt("allcnt");
+	            }
+	      } catch (SQLException e) {
+	         //   e.printStackTrace();
+	         throw new Exception("blockBringQuestion error");
+	      } 
+	      return allCnt;
+	   }
 
 }

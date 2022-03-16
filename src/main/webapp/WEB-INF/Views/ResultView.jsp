@@ -99,7 +99,13 @@
 	</h1>
 	<h1 style="font-size: 30px;">
 		<%
-		like = (CorrectCnt * 100) / allCnt;
+		try{
+		like = (CorrectCnt*100)/allCnt;		
+		}catch(Exception e){
+		%>
+	<h1>result 테이블에 데이터가 없습니다. </h1>
+		<%
+		}
 
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");

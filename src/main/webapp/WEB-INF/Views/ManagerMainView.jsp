@@ -107,7 +107,7 @@ h4 {
 				<button class="b-button bold" onclick="location='ManagerQuestion'">질문관리</button>
 				<button class="b-button bold" onclick="location='ManagerUserView'">회원관리</button>
 				<button class="b-button bold" onclick="location='SettingSelect'">데이터베이스관리</button>
-				<button class="b-button bold" onclick="location='ManagerResult'">조사현황</button>
+				<button class="b-button bold" onclick="location='Ratio'">조사현황</button>
                 <button class="b-button bold" onclick="func_confirm()"><%=s2%></button>
 				<button class="b-button bold" onclick="location.href='logout'">로그아웃</button>
 			</div>

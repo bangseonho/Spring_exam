@@ -207,7 +207,6 @@ button{
 			
 			<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
 			<button class="btn" onclick="location.href='logout'">로그아웃</button>
-
         </div>
       </div>
     </div>

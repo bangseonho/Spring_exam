@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import Setting.SettingDAO;
 import Setting.SettingDTO;
+import Result.ResultDAO;
 import User.UserDAO;
 import User.UserDTO;
 
@@ -37,6 +38,9 @@ public class AuthController {
 	
 	@Autowired
 	SettingDTO settingDTO;
+
+	@Autowired
+	ResultDAO resultDAO;
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
