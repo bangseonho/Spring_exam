@@ -124,23 +124,5 @@ public class QuestionDAO {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-//	public int checkQuestionNumber(String userCode) {
-//	      Connection conn = ConnectionDB.getConnection();
-//	      int allCnt = 0;
-//	         try {
-//	           String sql2 = "select count(*) as allcnt from result where question in (select id from question where remove=0 and code="+userCode+")";      
-//	           System.out.println(sql2);
-//	           PreparedStatement psmt = conn.prepareStatement(sql2);
-//	            ResultSet rs = psmt.executeQuery();
-//	            while (rs.next()) {
-//	                  System.out.println("QuestionDAO.checkQuestionNumber 여기들어옴");
-//	                  allCnt = rs.getInt("allcnt");
-//	               }
-//	         } catch (SQLException e) {
-//	            e.printStackTrace();
-//	         } 
-//	         return allCnt;
-//	   }
 
 }
