@@ -319,14 +319,29 @@ public class ManagerController {
 			return "redirect:ManagerController";
 		}
 	}
-	
-
-	@RequestMapping("/ManagerResult")
-	String managerGetCorrectRate(HttpSession session) {
-		
-		
-		
+	@RequestMapping("/Ratio")
+	String getCorrectRate(Model model) {
+		ResultSet rs = null;
+		ArrayList<String> questionWho = new ArrayList<>();
+		ArrayList<String> questionList = new ArrayList<>();
+		ArrayList<String> questionSum = new ArrayList<>();
+		ArrayList<String> questionCorrect = new ArrayList<>();
+		try {
+			rs = managerDAO.getCorrect();
+			while(rs.next()) {
+				questionWho.add(rs.getString(1));
+				questionList.add(rs.getString(2));
+				questionSum.add(rs.getString(3));
+				questionCorrect.add(rs.getString(4));
+			}
+			model.addAttribute("questionWho", questionWho);
+			model.addAttribute("questionList", questionList);
+			model.addAttribute("questionSum", questionSum);
+			model.addAttribute("questionCorrect", questionCorrect);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return "Manager/ManagerResultView";
 	}
-	
+
 }
