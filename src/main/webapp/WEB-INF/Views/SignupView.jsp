@@ -189,7 +189,7 @@ input{
 				<input type="text" placeholder="Birth (YYMMDD)" class="normal" name="birth" required pattern="^[0-9]{6}"> <br />
 				<button class="b-button bold btnmargin" type="submit">SIGN UP</button>
 				<br>
-				<button class="b-button bold btnmargin" onclick="location.href='index.jsp'">Main</button>
+				<button class="b-button bold btnmargin" type="button" onclick="location.href='index.jsp'">Main</button>
 			</form>
 		</div>
 	</div>

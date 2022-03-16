@@ -84,7 +84,9 @@ public class QuestionDAO {
 	@SuppressWarnings("null")
 	public static int getQuestion2(String userCode) throws Exception {
 		int questionNumber = 0;
-		String sql = "SELECT * from question where id not in (select question from result where code=" +userCode+  ") and remove=0 order by rand() limit 1;";
+		String sql = "SELECT * from question where id not in "
+				+ "(select question from result where code=" +userCode+  ") "
+						+ "and remove=0 order by rand() limit 1;";
 		try {
 			System.out.println("Question2 시작");
 			@SuppressWarnings("static-access")

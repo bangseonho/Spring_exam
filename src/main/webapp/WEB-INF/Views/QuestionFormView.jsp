@@ -21,56 +21,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Survey Question</title>
-<script type="text/javascript">
-	var dt = new Date();;
-	
-	function realtimeClock() {
-		document.rtcForm.rtcInput.value = getTimeStamp();
-		setTimeout("realtimeClock()", 1);
-	}
-	
-	function getTimeStamp() { // 24시간제
-		var d = new Date();
-		var ct = (d - dt) / 1000;
-		
-		if (ct > 10){
-			alert("10초 경과! 다음 문제로 넘어갑니다. ");
-			dt = new Date();
-			document.getElementById('frm').submit();
-		}
-		return ct;
-	}
-	
-	function leadingZeros(n, digits) {
-		var zero = '';
-		n = n.toString();
-		
-		if (n.length < digits) {
-		  for (i = 0; i < digits - n.length; i++)
-		    zero += '0';
-		}
-		return zero + n;
-	}
-	
-	//새로고침 막기(F5키)
-	function noEvent() {
-    if (event.keyCode == 116) { // function F5
-        event.keyCode= 2;
-        return false;
-    }
-    else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82)) // ctrl+N , ctrl+R
-    {
-        return false;
-    }
-	}
-	document.onkeydown = noEvent;
-	
-	document.ontouchmove  = function (event) { 
-		event.preventDefault();
-	    return event.returnValue = 'Are you sure you want to exit?';
-	}
-
-</script>
 <style>
 *, *:after, *:before {
    box-sizing: border-box;
@@ -295,10 +245,11 @@ button:hover .button-text {
 	<%
 	/* 데이터 : phrase; one; two; three; four; answer; who; */
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
+	int limitTime = (int) request.getAttribute("limitTime");
 	%>
 	<div class="container1" id="questionSurvey">
 		<form name="rtcForm">
-			<h5>제한 시간은 <u>10초</u>입니다. 화이팅.</h5>
+			<h5>제한 시간은 <u><%=limitTime%> 초</u>입니다. 화이팅.</h5>
 			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
 		</form>
 		<!-- <form method="POST" action="questionform"> -->
@@ -336,6 +287,58 @@ button:hover .button-text {
 			</div>
 		</form>
 	</div>
+
+
+<script type="text/javascript">
+	var dt = new Date();;
+	
+	function realtimeClock() {
+		document.rtcForm.rtcInput.value = getTimeStamp();
+		setTimeout("realtimeClock()", 1);
+	}
+	
+	function getTimeStamp() { // 24시간제
+		var d = new Date();
+		var ct = (d - dt) / 1000;
+		
+		if (ct > <%=limitTime%>){
+			alert("<%=limitTime%>초 경과! 다음 문제로 넘어갑니다. ");
+			dt = new Date();
+			document.getElementById('frm').submit();
+		}
+		return ct;
+	}
+	
+	function leadingZeros(n, digits) {
+		var zero = '';
+		n = n.toString();
+		
+		if (n.length < digits) {
+		  for (i = 0; i < digits - n.length; i++)
+		    zero += '0';
+		}
+		return zero + n;
+	}
+	
+	//새로고침 막기(F5키)
+	function noEvent() {
+    if (event.keyCode == 116) { // function F5
+        event.keyCode= 2;
+        return false;
+    }
+    else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82)) // ctrl+N , ctrl+R
+    {
+        return false;
+    }
+	}
+	document.onkeydown = noEvent;
+	
+	document.ontouchmove  = function (event) { 
+		event.preventDefault();
+	    return event.returnValue = 'Are you sure you want to exit?';
+	}
+
+</script>
 
 	<!-- <script>
 		// 나가기 경고창

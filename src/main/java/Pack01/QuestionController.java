@@ -94,6 +94,13 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 		model.addAttribute("question", question);
 		
+		ResultSet rs1 = settingDAO.selectSetting();
+		int limitTime = 10;
+		if(rs1.next()){
+			limitTime = rs1.getInt("limitTime");
+		}
+		model.addAttribute("limitTime", limitTime);
+		
 		return "QuestionFormView";
 	}
 	
