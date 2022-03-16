@@ -64,7 +64,12 @@ public class QuestionController implements HttpSessionBindingListener {
 	public String questionGenerate(Model model, HttpSession session) throws Exception {
 
 		String userCode = (String)session.getAttribute("user_code");
-
+		// 문제가 중간에 삭제될 수도 있으므로 불러올 때 마다 문제 개수가 remove가 0인 경우가 5개인지 체크한다
+//	      int checkNumber = questionDAO.checkQuestionNumber(userCode);
+//	      System.out.println("check check check " + checkNumber);
+//	      if (checkNumber < 5) {
+//	         return "redirect:MakeQuestion";
+//	      }
 		// 문제 푼 횟수 확인
 		if(isExceedCnt(userCode)) {
 			resultDAO.updateFlag(userCode); 
