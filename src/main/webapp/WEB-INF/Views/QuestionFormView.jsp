@@ -245,14 +245,16 @@ button:hover .button-text {
 	<%
 	/* 데이터 : phrase; one; two; three; four; answer; who; */
 	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("question");
-	int limitTime = 10;
+	int curCnt = (int)request.getAttribute("curCnt");
+	int maxQuestionNum = (int)request.getAttribute("questionNum");
+	int limitTime = 10; // default
 	if(request.getAttribute("limitTime") != null){
 		limitTime = (int)request.getAttribute("limitTime");
 	}
 	%>
 	<div class="container1" id="questionSurvey">
 		<form name="rtcForm">
-			<h5>제한 시간은 <u><%=limitTime%>초</u>입니다. 화이팅.</h5>
+			<h5>제한 시간은 <u><%=limitTime%>초</u>입니다. 화이팅. <%="( " + (curCnt+1) + " / " +maxQuestionNum + " )"%></h5>
 			<input type="text" name="rtcInput" class="time" size="5" readonly="readonly" /><br/>
 		</form>
 		<!-- <form method="POST" action="questionform"> -->

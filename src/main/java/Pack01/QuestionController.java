@@ -44,23 +44,20 @@ public class QuestionController implements HttpSessionBindingListener {
 	//	}
 	
 	@RequestMapping("/MakeQuestion")
-		public String makeQuestion(HttpSession session){
-			String userCode = (String) session.getAttribute("user_code");
-			int TotalQuestionNumber = 5;
-	          int existProblemNumber = 0;
+	public String makeQuestion(HttpSession session) {
+		String userCode = (String) session.getAttribute("user_code");
+		int TotalQuestionNumber = 5;
+		int existProblemNumber = 0;
 
-	          // block bring question (can only bring first time)
-	          try {
-	             existProblemNumber = resultDAO.blockBringQuestion(userCode);
+		// block bring question (can only bring first time)
+		try {
+			existProblemNumber = resultDAO.blockBringQuestion(userCode);
+		} catch (Exception e) { e.printStackTrace(); }
 
-	         } catch (Exception e) {
-	            e.printStackTrace();
-	         }
+		for (int i = existProblemNumber; i < TotalQuestionNumber; i++) {
+			questionDAO.makeQ(userCode); // makeQ -> Quesion2
+		}
 
-	         for(int i=existProblemNumber; i<TotalQuestionNumber; i++) {
-	            questionDAO.makeQ(userCode);   //makeQ -> Quesion2
-	         }
-			
 		return "redirect:QuestionGenerate";
 	}
 	
@@ -75,13 +72,19 @@ public class QuestionController implements HttpSessionBindingListener {
 
 		// 문제 푼 횟수 확인
 		int curUserFlag = userDAO.flagCheck(userName, userCode);
-		if(isExceedCnt(userCode, curUserFlag)) {
+		int curCnt = isExceedCnt(userCode, curUserFlag);
+		if(curCnt < 0) {
 			// resultDAO.updateFlag(userCode); 
 			resultDAO.increaseFlag(userCode); 
 			return "redirect:result";
 		}
+		model.addAttribute("curCnt", curCnt);
+		model.addAttribute("questionNum", settingDTO.getQuestionNum());
 		
-		// 문제 생성
+		// 풀고 있는 문제 있는지 확인
+		// 있다면, 그 문제 불러오기
+		
+		// 없다면, 문제 생성
 		ArrayList<String> question = new ArrayList<String>();
 		ResultSet rs = questionDAO.getQuestion(userCode, curUserFlag);
 		rs.next();
@@ -133,7 +136,8 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 		// 문제 푼 횟수 확인
 		int curUserFlag = userDAO.flagCheck(userName, userCode);
-		if(isExceedCnt(userCode, curUserFlag)) return "redirect:result";
+		int curCnt = isExceedCnt(userCode, curUserFlag);
+		if( curCnt < 0) return "redirect:result";
 		
 		// 사용자 선택지 저장
 		String myAnswer   = request.getParameter("radio");
@@ -167,7 +171,7 @@ public class QuestionController implements HttpSessionBindingListener {
 		
 	}
 	
-	public boolean isExceedCnt(String userCode, int flag) {
+	public int isExceedCnt(String userCode, int flag) {
 		int limitCnt = 5; // default;
 		int resCnt = 0;
 		try {
@@ -192,7 +196,7 @@ public class QuestionController implements HttpSessionBindingListener {
 			
 		}catch (Exception e) { e.printStackTrace(); }
 		
-		return resCnt >= limitCnt ? true : false;
+		return resCnt < limitCnt ? resCnt : -1;
 	}
 	
 	/**
