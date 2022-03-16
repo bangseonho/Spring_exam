@@ -143,7 +143,6 @@ public class QuestionController implements HttpSessionBindingListener {
 				resCnt 	 = questionDAO.resultAllCount(userCode);
 			}
 		}catch (Exception e) { e.printStackTrace(); }
-		
 		return resCnt >= limitCnt ? true : false;
 	}
 	
