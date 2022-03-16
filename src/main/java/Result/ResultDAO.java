@@ -72,7 +72,8 @@ public class ResultDAO {
 			System.out.println("insert result");
 
 			Connection conn = ConnectionDB.getConnection();
-			String sql = "insert into result(code, question, choice, correct, flag) values(?,?,?,?,?);";
+			// String sql = "insert into result(code, question, choice, correct, flag) values(?,?,?,?,?);";
+			String sql = "update result set choice=?, correct=? where code=? and question=? and choice is NULL";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
@@ -90,10 +91,15 @@ public class ResultDAO {
 		/*	@SuppressWarnings("static-access")*/
 		Connection conn = ConnectionDB.getConnection();
 		try {
-			String sql4 = "UPDATE user SET flag=1 WHERE CODE = " + userCode;				
+			String sql4 = "UPDATE user SET flag=1 WHERE CODE='" + userCode + "'";
+			System.out.println(sql4);
 //			psmt.setString(1, userCode);
 			psmt = conn.prepareStatement(sql4);
-			int rs4 = psmt.executeUpdate();			
+			System.out.println("실행시키기전");
+			
+			int rs4 = psmt.executeUpdate();	
+			System.out.println(rs4);
+			System.out.println("실행시키기전");
 			System.out.println("변경된 row : " + rs4);
 		} catch (SQLException e) {
 			//	e.printStackTrace();
