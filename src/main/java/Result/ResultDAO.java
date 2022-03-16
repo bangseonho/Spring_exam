@@ -72,8 +72,8 @@ public class ResultDAO {
 			System.out.println("insert result");
 
 			Connection conn = ConnectionDB.getConnection();
-			// String sql = "insert into result(code, question, choice, correct, flag) values(?,?,?,?,?);";
-			String sql = "update result set choice=?, correct=? where code=? and question=? and choice is NULL";
+			String sql = "insert into result(code, question, choice, correct, flag) values(?,?,?,?,?);";
+			// String sql = "update result set choice=?, correct=? where code=? and question=? and choice is NULL";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getCode());
 			psmt.setInt(2, dto.getQuestion());
