@@ -167,7 +167,7 @@ a{
 			</table>
 		</div>
    </div>
-	<div class="total-group">	
+	<%-- <div class="total-group">	
 	<div class="left-side">
 			<table id="user-list">
 				<thead>
@@ -200,7 +200,7 @@ a{
 				%>
 			</tbody>
 		</table>
-	</div>
+	</div> --%>
 </body>
 <footer>
 	<div>
