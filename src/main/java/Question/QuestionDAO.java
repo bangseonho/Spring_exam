@@ -87,7 +87,7 @@ public class QuestionDAO {
 	public int getCurFlagResultCount(String userCode, int flag) throws Exception {
 		Connection conn = ConnectionDB.getConnection();
 	      try {
-	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode + " and flag=" + flag;      
+	         String sql2 = "select count(correct) as allcnt from result where code=" + userCode + " and flag=" + flag + " and choice is not null";      
 	         psmt = conn.prepareStatement(sql2);
 	         ResultSet rs2 = psmt.executeQuery();
 	         int allCnt = 0;
@@ -143,18 +143,19 @@ public class QuestionDAO {
 		}
 	}
 	
-	public void makeQ(String userCode) {
+	public void makeQ(String userCode, int flag) {
 		@SuppressWarnings("static-access")
 		Connection conn = conn1.getConnection();
 		
 		try {
 			int questionNumber = getQuestion2(userCode);
 			
-			String sql = "insert into result values(null, ?, ?, null, false);";
+			String sql = "insert into result(code, question, choice, correct, flag) values(?, ?, null, 0, ?);";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, userCode);
 			psmt.setInt(2, questionNumber);
+			psmt.setInt(3, flag);
 			
 			cnt = psmt.executeUpdate();
 

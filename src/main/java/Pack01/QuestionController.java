@@ -45,6 +45,7 @@ public class QuestionController implements HttpSessionBindingListener {
 	
 	@RequestMapping("/MakeQuestion")
 	public String makeQuestion(HttpSession session) {
+		String userName = (String) session.getAttribute("user_name");
 		String userCode = (String) session.getAttribute("user_code");
 		int TotalQuestionNumber = 5;
 		int existProblemNumber = 0;
@@ -52,11 +53,12 @@ public class QuestionController implements HttpSessionBindingListener {
 		// block bring question (can only bring first time)
 		try {
 			existProblemNumber = resultDAO.blockBringQuestion(userCode);
-		} catch (Exception e) { e.printStackTrace(); }
+			int curUserFlag = userDAO.flagCheck(userName, userCode);
 
-		for (int i = existProblemNumber; i < TotalQuestionNumber; i++) {
-			questionDAO.makeQ(userCode); // makeQ -> Quesion2
-		}
+			for (int i = existProblemNumber; i < TotalQuestionNumber; i++) {
+				questionDAO.makeQ(userCode, curUserFlag); // makeQ -> Quesion2
+			}
+		} catch (Exception e) { e.printStackTrace(); }
 
 		return "redirect:QuestionGenerate";
 	}

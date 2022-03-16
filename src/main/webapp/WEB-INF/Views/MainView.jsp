@@ -193,6 +193,7 @@ button{
 	            
 	          if(userFlag < settingFlag && adminFlag == 0){
 	        	  out.println("<button class=\"btn\" onclick=\"location.href='QuestionGenerate'\">시험시작</button>");
+	        	  out.println("<button class=\"btn\" onclick=\"location.href='MakeQuestion'\">시험시작(테스트)</button>");
 	          }
 	          if(userFlag > 0){
 	        	  out.println("<button class=\"btn\" onclick=\"location.href='result'\">결과보기</button>");
@@ -205,7 +206,6 @@ button{
 			<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
 			 --%>
 			
-			<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
 			<button class="btn" onclick="location.href='logout'">로그아웃</button>
         </div>
       </div>
