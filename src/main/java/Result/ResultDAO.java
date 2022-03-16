@@ -72,12 +72,13 @@ public class ResultDAO {
 			System.out.println("insert result");
 
 			Connection conn = ConnectionDB.getConnection();
-			String sql = "insert into result values(null, ?,?,?,?);";
+			//String sql = "insert into result values(null, ?,?,?,?);";
+			String sql = "update result set choice=?, correct=? where code=? and question=?";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getCode());
-			psmt.setInt(2, dto.getQuestion());
-			psmt.setInt(3, dto.getChoice());
-			psmt.setInt(4, dto.getCorrect());
+			psmt.setString(3, dto.getCode());
+			psmt.setInt(4, dto.getQuestion());
+			psmt.setInt(1, dto.getChoice());
+			psmt.setInt(2, dto.getCorrect());
 			int num = psmt.executeUpdate();
 			
 			return num;
@@ -101,5 +102,8 @@ public class ResultDAO {
 		} 
 	}	
 	
+	public void getCorrectCnt() {
+		
+	}
 
 }

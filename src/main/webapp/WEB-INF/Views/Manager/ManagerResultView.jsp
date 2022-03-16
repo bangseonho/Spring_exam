@@ -167,6 +167,40 @@ a{
 			</table>
 		</div>
    </div>
+	<div class="total-group">	
+	<div class="left-side">
+			<table id="user-list">
+				<thead>
+					<tr>
+						<td>이름</td>
+						<td>생년월일</td>
+						<td>수험번호</td>
+						<td>회원 정보 삭제</td>
+						<td>회원 문제 확인</td>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+				String code;
+				int sum_correct;
+				int user_rank;
+				ResultSet rs1 = (ResultSet) request.getAttribute("rs1");
+				while (rs1.next()) {
+					code = rs1.getString("code"); // 사용자 번호
+					sum_correct = rs1.getInt("sum_correct");
+					user_rank = rs1.getInt("user_rank");
+					%>
+					<tr>
+					<td><%=code %></td>
+					<td><%=sum_correct %></td>
+					<td><%=user_rank %> 등</td>
+					</tr>
+				<% 
+				}				
+				%>
+			</tbody>
+		</table>
+	</div>
 </body>
 <footer>
 	<div>

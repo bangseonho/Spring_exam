@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
-	<meta charset="UTF-8">
-	<title>로그인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
+	rel="stylesheet">
+<meta charset="UTF-8">
+<title>로그인</title>
 <style>
 @import
 	url('https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap')
@@ -20,7 +22,7 @@
 body {
 	font-family: 'Gamja Flower', cursive;
 	background: hsl(220, 10%, 12%);
-	margin: 0;
+	margin: 0 auto;
 }
 
 .bold {
@@ -33,10 +35,6 @@ body {
 	font-family: 'Darker Grotesque', sans-serif;
 	font-weight: 500;
 	font-size: 17px;
-}
-
-.welcome-text {
-	color: #fff;
 }
 
 .welcome {
@@ -61,35 +59,6 @@ body {
 	width: 400px;
 	z-index: 30;
 	display: none;
-}
-
-.welcome-text {
-	margin-top: 100px;
-}
-
-.move {
-	height: 100%;
-	position: absolute;
-	width: 400px;
-	text-align: center;
-	z-index: 20;
-	background-color: #2ecc71;
-	background-image:
-		url("http://www.pixmy.tech/Projects/Codepen/SlideForm/bg.jpg");
-	background-size: cover;
-	background-position: left;
-	transition: all .4s ease;
-	border-radius: 10px 0px 0px 10px;
-}
-
-.start {
-	animation: start .4s linear forwards;
-	transition: all .4s ease-out;
-}
-
-.startForm {
-	animation: startForm .4s linear forwards;
-	transition: all .4s ease-out;
 }
 
 .p-button {
@@ -179,14 +148,6 @@ input {
 	margin-top: 8px;
 }
 
-.button5 {
-	background-color: white;
-	color: black;
-	border: 2px solid #555555;
-	font-family: 'Gamja Flower', cursive;
-	cursor: pointer;
-}
-
 .buttonform {
 	margin-top: 10px;
 }
@@ -204,12 +165,17 @@ input {
 				<input type="text" name="name" required placeholder="Name">
 				<input type="text" name="code" required placeholder="Code"><br />
 				<div class="buttonform">
-				<button class="b-button bold btnmargin" type="submit">Login</button>
-				<button class="b-button bold btnmargin" type="button" onclick="location.href='ForgotCode.jsp'">Forgot Code</button>
+					<button class="b-button bold btnmargin" type="submit">Login</button>
 				</div>
+
 			</form>
-			<button class="b-button bold btnmargin"
-				onclick="location.href='index.jsp'">Main</button>
+			<form method="get" action="getMycodePage">
+				<button class="b-button bold btnmargin" type="submit">Forgot
+					Code</button>
+					<button class="b-button bold btnmargin"
+					onclick="location.href='index.jsp'" type="button">Main</button>
+			</form>
+				
 			<br />
 		</div>
 	</div>

@@ -26,6 +26,7 @@
 * {
 	font-family: 'Cafe24Oneprettynight';
 	font-size: 20px;
+	text-align: center;
 }
 
 .grid-container {
@@ -37,40 +38,74 @@
 	padding: 10px;
 	margin: 10px;
 	border-radius: 10px;
-	background: #AFE1AF;
 	/* background: lightcoral; */
 	text-align: center;
+}
+
+.testfalse {
+	background: #F47C7C;
+}
+
+.testtrue {
+	background: #AFE1AF;
 }
 </style>
 <meta charset="UTF-8">
 <title>result view</title>
 </head>
 <body>
-	<%	
+	<%
 	String userCode = (String) session.getAttribute("user_code");
 	String userName = (String) session.getAttribute("user_name");
-	if(userCode == null || userName == null){
+	if (userCode == null || userName == null) {
 		response.sendRedirect("PageMove?page=LoginView");
+		return;
+	}
+	%>
+
+
+	<%
+	int allCnt = 0;
+	int CorrectCnt = 0;
+	int like = 0;
+	allCnt = (int) request.getAttribute("rs2");
+	CorrectCnt = (int) request.getAttribute("rs3");
+
+	if(allCnt == 0){
+
+		%>
+	<h1 style="margin-top: 100px;">
+		수험번호:<%=userCode%><br>
+	</h1>
+	<label>시험 결과를 확인할 수 없습니다. 관리자에게 문의하세요.</label>
+	<div style="text-align: center; margin-top: 20px;'">
+		<!-- 		<button onclick="location.href='main'">메인으로 가기</button> -->
+		<button onclick="location.href='logout'">로그아웃하기</button>
+	</div>
+
+	<%
 		return;
 	}
 	%>
 	<h1>
 		수험번호:<%=userCode%><br>
-	</h1>	
+	</h1>
 
-	
-	<%
-	int allCnt = 0;
-	int CorrectCnt = 0;
-	int like = 0;	
-	allCnt = (int)request.getAttribute("rs2");
-	CorrectCnt = (int)request.getAttribute("rs3");
-	%>
-
-	<h1><%=userName%>님의 점수 결과 : <%=allCnt%> 개 중에 <%=CorrectCnt%> 개 맞았습니다!</h1><br/>
-	<h1>
+	<h1 style="font: bold; font-size: 40px;"><%=userName%>님의 점수 결과 :
+		<%=allCnt%>
+		개 중에
+		<%=CorrectCnt%>
+		개 맞았습니다!
+	</h1>
+	<h1 style="font-size: 30px;">
 		<%
+		try{
 		like = (CorrectCnt*100)/allCnt;		
+		}catch(Exception e){
+		%>
+	<h1>result 테이블에 데이터가 없습니다. </h1>
+		<%
+		}
 
 		if (like <= 25) {
 			out.println("우리 조원과 밥 먹으러 가자고 하고 싶지만 아직은 머뭇거리는 사이!  ʕ ᵒ̌ ‸ ᵒ̌ ʔ  ");
@@ -101,8 +136,9 @@
 	%>
 	<br>
 	<div class="grid-container">
-		<div>
-			<h3><%=who%>의 문제 <br/> <%=phrase%></h3>
+		<div class="test<%= correct %>">
+			<h3><%=who%>의 문제 <br />
+				<%=phrase%></h3>
 			<%
 			if (correct) {
 				out.println("맞은 문제");
@@ -111,28 +147,31 @@
 			}
 			%>
 			<h3>
-				1.&nbsp;&nbsp;<%=one%>&emsp; 
-				2.&nbsp;&nbsp;<%=two%>&emsp; 
-				3.&nbsp;&nbsp;<%=three%>&emsp; 
-				4.&nbsp;&nbsp;<%=four%>&emsp;
+				1.&nbsp;&nbsp;<%=one%>
+				&emsp; 2.&nbsp;&nbsp;<%=two%>
+				&emsp; 3.&nbsp;&nbsp;<%=three%>
+				&emsp; 4.&nbsp;&nbsp;<%=four%>
+				&emsp;
 			</h3>
 
-			<h3>입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
-			<h3>정답 :&nbsp;&nbsp;<%=answer%></h3>
-		</div>	
+			<h3>
+				입력한 답 :&nbsp;&nbsp;<%=choice%></h3>
+			<h3>
+				정답 :&nbsp;&nbsp;<%=answer%></h3>
+		</div>
 	</div>
 	<%
-			}
-	   // 뒤로가기 시 새 페이지로 불러오기 위함
-	   response.setHeader("Cache-Control", "no-cache");
-	   response.addHeader("Cache-Control", "no-store");
-	   response.setHeader("Pragma", "no-cache");
-	   response.setDateHeader("Expires", 1L); 
+	}
+	// 뒤로가기 시 새 페이지로 불러오기 위함
+	response.setHeader("Cache-Control", "no-cache");
+	response.addHeader("Cache-Control", "no-store");
+	response.setHeader("Pragma", "no-cache");
+	response.setDateHeader("Expires", 1L);
 	%>
-	<div>
-	<button onclick="location.href='main'">메인으로 가기</button>
-	<button onclick="location.href='logout'">로그아웃하기</button>
+	<div style="text-align: center;'">
+		<button onclick="location.href='main'">메인으로 가기</button>
+		<button onclick="location.href='logout'">로그아웃하기</button>
 	</div>
-	
+
 </body>
 </html>

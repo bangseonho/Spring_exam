@@ -24,6 +24,7 @@ import Pack01.ConnectionDB;
 import User.UserDAO;
 import User.UserDTO;
 import Question.QuestionDTO;
+import Result.ResultDAO;
 import Setting.SettingDAO;
 
 @Controller
@@ -36,6 +37,9 @@ public class ManagerController {
 	
 	@Autowired
 	SettingDAO settingDAO;
+	
+	@Autowired
+	ResultDAO resultDAO;
 	
 	@RequestMapping("/ManagerController")
 	String managerController(Model model) {
@@ -84,8 +88,6 @@ public class ManagerController {
 		    	questionList.add(getQuestionDTO(rs));
 		    }
 			
-			System.out.println("占쏙옙占쏙옙 占쏙옙占� 1占쏙옙占쏙옙 占쏙옙占쏙옙");
-			System.out.println(questionList.get(0).toString());
 			model.addAttribute("questionList", questionList);
 
 		} catch (Exception e) { e.printStackTrace(); }
@@ -209,8 +211,6 @@ public class ManagerController {
 			cnt = managerDAO.deleteAllQuestions();
 		} catch (Exception e) { e.printStackTrace(); }
 		*/
-		System.out.println("占쏙옙占쏙옙 占쏙옙체 占쏙옙占쏙옙");
-
 		return "redirect:/ManagerQuestion";
 	}
 
@@ -292,9 +292,11 @@ public class ManagerController {
 		}
 		else{
 			try{
-				int cnt = userDAO.adminOpen(); 
+				// 새로 시작하기, 종료 -> 정지, 시작, 초기화
+				// int cnt1 = userDAO.adminOpen(); 
+				userDAO.userFlagInit();
 				settingDAO.closeVote();
-//				settingDAO.openVote();
+				// settingDAO.openVote();
 			}catch(Exception e){
 				System.out.println("리셋 실패");
 			}
@@ -341,4 +343,5 @@ public class ManagerController {
 		}
 		return "Manager/ManagerResultView";
 	}
+
 }

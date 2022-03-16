@@ -153,13 +153,8 @@ body {
 }
 /*  */
 button{
-	margin-top: 10px;
-}
-.button5 {
-  background-color: white;
-  color: black;
-  border: 2px solid #555555;
-  cursor:pointer;
+	margin-top: 8px;
+	cursor: pointer;
 }
 
 </style>
@@ -186,11 +181,14 @@ button{
           <%
 
             int flag = (Integer)request.getAttribute("flag");
-            String s1 = (flag!=1) ? "QuestionGenerate" : "result";
-            String s2 = (flag!=1) ? "시험 시작" : "결과 보기";
+            int adminFlag = (Integer)request.getAttribute("adminFlag");
+            
+            String s1 = ((flag!=1) && (adminFlag==0)) ? "QuestionGenerate" : "result";
+            String s2 = ((flag!=1)&& (adminFlag==0)) ? "시험 시작" : "결과 보기";
             %>
-		<button class="button5" onclick="location.href='<%=s1%>'"><%=s2%></button>
-		<button onclick="location.href='logout'">로그아웃하기</button>
+		<button class="btn" onclick="location.href='MakeQuestion'">문제만들기</button>
+		<button class="btn" onclick="location.href='<%=s1%>'"><%=s2%></button>
+		<button class="btn" onclick="location.href='logout'">로그아웃하기</button>
 
         </div>
       </div>

@@ -198,4 +198,24 @@ public class ManagerDAO {
 		return rs;
 	}
 	
+	
+	public ResultSet UserRank() throws Exception {
+		@SuppressWarnings("static-access")
+		Connection conn = conn1.getConnection();
+		String sql1 = "WITH t AS"
+				+ "("
+				+ "SELECT CODE, SUM(correct) AS sum_correct"
+				+ "from result"
+				+ "GROUP BY CODE"
+				+ "ORDER BY sum_correct"
+				+ ")"
+				+ "SELECT CODE, sum_correct, dense_rank() over("
+				+ "ORDER BY sum_correct DESC) AS user_rank"
+				+ "FROM t";
+		psmt = conn.prepareStatement(sql1);
+		ResultSet rs1 = psmt.executeQuery();
+		System.out.println(11111);
+		System.out.println(rs1);
+		return rs1;
+	}
 }
