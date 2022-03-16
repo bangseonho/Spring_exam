@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import Result.ResultDAO;
 import User.UserDAO;
 import User.UserDTO;
 
@@ -28,6 +29,8 @@ import User.UserDTO;
 public class AuthController {
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	ResultDAO resultDAO;
 
 	@RequestMapping("/signup")
 	public String form(Model model, UserDTO user, HttpServletResponse response) {
